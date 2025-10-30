@@ -504,7 +504,7 @@
       font-weight: 700;
       margin-bottom: 60px;
       letter-spacing: 1px;
-     background-color: var(--theme-color);
+     background-color: black;
     }
     .showcase-title h2{
       color: red;
