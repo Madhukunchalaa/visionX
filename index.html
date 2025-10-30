@@ -6,286 +6,6 @@
   <title>VisionX</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/styles.css">
-  <style>
-    .video-banner {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      overflow: hidden;
-    }
-    
-    .video-banner video {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      min-width: 100%;
-      min-height: 100%;
-      width: auto;
-      height: auto;
-      transform: translate(-50%, -50%);
-      object-fit: cover;
-    }
-    
-    .video-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      /* background: rgba(0, 0, 0, 0.4); */
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1;
-    }
-    
-    .video-content {
-      text-align: center;
-      color: white;
-      z-index: 2;
-      padding: 20px;
-    }
-    
-    .video-content h1 {
-      font-size: 3.5rem;
-      font-weight: bold;
-      margin-bottom: 1rem;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    }
-    
-    .video-content p {
-      font-size: 1.5rem;
-      margin-bottom: 2rem;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-    }
-
-    /* AI Capabilities Section */
-    .ai-capabilities-section {
-      background: #1a1d2e;
-      color: white;
-      padding: 80px 0;
-    }
-
-    .section-title {
-      text-align: center;
-      font-size: 2.5rem;
-      font-weight: bold;
-      margin-bottom: 60px;
-    }
-
-    .feature-row {
-      display: flex;
-      align-items: center;
-      margin-bottom: 80px;
-      gap: 60px;
-    }
-
-    .feature-video-wrapper {
-      flex: 1;
-      position: relative;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-      max-width: 600px;
-      height: 500px;
-    }
-
-    /* Background video for each card */
-    .feature-video-wrapper .background-video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: 0;
-    }
-
-    /* Overlay on background video */
-    .feature-video-wrapper .video-card-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      /* background: rgba(0, 0, 0, 0.3); */
-      z-index: 1;
-    }
-
-    .ai-badge {
-      position: absolute;
-      bottom: 15px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(10px);
-      padding: 8px 20px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      color: rgba(255, 255, 255, 0.7);
-      z-index: 3;
-    }
-
-    .feature-content {
-      flex: 1;
-      padding: 20px;
-    }
-
-    .feature-content h2 {
-      font-size: 2.5rem;
-      font-weight: bold;
-      margin-bottom: 25px;
-      line-height: 1.2;
-    }
-
-    .feature-content p {
-      font-size: 1.15rem;
-      line-height: 1.7;
-      color: rgba(255, 255, 255, 0.85);
-    }
-
-    /* Reverse layout for alternating rows */
-    .feature-row.reverse {
-      flex-direction: row-reverse;
-    }
-
-    /* Services Section */
-    .services-section {
-      background: #0f1219;
-      color: white;
-      padding: 100px 0;
-    }
-
-    .services-section .section-title {
-      font-size: 3rem;
-      margin-bottom: 80px;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
-      gap: 40px;
-    }
-
-    .service-card {
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      padding: 40px;
-      transition: all 0.3s ease;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .service-card::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(135deg, rgba(99, 102, 241, 0.05) 0%, rgba(168, 85, 247, 0.05) 100%);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-      z-index: 0;
-    }
-
-    .service-card:hover::before {
-      opacity: 1;
-    }
-
-    .service-card:hover {
-      transform: translateY(-5px);
-      border-color: rgba(99, 102, 241, 0.3);
-      box-shadow: 0 20px 60px rgba(99, 102, 241, 0.15);
-    }
-
-    .service-card-content {
-      position: relative;
-      z-index: 1;
-    }
-
-    .service-card h3 {
-      font-size: 1.8rem;
-      font-weight: bold;
-      margin-bottom: 20px;
-      color: #fff;
-    }
-
-    .service-card p {
-      font-size: 1.05rem;
-      line-height: 1.8;
-      color: rgba(255, 255, 255, 0.8);
-      margin: 0;
-    }
-
-    .service-icon {
-      width: 60px;
-      height: 60px;
-      background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      margin-bottom: 20px;
-    }
-
-    @media (max-width: 768px) {
-      .video-banner {
-        height: 60vh;
-      }
-      .video-content h1 {
-        font-size: 2rem;
-      }
-      .video-content p {
-        font-size: 1rem;
-      }
-
-      .feature-row,
-      .feature-row.reverse {
-        flex-direction: column;
-        margin-bottom: 50px;
-        gap: 30px;
-      }
-
-      .feature-video-wrapper {
-        max-width: 100%;
-        height: 350px;
-      }
-
-      .section-title {
-        font-size: 1.8rem;
-        margin-bottom: 40px;
-      }
-
-      .feature-content h2 {
-        font-size: 1.6rem;
-      }
-
-      .feature-content p {
-        font-size: 1rem;
-      }
-
-      .services-grid {
-        grid-template-columns: 1fr;
-        gap: 30px;
-      }
-
-      .services-section .section-title {
-        font-size: 2rem;
-        margin-bottom: 50px;
-      }
-
-      .service-card {
-        padding: 30px;
-      }
-
-      .service-card h3 {
-        font-size: 1.5rem;
-      }
-    }
-  </style>
 </head>
 <body>
 
@@ -364,45 +84,103 @@
     </div>
   </section>
 
-  <!-- Services Section -->
-  <section class="services-section">
-    <div class="container">
-      <h2 class="section-title">Our AI Video Services</h2>
-      
-      <div class="services-grid">
-        <!-- Service 1 -->
-        <div class="service-card">
-          <div class="service-card-content">
-            <div class="service-icon">🎬</div>
-            <h3>Brand Video Production</h3>
-            <p>At StudioX, we create cinematic brand videos that blend emotion, strategy, and AI innovation. Each film is crafted to captivate, connect, and convert — delivering visually stunning stories that elevate your brand.</p>
+  <!-- Interactive Services Section -->
+  <section class="services-showcase">
+    <div class="showcase-header">
+      <h2 class="showcase-title">Our AI Video Services</h2>
+      <p class="showcase-subtitle">Click on a service to explore how we transform your vision into reality</p>
+    </div>
+
+    <div class="services-container">
+      <!-- Service Menu -->
+      <div class="service-menu">
+        <div class="service-item" data-service="brand">
+          <span class="service-icon">🎬</span>
+          <h3>Brand Video Production</h3>
+          <p>Cinematic brand stories</p>
+        </div>
+
+        <div class="service-item" data-service="youtube">
+          <span class="service-icon">📹</span>
+          <h3>YouTube Video Production</h3>
+          <p>Engaging content creation</p>
+        </div>
+
+        <div class="service-item" data-service="avatar">
+          <span class="service-icon">🤖</span>
+          <h3>AI Avatar Video Production</h3>
+          <p>Realistic digital presenters</p>
+        </div>
+
+        <div class="service-item" data-service="learning">
+          <span class="service-icon">📚</span>
+          <h3>Learning Video Production</h3>
+          <p>Educational experiences</p>
+        </div>
+      </div>
+
+      <!-- Video Display Area -->
+      <div class="video-display">
+        <!-- Empty State -->
+        <div class="empty-state" id="emptyState">
+          <div class="empty-state-icon">✨</div>
+          <h3>Select a Service</h3>
+          <p>Click on any service to see it in action</p>
+        </div>
+
+        <!-- Brand Video -->
+        <div class="video-wrapper" data-video="brand">
+          <video muted loop playsinline>
+            <source src="assets/videos/brand_video.mp4" type="video/mp4">
+          </video>
+          <span class="video-badge">AI Generated</span>
+          <div class="service-video-overlay">
+            <div class="service-video-content">
+              <h2>Brand Video Production</h2>
+              <p>At StudioX, we create cinematic brand videos that blend emotion, strategy, and AI innovation. Each film is crafted to captivate, connect, and convert — delivering visually stunning stories that elevate your brand and leave lasting impressions on your audience.</p>
+            </div>
           </div>
         </div>
 
-        <!-- Service 2 -->
-        <div class="service-card">
-          <div class="service-card-content">
-            <div class="service-icon">📹</div>
-            <h3>YouTube Video Production</h3>
-            <p>Turn your channel into a storytelling engine. Our AI-powered YouTube videos engage audiences and boost performance through sharp narratives, cinematic visuals, and algorithm-ready design.</p>
+        <!-- YouTube Video -->
+        <div class="video-wrapper" data-video="youtube">
+          <video muted loop playsinline>
+            <source src="assets/videos/you tube.mp4" type="video/mp4">
+          </video>
+          <span class="video-badge">AI Generated</span>
+          <div class="service-video-overlay">
+            <div class="service-video-content">
+              <h2>YouTube Video Production</h2>
+              <p>Turn your channel into a storytelling engine. Our AI-powered YouTube videos engage audiences and boost performance through sharp narratives, cinematic visuals, and algorithm-ready design that keeps viewers coming back for more.</p>
+            </div>
           </div>
         </div>
 
-        <!-- Service 3 -->
-        <div class="service-card">
-          <div class="service-card-content">
-            <div class="service-icon">🤖</div>
-            <h3>AI Avatar Video Production</h3>
-            <p>Bring your brand voice to life with realistic AI avatars that present, explain, and connect — across languages, platforms, and campaigns. Scalable, consistent, and endlessly adaptable.</p>
+        <!-- AI Avatar Video -->
+        <div class="video-wrapper" data-video="avatar">
+          <video muted loop playsinline>
+            <source src="assets/videos/avathar.mp4" type="video/mp4">
+          </video>
+          <span class="video-badge">AI Generated</span>
+          <div class="service-video-overlay">
+            <div class="service-video-content">
+              <h2>AI Avatar Video Production</h2>
+              <p>Bring your brand voice to life with realistic AI avatars that present, explain, and connect — across languages, platforms, and campaigns. Scalable, consistent, and endlessly adaptable to your business needs.</p>
+            </div>
           </div>
         </div>
 
-        <!-- Service 4 -->
-        <div class="service-card">
-          <div class="service-card-content">
-            <div class="service-icon">📚</div>
-            <h3>Learning Video Production</h3>
-            <p>We transform education into experience. StudioX learning videos simplify complex ideas with clarity, creativity, and AI-enhanced storytelling — perfect for training, e-learning, and internal development.</p>
+        <!-- Learning Video -->
+        <div class="video-wrapper" data-video="learning">
+          <video muted loop playsinline>
+            <source src="assets/videos/learning.mp4" type="video/mp4">
+          </video>
+          <span class="video-badge">AI Generated</span>
+          <div class="service-video-overlay">
+            <div class="service-video-content">
+              <h2>Learning Video Production</h2>
+              <p>We transform education into experience. StudioX learning videos simplify complex ideas with clarity, creativity, and AI-enhanced storytelling — perfect for training, e-learning, and internal development programs.</p>
+            </div>
           </div>
         </div>
       </div>
@@ -420,6 +198,7 @@
 
   <!-- Scripts -->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
 
   <!-- Include Header and Footer -->
   <script>

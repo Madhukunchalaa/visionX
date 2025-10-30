@@ -1,93 +1,488 @@
-/* Navbar styles */
-.navbar {
-  transition: all 0.3s ease-in-out;
+/* ========================================
+   VIDEO BANNER SECTION
+   ======================================== */
+:root {
+  --btn-color: #FF3951;
+  --theme-hover: #e02f46; /* optional darker hover color */
 }
 
-.navbar-brand img {
-  height: 40px;
-}
-
-/* Optional subtle shadow */
-.navbar.shadow-sm {
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-}
-
-/* Adjust top padding for content since navbar is fixed */
-body {
-  padding-top: 80px;
-}
-
-/* Custom button style (Bootstrap override) */
-.btn-primary {
-  background-color: #ff3b3f;
+.rounded-pill{
+  background-color: var(--btn-color);
   border: none;
 }
+.btn{
+  background-color: var(--btn-color);
+  border: none;
 
-.btn-primary:hover {
-  background-color: #e73338;
 }
 
-/* video banneer */
- .video-banner {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      overflow: hidden;
-    }
-    
-    .video-banner video {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      min-width: 100%;
-      min-height: 100%;
-      width: auto;
-      height: auto;
-      transform: translate(-50%, -50%);
-      object-fit: cover;
-    }
-    
-    .video-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.4);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1;
-    }
-    
-    .video-content {
-      text-align: center;
-      color: white;
-      z-index: 2;
-      padding: 20px;
-    }
-    
-    .video-content h1 {
-      font-size: 3.5rem;
-      font-weight: bold;
-      margin-bottom: 1rem;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-    }
-    
-    .video-content p {
-      font-size: 1.5rem;
-      margin-bottom: 2rem;
-      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
-    }
-    
-    @media (max-width: 768px) {
-      .video-banner {
-        height: 60vh;
-      }
-      .video-content h1 {
-        font-size: 2rem;
-      }
-      .video-content p {
-        font-size: 1rem;
-      }
-    }
+
+
+.video-banner {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.video-banner video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  min-width: 100%;
+  min-height: 100%;
+  width: auto;
+  height: auto;
+  transform: translate(-50%, -50%);
+  object-fit: cover;
+}
+
+.video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.video-content {
+  text-align: center;
+  color: white;
+  z-index: 2;
+  padding: 20px;
+}
+
+.video-content h1 {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.video-content p {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+/* ========================================
+   AI CAPABILITIES SECTION
+   ======================================== */
+.ai-capabilities-section {
+  background: #1a1d2e;
+  color: white;
+  padding: 80px 0;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 60px;
+}
+
+.feature-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 80px;
+  gap: 60px;
+}
+
+.feature-video-wrapper {
+  flex: 1;
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  max-width: 600px;
+  height: 500px;
+}
+
+.feature-video-wrapper .background-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+.feature-video-wrapper .video-card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.ai-badge {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 8px 20px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+  z-index: 3;
+}
+
+.feature-content {
+  flex: 1;
+  padding: 20px;
+}
+
+.feature-content h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 25px;
+  line-height: 1.2;
+}
+
+.feature-content p {
+  font-size: 1.15rem;
+  line-height: 1.7;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.feature-row.reverse {
+  flex-direction: row-reverse;
+}
+
+/* ========================================
+   INTERACTIVE SERVICES SECTION
+   ======================================== */
+.services-showcase {
+  background: #0f1219;
+  color: white;
+  min-height: 100vh;
+  padding: 80px 20px;
+}
+
+.showcase-header {
+  max-width: 1400px;
+  margin: 0 auto 60px;
+}
+
+.showcase-title {
+  text-align: center;
+  font-size: 3.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  background: white;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.showcase-subtitle {
+  text-align: center;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 0;
+}
+
+.services-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 400px 1fr;
+  gap: 40px;
+  align-items: start;
+}
+
+/* Service Menu */
+.service-menu {
+  position: sticky;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.service-item {
+  background: rgba(255, 255, 255, 0.03);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 25px;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.service-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, #6366f1 0%, #a855f7 100%);
+  transform: scaleY(0);
+  transition: transform 0.4s ease;
+}
+
+.service-item:hover {
+  border-color: rgba(99, 102, 241, 0.4);
+  background: rgba(99, 102, 241, 0.05);
+  transform: translateX(10px);
+}
+
+.service-item.active {
+  border-color: #6366f1;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(168, 85, 247, 0.15) 100%);
+  transform: translateX(15px);
+}
+
+.service-item.active::before {
+  transform: scaleY(1);
+}
+
+.service-icon {
+  font-size: 2rem;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.service-item h3 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.service-item p {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Video Display Area */
+.video-display {
+  position: relative;
+  border-radius: 24px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  min-height: 700px;
+}
+
+.video-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.6s ease;
+  pointer-events: none;
+}
+
+.video-wrapper.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.video-wrapper video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.service-video-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.7) 50%, transparent 100%);
+  padding: 60px 40px 40px;
+  z-index: 2;
+}
+
+.service-video-content h2 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #fff;
+}
+
+.service-video-content p {
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 800px;
+}
+
+.video-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.8);
+  z-index: 3;
+}
+
+/* Empty State */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 60px;
+  text-align: center;
+  min-height: 700px;
+}
+
+.empty-state-icon {
+  font-size: 4rem;
+  margin-bottom: 20px;
+  opacity: 0.3;
+}
+
+.empty-state h3 {
+  font-size: 1.8rem;
+  margin-bottom: 12px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.empty-state p {
+  font-size: 1.1rem;
+  color: rgba(255, 255, 255, 0.4);
+}
+
+/* ========================================
+   RESPONSIVE DESIGN
+   ======================================== */
+@media (max-width: 1024px) {
+  .services-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .service-menu {
+    position: relative;
+    top: 0;
+  }
+
+  .video-display {
+    min-height: 500px;
+  }
+
+  .empty-state {
+    min-height: 500px;
+  }
+
+  .showcase-title {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Video Banner */
+  .video-banner {
+    height: 60vh;
+  }
+
+  .video-content h1 {
+    font-size: 2rem;
+  }
+
+  .video-content p {
+    font-size: 1rem;
+  }
+
+  /* AI Capabilities */
+  .feature-row,
+  .feature-row.reverse {
+    flex-direction: column;
+    margin-bottom: 50px;
+    gap: 30px;
+  }
+
+  .feature-video-wrapper {
+    max-width: 100%;
+    height: 350px;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+    margin-bottom: 40px;
+  }
+
+  .feature-content h2 {
+    font-size: 1.6rem;
+  }
+
+  .feature-content p {
+    font-size: 1rem;
+  }
+
+  /* Interactive Services */
+  .services-showcase {
+    padding: 60px 15px;
+  }
+
+  .showcase-title {
+    font-size: 2rem;
+  }
+
+  .showcase-subtitle {
+    font-size: 1rem;
+  }
+
+  .service-item {
+    padding: 20px;
+  }
+
+  .service-item h3 {
+    font-size: 1.2rem;
+  }
+
+  .service-video-content h2 {
+    font-size: 1.8rem;
+  }
+
+  .service-video-content p {
+    font-size: 1rem;
+  }
+
+  .service-video-overlay {
+    padding: 40px 20px 30px;
+  }
+
+  .video-display {
+    min-height: 400px;
+  }
+
+  .empty-state {
+    min-height: 400px;
+    padding: 40px 20px;
+  }
+
+  .empty-state-icon {
+    font-size: 3rem;
+  }
+
+  .empty-state h3 {
+    font-size: 1.5rem;
+  }
+
+  .empty-state p {
+    font-size: 1rem;
+  }
+}
