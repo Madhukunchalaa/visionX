@@ -206,3 +206,87 @@ window.VisionXUtils = {
   pauseAllVideos,
   isInViewport
 };
+
+
+document.querySelectorAll('.video-card').forEach(card => {
+      const video = card.querySelector('video');
+      
+      card.addEventListener('mouseenter', () => {
+        video.play();
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        video.pause();
+        video.currentTime = 0;
+      });
+
+      // Click to play/pause
+      card.addEventListener('click', () => {
+        if (video.paused) {
+          video.play();
+        } else {
+          video.pause();
+        }
+      });
+    });
+
+    // Contact button action
+    document.querySelector('.contact-btn').addEventListener('click', () => {
+      // Add your contact form/page navigation here
+      alert('Contact form would open here!');
+    });
+
+
+
+
+    // image gallery
+     const images = document.querySelectorAll('.gallery-image');
+        const modal = new bootstrap.Modal(document.getElementById('imageModal'));
+        const modalImage = document.getElementById('modalImage');
+        const modalCaption = document.getElementById('modalCaption');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        
+        let currentIndex = 0;
+        let imageData = [];
+
+        images.forEach((figure, index) => {
+            const img = figure.querySelector('img');
+            const caption = figure.querySelector('figcaption').textContent;
+            
+            imageData.push({
+                src: img.src,
+                caption: caption
+            });
+
+            figure.addEventListener('click', () => {
+                currentIndex = index;
+                showImage(currentIndex);
+                modal.show();
+            });
+        });
+
+        function showImage(index) {
+            modalImage.src = imageData[index].src;
+            modalCaption.textContent = imageData[index].caption;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + imageData.length) % imageData.length;
+            showImage(currentIndex);
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % imageData.length;
+            showImage(currentIndex);
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (document.querySelector('.modal.show')) {
+                if (e.key === 'ArrowLeft') {
+                    prevBtn.click();
+                } else if (e.key === 'ArrowRight') {
+                    nextBtn.click();
+                }
+            }
+        });

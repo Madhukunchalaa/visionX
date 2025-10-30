@@ -3,6 +3,7 @@
    ======================================== */
 :root {
   --btn-color: #FF3951;
+   --theme-color: #FF3951;
   --theme-hover: #e02f46; /* optional darker hover color */
 }
 
@@ -181,6 +182,7 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+
 }
 
 .showcase-subtitle {
@@ -486,3 +488,424 @@
     font-size: 1rem;
   }
 }
+
+
+/* our videos section */
+
+    .video-showcase-section {
+      padding: 80px 20px;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .showcase-title {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 60px;
+      letter-spacing: 1px;
+     background-color: var(--theme-color);
+    }
+    .showcase-title h2{
+      color: red;
+    }
+
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 30px;
+      margin-bottom: 60px;
+    }
+
+    .video-grid.large-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .video-grid.small-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .video-card {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.5);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      height: 260px;
+    }
+
+    .video-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 48px rgba(0, 0, 0, 0.6);
+    }
+
+    .video-card video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .video-card-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .video-card:hover .video-card-overlay {
+      opacity: 1;
+    }
+
+    .play-button {
+      width: 70px;
+      height: 70px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: #000;
+      transition: transform 0.3s ease;
+    }
+
+    .video-card:hover .play-button {
+      transform: scale(1.1);
+    }
+
+    .capabilities-title {
+      text-align: center;
+      font-size: 2rem;
+      font-weight: 600;
+      margin-bottom: 50px;
+      margin-top: 40px;
+      
+    }
+
+   
+
+    @media (max-width: 992px) {
+      .video-grid.large-grid {
+        grid-template-columns: 1fr;
+      }
+      .video-grid.small-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 576px) {
+      .video-grid.small-grid {
+        grid-template-columns: 1fr;
+      }
+      .showcase-title {
+        font-size: 1.8rem;
+      }
+      .capabilities-title {
+        font-size: 1.5rem;
+      }
+    }
+
+    /* image gallery section */
+    
+        .gallery {
+            column-gap: 0;
+            column-count: 1;
+        }
+
+        @media (min-width: 480px) {
+            .gallery {
+                column-count: 2;
+            }
+        }
+
+        @media (min-width: 1260px) {
+            .gallery {
+                column-count: 3;
+            }
+        }
+
+        .gallery-image {
+            position: relative;
+            margin: 0;
+            padding: 0;
+            break-inside: avoid;
+            cursor: pointer;
+            overflow: hidden;
+        }
+
+        .gallery-image::before,
+        .gallery-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            border: 16px solid rgba(0, 0, 0, 0.1);
+            transition: all 0.2s;
+            will-change: border;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .gallery-image::after {
+            border-width: 0;
+        }
+
+        .gallery-image:hover::before {
+            border-width: 16px;
+        }
+
+        .gallery-image:hover::after {
+            border-width: 32px;
+        }
+
+        .gallery-image img {
+            display: block;
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-image figcaption {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0);
+            padding: 1em;
+            transition: all 0.2s ease;
+            font-weight: 600;
+            max-width: calc(100% - 9em);
+            line-height: 1.25;
+            text-align: center;
+            box-sizing: border-box;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .gallery-image figcaption::before,
+        .gallery-image figcaption::after {
+            content: '';
+            position: absolute;
+            background: rgba(0, 0, 0, 0.2);
+            width: 100%;
+            height: 100%;
+            padding: 1em;
+            transition: all 0.3s ease-in-out;
+            opacity: 0;
+            z-index: -1;
+        }
+
+        .gallery-image figcaption::before {
+            right: 100%;
+            bottom: 100%;
+        }
+
+        .gallery-image figcaption::after {
+            left: 100%;
+            top: 100%;
+        }
+
+        .gallery-image:hover figcaption {
+            color: rgba(255, 255, 255, 1);
+            text-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+            transition: all 0.2s ease 0.3s;
+        }
+
+        .gallery-image:hover figcaption::before,
+        .gallery-image:hover figcaption::after {
+            opacity: 1;
+        }
+
+        .gallery-image:hover figcaption::before {
+            right: -1.5em;
+            bottom: -1.5em;
+        }
+
+        .gallery-image:hover figcaption::after {
+            left: -1.5em;
+            top: -1.5em;
+        }
+
+        /* Modal Styles */
+        .modal-backdrop {
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .modal.fade .modal-dialog {
+            transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+        }
+
+        .modal-content {
+            background: transparent;
+            border: none;
+            box-shadow: none;
+        }
+
+        .modal-body {
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .modal-body img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .modal-header {
+            border: none;
+            background: transparent;
+            padding: 20px;
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 10;
+        }
+
+        .btn-close {
+            opacity: 1;
+            width: 40px;
+            height: 40px;
+            background: transparent;
+            position: relative;
+            filter: none;
+            transition: transform 0.15s;
+        }
+
+        .btn-close:hover {
+            transform: scale(0.95);
+        }
+
+        .btn-close::before,
+        .btn-close::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 2rem;
+            height: 2rem;
+            border-top: 2px solid white;
+            border-left: 2px solid white;
+            transition: all 0.15s;
+            transform-origin: 0 0;
+        }
+
+        .btn-close::before {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+
+        .btn-close::after {
+            transform: translate(-50%, -50%) rotate(135deg);
+        }
+
+        .btn-close:hover::before {
+            transform: translate(-50%, -50%) rotate(135deg);
+        }
+
+        .btn-close:hover::after {
+            transform: translate(-50%, -50%) rotate(315deg);
+        }
+
+        .modal-title-caption {
+            position: absolute;
+            bottom: 2em;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 14px;
+            color: white;
+            padding: 1em;
+            font-weight: 600;
+            text-align: center;
+            z-index: 10;
+            background: rgba(0, 0, 0, 0.2);
+            text-shadow: 0 0 1px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Navigation Arrows */
+        .modal-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20%;
+            height: 30%;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 10;
+            transition: transform 0.15s;
+        }
+
+        .modal-nav:active {
+            transform: translateY(-50%) scale(0.95);
+        }
+
+        .modal-nav::before,
+        .modal-nav::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 2rem;
+            height: 2rem;
+            opacity: 1;
+            transition: all 0.15s;
+        }
+
+        .modal-nav-prev {
+            left: 0;
+        }
+
+        .modal-nav-prev::before,
+        .modal-nav-prev::after {
+            border-top: 2px solid white;
+            border-left: 2px solid white;
+            transform: rotate(-45deg) translate(-50%, -100%);
+        }
+
+        .modal-nav-prev::after {
+            margin-left: 2rem;
+        }
+
+        .modal-nav-prev:hover::before {
+            margin-left: 2rem;
+        }
+
+        .modal-nav-prev:hover::after {
+            margin-left: 0;
+        }
+
+        .modal-nav-next {
+            right: 0;
+        }
+
+        .modal-nav-next::before,
+        .modal-nav-next::after {
+            border-right: 2px solid white;
+            border-bottom: 2px solid white;
+            transform: rotate(-45deg) translate(-50%, -100%);
+        }
+
+        .modal-nav-next::after {
+            margin-left: 2rem;
+        }
+
+        .modal-nav-next:hover::before {
+            margin-left: 2rem;
+        }
+
+        .modal-nav-next:hover::after {
+            margin-left: 0;
+        }
