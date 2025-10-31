@@ -645,7 +645,7 @@ body{
   
   display: grid;
   gap: var(--g);
-  width: 100vw;
+  /* width: 100vw; */
   height: 100vh;
   grid-template-columns: repeat(3,auto);
   padding: var(--g);
