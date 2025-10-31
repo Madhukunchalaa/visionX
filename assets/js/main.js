@@ -290,3 +290,21 @@ document.querySelectorAll('.video-card').forEach(card => {
                 }
             }
         });
+
+  // Navbar scroll effect
+function initNavbarScroll() {
+  const navbar = document.getElementById("navbar");
+  
+  if (navbar) {
+    window.addEventListener("scroll", function () {
+      if (window.scrollY > 50) {
+        navbar.classList.add("scrolled");
+      } else {
+        navbar.classList.remove("scrolled");
+      }
+    });
+  }
+}
+
+// Wait for header to load, then initialize
+setTimeout(initNavbarScroll, 100);
