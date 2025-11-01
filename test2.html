@@ -1,128 +1,317 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Transparent Navbar Scroll Effect</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prefer to Talk Directly Section</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .studio351-direct-contact-section {
+            background-color: #000000;
+            padding: 60px 0;
+            font-family: Arial, sans-serif;
+        }
 
-  <style>
-    /* Reset basic styles */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+        .studio351-direct-wrapper {
+            background-color: #0a0a0a;
+            border: 1px solid #1a1a1a;
+            border-radius: 16px;
+            padding: 50px 40px;
+        }
 
-    body {
-      font-family: "Poppins", sans-serif;
-      height: 200vh; /* for scroll effect */
-    }
+        .studio351-direct-title {
+            color: #ffffff;
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 50px;
+        }
 
-    /* Navbar */
-    nav {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      padding: 20px 60px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      z-index: 1000;
-      background-color: transparent;
-    }
+        .studio351-contact-cards-wrapper {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            align-items: stretch;
+        }
 
-    nav.scrolled {
-      background-color: rgba(255, 57, 81, 0.9); /* your theme color */
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-    }
+        .studio351-contact-card {
+            background-color: #1a1a1a;
+            border-radius: 12px;
+            padding: 50px 40px;
+            flex: 1;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
 
-    nav .logo {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: white;
-    }
+        .studio351-contact-card:hover {
+            background-color: #222222;
+            transform: translateY(-5px);
+        }
 
-    nav .nav-links {
-      list-style: none;
-      display: flex;
-      gap: 30px;
-    }
+        .studio351-icon-wrapper {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 30px;
+        }
 
-    nav .nav-links a {
-      text-decoration: none;
-      color: white;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
+        .studio351-icon-wrapper svg {
+            width: 100%;
+            height: 100%;
+        }
 
-    nav .nav-links a:hover {
-      color: #ff3951; /* theme color */
-    }
+        .studio351-contact-label {
+            color: #ffffff;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
 
-    /* Hero section */
-    .hero {
-      height: 100vh;
-      background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1600&q=80') center/cover no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
-    }
+        .studio351-contact-info {
+            color: #cccccc;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
 
-    .hero h1 {
-      font-size: 3rem;
-    }
+        .studio351-contact-info:hover {
+            color: #ffffff;
+        }
 
-    /* Content section */
-    .content {
-      padding: 100px 60px;
-    }
+        @media (max-width: 991px) {
+            .studio351-contact-cards-wrapper {
+                flex-direction: column;
+                gap: 30px;
+            }
 
-    .content h2 {
-      color: #333;
-      margin-bottom: 20px;
-    }
+            .studio351-contact-card {
+                max-width: 100%;
+            }
 
-    .content p {
-      color: #555;
-      font-size: 1.1rem;
-    }
-  </style>
+            .studio351-direct-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .studio351-direct-wrapper {
+                padding: 40px 20px;
+            }
+
+            .studio351-direct-title {
+                font-size: 1.75rem;
+                margin-bottom: 40px;
+            }
+
+            .studio351-contact-card {
+                padding: 40px 30px;
+            }
+
+            .studio351-icon-wrapper {
+                width: 60px;
+                height: 60px;
+            }
+        }
+    </style>
 </head>
 <body>
+    <section class="studio351-direct-contact-section">
+        <div class="container">
+            <div class="studio351-direct-wrapper">
+                <h2 class="studio351-direct-title">Prefer to talk directly?</h2>
+                
+                <div class="studio351-contact-cards-wrapper">
+                    <!-- Phone Card -->
+                    <div class="studio351-contact-card">
+                        <div class="studio351-icon-wrapper">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22 16.92V19.92C22.0011 20.1985 21.9441 20.4742 21.8325 20.7293C21.7209 20.9845 21.5573 21.2136 21.3521 21.4019C21.1469 21.5901 20.9046 21.7335 20.6407 21.8227C20.3769 21.9119 20.0974 21.9451 19.82 21.92C16.7428 21.5856 13.787 20.5341 11.19 18.85C8.77382 17.3147 6.72533 15.2662 5.18999 12.85C3.49997 10.2412 2.44824 7.27099 2.11999 4.18C2.095 3.90347 2.12787 3.62476 2.21649 3.36162C2.30512 3.09849 2.44756 2.85669 2.63476 2.65162C2.82196 2.44655 3.0498 2.28271 3.30379 2.17052C3.55777 2.05833 3.83233 2.00026 4.10999 2H7.10999C7.5953 1.99522 8.06579 2.16708 8.43376 2.48353C8.80173 2.79999 9.04207 3.23945 9.10999 3.72C9.23662 4.68007 9.47144 5.62273 9.80999 6.53C9.94454 6.88792 9.97366 7.27691 9.8939 7.65088C9.81415 8.02485 9.62886 8.36811 9.35999 8.64L8.08999 9.91C9.51355 12.4135 11.5864 14.4864 14.09 15.91L15.36 14.64C15.6319 14.3711 15.9751 14.1858 16.3491 14.1061C16.7231 14.0263 17.1121 14.0555 17.47 14.19C18.3773 14.5286 19.3199 14.7634 20.28 14.89C20.7658 14.9585 21.2094 15.2032 21.5265 15.5775C21.8437 15.9518 22.0122 16.4296 22 16.92Z" stroke="#ff6b35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <line x1="18" y1="2" x2="14" y2="6" stroke="#ff6b35" stroke-width="2" stroke-linecap="round"/>
+                                <line x1="14" y1="2" x2="18" y2="6" stroke="#ff6b35" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="studio351-contact-label">Phone</h3>
+                        <a href="tel:+18453195135" class="studio351-contact-info">+1 (845) 319 5135</a>
+                    </div>
 
-  <nav id="navbar">
-    <div class="logo">Tvara</div>
-    <ul class="nav-links">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
+                    <!-- Email Card -->
+                    <div class="studio351-contact-card">
+                        <div class="studio351-icon-wrapper">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="#ff6b35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M22 6L12 13L2 6" stroke="#ff6b35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M10 14L12 15.5L14 14" stroke="#ff6b35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="studio351-contact-label">Email</h3>
+                        <a href="mailto:contact@351studio.com" class="studio351-contact-info">contact@351studio.com</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section class="hero" id="home">
-    <h1>Welcome to Tvara</h1>
-  </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prefer to Talk Directly Section</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .studio351-direct-contact-section {
+            background-color: #000000;
+            padding: 60px 0;
+            font-family: Arial, sans-serif;
+        }
 
-  <section class="content" id="about">
-    <h2>About Us</h2>
-    <p>Scroll down to see the navbar background color change dynamically.</p>
-  </section>
+        .studio351-direct-wrapper {
+            background-color: #0a0a0a;
+            border: 1px solid #1a1a1a;
+            border-radius: 16px;
+            padding: 50px 40px;
+        }
 
-  <script>
-    window.addEventListener("scroll", () => {
-      const navbar = document.getElementById("navbar");
-      if (window.scrollY > 50) {
-        navbar.classList.add("scrolled");
-      } else {
-        navbar.classList.remove("scrolled");
-      }
-    });
-  </script>
+        .studio351-direct-title {
+            color: #ffffff;
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 50px;
+        }
 
+        .studio351-contact-cards-wrapper {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            align-items: stretch;
+        }
+
+        .studio351-contact-card {
+            background-color: #1a1a1a;
+            border-radius: 12px;
+            padding: 50px 40px;
+            flex: 1;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .studio351-contact-card:hover {
+            background-color: #222222;
+            transform: translateY(-5px);
+        }
+
+        .studio351-icon-wrapper {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 30px;
+        }
+
+        .studio351-icon-wrapper svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .studio351-contact-label {
+            color: #ffffff;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        .studio351-contact-info {
+            color: #cccccc;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .studio351-contact-info:hover {
+            color: #ffffff;
+        }
+
+        @media (max-width: 991px) {
+            .studio351-contact-cards-wrapper {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .studio351-contact-card {
+                max-width: 100%;
+            }
+
+            .studio351-direct-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .studio351-direct-wrapper {
+                padding: 40px 20px;
+            }
+
+            .studio351-direct-title {
+                font-size: 1.75rem;
+                margin-bottom: 40px;
+            }
+
+            .studio351-contact-card {
+                padding: 40px 30px;
+            }
+
+            .studio351-icon-wrapper {
+                width: 60px;
+                height: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="studio351-direct-contact-section">
+        <div class="container">
+            <div class="studio351-direct-wrapper">
+                <h2 class="studio351-direct-title">Prefer to talk directly?</h2>
+                
+                <div class="studio351-contact-cards-wrapper">
+                    <!-- Phone Card -->
+                    <div class="studio351-contact-card">
+                        <div class="studio351-icon-wrapper">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M22 16.92V19.92C22.0011 20.1985 21.9441 20.4742 21.8325 20.7293C21.7209 20.9845 21.5573 21.2136 21.3521 21.4019C21.1469 21.5901 20.9046 21.7335 20.6407 21.8227C20.3769 21.9119 20.0974 21.9451 19.82 21.92C16.7428 21.5856 13.787 20.5341 11.19 18.85C8.77382 17.3147 6.72533 15.2662 5.18999 12.85C3.49997 10.2412 2.44824 7.27099 2.11999 4.18C2.095 3.90347 2.12787 3.62476 2.21649 3.36162C2.30512 3.09849 2.44756 2.85669 2.63476 2.65162C2.82196 2.44655 3.0498 2.28271 3.30379 2.17052C3.55777 2.05833 3.83233 2.00026 4.10999 2H7.10999C7.5953 1.99522 8.06579 2.16708 8.43376 2.48353C8.80173 2.79999 9.04207 3.23945 9.10999 3.72C9.23662 4.68007 9.47144 5.62273 9.80999 6.53C9.94454 6.88792 9.97366 7.27691 9.8939 7.65088C9.81415 8.02485 9.62886 8.36811 9.35999 8.64L8.08999 9.91C9.51355 12.4135 11.5864 14.4864 14.09 15.91L15.36 14.64C15.6319 14.3711 15.9751 14.1858 16.3491 14.1061C16.7231 14.0263 17.1121 14.0555 17.47 14.19C18.3773 14.5286 19.3199 14.7634 20.28 14.89C20.7658 14.9585 21.2094 15.2032 21.5265 15.5775C21.8437 15.9518 22.0122 16.4296 22 16.92Z" stroke="#ff6b35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <line x1="18" y1="2" x2="14" y2="6" stroke="#ff6b35" stroke-width="2" stroke-linecap="round"/>
+                                <line x1="14" y1="2" x2="18" y2="6" stroke="#ff6b35" stroke-width="2" stroke-linecap="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="studio351-contact-label">Phone</h3>
+                        <a href="tel:+18453195135" class="studio351-contact-info">+1 (845) 319 5135</a>
+                    </div>
+
+                    <!-- Email Card -->
+                    <div class="studio351-contact-card">
+                        <div class="studio351-icon-wrapper">
+                            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="#ff6b35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M22 6L12 13L2 6" stroke="#ff6b35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M10 14L12 15.5L14 14" stroke="#ff6b35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </div>
+                        <h3 class="studio351-contact-label">Email</h3>
+                        <a href="mailto:contact@351studio.com" class="studio351-contact-info">contact@351studio.com</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

@@ -849,3 +849,395 @@ body{
 
 
 
+/* contact page */
+ .studio351-contact-section {
+            background-color: #000000;
+            color: #ffffff;
+            padding: 80px 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .studio351-heading {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .studio351-subheading {
+            font-size: 1rem;
+            color: #cccccc;
+            margin-bottom: 50px;
+            line-height: 1.6;
+        }
+
+        .studio351-image-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            height: 100%;
+            min-height: 650px;
+        }
+
+        .studio351-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .studio351-form-wrapper {
+            background-color: #111111;
+            padding: 40px;
+            border-radius: 8px;
+            height: 100%;
+            min-height: 650px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .studio351-form-wrapper form {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .studio351-form-wrapper form > :last-child {
+            margin-top: auto;
+        }
+
+        .studio351-form-title {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .studio351-form-subtitle {
+            font-size: 0.9rem;
+            color: #cccccc;
+            margin-bottom: 30px;
+        }
+
+        .studio351-form-group {
+            margin-bottom: 35px;
+        }
+
+        .studio351-form-group.studio351-row-group {
+            margin-bottom: 0;
+        }
+
+        .studio351-form-row {
+            margin-bottom: 35px;
+        }
+
+        .studio351-form-control {
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid #333333;
+            border-radius: 0;
+            color: #ffffff;
+            padding: 12px 0;
+            font-size: 0.95rem;
+        }
+
+        .studio351-form-control:focus {
+            background-color: transparent;
+            border-bottom-color: #666666;
+            box-shadow: none;
+            color: #ffffff;
+        }
+
+        .studio351-form-control::placeholder {
+            color: #666666;
+        }
+
+        .studio351-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .studio351-select {
+            background-color: transparent;
+            border: none;
+            border-bottom: 1px solid #333333;
+            color: #666666;
+            padding: 12px 0;
+            font-size: 0.95rem;
+            width: 100%;
+            cursor: pointer;
+        }
+
+        .studio351-select:focus {
+            outline: none;
+            border-bottom-color: #666666;
+        }
+
+        .studio351-select option {
+            background-color: #111111;
+            color: #ffffff;
+        }
+
+        .studio351-submit-btn {
+            background-color: transparent;
+            border: 2px solid #ffffff;
+            color: #ffffff;
+            padding: 12px 40px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+        }
+
+        .studio351-submit-btn:hover {
+            background-color: #ffffff;
+            color: #000000;
+        }
+
+        .studio351-privacy-text {
+            font-size: 0.75rem;
+            color: #888888;
+            margin-top: 20px;
+            line-height: 1.5;
+        }
+
+        .studio351-privacy-text a {
+            color: #888888;
+            text-decoration: underline;
+        }
+
+        .studio351-privacy-text a:hover {
+            color: #ffffff;
+        }
+
+        @media (max-width: 991px) {
+            .studio351-image-wrapper {
+                margin-bottom: 40px;
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .studio351-heading {
+                font-size: 2rem;
+            }
+
+            .studio351-form-wrapper {
+                padding: 30px 20px;
+            }
+
+            .studio351-form-title {
+                font-size: 1.5rem;
+            }
+        }
+  .studio351-direct-contact-section {
+            background-color: #000000;
+            padding: 60px 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .studio351-direct-wrapper {
+            background-color: #0a0a0a;
+            border: 1px solid #1a1a1a;
+            border-radius: 16px;
+            padding: 50px 40px;
+        }
+
+        .studio351-direct-title {
+            color: #ffffff;
+            font-size: 2.5rem;
+            font-weight: 600;
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .studio351-contact-cards-wrapper {
+            display: flex;
+            gap: 40px;
+            justify-content: center;
+            align-items: stretch;
+        }
+
+        .studio351-contact-card {
+            background-color: #1a1a1a;
+            border-radius: 12px;
+            padding: 50px 40px;
+            flex: 1;
+            max-width: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .studio351-contact-card:hover {
+            background-color: #222222;
+            transform: translateY(-5px);
+        }
+
+        .studio351-icon-wrapper {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 30px;
+        }
+
+        .studio351-icon-wrapper svg {
+            width: 100%;
+            height: 100%;
+        }
+
+        .studio351-contact-label {
+            color: #ffffff;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 25px;
+        }
+
+        .studio351-contact-info {
+            color: #cccccc;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .studio351-contact-info:hover {
+            color: #ffffff;
+        }
+
+        @media (max-width: 991px) {
+            .studio351-contact-cards-wrapper {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .studio351-contact-card {
+                max-width: 100%;
+            }
+
+            .studio351-direct-title {
+                font-size: 2rem;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .studio351-direct-wrapper {
+                padding: 40px 20px;
+            }
+
+            .studio351-direct-title {
+                font-size: 1.75rem;
+                margin-bottom: 40px;
+            }
+
+            .studio351-contact-card {
+                padding: 40px 30px;
+            }
+
+            .studio351-icon-wrapper {
+                width: 60px;
+                height: 60px;
+            }
+        }
+      .studio351-faq-section {
+            background-color: #000000;
+            padding: 80px 0;
+            font-family: Arial, sans-serif;
+        }
+
+        .studio351-faq-title {
+            color: #ffffff;
+            font-size: 3rem;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .studio351-faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .studio351-faq-item {
+            background-color: #0f0f0f;
+            border: 1px solid #1a1a1a;
+            border-radius: 12px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .studio351-faq-item:hover {
+            border-color: #2a2a2a;
+        }
+
+        .studio351-faq-question {
+            width: 100%;
+            background: transparent;
+            border: none;
+            color: #ffffff;
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-align: left;
+            padding: 25px 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .studio351-faq-question:hover {
+            background-color: #151515;
+        }
+
+        .studio351-faq-icon {
+            color: #ff6b35;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+            flex-shrink: 0;
+            margin-left: 20px;
+        }
+
+        .studio351-faq-item.active .studio351-faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .studio351-faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            color: #cccccc;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+
+        .studio351-faq-answer-content {
+            padding: 0 30px 25px 30px;
+        }
+
+        .studio351-faq-item.active .studio351-faq-answer {
+            max-height: 500px;
+        }
+
+        @media (max-width: 767px) {
+            .studio351-faq-title {
+                font-size: 2rem;
+                margin-bottom: 40px;
+            }
+
+            .studio351-faq-question {
+                font-size: 1rem;
+                padding: 20px;
+            }
+
+            .studio351-faq-answer-content {
+                padding: 0 20px 20px 20px;
+            }
+
+            .studio351-faq-icon {
+                margin-left: 15px;
+            }
+        }
