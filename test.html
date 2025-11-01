@@ -3,254 +3,364 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>351 Studio Contact Section</title>
+    <title>Ad Film Services</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        .studio351-contact-section {
-            background-color: #000000;
-            color: #ffffff;
-            padding: 80px 0;
-            font-family: Arial, sans-serif;
+        :root {
+            --primary-navy: #0a1628;
+            --accent-orange: #ff6b35;
         }
 
-        .studio351-heading {
-            font-size: 2.5rem;
-            font-weight: bold;
-            margin-bottom: 20px;
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .ad-film-section {
+            padding: 80px 0;
+        }
+
+        .main-heading {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-navy);
+            margin-bottom: 30px;
             line-height: 1.2;
         }
 
-        .studio351-subheading {
-            font-size: 1rem;
-            color: #cccccc;
-            margin-bottom: 50px;
-            line-height: 1.6;
+        .intro-text {
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 40px;
+            line-height: 1.8;
         }
 
-        .studio351-image-wrapper {
-            position: relative;
-            overflow: hidden;
+        .benefit-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-row:hover {
+            transform: translateX(10px);
+        }
+
+        .checkmark-box {
+            width: 40px;
+            height: 40px;
+            background-color: #fff3e6;
             border-radius: 8px;
-            height: 100%;
-            min-height: 650px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
         }
 
-        .studio351-image-wrapper img {
+        .checkmark-box::before {
+            content: "✓";
+            color: var(--accent-orange);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .benefit-label {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--primary-navy);
+            margin: 0;
+        }
+
+        .contact-btn {
+            background-color: var(--accent-orange);
+            color: white;
+            padding: 18px 45px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .contact-btn:hover {
+            background-color: #e55a2b;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.3);
+        }
+
+        /* Overlapping Image Layout */
+        .media-wrapper {
+            position: relative;
+            height: 600px;
+        }
+
+        .media-block {
+            position: absolute;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, z-index 0.3s ease;
+        }
+
+        .media-block:hover {
+            transform: scale(1.05);
+            z-index: 10 !important;
+        }
+
+        .media-block img,
+        .media-block video {
             width: 100%;
             height: 100%;
             object-fit: cover;
             display: block;
         }
 
-        .studio351-form-wrapper {
-            background-color: #111111;
-            padding: 40px;
-            border-radius: 8px;
-            height: 100%;
-            min-height: 650px;
-            display: flex;
-            flex-direction: column;
+        /* Section 1: Images on Left */
+        .media-block.position-top-left {
+            top: 0;
+            left: 0;
+            width: 55%;
+            height: 350px;
+            z-index: 3;
         }
 
-        .studio351-form-wrapper form {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
+        .media-block.position-bottom-right {
+            bottom: 0;
+            right: 0;
+            width: 60%;
+            height: 300px;
+            z-index: 2;
         }
 
-        .studio351-form-wrapper form > :last-child {
-            margin-top: auto;
+        .media-block.centered-overlay {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50%;
+            height: 280px;
+            z-index: 4;
+            border: 5px solid white;
         }
 
-        .studio351-form-title {
-            font-size: 1.8rem;
-            font-weight: bold;
-            margin-bottom: 15px;
+        /* Section 2: Images on Right */
+        .media-wrapper-alternate .media-block.position-top-right {
+            top: 0;
+            right: 0;
+            width: 55%;
+            height: 350px;
+            z-index: 3;
         }
 
-        .studio351-form-subtitle {
-            font-size: 0.9rem;
-            color: #cccccc;
-            margin-bottom: 30px;
+        .media-wrapper-alternate .media-block.position-bottom-left {
+            bottom: 0;
+            left: 0;
+            width: 60%;
+            height: 300px;
+            z-index: 2;
         }
 
-        .studio351-form-group {
-            margin-bottom: 35px;
+        .media-wrapper-alternate .media-block.centered-overlay {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50%;
+            height: 280px;
+            z-index: 4;
+            border: 5px solid white;
         }
 
-        .studio351-form-group.studio351-row-group {
-            margin-bottom: 0;
+        .gray-bg {
+            background-color: #f8f9fa;
         }
 
-        .studio351-form-row {
-            margin-bottom: 35px;
-        }
-
-        .studio351-form-control {
-            background-color: transparent;
-            border: none;
-            border-bottom: 1px solid #333333;
-            border-radius: 0;
-            color: #ffffff;
-            padding: 12px 0;
-            font-size: 0.95rem;
-        }
-
-        .studio351-form-control:focus {
-            background-color: transparent;
-            border-bottom-color: #666666;
-            box-shadow: none;
-            color: #ffffff;
-        }
-
-        .studio351-form-control::placeholder {
-            color: #666666;
-        }
-
-        .studio351-textarea {
-            min-height: 120px;
-            resize: vertical;
-        }
-
-        .studio351-select {
-            background-color: transparent;
-            border: none;
-            border-bottom: 1px solid #333333;
-            color: #666666;
-            padding: 12px 0;
-            font-size: 0.95rem;
-            width: 100%;
-            cursor: pointer;
-        }
-
-        .studio351-select:focus {
-            outline: none;
-            border-bottom-color: #666666;
-        }
-
-        .studio351-select option {
-            background-color: #111111;
-            color: #ffffff;
-        }
-
-        .studio351-submit-btn {
-            background-color: transparent;
-            border: 2px solid #ffffff;
-            color: #ffffff;
-            padding: 12px 40px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            letter-spacing: 1px;
-            border-radius: 25px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin-top: 20px;
-        }
-
-        .studio351-submit-btn:hover {
-            background-color: #ffffff;
-            color: #000000;
-        }
-
-        .studio351-privacy-text {
-            font-size: 0.75rem;
-            color: #888888;
-            margin-top: 20px;
-            line-height: 1.5;
-        }
-
-        .studio351-privacy-text a {
-            color: #888888;
-            text-decoration: underline;
-        }
-
-        .studio351-privacy-text a:hover {
-            color: #ffffff;
-        }
-
-        @media (max-width: 991px) {
-            .studio351-image-wrapper {
+        @media (max-width: 992px) {
+            .media-wrapper,
+            .media-wrapper-alternate {
+                height: 500px;
                 margin-bottom: 40px;
-                height: 400px;
+            }
+
+            .media-block.position-top-left,
+            .media-block.position-top-right {
+                width: 65%;
+                height: 280px;
+            }
+
+            .media-block.position-bottom-right,
+            .media-block.position-bottom-left {
+                width: 70%;
+                height: 250px;
+            }
+
+            .media-block.centered-overlay,
+            .media-wrapper-alternate .media-block.centered-overlay {
+                width: 60%;
+                height: 220px;
             }
         }
 
-        @media (max-width: 767px) {
-            .studio351-heading {
+        @media (max-width: 768px) {
+            .main-heading {
                 font-size: 2rem;
             }
 
-            .studio351-form-wrapper {
-                padding: 30px 20px;
+            .ad-film-section {
+                padding: 50px 0;
             }
 
-            .studio351-form-title {
-                font-size: 1.5rem;
+            .media-wrapper,
+            .media-wrapper-alternate {
+                height: 400px;
+            }
+
+            .media-block.position-top-left,
+            .media-block.position-top-right {
+                width: 75%;
+                height: 220px;
+            }
+
+            .media-block.position-bottom-right,
+            .media-block.position-bottom-left {
+                width: 75%;
+                height: 200px;
+            }
+
+            .media-block.centered-overlay,
+            .media-wrapper-alternate .media-block.centered-overlay {
+                width: 70%;
+                height: 180px;
             }
         }
     </style>
 </head>
 <body>
-    <section class="studio351-contact-section">
-        <div class="container">
-            <div class="text-center mb-5">
-                <h1 class="studio351-heading">Contact 351 Studio – Your AI Video Production Agency</h1>
-                <p class="studio351-subheading">
-                    Ready to elevate your brand with cinematic, generative AI video content? Our team is here to<br>
-                    help you create world-class videos for marketing, branding, music, and more.
-                </p>
-            </div>
 
-            <div class="row align-items-stretch">
+    <!-- Section 1: Original Layout (Images Left, Content Right) -->
+    <section class="ad-film-section">
+        <div class="container">
+            <div class="row align-items-center">
                 <div class="col-lg-6 mb-4 mb-lg-0">
-                    <div class="studio351-image-wrapper">
-                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&h=1000&fit=crop" alt="Creative team working in studio">
+                    <div class="media-wrapper">
+                        <!-- Background Image - Top Left -->
+                        <div class="media-block position-top-left">
+                            <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800" alt="Film Production">
+                        </div>
+                        
+                        <!-- Background Image - Bottom Right -->
+                        <div class="media-block position-bottom-right">
+                            <img src="https://images.unsplash.com/photo-1579389083395-4507e98b5e67?w=800" alt="Camera Equipment">
+                        </div>
+                        
+                        <!-- Video/Image Overlay - Center Top -->
+                        <div class="media-block centered-overlay">
+                            <!-- Replace with your video -->
+                            <video autoplay muted loop playsinline>
+                                <source src="https://cdn.coverr.co/videos/coverr-behind-the-scenes-of-a-video-production-9836/1080p.mp4" type="video/mp4">
+                            </video>
+                            <!-- Or use an image -->
+                            <!-- <img src="your-image.jpg" alt="Production"> -->
+                        </div>
                     </div>
                 </div>
-
                 <div class="col-lg-6">
-                    <div class="studio351-form-wrapper">
-                        <h2 class="studio351-form-title">Let's Start Your Project</h2>
-                        <p class="studio351-form-subtitle">Fill out the form below and our team will get back to you ASAP.</p>
+                    <h2 class="main-heading">Why Choose Us For Your Next Ad Film?</h2>
+                    <p class="intro-text">
+                        Our experienced team ensures that your message is designed and conveyed effectively and creatively, making your brand stand out in a crowded market.
+                    </p>
+                    <div class="benefits-wrapper">
+                        <div class="benefit-row">
+                            <div class="checkmark-box"></div>
+                            <p class="benefit-label">Storytelling mastery</p>
+                        </div>
+                        <div class="benefit-row">
+                            <div class="checkmark-box"></div>
+                            <p class="benefit-label">Experienced creative directors & DOPs</p>
+                        </div>
+                        <div class="benefit-row">
+                            <div class="checkmark-box"></div>
+                            <p class="benefit-label">High quality equipment</p>
+                        </div>
+                        <div class="benefit-row">
+                            <div class="checkmark-box"></div>
+                            <p class="benefit-label">Expert editors and sound engineers</p>
+                        </div>
+                        <div class="benefit-row">
+                            <div class="checkmark-box"></div>
+                            <p class="benefit-label">Effective budget management</p>
+                        </div>
+                        <div class="benefit-row">
+                            <div class="checkmark-box"></div>
+                            <p class="benefit-label">Latest animation & editing technologies used</p>
+                        </div>
+                    </div>
+                    <button class="contact-btn">Get In Touch</button>
+                </div>
+            </div>
+        </div>
+    </section>
 
-                        <form>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="studio351-form-group">
-                                        <input type="text" class="studio351-form-control form-control" placeholder="Your Name">
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="studio351-form-group">
-                                        <input type="email" class="studio351-form-control form-control" placeholder="Your Email">
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="studio351-form-group">
-                                <input type="text" class="studio351-form-control form-control" placeholder="Your Company/Brand">
-                            </div>
-
-                            <div class="studio351-form-group">
-                                <select class="studio351-select">
-                                    <option value="" selected>Select Service</option>
-                                    <option value="marketing">Marketing Video</option>
-                                    <option value="branding">Branding</option>
-                                    <option value="music">Music Video</option>
-                                    <option value="other">Other</option>
-                                </select>
-                            </div>
-
-                            <div class="studio351-form-group">
-                                <textarea class="studio351-form-control studio351-textarea form-control" placeholder="Project Details / Message"></textarea>
-                            </div>
-
-                            <button type="submit" class="studio351-submit-btn">SEND ME MESSAGE</button>
-
-                            <p class="studio351-privacy-text">
-                                Site is protected by reCAPTCHA and the Google <a href="#">Privacy Policy</a> and <a href="#">Terms of Service</a> apply.
-                            </p>
-                        </form>
+    <!-- Section 2: Alternative Layout (Content Left, Images Right) -->
+    <section class="ad-film-section gray-bg">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-lg-1 order-2">
+                    <h2 class="main-heading">Transform Your Vision Into Captivating Content</h2>
+                    <p class="intro-text">
+                        We bring your ideas to life with cutting-edge technology and creative excellence. Our dedicated team works tirelessly to ensure every frame tells your unique story.
+                    </p>
+                    <div class="benefits-wrapper">
+                        <div class="benefit-row">
+                            <div class="checkmark-box"></div>
+                            <p class="benefit-label">Award-winning production team</p>
+                        </div>
+                        <div class="benefit-row">
+                            <div class="checkmark-box"></div>
+                            <p class="benefit-label">End-to-end project management</p>
+                        </div>
+                        <div class="benefit-row">
+                            <div class="checkmark-box"></div>
+                            <p class="benefit-label">4K & 8K video capabilities</p>
+                        </div>
+                        <div class="benefit-row">
+                            <div class="checkmark-box"></div>
+                            <p class="benefit-label">Professional color grading studio</p>
+                        </div>
+                        <div class="benefit-row">
+                            <div class="checkmark-box"></div>
+                            <p class="benefit-label">Fast turnaround times</p>
+                        </div>
+                        <div class="benefit-row">
+                            <div class="checkmark-box"></div>
+                            <p class="benefit-label">Custom music & sound design</p>
+                        </div>
+                    </div>
+                    <button class="contact-btn">Start Your Project</button>
+                </div>
+                <div class="col-lg-6 order-lg-2 order-1 mb-4 mb-lg-0">
+                    <div class="media-wrapper media-wrapper-alternate">
+                        <!-- Background Image - Top Right -->
+                        <div class="media-block position-top-right">
+                            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800" alt="Film Crew">
+                        </div>
+                        
+                        <!-- Background Image - Bottom Left -->
+                        <div class="media-block position-bottom-left">
+                            <img src="https://images.unsplash.com/photo-1585647347483-22b66260dfff?w=800" alt="Video Editing">
+                        </div>
+                        
+                        <!-- Video/Image Overlay - Center Top -->
+                        <div class="media-block centered-overlay">
+                            <!-- Replace with your video -->
+                            <video autoplay muted loop playsinline>
+                                <source src="https://cdn.coverr.co/videos/coverr-a-film-director-watching-the-scene-on-the-monitor-9838/1080p.mp4" type="video/mp4">
+                            </video>
+                            <!-- Or use an image -->
+                            <!-- <img src="your-image.jpg" alt="Production"> -->
+                        </div>
                     </div>
                 </div>
             </div>

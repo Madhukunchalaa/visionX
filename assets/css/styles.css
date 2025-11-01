@@ -1632,3 +1632,225 @@ body{
   line-height: 1.6;
   color: #ddd;
 }
+
+
+/* what you get section */
+ .ad-film-section {
+            padding: 80px 0;
+            color: white;
+        }
+
+        .main-heading {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-navy);
+            margin-bottom: 30px;
+            line-height: 1.2;
+        }
+
+        .intro-text {
+            font-size: 1.1rem;
+            color: white;
+            margin-bottom: 40px;
+            line-height: 1.8;
+        }
+
+        .benefit-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-row:hover {
+            transform: translateX(10px);
+        }
+
+        .checkmark-box {
+            width: 40px;
+            height: 40px;
+            background-color: black;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .checkmark-box::before {
+            content: "✓";
+            color: var(--accent-orange);
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .benefit-label {
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--primary-navy);
+            margin: 0;
+        }
+
+        .contact-btn {
+            background-color: var(--accent-orange);
+            color: white;
+            padding: 18px 45px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            border: none;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            margin-top: 20px;
+        }
+
+        .contact-btn:hover {
+            background-color: #e55a2b;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.3);
+        }
+
+        /* Overlapping Image Layout */
+        .media-wrapper {
+            position: relative;
+            height: 600px;
+        }
+
+        .media-block {
+            position: absolute;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease, z-index 0.3s ease;
+        }
+
+        .media-block:hover {
+            transform: scale(1.05);
+            z-index: 10 !important;
+        }
+
+        .media-block img,
+        .media-block video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Section 1: Images on Left */
+        .media-block.position-top-left {
+            top: 0;
+            left: 0;
+            width: 55%;
+            height: 350px;
+            z-index: 3;
+        }
+
+        .media-block.position-bottom-right {
+            bottom: 0;
+            right: 0;
+            width: 60%;
+            height: 300px;
+            z-index: 2;
+        }
+
+        .media-block.centered-overlay {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50%;
+            height: 280px;
+            z-index: 4;
+            border: 5px solid white;
+        }
+
+        /* Section 2: Images on Right */
+        .media-wrapper-alternate .media-block.position-top-right {
+            top: 0;
+            right: 0;
+            width: 55%;
+            height: 350px;
+            z-index: 3;
+        }
+
+        .media-wrapper-alternate .media-block.position-bottom-left {
+            bottom: 0;
+            left: 0;
+            width: 60%;
+            height: 300px;
+            z-index: 2;
+        }
+
+        .media-wrapper-alternate .media-block.centered-overlay {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50%;
+            height: 280px;
+            z-index: 4;
+            border: 5px solid white;
+        }
+
+        
+
+        @media (max-width: 992px) {
+            .media-wrapper,
+            .media-wrapper-alternate {
+                height: 500px;
+                margin-bottom: 40px;
+            }
+
+            .media-block.position-top-left,
+            .media-block.position-top-right {
+                width: 65%;
+                height: 280px;
+            }
+
+            .media-block.position-bottom-right,
+            .media-block.position-bottom-left {
+                width: 70%;
+                height: 250px;
+            }
+
+            .media-block.centered-overlay,
+            .media-wrapper-alternate .media-block.centered-overlay {
+                width: 60%;
+                height: 220px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .main-heading {
+                font-size: 2rem;
+            }
+
+            .ad-film-section {
+                padding: 50px 0;
+            }
+
+            .media-wrapper,
+            .media-wrapper-alternate {
+                height: 400px;
+            }
+
+            .media-block.position-top-left,
+            .media-block.position-top-right {
+                width: 75%;
+                height: 220px;
+            }
+
+            .media-block.position-bottom-right,
+            .media-block.position-bottom-left {
+                width: 75%;
+                height: 200px;
+            }
+
+            .media-block.centered-overlay,
+            .media-wrapper-alternate .media-block.centered-overlay {
+                width: 70%;
+                height: 180px;
+            }
+        }
