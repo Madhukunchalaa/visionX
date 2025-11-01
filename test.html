@@ -3,370 +3,277 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ad Film Services</title>
+    <title>Get In Touch - Video Brand</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        :root {
-            --primary-navy: #0a1628;
-            --accent-orange: #ff6b35;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        .ad-film-section {
-            padding: 80px 0;
-        }
-
-        .main-heading {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--primary-navy);
-            margin-bottom: 30px;
-            line-height: 1.2;
-        }
-
-        .intro-text {
-            font-size: 1.1rem;
-            color: #666;
-            margin-bottom: 40px;
-            line-height: 1.8;
-        }
-
-        .benefit-row {
-            display: flex;
-            align-items: center;
-            margin-bottom: 25px;
-            transition: transform 0.3s ease;
-        }
-
-        .benefit-row:hover {
-            transform: translateX(10px);
-        }
-
-        .checkmark-box {
-            width: 40px;
-            height: 40px;
-            background-color: #fff3e6;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 20px;
-            flex-shrink: 0;
-        }
-
-        .checkmark-box::before {
-            content: "✓";
-            color: var(--accent-orange);
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
-
-        .benefit-label {
-            font-size: 1.15rem;
-            font-weight: 600;
-            color: var(--primary-navy);
+        * {
             margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        .contact-btn {
-            background-color: var(--accent-orange);
-            color: white;
-            padding: 18px 45px;
-            border-radius: 50px;
-            font-weight: 600;
-            font-size: 1.1rem;
-            border: none;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            display: inline-block;
-            margin-top: 20px;
-        }
-
-        .contact-btn:hover {
-            background-color: #e55a2b;
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(255, 107, 53, 0.3);
-        }
-
-        /* Overlapping Image Layout */
-        .media-wrapper {
+        .vb-contact-wrapper {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            min-height: 100vh;
+            padding: 80px 0;
             position: relative;
-            height: 600px;
-        }
-
-        .media-block {
-            position: absolute;
-            border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
-            transition: transform 0.3s ease, z-index 0.3s ease;
         }
 
-        .media-block:hover {
-            transform: scale(1.05);
-            z-index: 10 !important;
+        .vb-contact-wrapper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+            pointer-events: none;
         }
 
-        .media-block img,
-        .media-block video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .vb-main-container {
+            position: relative;
+            z-index: 1;
+        }
+
+        .vb-content-area {
+            display: flex;
+            align-items: center;
+            gap: 60px;
+        }
+
+        .vb-text-section {
+            flex: 1;
+            color: white;
+        }
+
+        .vb-badge-label {
+            display: inline-block;
+            background: rgba(59, 130, 246, 0.15);
+            color: #60a5fa;
+            padding: 8px 20px;
+            border-radius: 25px;
+            font-size: 13px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 25px;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .vb-main-heading {
+            font-size: 52px;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            color: #ffffff;
+        }
+
+        .vb-description-text {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #cbd5e1;
+            max-width: 540px;
+        }
+
+        .vb-form-section {
+            flex: 1;
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 45px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .vb-input-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .vb-field-group {
+            position: relative;
+        }
+
+        .vb-field-label {
             display: block;
+            color: #e2e8f0;
+            font-size: 14px;
+            font-weight: 500;
+            margin-bottom: 8px;
         }
 
-        /* Section 1: Images on Left */
-        .media-block.position-top-left {
-            top: 0;
-            left: 0;
-            width: 55%;
-            height: 350px;
-            z-index: 3;
+        .vb-required-mark {
+            color: #ef4444;
+            margin-left: 3px;
         }
 
-        .media-block.position-bottom-right {
-            bottom: 0;
-            right: 0;
-            width: 60%;
-            height: 300px;
-            z-index: 2;
+        .vb-text-input,
+        .vb-textarea-input {
+            width: 100%;
+            padding: 14px 18px;
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid rgba(203, 213, 225, 0.3);
+            border-radius: 10px;
+            font-size: 15px;
+            color: #1e293b;
+            transition: all 0.3s ease;
         }
 
-        .media-block.centered-overlay {
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 50%;
-            height: 280px;
-            z-index: 4;
-            border: 5px solid white;
+        .vb-text-input:focus,
+        .vb-textarea-input:focus {
+            outline: none;
+            border-color: #3b82f6;
+            background: #ffffff;
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
         }
 
-        /* Section 2: Images on Right */
-        .media-wrapper-alternate .media-block.position-top-right {
-            top: 0;
-            right: 0;
-            width: 55%;
-            height: 350px;
-            z-index: 3;
+        .vb-textarea-input {
+            resize: vertical;
+            min-height: 130px;
+            font-family: inherit;
         }
 
-        .media-wrapper-alternate .media-block.position-bottom-left {
-            bottom: 0;
-            left: 0;
-            width: 60%;
-            height: 300px;
-            z-index: 2;
+        .vb-submit-btn {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            color: white;
+            padding: 15px 45px;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(255, 107, 53, 0.3);
+            margin-top: 10px;
         }
 
-        .media-wrapper-alternate .media-block.centered-overlay {
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 50%;
-            height: 280px;
-            z-index: 4;
-            border: 5px solid white;
+        .vb-submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(255, 107, 53, 0.4);
         }
 
-        .gray-bg {
-            background-color: #f8f9fa;
+        .vb-submit-btn:active {
+            transform: translateY(0);
         }
 
-        @media (max-width: 992px) {
-            .media-wrapper,
-            .media-wrapper-alternate {
-                height: 500px;
-                margin-bottom: 40px;
+        @media (max-width: 991px) {
+            .vb-content-area {
+                flex-direction: column;
+                gap: 40px;
             }
 
-            .media-block.position-top-left,
-            .media-block.position-top-right {
-                width: 65%;
-                height: 280px;
+            .vb-main-heading {
+                font-size: 42px;
             }
 
-            .media-block.position-bottom-right,
-            .media-block.position-bottom-left {
-                width: 70%;
-                height: 250px;
-            }
-
-            .media-block.centered-overlay,
-            .media-wrapper-alternate .media-block.centered-overlay {
-                width: 60%;
-                height: 220px;
+            .vb-form-section {
+                padding: 35px;
             }
         }
 
         @media (max-width: 768px) {
-            .main-heading {
-                font-size: 2rem;
-            }
-
-            .ad-film-section {
+            .vb-contact-wrapper {
                 padding: 50px 0;
             }
 
-            .media-wrapper,
-            .media-wrapper-alternate {
-                height: 400px;
+            .vb-input-row {
+                grid-template-columns: 1fr;
+                gap: 15px;
             }
 
-            .media-block.position-top-left,
-            .media-block.position-top-right {
-                width: 75%;
-                height: 220px;
+            .vb-main-heading {
+                font-size: 36px;
             }
 
-            .media-block.position-bottom-right,
-            .media-block.position-bottom-left {
-                width: 75%;
-                height: 200px;
+            .vb-description-text {
+                font-size: 16px;
             }
 
-            .media-block.centered-overlay,
-            .media-wrapper-alternate .media-block.centered-overlay {
-                width: 70%;
-                height: 180px;
+            .vb-form-section {
+                padding: 25px;
             }
         }
     </style>
 </head>
 <body>
-
-    <!-- Section 1: Original Layout (Images Left, Content Right) -->
-    <section class="ad-film-section">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 mb-4 mb-lg-0">
-                    <div class="media-wrapper">
-                        <!-- Background Image - Top Left -->
-                        <div class="media-block position-top-left">
-                            <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=800" alt="Film Production">
-                        </div>
-                        
-                        <!-- Background Image - Bottom Right -->
-                        <div class="media-block position-bottom-right">
-                            <img src="https://images.unsplash.com/photo-1579389083395-4507e98b5e67?w=800" alt="Camera Equipment">
-                        </div>
-                        
-                        <!-- Video/Image Overlay - Center Top -->
-                        <div class="media-block centered-overlay">
-                            <!-- Replace with your video -->
-                            <video autoplay muted loop playsinline>
-                                <source src="https://cdn.coverr.co/videos/coverr-behind-the-scenes-of-a-video-production-9836/1080p.mp4" type="video/mp4">
-                            </video>
-                            <!-- Or use an image -->
-                            <!-- <img src="your-image.jpg" alt="Production"> -->
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <h2 class="main-heading">Why Choose Us For Your Next Ad Film?</h2>
-                    <p class="intro-text">
-                        Our experienced team ensures that your message is designed and conveyed effectively and creatively, making your brand stand out in a crowded market.
+    <section class="vb-contact-wrapper">
+        <div class="container vb-main-container">
+            <div class="vb-content-area">
+                <div class="vb-text-section">
+                    <span class="vb-badge-label">GET IN TOUCH</span>
+                    <h1 class="vb-main-heading">Ready To Elevate Your Brand With Video?</h1>
+                    <p class="vb-description-text">
+                        Have a project in mind? Share your vision, and we'll craft a compelling video that brings it to life. Let's create something impactful together!
                     </p>
-                    <div class="benefits-wrapper">
-                        <div class="benefit-row">
-                            <div class="checkmark-box"></div>
-                            <p class="benefit-label">Storytelling mastery</p>
-                        </div>
-                        <div class="benefit-row">
-                            <div class="checkmark-box"></div>
-                            <p class="benefit-label">Experienced creative directors & DOPs</p>
-                        </div>
-                        <div class="benefit-row">
-                            <div class="checkmark-box"></div>
-                            <p class="benefit-label">High quality equipment</p>
-                        </div>
-                        <div class="benefit-row">
-                            <div class="checkmark-box"></div>
-                            <p class="benefit-label">Expert editors and sound engineers</p>
-                        </div>
-                        <div class="benefit-row">
-                            <div class="checkmark-box"></div>
-                            <p class="benefit-label">Effective budget management</p>
-                        </div>
-                        <div class="benefit-row">
-                            <div class="checkmark-box"></div>
-                            <p class="benefit-label">Latest animation & editing technologies used</p>
-                        </div>
-                    </div>
-                    <button class="contact-btn">Get In Touch</button>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <!-- Section 2: Alternative Layout (Content Left, Images Right) -->
-    <section class="ad-film-section gray-bg">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-lg-6 order-lg-1 order-2">
-                    <h2 class="main-heading">Transform Your Vision Into Captivating Content</h2>
-                    <p class="intro-text">
-                        We bring your ideas to life with cutting-edge technology and creative excellence. Our dedicated team works tirelessly to ensure every frame tells your unique story.
-                    </p>
-                    <div class="benefits-wrapper">
-                        <div class="benefit-row">
-                            <div class="checkmark-box"></div>
-                            <p class="benefit-label">Award-winning production team</p>
+                <div class="vb-form-section">
+                    <form id="vbContactForm">
+                        <div class="vb-input-row">
+                            <div class="vb-field-group">
+                                <label class="vb-field-label">
+                                    Full Name<span class="vb-required-mark">*</span>
+                                </label>
+                                <input type="text" class="vb-text-input" required>
+                            </div>
+                            <div class="vb-field-group">
+                                <label class="vb-field-label">
+                                    Job Title<span class="vb-required-mark">*</span>
+                                </label>
+                                <input type="text" class="vb-text-input" required>
+                            </div>
                         </div>
-                        <div class="benefit-row">
-                            <div class="checkmark-box"></div>
-                            <p class="benefit-label">End-to-end project management</p>
+
+                        <div class="vb-input-row">
+                            <div class="vb-field-group">
+                                <label class="vb-field-label">
+                                    Work Email<span class="vb-required-mark">*</span>
+                                </label>
+                                <input type="email" class="vb-text-input" required>
+                            </div>
+                            <div class="vb-field-group">
+                                <label class="vb-field-label">
+                                    Contact Number<span class="vb-required-mark">*</span>
+                                </label>
+                                <input type="tel" class="vb-text-input" required>
+                            </div>
                         </div>
-                        <div class="benefit-row">
-                            <div class="checkmark-box"></div>
-                            <p class="benefit-label">4K & 8K video capabilities</p>
+
+                        <div class="vb-input-row">
+                            <div class="vb-field-group">
+                                <label class="vb-field-label">
+                                    Company Name<span class="vb-required-mark">*</span>
+                                </label>
+                                <input type="text" class="vb-text-input" required>
+                            </div>
+                            <div class="vb-field-group">
+                                <label class="vb-field-label">Website URL</label>
+                                <input type="url" class="vb-text-input">
+                            </div>
                         </div>
-                        <div class="benefit-row">
-                            <div class="checkmark-box"></div>
-                            <p class="benefit-label">Professional color grading studio</p>
+
+                        <div class="vb-field-group">
+                            <label class="vb-field-label">Message</label>
+                            <textarea class="vb-textarea-input"></textarea>
                         </div>
-                        <div class="benefit-row">
-                            <div class="checkmark-box"></div>
-                            <p class="benefit-label">Fast turnaround times</p>
-                        </div>
-                        <div class="benefit-row">
-                            <div class="checkmark-box"></div>
-                            <p class="benefit-label">Custom music & sound design</p>
-                        </div>
-                    </div>
-                    <button class="contact-btn">Start Your Project</button>
-                </div>
-                <div class="col-lg-6 order-lg-2 order-1 mb-4 mb-lg-0">
-                    <div class="media-wrapper media-wrapper-alternate">
-                        <!-- Background Image - Top Right -->
-                        <div class="media-block position-top-right">
-                            <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800" alt="Film Crew">
-                        </div>
-                        
-                        <!-- Background Image - Bottom Left -->
-                        <div class="media-block position-bottom-left">
-                            <img src="https://images.unsplash.com/photo-1585647347483-22b66260dfff?w=800" alt="Video Editing">
-                        </div>
-                        
-                        <!-- Video/Image Overlay - Center Top -->
-                        <div class="media-block centered-overlay">
-                            <!-- Replace with your video -->
-                            <video autoplay muted loop playsinline>
-                                <source src="https://cdn.coverr.co/videos/coverr-a-film-director-watching-the-scene-on-the-monitor-9838/1080p.mp4" type="video/mp4">
-                            </video>
-                            <!-- Or use an image -->
-                            <!-- <img src="your-image.jpg" alt="Production"> -->
-                        </div>
-                    </div>
+
+                        <button type="submit" class="vb-submit-btn">Submit</button>
+                    </form>
                 </div>
             </div>
         </div>
     </section>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('vbContactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Form submitted successfully!');
+        });
+    </script>
 </body>
 </html>
