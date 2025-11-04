@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Diabetes Care Slider</title>
+    <title>Service Comparison - Morphing</title>
     <style>
         * {
             margin: 0;
@@ -12,587 +12,556 @@
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f8f9fa;
+            background: #000;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            color: #fff;
+            overflow-x: hidden;
         }
 
-        .slider-container {
-            max-width: 1440px;
-            margin: 0 auto;
+        .svc-morph-matrix-wrapper {
+            min-height: 100vh;
+            padding: 80px 20px;
+            background: #000;
             position: relative;
-            overflow: hidden;
-            height: 600px;
-        }
-
-        .slides-wrapper {
-            display: flex;
-            transition: transform 0.6s ease-in-out;
-            height: 100%;
-        }
-
-        .slide {
-            min-width: 100%;
-            height: 100%;
-            position: relative;
-        }
-
-        /* ===== SLIDE 1 STYLES ===== */
-        .slide-1 {
-            display: flex;
-            background: #fff;
-        }
-
-        .main-scene {
-            flex: 1.5;
-            position: relative;
-            background: #e8f5e9;
             display: flex;
             align-items: center;
+            justify-content: center;
+        }
+
+        .svc-morph-container-main {
+            max-width: 1400px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .svc-morph-header-section {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .svc-morph-header-section h2 {
+            font-size: 40px;
+            font-weight: 900;
+            margin-bottom: 20px;
+            color: #fff;
+            letter-spacing: -2px;
+        }
+
+        .svc-morph-header-section p {
+            font-size: 1.4rem;
+            color: #666;
+            font-weight: 300;
+        }
+
+        .svc-morph-grid-layout {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .svc-morph-selector-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .svc-morph-selector-card {
+            padding: 25px 30px;
+            background: #0a0a0a;
+            border: 2px solid #1a1a1a;
+            border-radius: 16px;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .svc-morph-selector-card::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 4px;
+            height: 100%;
+            background: #fff;
+            transform: scaleY(0);
+            transition: transform 0.4s ease;
+        }
+
+        .svc-morph-selector-card:hover {
+            background: #111;
+            border-color: #333;
+            transform: translateX(10px);
+        }
+
+        .svc-morph-selector-card.svc-morph-active {
+            background: #111;
+            border-color: #fff;
+            transform: translateX(15px);
+        }
+
+        .svc-morph-selector-card.svc-morph-active::before {
+            transform: scaleY(1);
+        }
+
+        .svc-morph-selector-number {
+            font-size: 0.8rem;
+            color: #666;
+            margin-bottom: 8px;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+        .svc-morph-selector-card.svc-morph-active .svc-morph-selector-number {
+            color: #fff;
+        }
+
+        .svc-morph-selector-label {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .svc-morph-display-panel {
+            background: #0a0a0a;
+            border: 2px solid #1a1a1a;
+            border-radius: 24px;
+            padding: 80px 60px;
+            position: relative;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
             justify-content: center;
             overflow: hidden;
         }
 
-        .main-bg-image {
+        .svc-morph-video-bg {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-size: cover;
-            background-position: center;
-            background-image: url('YOUR_MAIN_GROUP_IMAGE_HERE.jpg');
+            object-fit: cover;
+            opacity: 0;
+            transition: opacity 0.8s ease;
+            z-index: 0;
         }
 
-        .text-box {
+        .svc-morph-video-bg.svc-morph-active {
+            opacity: 0.4;
+        }
+
+        .svc-morph-video-overlay {
             position: absolute;
-            top: 50%;
-            left: 60px;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.97);
-            border: 3px solid #4dd0e1;
-            border-radius: 8px;
-            padding: 40px 50px;
-            max-width: 550px;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
-            z-index: 10;
-            animation: slideInLeft 0.8s ease-out;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.2) 100%);
+            z-index: 0;
         }
 
-        .text-box h1 {
-            font-size: 42px;
-            font-weight: 700;
-            color: #1a1a1a;
-            margin-bottom: 16px;
-            line-height: 1.2;
+        .svc-morph-display-panel::before {
+            content: '';
+            position: absolute;
+            inset: -2px;
+            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
+            background-size: 200% 200%;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            border-radius: 24px;
+            z-index: 0;
         }
 
-        .text-box p {
-            font-size: 18px;
-            color: #555;
-            margin-bottom: 28px;
-            line-height: 1.6;
+        .svc-morph-display-panel.svc-morph-animating::before {
+            opacity: 1;
+            animation: svcMorphShimmer 0.8s ease;
         }
 
-        .cta-button {
+        @keyframes svcMorphShimmer {
+            0% { background-position: 200% 200%; }
+            100% { background-position: -200% -200%; }
+        }
+
+        .svc-morph-content-inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .svc-morph-icon-display {
+            font-size: 6rem;
+            margin-bottom: 40px;
             display: inline-block;
-            padding: 16px 48px;
-            background: linear-gradient(135deg, #4dd0e1 0%, #26c6da 100%);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            font-size: 18px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(77, 208, 225, 0.4);
+            animation: svcMorphFadeInScale 0.6s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .cta-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(77, 208, 225, 0.6);
-            background: linear-gradient(135deg, #26c6da 0%, #00acc1 100%);
+        @keyframes svcMorphFadeInScale {
+            0% {
+                opacity: 0;
+                transform: scale(0.5) rotate(-10deg);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1) rotate(0deg);
+            }
         }
 
-        .image-grid {
-            flex: 1;
+        .svc-morph-title-main {
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 30px;
+            letter-spacing: -1px;
+            animation: svcMorphFadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.1s both;
+        }
+
+        @keyframes svcMorphFadeInUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .svc-morph-meta-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            grid-template-rows: repeat(3, 1fr);
-            gap: 2px;
-            background: #e0e0e0;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
         }
 
-        .grid-item {
-            background-size: cover;
-            background-position: center;
+        .svc-morph-meta-item {
+            animation: svcMorphFadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
+        }
+
+        .svc-morph-meta-item:nth-child(1) { animation-delay: 0.2s; }
+        .svc-morph-meta-item:nth-child(2) { animation-delay: 0.3s; }
+
+        .svc-morph-meta-label {
+            font-size: 0.9rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+
+        .svc-morph-meta-value {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        .svc-morph-description-text {
+            font-size: 1.2rem;
+            color: #888;
+            line-height: 1.8;
+            animation: svcMorphFadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.4s both;
+        }
+
+        .svc-morph-indicator-dots {
+            position: absolute;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            gap: 8px;
+            z-index: 1;
+        }
+
+        .svc-morph-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #1a1a1a;
+            transition: all 0.3s ease;
+        }
+
+        .svc-morph-dot.svc-morph-active {
+            background: #fff;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .svc-morph-cta-section {
+            text-align: center;
+            margin-top: 80px;
+            padding: 60px 40px;
+            background: #0a0a0a;
+            border: 2px solid #1a1a1a;
+            border-radius: 24px;
             position: relative;
             overflow: hidden;
         }
 
-        .grid-item:nth-child(1) {
-            background-image: url('YOUR_PICNIC_COUPLE_IMAGE_HERE.jpg');
-            background-color: #ffe0b2;
-        }
-
-        .grid-item:nth-child(2) {
-            background-image: url('YOUR_LAB_TUBES_IMAGE_HERE.jpg');
-            background-color: #80deea;
-        }
-
-        .grid-item:nth-child(3) {
-            background-image: url('YOUR_FATHER_DAUGHTER_IMAGE_HERE.jpg');
-            background-color: #fff9e6;
-        }
-
-        /* ===== SLIDE 2 STYLES ===== */
-        .slide-2 {
-            background-size: cover;
-            background-position: center;
-            background-image: url('YOUR_PICNIC_GROUP_IMAGE_HERE.jpg');
-            background-color: #f5f0e8;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-        }
-
-        .slide-2::before {
+        .svc-morph-cta-section::before {
             content: '';
             position: absolute;
             top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.2) 100%);
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent);
+            animation: svcMorphSlideAcross 4s infinite;
         }
 
-        .slide-2-content {
-            position: relative;
-            z-index: 2;
-            max-width: 900px;
-            padding: 40px;
+        @keyframes svcMorphSlideAcross {
+            0% { left: -100%; }
+            100% { left: 100%; }
         }
 
-        .slide-2-content h1 {
-            font-size: 52px;
+        .svc-morph-cta-section h3 {
+            font-size: 2.2rem;
             font-weight: 700;
-            color: #1a1a1a;
-            margin-bottom: 20px;
-            line-height: 1.2;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .slide-2-content p {
-            font-size: 22px;
-            color: #2a2a2a;
-            margin-bottom: 40px;
-            line-height: 1.5;
-        }
-
-        .slide-2-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        /* ===== SLIDE 3 STYLES ===== */
-        .slide-3 {
-            display: flex;
-            flex-direction: column;
-            background: #fff;
-        }
-
-        .slide-3-top {
-            height: 50%;
-            background-size: cover;
-            background-position: center;
-            background-image: url('YOUR_GROUP_SMILING_IMAGE_HERE.jpg');
-            background-color: #f5f5f5;
+            margin-bottom: 15px;
+            color: #fff;
             position: relative;
+            z-index: 1;
         }
 
-        .slide-3-bottom {
-            height: 50%;
-            display: grid;
-            grid-template-columns: 1fr 1.2fr 1fr;
-            gap: 2px;
-            background: #e0e0e0;
-        }
-
-        .slide-3-section {
-            background-size: cover;
-            background-position: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 40px;
+        .svc-morph-cta-section p {
+            font-size: 1.2rem;
+            color: #777;
+            margin-bottom: 35px;
             position: relative;
+            z-index: 1;
         }
 
-        .slide-3-section.left {
-            background-image: url('YOUR_LAB_EQUIPMENT_IMAGE_HERE.jpg');
-            background-color: #80deea;
-        }
-
-        .slide-3-section.center {
-            background: white;
-            flex-direction: column;
-            text-align: center;
-        }
-
-        .slide-3-section.right {
-            background-image: url('YOUR_COUPLE_PICNIC_IMAGE_HERE.jpg');
-            background-color: #ffe0b2;
-        }
-
-        .slide-3-text-box {
-            background: white;
-            border: 3px solid #4dd0e1;
-            border-radius: 8px;
-            padding: 30px 40px;
-            max-width: 100%;
-        }
-
-        .slide-3-text-box h2 {
-            font-size: 32px;
-            font-weight: 700;
-            color: #1a1a1a;
-            margin-bottom: 12px;
-            line-height: 1.2;
-        }
-
-        .slide-3-text-box p {
-            font-size: 16px;
-            color: #555;
-            margin-bottom: 24px;
-            line-height: 1.5;
-        }
-
-        .slide-3-text-box .cta-button {
+        .svc-morph-cta-section a {
             display: inline-block;
-            padding: 14px 36px;
-            font-size: 16px;
-        }
-
-        .btn-primary {
-            padding: 16px 40px;
-            background: #006064;
-            color: white;
+            padding: 20px 60px;
+            background: #fff;
+            color: #000;
             text-decoration: none;
-            border-radius: 4px;
-            font-size: 16px;
-            font-weight: 600;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
             transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
+            position: relative;
+            z-index: 1;
         }
 
-        .btn-primary:hover {
-            background: #004d50;
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(0, 96, 100, 0.4);
+        .svc-morph-cta-section a:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 60px rgba(255, 255, 255, 0.3);
         }
 
-        .btn-secondary {
-            padding: 16px 40px;
-            background: white;
-            color: #1a1a1a;
-            text-decoration: none;
-            border-radius: 4px;
-            font-size: 16px;
-            font-weight: 600;
-            transition: all 0.3s ease;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn-secondary:hover {
-            background: #f5f5f5;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        /* Navigation Arrows */
-        .nav-arrow {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.9);
-            border: none;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            cursor: pointer;
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            color: #333;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-        }
-
-        .nav-arrow:hover {
-            background: white;
-            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
-            transform: translateY(-50%) scale(1.1);
-        }
-
-        .nav-arrow.prev {
-            left: 20px;
-        }
-
-        .nav-arrow.next {
-            right: 20px;
-        }
-
-        /* Dot Indicators */
-        .dot-indicators {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 12px;
-            z-index: 100;
-        }
-
-        .dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.5);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: 2px solid rgba(255, 255, 255, 0.8);
-        }
-
-        .dot.active {
-            background: white;
-            width: 40px;
-            border-radius: 6px;
-        }
-
-        @keyframes slideInLeft {
-            from { opacity: 0; transform: translateY(-50%) translateX(-50px); }
-            to { opacity: 1; transform: translateY(-50%) translateX(0); }
-        }
-
-        /* Responsive */
         @media (max-width: 1024px) {
-            .slider-container {
-                height: auto;
-                min-height: 500px;
-            }
-
-            .slide-1 {
-                flex-direction: column;
-            }
-            
-            .main-scene {
-                height: 400px;
-            }
-            
-            .text-box {
-                position: relative;
-                left: 0;
-                top: 0;
-                transform: none;
-                margin: 30px;
-            }
-            
-            .image-grid {
-                grid-template-columns: repeat(3, 1fr);
-                grid-template-rows: 200px;
-            }
-
-            .slide-2-content h1 {
-                font-size: 36px;
-            }
-
-            .slide-2-content p {
-                font-size: 18px;
-            }
-
-            .slide-3-bottom {
+            .svc-morph-grid-layout {
                 grid-template-columns: 1fr;
-                grid-template-rows: auto;
+                gap: 40px;
             }
 
-            .slide-3-text-box h2 {
-                font-size: 24px;
+            .svc-morph-selector-column {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .svc-morph-selector-card:hover,
+            .svc-morph-selector-card.svc-morph-active {
+                transform: translateX(0) translateY(-5px);
             }
         }
 
         @media (max-width: 768px) {
-            .text-box h1,
-            .slide-2-content h1 {
-                font-size: 28px;
-            }
-            
-            .text-box p,
-            .slide-2-content p {
-                font-size: 16px;
-            }
-            
-            .cta-button,
-            .btn-primary,
-            .btn-secondary {
-                padding: 14px 30px;
-                font-size: 14px;
+            .svc-morph-selector-column {
+                grid-template-columns: 1fr;
             }
 
-            .slide-2-buttons {
-                flex-direction: column;
-                align-items: center;
+            .svc-morph-display-panel {
+                padding: 50px 30px;
             }
 
-            .slide-2-buttons a {
-                width: 100%;
-                max-width: 300px;
-                text-align: center;
+            .svc-morph-title-main {
+                font-size: 2.5rem;
             }
 
-            .nav-arrow {
-                width: 40px;
-                height: 40px;
-                font-size: 20px;
+            .svc-morph-meta-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .svc-morph-cta-section {
+                padding: 40px 20px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="slider-container">
-        <div class="slides-wrapper" id="slidesWrapper">
-            
-            <!-- SLIDE 1: Transform your Diabetes Care -->
-            <div class="slide slide-1">
-                <div class="main-scene">
-                    <div class="main-bg-image"></div>
-                    <div class="text-box">
-                        <h1>Transform your Diabetes Care</h1>
-                        <p>One Advanced Test . Earlier Intervention . Better Outcomes</p>
-                        <a href="#" class="cta-button">Learn More</a>
+    <section class="svc-morph-matrix-wrapper">
+        <div class="svc-morph-container-main">
+            <div class="svc-morph-header-section">
+                <h2>Not Sure Which Service You Need?</h2>
+                <p>Select a service to explore the details</p>
+            </div>
+
+            <div class="svc-morph-grid-layout">
+                <div class="svc-morph-selector-column">
+                    <div class="svc-morph-selector-card svc-morph-active" data-service="0">
+                        <div class="svc-morph-selector-number">01</div>
+                        <div class="svc-morph-selector-label">Brand Videos</div>
+                    </div>
+                    <div class="svc-morph-selector-card" data-service="1">
+                        <div class="svc-morph-selector-number">02</div>
+                        <div class="svc-morph-selector-label">YouTube Content</div>
+                    </div>
+                    <div class="svc-morph-selector-card" data-service="2">
+                        <div class="svc-morph-selector-number">03</div>
+                        <div class="svc-morph-selector-label">AI Avatars</div>
+                    </div>
+                    <div class="svc-morph-selector-card" data-service="3">
+                        <div class="svc-morph-selector-number">04</div>
+                        <div class="svc-morph-selector-label">Learning Videos</div>
                     </div>
                 </div>
 
-                <div class="image-grid">
-                    <div class="grid-item"></div>
-                    <div class="grid-item"></div>
-                    <div class="grid-item"></div>
-                </div>
-            </div>
-
-            <!-- SLIDE 2: Stop Complications -->
-            <div class="slide slide-2">
-                <div class="slide-2-content">
-                    <h1>STOP COMPLICATIONS BEFORE THEY START</h1>
-                    <p>See which patients face highest risk 5 years before symptoms appear</p>
-                    <div class="slide-2-buttons">
-                        <a href="#" class="btn-primary">See How It Works</a>
-                        <a href="#" class="btn-secondary">Download Clinical Evidence</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- SLIDE 3: Split Layout -->
-            <div class="slide slide-3">
-                <!-- Top half: Large group photo -->
-                <div class="slide-3-top"></div>
-
-                <!-- Bottom half: Three sections -->
-                <div class="slide-3-bottom">
-                    <!-- Left: Lab equipment -->
-                    <div class="slide-3-section left"></div>
-
-                    <!-- Center: Text box -->
-                    <div class="slide-3-section center">
-                        <div class="slide-3-text-box">
-                            <h2>Transform your Diabetes Care</h2>
-                            <p>One Advanced Test . Earlier Intervention . Better Outcomes</p>
-                            <a href="#" class="cta-button">Learn More</a>
+                <div class="svc-morph-display-panel" id="svcMorphDisplay">
+                    <video class="svc-morph-video-bg svc-morph-active" muted loop playsinline id="svcMorphVideo0" src="assets/videos/brand.mp4"></video>
+                    <video class="svc-morph-video-bg" muted loop playsinline id="svcMorphVideo1" src="assets/videos/yt.mp4"></video>
+                    <video class="svc-morph-video-bg" muted loop playsinline id="svcMorphVideo2" src="assets/videos/avathar.mp4"></video>
+                    <video class="svc-morph-video-bg" muted loop playsinline id="svcMorphVideo3" src="assets/videos/learning.mp4"></video>
+                    <div class="svc-morph-video-overlay"></div>
+                    
+                    <div class="svc-morph-content-inner" id="svcMorphContent">
+                        <!-- <div class="svc-morph-icon-display">🎬</div> -->
+                        <h3 class="svc-morph-title-main">Brand Videos</h3>
+                        <div class="svc-morph-meta-grid">
+                            <div class="svc-morph-meta-item">
+                                <div class="svc-morph-meta-label">Best For</div>
+                                <div class="svc-morph-meta-value">Marketing campaigns</div>
+                            </div>
+                            <div class="svc-morph-meta-item">
+                                <div class="svc-morph-meta-label">Timeline</div>
+                                <div class="svc-morph-meta-value">3-5 days</div>
+                            </div>
                         </div>
+                        <p class="svc-morph-description-text">
+                            Create stunning promotional videos that capture your brand essence and drive engagement across all marketing channels.
+                        </p>
                     </div>
-
-                    <!-- Right: Couple picnic -->
-                    <div class="slide-3-section right"></div>
+                    <div class="svc-morph-indicator-dots">
+                        <div class="svc-morph-dot svc-morph-active"></div>
+                        <div class="svc-morph-dot"></div>
+                        <div class="svc-morph-dot"></div>
+                        <div class="svc-morph-dot"></div>
+                    </div>
                 </div>
             </div>
 
+            <div class="svc-morph-cta-section">
+                <h3>Still Not Sure?</h3>
+                <p>Book a free consultation and we'll help you figure it out.</p>
+                <a href="#contact">Book Free Call</a>
+            </div>
         </div>
-
-        <!-- Navigation Arrows -->
-        <button class="nav-arrow prev" onclick="changeSlide(-1)">‹</button>
-        <button class="nav-arrow next" onclick="changeSlide(1)">›</button>
-
-        <!-- Dot Indicators -->
-        <div class="dot-indicators">
-            <span class="dot active" onclick="goToSlide(0)"></span>
-            <span class="dot" onclick="goToSlide(1)"></span>
-            <span class="dot" onclick="goToSlide(2)"></span>
-        </div>
-    </div>
+    </section>
 
     <script>
-        let currentSlide = 0;
-        const totalSlides = 3;
-        const slidesWrapper = document.getElementById('slidesWrapper');
-        const dots = document.querySelectorAll('.dot');
+        const svcMorphServices = [
+            {
+                icon: '🎬',
+                title: 'Brand Videos',
+                bestFor: 'Marketing campaigns',
+                timeline: '3-5 days',
+                description: 'Create stunning promotional videos that capture your brand essence and drive engagement across all marketing channels.',
+                videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-a-glowing-cube-1019-large.mp4'
+            },
+            {
+               
+                title: 'YouTube Content',
+                bestFor: 'Channel growth',
+                timeline: '3-4 days',
+                description: 'Professional video production optimized for YouTube algorithm success, helping you grow your subscriber base and engagement.',
+                videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-young-woman-vlogging-4703-large.mp4'
+            },
+            {
+               
+                title: 'AI Avatars',
+                bestFor: 'Scale & localization',
+                timeline: '2-3 days',
+                description: 'Leverage AI-powered avatars to create personalized, multilingual content at scale without traditional production overhead.',
+                videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-ai-technology-hologram-43544-large.mp4'
+            },
+            {
+                
+                title: 'Learning Videos',
+                bestFor: 'Education & training',
+                timeline: '4-6 days',
+                description: 'Develop comprehensive educational content that enhances learning outcomes and keeps your audience engaged throughout.',
+                videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-woman-studying-at-home-4703-large.mp4'
+            }
+        ];
 
-        function updateSlide() {
-            slidesWrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+        const svcMorphSelectors = document.querySelectorAll('.svc-morph-selector-card');
+        const svcMorphContent = document.getElementById('svcMorphContent');
+        const svcMorphDisplay = document.getElementById('svcMorphDisplay');
+        const svcMorphIndicators = document.querySelectorAll('.svc-morph-dot');
+        const svcMorphVideos = document.querySelectorAll('.svc-morph-video-bg');
+
+        function svcMorphToService(index) {
+            const service = svcMorphServices[index];
             
-            // Update dots
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentSlide);
+            svcMorphDisplay.classList.add('svc-morph-animating');
+            
+            svcMorphVideos.forEach((video, i) => {
+                if (i === index) {
+                    video.classList.add('svc-morph-active');
+                    video.play().catch(e => console.log('Video play error:', e));
+                } else {
+                    video.classList.remove('svc-morph-active');
+                    video.pause();
+                }
+            });
+            
+            setTimeout(() => {
+                svcMorphContent.innerHTML = `
+                    <div class="svc-morph-icon-display">${service.icon}</div>
+                    <h3 class="svc-morph-title-main">${service.title}</h3>
+                    <div class="svc-morph-meta-grid">
+                        <div class="svc-morph-meta-item">
+                            <div class="svc-morph-meta-label">Best For</div>
+                            <div class="svc-morph-meta-value">${service.bestFor}</div>
+                        </div>
+                        <div class="svc-morph-meta-item">
+                            <div class="svc-morph-meta-label">Timeline</div>
+                            <div class="svc-morph-meta-value">${service.timeline}</div>
+                        </div>
+                    </div>
+                    <p class="svc-morph-description-text">${service.description}</p>
+                `;
+            }, 200);
+            
+            setTimeout(() => {
+                svcMorphDisplay.classList.remove('svc-morph-animating');
+            }, 800);
+            
+            svcMorphSelectors.forEach((sel, i) => {
+                sel.classList.toggle('svc-morph-active', i === index);
+            });
+            
+            svcMorphIndicators.forEach((ind, i) => {
+                ind.classList.toggle('svc-morph-active', i === index);
             });
         }
 
-        function changeSlide(direction) {
-            currentSlide += direction;
-            
-            // Loop around
-            if (currentSlide < 0) {
-                currentSlide = totalSlides - 1;
-            } else if (currentSlide >= totalSlides) {
-                currentSlide = 0;
+        svcMorphSelectors.forEach((selector, index) => {
+            selector.addEventListener('click', () => {
+                svcMorphToService(index);
+            });
+        });
+
+        window.addEventListener('load', () => {
+            const firstVideo = document.getElementById('svcMorphVideo0');
+            if (firstVideo) {
+                firstVideo.play().catch(e => console.log('Initial video autoplay prevented:', e));
             }
-            
-            updateSlide();
-        }
-
-        function goToSlide(index) {
-            currentSlide = index;
-            updateSlide();
-        }
-
-        // Auto-advance slides every 6 seconds
-        let autoSlideInterval = setInterval(() => {
-            changeSlide(1);
-        }, 6000);
-
-        // Pause auto-advance on hover
-        document.querySelector('.slider-container').addEventListener('mouseenter', () => {
-            clearInterval(autoSlideInterval);
         });
 
-        // Resume auto-advance on mouse leave
-        document.querySelector('.slider-container').addEventListener('mouseleave', () => {
-            autoSlideInterval = setInterval(() => {
-                changeSlide(1);
-            }, 6000);
-        });
-
-        // Keyboard navigation
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowLeft') changeSlide(-1);
-            if (e.key === 'ArrowRight') changeSlide(1);
-        });
+        let svcMorphCurrentIndex = 0;
+        setInterval(() => {
+            svcMorphCurrentIndex = (svcMorphCurrentIndex + 1) % svcMorphServices.length;
+            svcMorphToService(svcMorphCurrentIndex);
+        }, 5000);
     </script>
 </body>
 </html>
