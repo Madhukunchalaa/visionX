@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Service Comparison - Morphing</title>
+    <title>Custom Solutions</title>
     <style>
         * {
             margin: 0;
@@ -12,556 +12,404 @@
         }
 
         body {
+            font-family: 'Arial', sans-serif;
             background: #000;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             color: #fff;
             overflow-x: hidden;
         }
 
-        .svc-morph-matrix-wrapper {
-            min-height: 100vh;
-            padding: 80px 20px;
-            background: #000;
+        .studiox-custom-wrapper {
             position: relative;
+            min-height: 100vh;
+            padding: 80px 5%;
+            background: #000;
             display: flex;
             align-items: center;
             justify-content: center;
         }
 
-        .svc-morph-container-main {
-            max-width: 1400px;
-            width: 100%;
-            margin: 0 auto;
-        }
-
-        .svc-morph-header-section {
-            text-align: center;
-            margin-bottom: 80px;
-        }
-
-        .svc-morph-header-section h2 {
-            font-size: 40px;
-            font-weight: 900;
-            margin-bottom: 20px;
-            color: #fff;
-            letter-spacing: -2px;
-        }
-
-        .svc-morph-header-section p {
-            font-size: 1.4rem;
-            color: #666;
-            font-weight: 300;
-        }
-
-        .svc-morph-grid-layout {
+        .studiox-dual-layout {
             display: grid;
-            grid-template-columns: 300px 1fr;
-            gap: 60px;
-            align-items: center;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            width: 100%;
+            max-width: 1400px;
+            position: relative;
         }
 
-        .svc-morph-selector-column {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .svc-morph-selector-card {
-            padding: 25px 30px;
-            background: #0a0a0a;
-            border: 2px solid #1a1a1a;
-            border-radius: 16px;
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        /* Left Side - Creative */
+        .studiox-creative-zone {
+            background: #fff;
+            color: #000;
+            padding: 80px 60px;
             position: relative;
             overflow: hidden;
         }
 
-        .svc-morph-selector-card::before {
+        .studiox-watermark {
+            position: absolute;
+            font-size: 180px;
+            font-weight: 900;
+            opacity: 0.05;
+            line-height: 1;
+            pointer-events: none;
+            user-select: none;
+        }
+
+        .studiox-watermark.pos-top {
+            top: -40px;
+            left: -20px;
+        }
+
+        .studiox-watermark.pos-bottom {
+            bottom: -60px;
+            right: -20px;
+            transform: rotate(180deg);
+        }
+
+        .studiox-hero-heading {
+            font-size: 64px;
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .studiox-hero-desc {
+            font-size: 20px;
+            line-height: 1.6;
+            margin-bottom: 50px;
+            max-width: 450px;
+        }
+
+        .studiox-divider-bar {
+            width: 3px;
+            height: 100px;
+            background: #000;
+            margin: 40px 0;
+        }
+
+        .studiox-statement {
+            font-size: 24px;
+            font-style: italic;
+            font-weight: 300;
+            line-height: 1.4;
+            position: relative;
+            padding-left: 30px;
+            border-left: 4px solid #000;
+        }
+
+        /* Right Side - Services */
+        .studiox-services-zone {
+            background: #000;
+            color: #fff;
+            padding: 80px 60px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .studiox-offerings-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+        }
+
+        .studiox-offer-row {
+            border-bottom: 1px solid #333;
+            padding: 35px 0;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+
+        .studiox-offer-row:first-child {
+            border-top: 1px solid #333;
+        }
+
+        .studiox-offer-row::before {
             content: '';
             position: absolute;
             left: 0;
             top: 0;
-            width: 4px;
+            width: 0;
             height: 100%;
             background: #fff;
-            transform: scaleY(0);
-            transition: transform 0.4s ease;
+            transition: width 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+            z-index: 0;
         }
 
-        .svc-morph-selector-card:hover {
-            background: #111;
-            border-color: #333;
+        .studiox-offer-row:hover::before {
+            width: 100%;
+        }
+
+        .studiox-offer-row:hover {
+            padding-left: 30px;
+        }
+
+        .studiox-offer-row:hover .studiox-offer-num,
+        .studiox-offer-row:hover .studiox-offer-title,
+        .studiox-offer-row:hover .studiox-offer-icon {
+            color: #000;
+        }
+
+        .studiox-offer-inner {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1;
+        }
+
+        .studiox-offer-details {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+
+        .studiox-offer-num {
+            font-size: 18px;
+            font-weight: 700;
+            color: #666;
+            transition: color 0.3s;
+            min-width: 30px;
+        }
+
+        .studiox-offer-title {
+            font-size: 24px;
+            font-weight: 700;
+            transition: color 0.3s;
+        }
+
+        .studiox-offer-icon {
+            font-size: 24px;
+            transition: all 0.3s;
+            color: #fff;
+        }
+
+        .studiox-offer-row:hover .studiox-offer-icon {
             transform: translateX(10px);
         }
 
-        .svc-morph-selector-card.svc-morph-active {
-            background: #111;
-            border-color: #fff;
-            transform: translateX(15px);
-        }
-
-        .svc-morph-selector-card.svc-morph-active::before {
-            transform: scaleY(1);
-        }
-
-        .svc-morph-selector-number {
-            font-size: 0.8rem;
-            color: #666;
-            margin-bottom: 8px;
-            letter-spacing: 2px;
-            font-weight: 600;
-        }
-
-        .svc-morph-selector-card.svc-morph-active .svc-morph-selector-number {
-            color: #fff;
-        }
-
-        .svc-morph-selector-label {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: #fff;
-        }
-
-        .svc-morph-display-panel {
-            background: #0a0a0a;
-            border: 2px solid #1a1a1a;
-            border-radius: 24px;
-            padding: 80px 60px;
-            position: relative;
-            min-height: 500px;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .svc-morph-video-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            opacity: 0;
-            transition: opacity 0.8s ease;
-            z-index: 0;
-        }
-
-        .svc-morph-video-bg.svc-morph-active {
-            opacity: 0.4;
-        }
-
-        .svc-morph-video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.2) 100%);
-            z-index: 0;
-        }
-
-        .svc-morph-display-panel::before {
-            content: '';
-            position: absolute;
-            inset: -2px;
-            background: linear-gradient(45deg, transparent 30%, rgba(255,255,255,0.1) 50%, transparent 70%);
-            background-size: 200% 200%;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            border-radius: 24px;
-            z-index: 0;
-        }
-
-        .svc-morph-display-panel.svc-morph-animating::before {
-            opacity: 1;
-            animation: svcMorphShimmer 0.8s ease;
-        }
-
-        @keyframes svcMorphShimmer {
-            0% { background-position: 200% 200%; }
-            100% { background-position: -200% -200%; }
-        }
-
-        .svc-morph-content-inner {
-            position: relative;
-            z-index: 1;
-        }
-
-        .svc-morph-icon-display {
-            font-size: 6rem;
-            margin-bottom: 40px;
-            display: inline-block;
-            animation: svcMorphFadeInScale 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        @keyframes svcMorphFadeInScale {
-            0% {
-                opacity: 0;
-                transform: scale(0.5) rotate(-10deg);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1) rotate(0deg);
-            }
-        }
-
-        .svc-morph-title-main {
-            font-size: 3.5rem;
-            font-weight: 900;
-            margin-bottom: 30px;
-            letter-spacing: -1px;
-            animation: svcMorphFadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.1s both;
-        }
-
-        @keyframes svcMorphFadeInUp {
-            0% {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .svc-morph-meta-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-
-        .svc-morph-meta-item {
-            animation: svcMorphFadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) both;
-        }
-
-        .svc-morph-meta-item:nth-child(1) { animation-delay: 0.2s; }
-        .svc-morph-meta-item:nth-child(2) { animation-delay: 0.3s; }
-
-        .svc-morph-meta-label {
-            font-size: 0.9rem;
-            color: #666;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 10px;
-            font-weight: 600;
-        }
-
-        .svc-morph-meta-value {
-            font-size: 1.8rem;
-            font-weight: 700;
-            color: #fff;
-        }
-
-        .svc-morph-description-text {
-            font-size: 1.2rem;
-            color: #888;
-            line-height: 1.8;
-            animation: svcMorphFadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.4s both;
-        }
-
-        .svc-morph-indicator-dots {
-            position: absolute;
-            bottom: 30px;
-            right: 30px;
-            display: flex;
-            gap: 8px;
-            z-index: 1;
-        }
-
-        .svc-morph-dot {
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background: #1a1a1a;
-            transition: all 0.3s ease;
-        }
-
-        .svc-morph-dot.svc-morph-active {
-            background: #fff;
-            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
-        }
-
-        .svc-morph-cta-section {
+        /* CTA Section */
+        .studiox-action-block {
+            margin-top: 60px;
             text-align: center;
-            margin-top: 80px;
-            padding: 60px 40px;
-            background: #0a0a0a;
-            border: 2px solid #1a1a1a;
-            border-radius: 24px;
             position: relative;
-            overflow: hidden;
         }
 
-        .svc-morph-cta-section::before {
+        .studiox-action-label {
+            font-size: 12px;
+            letter-spacing: 3px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .studiox-contact-btn {
+            background: transparent;
+            border: 3px solid #fff;
+            color: #fff;
+            padding: 25px 70px;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s;
+            text-transform: uppercase;
+        }
+
+        .studiox-contact-btn::before,
+        .studiox-contact-btn::after {
             content: '';
             position: absolute;
+            background: #fff;
+            transition: all 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+
+        .studiox-contact-btn::before {
             top: 0;
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.03), transparent);
-            animation: svcMorphSlideAcross 4s infinite;
         }
 
-        @keyframes svcMorphSlideAcross {
-            0% { left: -100%; }
-            100% { left: 100%; }
+        .studiox-contact-btn::after {
+            bottom: 0;
+            right: -100%;
+            width: 100%;
+            height: 100%;
         }
 
-        .svc-morph-cta-section h3 {
-            font-size: 2.2rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            color: #fff;
-            position: relative;
-            z-index: 1;
+        .studiox-contact-btn:hover::before {
+            left: 0;
         }
 
-        .svc-morph-cta-section p {
-            font-size: 1.2rem;
-            color: #777;
-            margin-bottom: 35px;
-            position: relative;
-            z-index: 1;
+        .studiox-contact-btn:hover::after {
+            right: 0;
         }
 
-        .svc-morph-cta-section a {
-            display: inline-block;
-            padding: 20px 60px;
-            background: #fff;
+        .studiox-contact-btn:hover {
             color: #000;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: 700;
-            font-size: 1.2rem;
-            transition: all 0.3s ease;
+        }
+
+        .studiox-contact-btn span {
             position: relative;
             z-index: 1;
         }
 
-        .svc-morph-cta-section a:hover {
-            transform: scale(1.05);
-            box-shadow: 0 20px 60px rgba(255, 255, 255, 0.3);
+        /* Divider Line */
+        .studiox-center-line {
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 1px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, #666, transparent);
         }
 
         @media (max-width: 1024px) {
-            .svc-morph-grid-layout {
+            .studiox-dual-layout {
                 grid-template-columns: 1fr;
-                gap: 40px;
             }
 
-            .svc-morph-selector-column {
-                display: grid;
-                grid-template-columns: repeat(2, 1fr);
+            .studiox-creative-zone,
+            .studiox-services-zone {
+                padding: 60px 40px;
             }
 
-            .svc-morph-selector-card:hover,
-            .svc-morph-selector-card.svc-morph-active {
-                transform: translateX(0) translateY(-5px);
+            .studiox-hero-heading {
+                font-size: 48px;
+            }
+
+            .studiox-watermark {
+                font-size: 120px;
+            }
+
+            .studiox-center-line {
+                display: none;
             }
         }
 
         @media (max-width: 768px) {
-            .svc-morph-selector-column {
-                grid-template-columns: 1fr;
+            .studiox-creative-zone,
+            .studiox-services-zone {
+                padding: 40px 30px;
             }
 
-            .svc-morph-display-panel {
-                padding: 50px 30px;
+            .studiox-hero-heading {
+                font-size: 36px;
             }
 
-            .svc-morph-title-main {
-                font-size: 2.5rem;
+            .studiox-hero-desc {
+                font-size: 16px;
             }
 
-            .svc-morph-meta-grid {
-                grid-template-columns: 1fr;
+            .studiox-statement {
+                font-size: 18px;
             }
 
-            .svc-morph-cta-section {
-                padding: 40px 20px;
+            .studiox-offer-title {
+                font-size: 18px;
+            }
+
+            .studiox-contact-btn {
+                padding: 20px 50px;
+                font-size: 14px;
+            }
+
+            .studiox-watermark {
+                font-size: 80px;
             }
         }
     </style>
 </head>
 <body>
-    <section class="svc-morph-matrix-wrapper">
-        <div class="svc-morph-container-main">
-            <div class="svc-morph-header-section">
-                <h2>Not Sure Which Service You Need?</h2>
-                <p>Select a service to explore the details</p>
+    <section class="studiox-custom-wrapper">
+        <div class="studiox-dual-layout">
+            <div class="studiox-center-line"></div>
+            
+            <!-- Left Panel - White -->
+            <div class="studiox-creative-zone">
+                <div class="studiox-watermark pos-top">StudioX</div>
+                <div class="studiox-watermark pos-bottom">StudioX</div>
+                
+                <h1 class="studiox-hero-heading">NEED<br>SOMETHING<br>CUSTOM?</h1>
+                <p class="studiox-hero-desc">
+                    We don't just follow briefs—we rewrite them. Every challenge deserves a solution as unique as your vision.
+                </p>
+                
+                <div class="studiox-divider-bar"></div>
+                
+                <div class="studiox-statement">
+                    "Standard packages are just the beginning. Let's build something extraordinary together."
+                </div>
             </div>
 
-            <div class="svc-morph-grid-layout">
-                <div class="svc-morph-selector-column">
-                    <div class="svc-morph-selector-card svc-morph-active" data-service="0">
-                        <div class="svc-morph-selector-number">01</div>
-                        <div class="svc-morph-selector-label">Brand Videos</div>
-                    </div>
-                    <div class="svc-morph-selector-card" data-service="1">
-                        <div class="svc-morph-selector-number">02</div>
-                        <div class="svc-morph-selector-label">YouTube Content</div>
-                    </div>
-                    <div class="svc-morph-selector-card" data-service="2">
-                        <div class="svc-morph-selector-number">03</div>
-                        <div class="svc-morph-selector-label">AI Avatars</div>
-                    </div>
-                    <div class="svc-morph-selector-card" data-service="3">
-                        <div class="svc-morph-selector-number">04</div>
-                        <div class="svc-morph-selector-label">Learning Videos</div>
-                    </div>
-                </div>
-
-                <div class="svc-morph-display-panel" id="svcMorphDisplay">
-                    <video class="svc-morph-video-bg svc-morph-active" muted loop playsinline id="svcMorphVideo0" src="assets/videos/brand.mp4"></video>
-                    <video class="svc-morph-video-bg" muted loop playsinline id="svcMorphVideo1" src="assets/videos/yt.mp4"></video>
-                    <video class="svc-morph-video-bg" muted loop playsinline id="svcMorphVideo2" src="assets/videos/avathar.mp4"></video>
-                    <video class="svc-morph-video-bg" muted loop playsinline id="svcMorphVideo3" src="assets/videos/learning.mp4"></video>
-                    <div class="svc-morph-video-overlay"></div>
-                    
-                    <div class="svc-morph-content-inner" id="svcMorphContent">
-                        <!-- <div class="svc-morph-icon-display">🎬</div> -->
-                        <h3 class="svc-morph-title-main">Brand Videos</h3>
-                        <div class="svc-morph-meta-grid">
-                            <div class="svc-morph-meta-item">
-                                <div class="svc-morph-meta-label">Best For</div>
-                                <div class="svc-morph-meta-value">Marketing campaigns</div>
+            <!-- Right Panel - Black -->
+            <div class="studiox-services-zone">
+                <div class="studiox-offerings-list">
+                    <div class="studiox-offer-row">
+                        <div class="studiox-offer-inner">
+                            <div class="studiox-offer-details">
+                                <span class="studiox-offer-num">01</span>
+                                <span class="studiox-offer-title">Series Production</span>
                             </div>
-                            <div class="svc-morph-meta-item">
-                                <div class="svc-morph-meta-label">Timeline</div>
-                                <div class="svc-morph-meta-value">3-5 days</div>
-                            </div>
+                            <span class="studiox-offer-icon">→</span>
                         </div>
-                        <p class="svc-morph-description-text">
-                            Create stunning promotional videos that capture your brand essence and drive engagement across all marketing channels.
-                        </p>
                     </div>
-                    <div class="svc-morph-indicator-dots">
-                        <div class="svc-morph-dot svc-morph-active"></div>
-                        <div class="svc-morph-dot"></div>
-                        <div class="svc-morph-dot"></div>
-                        <div class="svc-morph-dot"></div>
+
+                    <div class="studiox-offer-row">
+                        <div class="studiox-offer-inner">
+                            <div class="studiox-offer-details">
+                                <span class="studiox-offer-num">02</span>
+                                <span class="studiox-offer-title">White-Label Services</span>
+                            </div>
+                            <span class="studiox-offer-icon">→</span>
+                        </div>
+                    </div>
+
+                    <div class="studiox-offer-row">
+                        <div class="studiox-offer-inner">
+                            <div class="studiox-offer-details">
+                                <span class="studiox-offer-num">03</span>
+                                <span class="studiox-offer-title">Rush Delivery (24-48h)</span>
+                            </div>
+                            <span class="studiox-offer-icon">→</span>
+                        </div>
+                    </div>
+
+                    <div class="studiox-offer-row">
+                        <div class="studiox-offer-inner">
+                            <div class="studiox-offer-details">
+                                <span class="studiox-offer-num">04</span>
+                                <span class="studiox-offer-title">Full Campaign Management</span>
+                            </div>
+                            <span class="studiox-offer-icon">→</span>
+                        </div>
+                    </div>
+
+                    <div class="studiox-offer-row">
+                        <div class="studiox-offer-inner">
+                            <div class="studiox-offer-details">
+                                <span class="studiox-offer-num">05</span>
+                                <span class="studiox-offer-title">Retainer Partnerships</span>
+                            </div>
+                            <span class="studiox-offer-icon">→</span>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="svc-morph-cta-section">
-                <h3>Still Not Sure?</h3>
-                <p>Book a free consultation and we'll help you figure it out.</p>
-                <a href="#contact">Book Free Call</a>
+                <div class="studiox-action-block">
+                    <div class="studiox-action-label">READY TO START?</div>
+                    <button class="studiox-contact-btn">
+                        <span>CONTACT FOR CUSTOM QUOTE</span>
+                    </button>
+                </div>
             </div>
         </div>
     </section>
-
-    <script>
-        const svcMorphServices = [
-            {
-                icon: '🎬',
-                title: 'Brand Videos',
-                bestFor: 'Marketing campaigns',
-                timeline: '3-5 days',
-                description: 'Create stunning promotional videos that capture your brand essence and drive engagement across all marketing channels.',
-                videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-a-glowing-cube-1019-large.mp4'
-            },
-            {
-               
-                title: 'YouTube Content',
-                bestFor: 'Channel growth',
-                timeline: '3-4 days',
-                description: 'Professional video production optimized for YouTube algorithm success, helping you grow your subscriber base and engagement.',
-                videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-young-woman-vlogging-4703-large.mp4'
-            },
-            {
-               
-                title: 'AI Avatars',
-                bestFor: 'Scale & localization',
-                timeline: '2-3 days',
-                description: 'Leverage AI-powered avatars to create personalized, multilingual content at scale without traditional production overhead.',
-                videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-ai-technology-hologram-43544-large.mp4'
-            },
-            {
-                
-                title: 'Learning Videos',
-                bestFor: 'Education & training',
-                timeline: '4-6 days',
-                description: 'Develop comprehensive educational content that enhances learning outcomes and keeps your audience engaged throughout.',
-                videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-woman-studying-at-home-4703-large.mp4'
-            }
-        ];
-
-        const svcMorphSelectors = document.querySelectorAll('.svc-morph-selector-card');
-        const svcMorphContent = document.getElementById('svcMorphContent');
-        const svcMorphDisplay = document.getElementById('svcMorphDisplay');
-        const svcMorphIndicators = document.querySelectorAll('.svc-morph-dot');
-        const svcMorphVideos = document.querySelectorAll('.svc-morph-video-bg');
-
-        function svcMorphToService(index) {
-            const service = svcMorphServices[index];
-            
-            svcMorphDisplay.classList.add('svc-morph-animating');
-            
-            svcMorphVideos.forEach((video, i) => {
-                if (i === index) {
-                    video.classList.add('svc-morph-active');
-                    video.play().catch(e => console.log('Video play error:', e));
-                } else {
-                    video.classList.remove('svc-morph-active');
-                    video.pause();
-                }
-            });
-            
-            setTimeout(() => {
-                svcMorphContent.innerHTML = `
-                    <div class="svc-morph-icon-display">${service.icon}</div>
-                    <h3 class="svc-morph-title-main">${service.title}</h3>
-                    <div class="svc-morph-meta-grid">
-                        <div class="svc-morph-meta-item">
-                            <div class="svc-morph-meta-label">Best For</div>
-                            <div class="svc-morph-meta-value">${service.bestFor}</div>
-                        </div>
-                        <div class="svc-morph-meta-item">
-                            <div class="svc-morph-meta-label">Timeline</div>
-                            <div class="svc-morph-meta-value">${service.timeline}</div>
-                        </div>
-                    </div>
-                    <p class="svc-morph-description-text">${service.description}</p>
-                `;
-            }, 200);
-            
-            setTimeout(() => {
-                svcMorphDisplay.classList.remove('svc-morph-animating');
-            }, 800);
-            
-            svcMorphSelectors.forEach((sel, i) => {
-                sel.classList.toggle('svc-morph-active', i === index);
-            });
-            
-            svcMorphIndicators.forEach((ind, i) => {
-                ind.classList.toggle('svc-morph-active', i === index);
-            });
-        }
-
-        svcMorphSelectors.forEach((selector, index) => {
-            selector.addEventListener('click', () => {
-                svcMorphToService(index);
-            });
-        });
-
-        window.addEventListener('load', () => {
-            const firstVideo = document.getElementById('svcMorphVideo0');
-            if (firstVideo) {
-                firstVideo.play().catch(e => console.log('Initial video autoplay prevented:', e));
-            }
-        });
-
-        let svcMorphCurrentIndex = 0;
-        setInterval(() => {
-            svcMorphCurrentIndex = (svcMorphCurrentIndex + 1) % svcMorphServices.length;
-            svcMorphToService(svcMorphCurrentIndex);
-        }, 5000);
-    </script>
 </body>
 </html>
