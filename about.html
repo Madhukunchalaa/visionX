@@ -734,6 +734,187 @@
                 margin-bottom: 2rem;
             }
         }
+         .combined-section {
+            background: linear-gradient(to bottom, #000 0%, #000 50%, #fff 50%, #fff 100%);
+            padding: 60px 20px;
+        }
+
+        .combined-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .challenge-row,
+        .innovation-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 60px;
+        }
+
+        .innovation-row {
+            margin-bottom: 0;
+        }
+
+        .challenge-content,
+        .innovation-content {
+            padding: 40px;
+        }
+
+        .challenge-content {
+            order: 1;
+        }
+
+        .innovation-content {
+            order: 2;
+        }
+
+        .challenge-video-wrapper,
+        .innovation-video-wrapper {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(255, 255, 255, 0.1);
+        }
+
+        .innovation-video-wrapper {
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            order: 1;
+        }
+
+        .challenge-video-wrapper {
+            order: 2;
+        }
+
+        .challenge-video-wrapper::before,
+        .innovation-video-wrapper::before {
+            content: '';
+            display: block;
+            padding-top: 56.25%; /* 16:9 aspect ratio */
+        }
+
+        .challenge-video-wrapper video,
+        .innovation-video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .challenge-content h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .challenge-content p {
+            font-size: 1.5rem;
+            color: #ccc;
+            line-height: 1.8;
+        }
+
+        .innovation-content h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .innovation-content p {
+            font-size: 1.25rem;
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .innovation-highlight {
+            margin-top: 32px;
+            padding: 24px;
+            background: #000;
+            border-radius: 12px;
+        }
+
+        .innovation-highlight p {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #fff;
+            margin: 0;
+        }
+
+        @media (max-width: 968px) {
+            .challenge-row,
+            .innovation-row {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .challenge-content,
+            .innovation-content,
+            .challenge-video-wrapper,
+            .innovation-video-wrapper {
+                order: unset;
+            }
+
+            .challenge-content h2,
+            .innovation-content h2 {
+                font-size: 2.5rem;
+            }
+
+            .challenge-content p {
+                font-size: 1.25rem;
+            }
+
+            .innovation-content p {
+                font-size: 1.1rem;
+            }
+
+            .innovation-highlight p {
+                font-size: 1.25rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .combined-section {
+                padding: 40px 20px;
+            }
+
+            .challenge-row,
+            .innovation-row {
+                margin-bottom: 40px;
+            }
+
+            .innovation-row {
+                margin-bottom: 0;
+            }
+
+            .challenge-content,
+            .innovation-content {
+                padding: 20px;
+            }
+
+            .challenge-content h2,
+            .innovation-content h2 {
+                font-size: 2rem;
+            }
+
+            .challenge-content p {
+                font-size: 1.1rem;
+            }
+
+            .innovation-content p {
+                font-size: 1rem;
+            }
+
+            .innovation-highlight p {
+                font-size: 1.1rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -783,31 +964,37 @@
     </section>
 
     <!-- SECTION 2: PROBLEM -->
-    <section class="problem-section">
-        <div class="container">
-            <div class="row g-4">
-                <div class="col-md-6">
-                    <div class="problem-card animate-on-scroll">
-                        <!-- Replace with your stressed entrepreneur image -->
-                        <img src="assets/images/problem-stressed.jpg" alt="Frustrated entrepreneur">
-                        <div class="problem-card-overlay">
-                            <p>The Reality</p>
-                        </div>
-                    </div>
+      <section class="combined-section">
+        <div class="combined-container">
+            <!-- THE PROBLEM -->
+            <div class="challenge-row">
+                <div class="challenge-content">
+                    <h2>Traditional agencies price out most businesses.</h2>
+                    <p>We've been there. So we built something different.</p>
                 </div>
-                <div class="col-md-6">
-                    <div class="problem-card animate-on-scroll">
-                        <!-- Replace with your invoice image -->
-                        <img src="assets/images//problem-invoice.jpg" alt="Expensive agency invoice">
-                        <div class="problem-card-overlay">
-                            <p>The Cost</p>
-                        </div>
-                    </div>
+                <div class="challenge-video-wrapper">
+                    <video autoplay loop muted playsinline>
+                        <source src="https://example.com/videos/problem-stressed-entrepreneur.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                 </div>
             </div>
-            <div class="problem-text animate-on-scroll">
-                <h2>Traditional agencies price out most businesses.</h2>
-                <p>We've been there. So we built something different.</p>
+
+            <!-- THE SOLUTION -->
+            <div class="innovation-row">
+                <div class="innovation-video-wrapper">
+                    <video autoplay loop muted playsinline>
+                        <source src="https://example.com/videos/solution-ai-human-collaboration.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <div class="innovation-content">
+                    <h2>AI speed. Human creativity.</h2>
+                    <p>We use cutting-edge AI to handle the heavy lifting. Our team handles everything that actually matters—your story, your brand, your message.</p>
+                    <div class="innovation-highlight">
+                        <p>The result? 60-90% cheaper. 10x faster. Same quality.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -845,7 +1032,7 @@
         <div class="container">
             <div class="industry-header animate-on-scroll">
                 <h2>Made for businesses like yours.</h2>
-                <p>E-commerce • SaaS • Healthcare • Education • Hospitality • Real Estate</p>
+              
             </div>
             <div class="row g-3">
                 <div class="col-6 col-md-4">

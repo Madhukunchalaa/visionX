@@ -13,6 +13,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap Icons (needed for the bi bi-list icon) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/styles.css">
     
     <style>
         /* ===== RESET & BASE STYLES ===== */
@@ -27,7 +30,6 @@
             --color-black: #000000;
             --color-gray-light: #F5F5F5;
             --color-gray-mid: #808080;
-            --color-gray-dark: #1a1a1a;
             --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
@@ -735,15 +737,47 @@
     </style>
 </head>
 <body>
+    <!-- Navbar (copied from index.html for consistent behavior) -->
+    <nav id="navbar" class="navbar navbar-light fixed-top">
+        <div class="container d-flex justify-content-between align-items-center py-2">
+            <!-- Logo -->
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="assets/images/studioXlogo.png" alt="StudioX Logo" height="60">
+            </a>
+
+        <div class="d-flex gap-3">
+            <div class="dropdown">
+            <a href="#" class="text-dark fs-3" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-list" style="color: white;"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end shadow">
+                <li><a class="dropdown-item" href="index.html">Home</a></li>
+                <li><a class="dropdown-item" href="about.html">About</a></li>
+                <li><a class="dropdown-item" href="service.html">Services</a></li>
+                <li><a class="dropdown-item" href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+             <a href="contact.html" class="btn btn-primary rounded-pill px-4 py-2 fw-semibold">
+                Get in Touch →
+            </a>
+     
+
+        </div>
+            <!-- Get in Touch Button -->
+     
+      
+        </div>
+    </nav>
 
     <!-- SECTION 1: HERO -->
     <section class="hero-section">
-        <img src="src/assets/hero-bg.jpg" alt="Studio X Hero Background" class="hero-bg">
+        <!-- Replace with your hero background image -->
+        <img src="assets/images/hero-bg.jpg" alt="Studio X Hero Background" class="hero-bg">
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1 class="animate-on-scroll">Big agency quality.<br>Small business prices.</h1>
             <p class="animate-on-scroll">We create professional video content in days, not months.</p>
-            <a href="#contact" class="btn-hero animate-on-scroll">Book Free Consultation</a>
+            <a href="contact.html" class="btn-hero animate-on-scroll">Book Free Consultation</a>
         </div>
         <div class="scroll-indicator"></div>
     </section>
@@ -754,7 +788,8 @@
             <div class="row g-4">
                 <div class="col-md-6">
                     <div class="problem-card animate-on-scroll">
-                        <img src="src/assets/problem-stressed.jpg" alt="Frustrated entrepreneur">
+                        <!-- Replace with your stressed entrepreneur image -->
+                        <img src="assets/images/problem-stressed.jpg" alt="Frustrated entrepreneur">
                         <div class="problem-card-overlay">
                             <p>The Reality</p>
                         </div>
@@ -762,7 +797,8 @@
                 </div>
                 <div class="col-md-6">
                     <div class="problem-card animate-on-scroll">
-                        <img src="src/assets/problem-invoice.jpg" alt="Expensive agency invoice">
+                        <!-- Replace with your invoice image -->
+                        <img src="assets/images//problem-invoice.jpg" alt="Expensive agency invoice">
                         <div class="problem-card-overlay">
                             <p>The Cost</p>
                         </div>
@@ -814,7 +850,7 @@
             <div class="row g-3">
                 <div class="col-6 col-md-4">
                     <div class="industry-card animate-on-scroll">
-                        <img src="src/assets/industry-ecommerce.jpg" alt="E-commerce video production">
+                        <img src="assets/images/industry-ecommerce.jpg" alt="E-commerce video production">
                         <div class="industry-card-overlay">
                             <h3>E-commerce</h3>
                         </div>
@@ -822,7 +858,7 @@
                 </div>
                 <div class="col-6 col-md-4">
                     <div class="industry-card animate-on-scroll">
-                        <img src="src/assets/industry-saas.jpg" alt="SaaS video production">
+                        <img src="assets/images/industry-saas.jpg" alt="SaaS video production">
                         <div class="industry-card-overlay">
                             <h3>SaaS</h3>
                         </div>
@@ -830,7 +866,7 @@
                 </div>
                 <div class="col-6 col-md-4">
                     <div class="industry-card animate-on-scroll">
-                        <img src="src/assets/industry-healthcare.jpg" alt="Healthcare video production">
+                        <img src="assets/images/industry-healthcare.jpg" alt="Healthcare video production">
                         <div class="industry-card-overlay">
                             <h3>Healthcare</h3>
                         </div>
@@ -838,7 +874,7 @@
                 </div>
                 <div class="col-6 col-md-4">
                     <div class="industry-card animate-on-scroll">
-                        <img src="src/assets/industry-education.jpg" alt="Education video production">
+                        <img src="assets/images/industry-education.jpg" alt="Education video production">
                         <div class="industry-card-overlay">
                             <h3>Education</h3>
                         </div>
@@ -846,7 +882,7 @@
                 </div>
                 <div class="col-6 col-md-4">
                     <div class="industry-card animate-on-scroll">
-                        <img src="src/assets/industry-hospitality.jpg" alt="Hospitality video production">
+                        <img src="assets/images/industry-hospitality.jpg" alt="Hospitality video production">
                         <div class="industry-card-overlay">
                             <h3>Hospitality</h3>
                         </div>
@@ -854,7 +890,7 @@
                 </div>
                 <div class="col-6 col-md-4">
                     <div class="industry-card animate-on-scroll">
-                        <img src="src/assets/industry-realestate.jpg" alt="Real Estate video production">
+                        <img src="assets/images/industry-realestate.jpg" alt="Real Estate video production">
                         <div class="industry-card-overlay">
                             <h3>Real Estate</h3>
                         </div>
@@ -983,7 +1019,8 @@
     <section class="team-section">
         <div class="container">
             <div class="team-image-wrapper animate-on-scroll">
-                <img src="src/assets/team-workspace.jpg" alt="Studio X creative team workspace">
+                <!-- Replace with your team workspace image -->
+                <img src="assets/images/team-workspace.jpg" alt="Studio X creative team workspace">
                 <div class="team-image-overlay">
                     <h2>We're video people who get it.</h2>
                 </div>
@@ -1041,7 +1078,8 @@
 
     <!-- SECTION 9: FINAL CTA -->
     <section class="cta-section" id="contact">
-        <img src="src/assets/cta-success.jpg" alt="Successful business owner celebrating" class="cta-bg">
+        <!-- Replace with your success image -->
+        <img src="assets/images/cta-success.jpg" alt="Successful business owner celebrating" class="cta-bg">
         <div class="cta-overlay"></div>
         <div class="cta-content">
             <h2>Ready to look like you have a bigger budget?</h2>
@@ -1055,6 +1093,7 @@
 
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/main.js"></script>
 
     <!-- Scroll Animation Script -->
     <script>

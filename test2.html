@@ -3,191 +3,237 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Professional Approach</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Problem & Solution Sections</title>
     <style>
-        .professional-approach-section {
-            background-color: #f5f5f5;
-            padding: 80px 0;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        .section-heading-main {
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: #2d2d2d;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        .section-description-text {
-            color: #6c6c6c;
-            font-size: 1.1rem;
-            text-align: center;
-            max-width: 800px;
-            margin: 0 auto 60px;
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
             line-height: 1.6;
+            color: #000;
         }
 
-        .approach-feature-card {
-            background-color: white;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            padding: 40px 30px;
-            height: 100%;
-            transition: all 0.4s ease;
+        .combined-section {
+            background: linear-gradient(to bottom, #000 0%, #000 50%, #fff 50%, #fff 100%);
+            padding: 60px 20px;
         }
 
-        .approach-feature-card:hover {
-            background-color: #000000;
-            border-color: #000000;
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        .combined-container {
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
-        .feature-card-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #2d2d2d;
-            margin-bottom: 30px;
-            transition: color 0.4s ease;
-        }
-
-        .approach-feature-card:hover .feature-card-title {
-            color: #ffffff;
-        }
-
-        .feature-icon-wrapper {
-            width: 80px;
-            height: 80px;
-            margin: 0 auto 30px;
-            display: flex;
+        .challenge-row,
+        .innovation-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
             align-items: center;
-            justify-content: center;
+            margin-bottom: 60px;
         }
 
-        .feature-icon-wrapper img {
+        .innovation-row {
+            margin-bottom: 0;
+        }
+
+        .challenge-content,
+        .innovation-content {
+            padding: 40px;
+        }
+
+        .challenge-content {
+            order: 1;
+        }
+
+        .innovation-content {
+            order: 2;
+        }
+
+        .challenge-video-wrapper,
+        .innovation-video-wrapper {
+            position: relative;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(255, 255, 255, 0.1);
+        }
+
+        .innovation-video-wrapper {
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+            order: 1;
+        }
+
+        .challenge-video-wrapper {
+            order: 2;
+        }
+
+        .challenge-video-wrapper::before,
+        .innovation-video-wrapper::before {
+            content: '';
+            display: block;
+            padding-top: 56.25%; /* 16:9 aspect ratio */
+        }
+
+        .challenge-video-wrapper video,
+        .innovation-video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
-            object-fit: contain;
-            filter: brightness(0) saturate(100%);
-            transition: filter 0.4s ease;
+            object-fit: cover;
         }
 
-        .approach-feature-card:hover .feature-icon-wrapper img {
-            filter: brightness(0) saturate(100%) invert(1);
+        .challenge-content h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 24px;
+            line-height: 1.2;
         }
 
-        .feature-description-text {
-            color: #6c6c6c;
-            font-size: 1rem;
-            line-height: 1.7;
-            text-align: center;
-            transition: color 0.4s ease;
+        .challenge-content p {
+            font-size: 1.5rem;
+            color: #ccc;
+            line-height: 1.8;
         }
 
-        .approach-feature-card:hover .feature-description-text {
-            color: #d0d0d0;
+        .innovation-content h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 24px;
+            line-height: 1.2;
         }
 
-        .approach-card-column {
-            margin-bottom: 30px;
+        .innovation-content p {
+            font-size: 1.25rem;
+            color: #333;
+            line-height: 1.8;
+            margin-bottom: 16px;
         }
 
-        @media (max-width: 768px) {
-            .section-heading-main {
+        .innovation-highlight {
+            margin-top: 32px;
+            padding: 24px;
+            background: #000;
+            border-radius: 12px;
+        }
+
+        .innovation-highlight p {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #fff;
+            margin: 0;
+        }
+
+        @media (max-width: 968px) {
+            .challenge-row,
+            .innovation-row {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .challenge-content,
+            .innovation-content,
+            .challenge-video-wrapper,
+            .innovation-video-wrapper {
+                order: unset;
+            }
+
+            .challenge-content h2,
+            .innovation-content h2 {
+                font-size: 2.5rem;
+            }
+
+            .challenge-content p {
+                font-size: 1.25rem;
+            }
+
+            .innovation-content p {
+                font-size: 1.1rem;
+            }
+
+            .innovation-highlight p {
+                font-size: 1.25rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .combined-section {
+                padding: 40px 20px;
+            }
+
+            .challenge-row,
+            .innovation-row {
+                margin-bottom: 40px;
+            }
+
+            .innovation-row {
+                margin-bottom: 0;
+            }
+
+            .challenge-content,
+            .innovation-content {
+                padding: 20px;
+            }
+
+            .challenge-content h2,
+            .innovation-content h2 {
                 font-size: 2rem;
             }
-            
-            .approach-feature-card {
-                padding: 30px 20px;
+
+            .challenge-content p {
+                font-size: 1.1rem;
+            }
+
+            .innovation-content p {
+                font-size: 1rem;
+            }
+
+            .innovation-highlight p {
+                font-size: 1.1rem;
             }
         }
     </style>
 </head>
 <body>
-    <section class="professional-approach-section">
-        <div class="container">
-            <h2 class="section-heading-main">Our Professional Approach</h2>
-            <p class="section-description-text">
-                We help brands and businesses bring their stories to life. With over 12 years of expertise, 
-                we create engaging Brand Films that are remembered by the audience for a long time.
-            </p>
-
-            <div class="row">
-                <div class="col-lg-3 col-md-6 approach-card-column">
-                    <div class="approach-feature-card creative-innovation-card">
-                        <h3 class="feature-card-title">Creative Innovation</h3>
-                        <div class="feature-icon-wrapper">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="currentColor">
-                                <path d="M32 8c-6.627 0-12 5.373-12 12 0 4.418 2.394 8.275 5.953 10.35-1.282 2.073-2.083 4.503-2.29 7.15H20v4h3.663c.518 4.686 3.156 8.686 6.837 11.062V56h3v-3.438c3.681-2.376 6.319-6.376 6.837-11.062H44v-4h-3.663c-.207-2.647-1.008-5.077-2.29-7.15C41.606 28.275 44 24.418 44 20c0-6.627-5.373-12-12-12zm0 4c4.418 0 8 3.582 8 8s-3.582 8-8 8-8-3.582-8-8 3.582-8 8-8zm-6 26h12v2H26v-2z"/>
-                                <circle cx="28" cy="18" r="2"/>
-                                <circle cx="36" cy="18" r="2"/>
-                                <path d="M30 22l2 3 2-3z"/>
-                            </svg>
-                        </div>
-                        <p class="feature-description-text">
-                            We continuously innovate with new concepts, cutting-edge technologies, and creative 
-                            storytelling to craft videos that are always dynamic and captivating.
-                        </p>
-                    </div>
+    <section class="combined-section">
+        <div class="combined-container">
+            <!-- THE PROBLEM -->
+            <div class="challenge-row">
+                <div class="challenge-content">
+                    <h2>Traditional agencies price out most businesses.</h2>
+                    <p>We've been there. So we built something different.</p>
                 </div>
-
-                <div class="col-lg-3 col-md-6 approach-card-column">
-                    <div class="approach-feature-card ownership-excellence-card">
-                        <h3 class="feature-card-title">Ownership</h3>
-                        <div class="feature-icon-wrapper">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="currentColor">
-                                <path d="M12 8v48h40V8H12zm36 44H16V12h32v40z"/>
-                                <path d="M20 16h24v4H20zM20 24h24v4H20zM20 32h24v4H20zM20 40h16v4H20z"/>
-                                <path d="M46 16l4 4-4 4zM46 24l4 4-4 4zM46 32l4 4-4 4z"/>
-                            </svg>
-                        </div>
-                        <p class="feature-description-text">
-                            Our team takes full ownership of every project, at every stage, from concept to delivery; 
-                            guaranteeing optimum resource and time management while delivering high-quality outputs.
-                        </p>
-                    </div>
+                <div class="challenge-video-wrapper">
+                    <video autoplay loop muted playsinline>
+                        <source src="https://example.com/videos/problem-stressed-entrepreneur.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                 </div>
+            </div>
 
-                <div class="col-lg-3 col-md-6 approach-card-column">
-                    <div class="approach-feature-card industry-expertise-card">
-                        <h3 class="feature-card-title">Multi-Industry Experience</h3>
-                        <div class="feature-icon-wrapper">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="currentColor">
-                                <path d="M32 8L8 20v24l24 12 24-12V20L32 8zm0 6.5l18 9v18l-18 9-18-9v-18l18-9z"/>
-                                <path d="M32 20c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm0 4c4.418 0 8 3.582 8 8s-3.582 8-8 8-8-3.582-8-8 3.582-8 8-8z"/>
-                                <path d="M28 28h8v8h-8z"/>
-                            </svg>
-                        </div>
-                        <p class="feature-description-text">
-                            Our diverse industry experience equips us with the expertise to handle any creative video brief, 
-                            delivering tailored, impactful content—no matter the sector or audience.
-                        </p>
-                    </div>
+            <!-- THE SOLUTION -->
+            <div class="innovation-row">
+                <div class="innovation-video-wrapper">
+                    <video autoplay loop muted playsinline>
+                        <source src="https://example.com/videos/solution-ai-human-collaboration.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
                 </div>
-
-                <div class="col-lg-3 col-md-6 approach-card-column">
-                    <div class="approach-feature-card premium-tools-card">
-                        <h3 class="feature-card-title">Tools & Subscriptions</h3>
-                        <div class="feature-icon-wrapper">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="currentColor">
-                                <rect x="12" y="8" width="40" height="48" rx="2" fill="none" stroke="currentColor" stroke-width="3"/>
-                                <rect x="18" y="14" width="28" height="20" rx="1"/>
-                                <rect x="18" y="38" width="12" height="12" rx="1"/>
-                                <rect x="34" y="38" width="12" height="12" rx="1"/>
-                                <path d="M48 52h8v8h-8z" opacity="0.5"/>
-                            </svg>
-                        </div>
-                        <p class="feature-description-text">
-                            We leverage advanced software and premium design subscriptions to deliver polished, 
-                            outstanding quality visual & audio outputs.
-                        </p>
+                <div class="innovation-content">
+                    <h2>AI speed. Human creativity.</h2>
+                    <p>We use cutting-edge AI to handle the heavy lifting. Our team handles everything that actually matters—your story, your brand, your message.</p>
+                    <div class="innovation-highlight">
+                        <p>The result? 60-90% cheaper. 10x faster. Same quality.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
