@@ -664,7 +664,7 @@ body{
 .gallery > img {
   width: 0;
   height: 0;
-  min-height: 79%;
+  min-height: 100%;
   min-width: 100%;
   object-fit: cover;
   cursor: pointer;
