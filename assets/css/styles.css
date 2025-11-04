@@ -664,7 +664,7 @@ body{
 .gallery > img {
   width: 0;
   height: 0;
-  min-height: 100%;
+  min-height: 79%;
   min-width: 100%;
   object-fit: cover;
   cursor: pointer;
@@ -2258,6 +2258,7 @@ body{
             margin-bottom: 20px;
             text-transform: uppercase;
             letter-spacing: 2px;
+            color: white;
         }
 
         .services-hero-zone p {
@@ -2308,6 +2309,7 @@ body{
             z-index: 2;
             width: 50%;
             padding: 80px 60px;
+            color: white;
         }
 
         .brand-story-panel h2 {
@@ -2553,6 +2555,7 @@ body{
             font-size: 1.05rem;
             display: flex;
             align-items: center;
+            color: white;
         }
 
         .tech-specs-list li::before {
@@ -2590,6 +2593,7 @@ body{
         .avatar-timeline-text {
             font-size: 1.2rem;
             font-weight: 700;
+            color: white;
         }
 
         .avatar-action-btn {
@@ -2626,6 +2630,7 @@ body{
             font-weight: 900;
             line-height: 0.9;
             margin-bottom: 30px;
+            color: white;
         }
 
         .learning-content-column .magazine-subtitle {
@@ -2663,6 +2668,7 @@ body{
             font-size: 1.2rem;
             margin: 0;
             font-weight: 700;
+             color: white;
         }
 
         .learning-cta-box {
@@ -2728,6 +2734,7 @@ body{
             font-weight: 700;
             margin-bottom: 15px;
             text-transform: uppercase;
+            color: white;
         }
 
         .comparison-header p {
@@ -2811,6 +2818,7 @@ body{
             font-weight: 700;
             margin-bottom: 15px;
             text-transform: uppercase;
+            color: white;
         }
 
         .custom-header-zone p {
@@ -2849,6 +2857,7 @@ body{
             font-size: 1.3rem;
             font-weight: 600;
             margin-bottom: 12px;
+            color: white;
         }
 
         .custom-service-card p {
