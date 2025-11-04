@@ -218,53 +218,74 @@
     </section>
 
     <!-- Comparison Table -->
-    <section class="s">
-        <div class="container">
-            <div class="comparison-header">
+    <section class="svc-morph-matrix-wrapper">
+        <div class="svc-morph-container-main">
+            <div class="svc-morph-header-section">
                 <h2>Not Sure Which Service You Need?</h2>
-                <p>Here's a quick comparison to help you decide</p>
+                <p>Select a service to explore the details</p>
             </div>
 
-            <div class="comparison-table-wrapper">
-                <table class="table table-dark table-hover mb-0">
-                    <thead>
-                        <tr>
-                            <th>Service</th>
-                            <th>Best For</th>
-                            <th>Timeline</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Brand Videos</strong></td>
-                            <td>Marketing campaigns</td>
-                            <td>3-5 days</td>
-                        </tr>
-                        <tr>
-                            <td><strong>YouTube Content</strong></td>
-                            <td>Channel growth</td>
-                            <td>3-4 days</td>
-                        </tr>
-                        <tr>
-                            <td><strong>AI Avatars</strong></td>
-                            <td>Scale & localization</td>
-                            <td>2-3 days</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Learning Videos</strong></td>
-                            <td>Education & training</td>
-                            <td>4-6 days</td>
-                        </tr>
-                    </tbody>
-                </table>
+            <div class="svc-morph-grid-layout">
+                <div class="svc-morph-selector-column">
+                    <div class="svc-morph-selector-card svc-morph-active" data-service="0">
+                        <div class="svc-morph-selector-number">01</div>
+                        <div class="svc-morph-selector-label">Brand Videos</div>
+                    </div>
+                    <div class="svc-morph-selector-card" data-service="1">
+                        <div class="svc-morph-selector-number">02</div>
+                        <div class="svc-morph-selector-label">YouTube Content</div>
+                    </div>
+                    <div class="svc-morph-selector-card" data-service="2">
+                        <div class="svc-morph-selector-number">03</div>
+                        <div class="svc-morph-selector-label">AI Avatars</div>
+                    </div>
+                    <div class="svc-morph-selector-card" data-service="3">
+                        <div class="svc-morph-selector-number">04</div>
+                        <div class="svc-morph-selector-label">Learning Videos</div>
+                    </div>
+                </div>
+
+                <div class="svc-morph-display-panel" id="svcMorphDisplay">
+                    <video class="svc-morph-video-bg svc-morph-active" muted loop playsinline id="svcMorphVideo0" src="assets/videos/brand.mp4"></video>
+                    <video class="svc-morph-video-bg" muted loop playsinline id="svcMorphVideo1" src="assets/videos/yt.mp4"></video>
+                    <video class="svc-morph-video-bg" muted loop playsinline id="svcMorphVideo2" src="assets/videos/avathar.mp4"></video>
+                    <video class="svc-morph-video-bg" muted loop playsinline id="svcMorphVideo3" src="assets/videos/learning.mp4"></video>
+                    <div class="svc-morph-video-overlay"></div>
+                    
+                    <div class="svc-morph-content-inner" id="svcMorphContent">
+                        <!-- <div class="svc-morph-icon-display">🎬</div> -->
+                        <h3 class="svc-morph-title-main">Brand Videos</h3>
+                        <div class="svc-morph-meta-grid">
+                            <div class="svc-morph-meta-item">
+                                <div class="svc-morph-meta-label">Best For</div>
+                                <div class="svc-morph-meta-value">Marketing campaigns</div>
+                            </div>
+                            <div class="svc-morph-meta-item">
+                                <div class="svc-morph-meta-label">Timeline</div>
+                                <div class="svc-morph-meta-value">3-5 days</div>
+                            </div>
+                        </div>
+                        <p class="svc-morph-description-text">
+                            Create stunning promotional videos that capture your brand essence and drive engagement across all marketing channels.
+                        </p>
+                    </div>
+                    <div class="svc-morph-indicator-dots">
+                        <div class="svc-morph-dot svc-morph-active"></div>
+                        <div class="svc-morph-dot"></div>
+                        <div class="svc-morph-dot"></div>
+                        <div class="svc-morph-dot"></div>
+                    </div>
+                </div>
             </div>
 
-            <div class="consultation-cta">
-                <p style="color: #888; margin-bottom: 20px;">Not sure? Book a free consultation and we'll help you figure it out.</p>
-                <a href="contact.html">Book Free Call</a>
+            <div class="svc-morph-cta-section">
+                <h3>Still Not Sure?</h3>
+                <p>Book a free consultation and we'll help you figure it out.</p>
+                <a href="#contact">Book Free Call</a>
             </div>
         </div>
     </section>
+
 
     <!-- Custom Solutions -->
     <section class="custom-solutions-hub">
@@ -339,6 +360,113 @@
             .then(data => document.getElementById('footer-placeholder').innerHTML = data);
 
        
+    </script>
+        <script>
+        const svcMorphServices = [
+            {
+                icon: '🎬',
+                title: 'Brand Videos',
+                bestFor: 'Marketing campaigns',
+                timeline: '3-5 days',
+                description: 'Create stunning promotional videos that capture your brand essence and drive engagement across all marketing channels.',
+                videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-a-glowing-cube-1019-large.mp4'
+            },
+            {
+               
+                title: 'YouTube Content',
+                bestFor: 'Channel growth',
+                timeline: '3-4 days',
+                description: 'Professional video production optimized for YouTube algorithm success, helping you grow your subscriber base and engagement.',
+                videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-young-woman-vlogging-4703-large.mp4'
+            },
+            {
+               
+                title: 'AI Avatars',
+                bestFor: 'Scale & localization',
+                timeline: '2-3 days',
+                description: 'Leverage AI-powered avatars to create personalized, multilingual content at scale without traditional production overhead.',
+                videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-ai-technology-hologram-43544-large.mp4'
+            },
+            {
+                
+                title: 'Learning Videos',
+                bestFor: 'Education & training',
+                timeline: '4-6 days',
+                description: 'Develop comprehensive educational content that enhances learning outcomes and keeps your audience engaged throughout.',
+                videoUrl: 'https://assets.mixkit.co/videos/preview/mixkit-woman-studying-at-home-4703-large.mp4'
+            }
+        ];
+
+        const svcMorphSelectors = document.querySelectorAll('.svc-morph-selector-card');
+        const svcMorphContent = document.getElementById('svcMorphContent');
+        const svcMorphDisplay = document.getElementById('svcMorphDisplay');
+        const svcMorphIndicators = document.querySelectorAll('.svc-morph-dot');
+        const svcMorphVideos = document.querySelectorAll('.svc-morph-video-bg');
+
+        function svcMorphToService(index) {
+            const service = svcMorphServices[index];
+            
+            svcMorphDisplay.classList.add('svc-morph-animating');
+            
+            svcMorphVideos.forEach((video, i) => {
+                if (i === index) {
+                    video.classList.add('svc-morph-active');
+                    video.play().catch(e => console.log('Video play error:', e));
+                } else {
+                    video.classList.remove('svc-morph-active');
+                    video.pause();
+                }
+            });
+            
+            setTimeout(() => {
+                svcMorphContent.innerHTML = `
+                    
+                    <h3 class="svc-morph-title-main">${service.title}</h3>
+                    <div class="svc-morph-meta-grid">
+                        <div class="svc-morph-meta-item">
+                            <div class="svc-morph-meta-label">Best For</div>
+                            <div class="svc-morph-meta-value">${service.bestFor}</div>
+                        </div>
+                        <div class="svc-morph-meta-item">
+                            <div class="svc-morph-meta-label">Timeline</div>
+                            <div class="svc-morph-meta-value">${service.timeline}</div>
+                        </div>
+                    </div>
+                    <p class="svc-morph-description-text">${service.description}</p>
+                `;
+            }, 200);
+            
+            setTimeout(() => {
+                svcMorphDisplay.classList.remove('svc-morph-animating');
+            }, 800);
+            
+            svcMorphSelectors.forEach((sel, i) => {
+                sel.classList.toggle('svc-morph-active', i === index);
+            });
+            
+            svcMorphIndicators.forEach((ind, i) => {
+                ind.classList.toggle('svc-morph-active', i === index);
+            });
+        }
+
+        svcMorphSelectors.forEach((selector, index) => {
+            selector.addEventListener('click', () => {
+                svcMorphToService(index);
+            });
+        });
+
+        window.addEventListener('load', () => {
+            const firstVideo = document.getElementById('svcMorphVideo0');
+            if (firstVideo) {
+                firstVideo.play().catch(e => console.log('Initial video autoplay prevented:', e));
+            }
+        });
+
+        let svcMorphCurrentIndex = 0;
+        setInterval(() => {
+            svcMorphCurrentIndex = (svcMorphCurrentIndex + 1) % svcMorphServices.length;
+            svcMorphToService(svcMorphCurrentIndex);
+        }, 5000);
     </script>
 </body>
 </html>
