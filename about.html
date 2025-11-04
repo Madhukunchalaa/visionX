@@ -915,6 +915,49 @@
                 font-size: 1.1rem;
             }
         }
+        .solution-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.video-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.video-background video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Adjust opacity as needed */
+    z-index: 1;
+}
+
+.solution-section .container {
+    position: relative;
+    z-index: 2;
+}
+.benefits-section {
+    position: relative;
+    overflow: hidden;
+}
+
+.benefits-section .container {
+    position: relative;
+    z-index: 2;
+}
     </style>
 </head>
 <body>
@@ -964,69 +1007,86 @@
     </section>
 
     <!-- SECTION 2: PROBLEM -->
-      <section class="combined-section">
-        <div class="combined-container">
-            <!-- THE PROBLEM -->
-            <div class="challenge-row">
-                <div class="challenge-content">
-                    <h2>Traditional agencies price out most businesses.</h2>
-                    <p>We've been there. So we built something different.</p>
-                </div>
-                <div class="challenge-video-wrapper">
-                    <video autoplay loop muted playsinline>
-                        <source src="https://example.com/videos/problem-stressed-entrepreneur.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-            </div>
-
-            <!-- THE SOLUTION -->
-            <div class="innovation-row">
-                <div class="innovation-video-wrapper">
-                    <video autoplay loop muted playsinline>
-                        <source src="https://example.com/videos/solution-ai-human-collaboration.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-                </div>
-                <div class="innovation-content">
-                    <h2>AI speed. Human creativity.</h2>
-                    <p>We use cutting-edge AI to handle the heavy lifting. Our team handles everything that actually matters—your story, your brand, your message.</p>
-                    <div class="innovation-highlight">
-                        <p>The result? 60-90% cheaper. 10x faster. Same quality.</p>
-                    </div>
-                </div>
-            </div>
+   <section class="story-section bg-black text-white py-5">
+  <div class="container">
+    <!-- Row 1: Video Left + Problem Right -->
+    <div class="row align-items-center mb-5">
+      <!-- Video Left -->
+      <div class="col-md-6 mb-4 mb-md-0">
+        <div class="video-placeholder bg-dark d-flex justify-content-center align-items-center">
+          <video autoplay muted loop playsinline class="w-100 h-100 object-fit-cover rounded">
+            <source src="assets/videos/problem.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
         </div>
-    </section>
+      </div>
+      <!-- Problem Content Right -->
+      <div class="col-md-6">
+        <h2 class="section-title mb-3">The Problem</h2>
+        <p class="section-text">
+          Traditional agencies price out most businesses. We've been there. So we built something different.
+        </p>
+      </div>
+    </div>
+
+    <!-- Row 2: Solution Left + Video Right -->
+    <div class="row align-items-center flex-md-row-reverse">
+      <!-- Video Right -->
+      <div class="col-md-6 mb-4 mb-md-0">
+        <div class="video-placeholder bg-dark d-flex justify-content-center align-items-center" style="aspect-ratio: 16 / 9; overflow: hidden; border-radius: 10px;">
+          <video autoplay muted loop playsinline class="w-100 h-100 object-fit-cover">
+            <source src="assets/videos/solution.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+      <!-- Solution Content Left -->
+      <div class="col-md-6">
+        <h2 class="section-title mb-3">The Solution</h2>
+        <p class="section-text">
+          <strong>AI Speed. Human Creativity.</strong> We use cutting-edge AI to handle the heavy lifting. Our team handles everything that actually matters—your story, your brand, your message. The result? Content delivered <strong>10x faster</strong> at a fraction of the cost. Same quality.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
 
     <!-- SECTION 3: SOLUTION -->
-    <section class="solution-section">
-        <div class="container">
-            <div class="solution-icons animate-on-scroll">
-                <div class="solution-icon">
-                    <div class="solution-icon-glow"></div>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                    </svg>
-                </div>
-                <div style="font-size: 4rem; font-weight: 700;">+</div>
-                <div class="solution-icon">
-                    <div class="solution-icon-glow"></div>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
-                    </svg>
-                </div>
+   <section class="solution-section">
+    <div class="video-background">
+        <video autoplay muted loop playsinline>
+            <source src="assets/videos/aivideo3.mp4" type="video/mp4">
+            <source src="your-video.webm" type="video/webm">
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+    
+    <div class="container">
+        <div class="solution-icons animate-on-scroll">
+            <div class="solution-icon">
+                <div class="solution-icon-glow"></div>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
             </div>
-            <div class="solution-text animate-on-scroll">
-                <h2>AI speed.<br>Human creativity.</h2>
-                <p>60–90% cheaper.</p>
-                <p>10x faster.</p>
-                <p class="bold">Same quality.</p>
+            <div style="font-size: 4rem; font-weight: 700;">+</div>
+            <div class="solution-icon">
+                <div class="solution-icon-glow"></div>
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                </svg>
             </div>
-            <div class="solution-divider animate-on-scroll"></div>
         </div>
-    </section>
-
+        <div class="solution-text animate-on-scroll">
+            <h2>AI speed.<br>Human creativity.</h2>
+            <p>60–90% cheaper.</p>
+            <p>10x faster.</p>
+            <p class="bold">Same quality.</p>
+        </div>
+        <div class="solution-divider animate-on-scroll"></div>
+    </div>
+</section>
     <!-- SECTION 4: INDUSTRIES -->
     <section class="industry-section">
         <div class="container">
@@ -1088,48 +1148,56 @@
     </section>
 
     <!-- SECTION 5: BENEFITS -->
-    <section class="benefits-section">
-        <div class="container">
-            <div class="benefits-header animate-on-scroll">
-                <h2>What you get.</h2>
+   <section class="benefits-section">
+    <div class="video-background">
+        <video autoplay muted loop playsinline>
+            <source src="assets/videos/ant.mp4" type="video/mp4">
+            <source src="your-video.webm" type="video/webm">
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+    
+    <div class="container">
+        <div class="benefits-header animate-on-scroll">
+            <h2>What you get.</h2>
+        </div>
+        <div class="row g-5">
+            <div class="col-md-4">
+                <div class="benefit-item animate-on-scroll">
+                    <div class="benefit-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <h3>Speed</h3>
+                    <p>Days, not months</p>
+                </div>
             </div>
-            <div class="row g-5">
-                <div class="col-md-4">
-                    <div class="benefit-item animate-on-scroll">
-                        <div class="benefit-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                            </svg>
-                        </div>
-                        <h3>Speed</h3>
-                        <p>Days, not months</p>
+            <div class="col-md-4">
+                <div class="benefit-item animate-on-scroll">
+                    <div class="benefit-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
                     </div>
+                    <h3>Cost</h3>
+                    <p>Startup prices, pro quality</p>
                 </div>
-                <div class="col-md-4">
-                    <div class="benefit-item animate-on-scroll">
-                        <div class="benefit-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>
-                        </div>
-                        <h3>Cost</h3>
-                        <p>Startup prices, pro quality</p>
+            </div>
+            <div class="col-md-4">
+                <div class="benefit-item animate-on-scroll">
+                    <div class="benefit-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                        </svg>
                     </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="benefit-item animate-on-scroll">
-                        <div class="benefit-icon">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
-                            </svg>
-                        </div>
-                        <h3>Results</h3>
-                        <p>Content that converts</p>
-                    </div>
+                    <h3>Results</h3>
+                    <p>Content that converts</p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- SECTION 6: COMPARISON -->
     <section class="comparison-section">
