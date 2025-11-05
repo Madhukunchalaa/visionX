@@ -958,6 +958,115 @@
     position: relative;
     z-index: 2;
 }
+
+
+
+.subtitle {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin-top: 0.5rem;
+    font-weight: 300;
+}
+
+.comparison-container {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 3rem;
+    margin-top: 4rem;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.comparison-side {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 3rem 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.comparison-side h3 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    text-align: center;
+    color: #fff;
+}
+
+.comparison-item {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.comparison-item:last-child {
+    margin-bottom: 0;
+}
+
+.comparison-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.comparison-icon svg {
+    width: 28px;
+    height: 28px;
+    color: #fff;
+}
+
+.comparison-value {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #fff;
+    margin: 0;
+}
+
+.comparison-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.comparison-divider span {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.studiox {
+    border-color: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 768px) {
+    .comparison-container {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    
+    .comparison-divider {
+        transform: rotate(90deg);
+    }
+}
     </style>
 </head>
 <body>
@@ -1113,7 +1222,10 @@
                 </div>
                 <div class="col-6 col-md-4">
                     <div class="industry-card animate-on-scroll">
-                        <img src="assets/images/industry-healthcare.jpg" alt="Healthcare video production">
+                       <video autoplay muted loop playsinline class="w-100 h-100 object-fit-cover">
+            <source src="assets/videos/learning.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
                         <div class="industry-card-overlay">
                             <h3>Healthcare</h3>
                         </div>
@@ -1129,7 +1241,10 @@
                 </div>
                 <div class="col-6 col-md-4">
                     <div class="industry-card animate-on-scroll">
-                        <img src="assets/images/industry-hospitality.jpg" alt="Hospitality video production">
+                              <video autoplay muted loop playsinline class="w-100 h-100 object-fit-cover">
+            <source src="assets/videos/hospitality.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
                         <div class="industry-card-overlay">
                             <h3>Hospitality</h3>
                         </div>
@@ -1137,7 +1252,10 @@
                 </div>
                 <div class="col-6 col-md-4">
                     <div class="industry-card animate-on-scroll">
-                        <img src="assets/images/industry-realestate.jpg" alt="Real Estate video production">
+                             <video autoplay muted loop playsinline class="w-100 h-100 object-fit-cover">
+            <source src="assets/videos/realestate.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
                         <div class="industry-card-overlay">
                             <h3>Real Estate</h3>
                         </div>
@@ -1148,7 +1266,7 @@
     </section>
 
     <!-- SECTION 5: BENEFITS -->
-   <section class="benefits-section">
+ <section class="benefits-section">
     <div class="video-background">
         <video autoplay muted loop playsinline>
             <source src="assets/videos/ant.mp4" type="video/mp4">
@@ -1159,40 +1277,76 @@
     
     <div class="container">
         <div class="benefits-header animate-on-scroll">
-            <h2>What you get.</h2>
+            <h2>Traditional vs StudioX</h2>
         </div>
-        <div class="row g-5">
-            <div class="col-md-4">
-                <div class="benefit-item animate-on-scroll">
-                    <div class="benefit-icon">
+        
+        <div class="comparison-container animate-on-scroll">
+            <div class="comparison-side traditional">
+                <h3>Old Way</h3>
+                <div class="comparison-item">
+                    <div class="comparison-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                     </div>
-                    <h3>Speed</h3>
-                    <p>Days, not months</p>
+                    <p class="comparison-value">8 weeks</p>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="benefit-item animate-on-scroll">
-                    <div class="benefit-icon">
+                <div class="comparison-item">
+                    <div class="comparison-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                     </div>
-                    <h3>Cost</h3>
-                    <p>Startup prices, pro quality</p>
+                    <p class="comparison-value">$$$$</p>
                 </div>
-            </div>
-            <div class="col-md-4">
-                <div class="benefit-item animate-on-scroll">
-                    <div class="benefit-icon">
+                <div class="comparison-item">
+                    <div class="comparison-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                         </svg>
                     </div>
-                    <h3>Results</h3>
-                    <p>Content that converts</p>
+                    <p class="comparison-value">Complex</p>
+                </div>
+            </div>
+            
+            <div class="comparison-divider">
+                <span>VS</span>
+            </div>
+            
+            <div class="comparison-side studiox">
+                <h3>Studio X</h3>
+                <div class="comparison-item">
+                    <div class="comparison-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <p class="comparison-value">5 days</p>
+                </div>
+                <div class="comparison-item">
+                    <div class="comparison-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <p class="comparison-value">$</p>
+                </div>
+                <div class="comparison-item">
+                    <div class="comparison-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <p class="comparison-value">Simple</p>
+                </div>
+                <div class="comparison-item">
+                    <div class="comparison-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                        </svg>
+                    </div>
+                    <p class="comparison-value">Unlimited edits</p>
                 </div>
             </div>
         </div>
@@ -1200,94 +1354,7 @@
 </section>
 
     <!-- SECTION 6: COMPARISON -->
-    <section class="comparison-section">
-        <div class="container">
-            <div class="comparison-header animate-on-scroll">
-                <h2>The difference.</h2>
-                <p>Traditional agency vs. Studio X</p>
-            </div>
-            <div class="row g-4">
-                <div class="col-md-6">
-                    <div class="comparison-card animate-on-scroll">
-                        <div class="comparison-title">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                            </svg>
-                            <h3>Traditional</h3>
-                        </div>
-                        <ul class="comparison-list">
-                            <li>
-                                <span class="label">Timeline:</span>
-                                <span class="value">8 weeks minimum</span>
-                            </li>
-                            <li>
-                                <span class="label">Cost:</span>
-                                <span class="value">$$$$</span>
-                            </li>
-                            <li>
-                                <span class="label">Process:</span>
-                                <span class="value">Complex & slow</span>
-                            </li>
-                            <li>
-                                <span class="label">Flexibility:</span>
-                                <span class="value">Limited revisions</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="comparison-card highlight animate-on-scroll">
-                        <div class="comparison-title">
-                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                            </svg>
-                            <h3>Studio X</h3>
-                        </div>
-                        <ul class="comparison-list">
-                            <li>
-                                <span class="label">Timeline:</span>
-                                <span class="value">5 days average</span>
-                            </li>
-                            <li>
-                                <span class="label">Cost:</span>
-                                <span class="value">$</span>
-                            </li>
-                            <li>
-                                <span class="label">Process:</span>
-                                <span class="value">Simple & fast</span>
-                            </li>
-                            <li>
-                                <span class="label">Flexibility:</span>
-                                <span class="value">Unlimited revisions</span>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="comparison-footer animate-on-scroll">
-                <p>Same quality. Different approach.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 7: TEAM -->
-    <section class="team-section">
-        <div class="container">
-            <div class="team-image-wrapper animate-on-scroll">
-                <!-- Replace with your team workspace image -->
-                <img src="assets/images/team-workspace.jpg" alt="Studio X creative team workspace">
-                <div class="team-image-overlay">
-                    <h2>We're video people who get it.</h2>
-                </div>
-            </div>
-            <div class="team-text animate-on-scroll">
-                <p>Working with businesses worldwide. We're not a software platform. We're a creative team that happens to use AI really, really well.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION 8: PROMISE -->
-    <section class="promise-section">
+     <section class="promise-section">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-8">
@@ -1330,21 +1397,30 @@
             </div>
         </div>
     </section>
+  
 
-    <!-- SECTION 9: FINAL CTA -->
-    <section class="cta-section" id="contact">
-        <!-- Replace with your success image -->
-        <img src="assets/images/cta-success.jpg" alt="Successful business owner celebrating" class="cta-bg">
-        <div class="cta-overlay"></div>
-        <div class="cta-content">
-            <h2>Ready to look like you have a bigger budget?</h2>
-            <p>Book a free 15-minute consultation. No pitch. Just honest advice.</p>
-            <a href="#" class="btn-cta">Book Free Consultation</a>
-        </div>
-        <div class="cta-footer">
-            <p>&copy; 2025 Studio X. Big agency quality, small business prices.</p>
+    <!-- SECTION 7: TEAM -->
+    <section class="team-section">
+        <div class="container">
+            <div class="team-image-wrapper animate-on-scroll">
+                <!-- Replace with your team workspace image -->
+                <img src="assets/images/team-workspace.jpg" alt="Studio X creative team workspace">
+                <div class="team-image-overlay">
+                    <h2>We're video people who get it.</h2>
+                </div>
+            </div>
+            <div class="team-text animate-on-scroll">
+                <p>Working with businesses worldwide. We're not a software platform. We're a creative team that happens to use AI really, really well.</p>
+                 <a href="#" class="btn-cta">Book Free Consultation</a>
+            </div>
         </div>
     </section>
+
+    <!-- SECTION 8: PROMISE -->
+    
+
+    <!-- SECTION 9: FINAL CTA -->
+ 
 
     <!-- Bootstrap 5 JS Bundle -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
