@@ -16,7 +16,7 @@
 </head>
 <body>
     <!-- Navbar -->
-     <div id="navbar"></div>
+    <div id="navbar-placeholder"></div>
 
     <!-- Video Banner -->
     <section class="video-banner">
@@ -510,5 +510,24 @@
             svcMorphToService(svcMorphCurrentIndex);
         }, 5000);
     </script>
+    <script>
+    fetch('navbar.html')
+        .then(res => res.text())
+        .then(data => {
+            document.getElementById('navbar-placeholder').innerHTML = data;
+            
+            // Extract and execute the script
+            const container = document.getElementById('navbar-placeholder');
+            const scripts = container.querySelectorAll('script');
+            scripts.forEach(script => {
+                const newScript = document.createElement('script');
+                newScript.textContent = script.textContent;
+                document.body.appendChild(newScript);
+            });
+        });
+</script>
+
+<!-- Load the navbar script after the HTML is injected -->
+<script src="navbar.js"></script>
 </body>
 </html>

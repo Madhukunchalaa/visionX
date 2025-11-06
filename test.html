@@ -1,86 +1,134 @@
- <section class="benefits-section">
-    <div class="video-background">
-        <video autoplay muted loop playsinline>
-            <source src="assets/videos/ant.mp4" type="video/mp4">
-            <source src="your-video.webm" type="video/webm">
-        </video>
-        <div class="video-overlay"></div>
-    </div>
-    
-    <div class="container">
-        <div class="benefits-header animate-on-scroll">
-            <h2>Same results. Better way.</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisionX AI - Home</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: #000;
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        /* Animated background with neural network effect */
+        .bg-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .circuit-lines {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0.15;
+        }
+
+        .circuit-line {
+            position: absolute;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            height: 1px;
+            animation: pulse 3s ease-in-out infinite;
+        }
+
+        .circuit-line:nth-child(1) {
+            top: 20%;
+            width: 40%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .circuit-line:nth-child(2) {
+            top: 45%;
+            width: 60%;
+            right: 5%;
+            animation-delay: 1s;
+        }
+
+        .circuit-line:nth-child(3) {
+            top: 70%;
+            width: 35%;
+            left: 30%;
+            animation-delay: 2s;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.1; transform: scaleX(0.8); }
+            50% { opacity: 0.3; transform: scaleX(1); }
+        }
+
+        /* Main content */
+        .main-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 10rem auto 2rem;
+            padding: 0 3rem;
+            text-align: center;
+        }
+
+        .main-content h1 {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 0 30px rgba(255,255,255,0.3);
+            letter-spacing: -2px;
+        }
+
+        .main-content p {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.8;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .main-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .main-content {
+                margin-top: 8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-wrapper">
+        <div class="circuit-lines">
+            <div class="circuit-line"></div>
+            <div class="circuit-line"></div>
+            <div class="circuit-line"></div>
         </div>
-        
-        <div class="comparison-container animate-on-scroll">
-            <div class="comparison-side traditional">
-                <h3>Old Way</h3>
-                <div class="comparison-item">
-                    <div class="comparison-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                    </div>
-                    <p class="comparison-value">8 weeks</p>
-                </div>
-                <div class="comparison-item">
-                    <div class="comparison-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                    </div>
-                    <p class="comparison-value">$$$$</p>
-                </div>
-                <div class="comparison-item">
-                    <div class="comparison-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-                        </svg>
-                    </div>
-                    <p class="comparison-value">Complex</p>
-                </div>
-            </div>
-            
-            <div class="comparison-divider">
-                <span>VS</span>
-            </div>
-            
-            <div class="comparison-side studiox">
-                <h3>Studio X</h3>
-                <div class="comparison-item">
-                    <div class="comparison-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg>
-                    </div>
-                    <p class="comparison-value">5 days</p>
-                </div>
-                <div class="comparison-item">
-                    <div class="comparison-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                    </div>
-                    <p class="comparison-value">$</p>
-                </div>
-                <div class="comparison-item">
-                    <div class="comparison-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                    </div>
-                    <p class="comparison-value">Simple</p>
-                </div>
-                <div class="comparison-item">
-                    <div class="comparison-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-                        </svg>
-                    </div>
-                    <p class="comparison-value">Unlimited edits</p>
-                </div>
-            </div>
-        </div>
     </div>
-</section>
+
+    <!-- Navbar Placeholder -->
+    <div id="navbar-placeholder"></div>
+
+    <div class="main-content">
+        <h1>AI-Powered Creativity</h1>
+        <p>Transform your vision into reality with cutting-edge AI technology. Generate stunning videos and images that push the boundaries of imagination.</p>
+    </div>
+
+    <!-- Load Navbar Component -->
+    <script>
+        fetch('navbar.html')
+            .then(res => res.text())
+            .then(data => document.getElementById('navbar-placeholder').innerHTML = data);
+    </script>
+</body>
+</html>
