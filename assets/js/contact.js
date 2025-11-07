@@ -1,11 +1,45 @@
 /**
- * Index Page JavaScript
- * Specific functionality for index.html
+ * Contact Page JavaScript
+ * Specific functionality for contact.html
  */
 
 document.addEventListener('DOMContentLoaded', function() {
+    initFAQ();
     initVideoControls();
 });
+
+// ========================================
+// FAQ TOGGLE
+// ========================================
+
+/**
+ * Toggle FAQ item
+ * @param {HTMLElement} button - The button that triggered the toggle
+ */
+function toggleFAQ(button) {
+    const faqItem = button.closest('.studio351-faq-item');
+    if (!faqItem) return;
+
+    const allItems = document.querySelectorAll('.studio351-faq-item');
+    
+    // Close all other items
+    allItems.forEach(item => {
+        if (item !== faqItem) {
+            item.classList.remove('active');
+        }
+    });
+    
+    // Toggle current item
+    faqItem.classList.toggle('active');
+}
+
+/**
+ * Initialize FAQ functionality
+ */
+function initFAQ() {
+    // Make toggleFAQ available globally for onclick handlers
+    window.toggleFAQ = toggleFAQ;
+}
 
 // ========================================
 // VIDEO CONTROLS

@@ -234,10 +234,13 @@ document.querySelectorAll('.video-card').forEach(card => {
     });
 
     // Contact button action
-    document.querySelector('.contact-btn').addEventListener('click', () => {
-      // Add your contact form/page navigation here
-      alert('Contact form would open here!');
-    });
+    const contactBtn = document.querySelector('.contact-btn');
+    if (contactBtn) {
+      contactBtn.addEventListener('click', () => {
+        // Add your contact form/page navigation here
+        alert('Contact form would open here!');
+      });
+    }
 
 
 
