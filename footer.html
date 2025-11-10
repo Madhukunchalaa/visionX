@@ -1,4 +1,144 @@
-<!-- footer.html -->
-<footer class="bg-dark text-white text-center py-3 mt-5">
-  <p class="mb-0">&copy; 2025 StudioX. All rights reserved.</p>
-</footer>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudioX Footer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Poppins', sans-serif; background: #000; }
+
+        footer {
+            position: relative;
+            background: #000;
+            color: #fff;
+            overflow: hidden;
+            padding: 80px 0 0;
+        }
+
+        /* 🔥 Background Video Layer */
+        .video-background {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .video-background video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            opacity: 0.15; /* Adjust brightness */
+            filter: grayscale(100%) contrast(1.2) brightness(0.7);
+        }
+
+        /* Optional overlay for better readability */
+        .video-background::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.9) 100%);
+            z-index: 1;
+        }
+
+        /* Main footer content */
+        .footer-container {
+            position: relative;
+            z-index: 2; /* Ensure it stays above video */
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        /* (Keep all your existing footer styles below this line) */
+        .footer-brand .logo-wrapper img {
+            height: 50px;
+            display: block;
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
+        }
+        .tagline { color: #bfbfbf; font-size: 15px; max-width: 300px; line-height: 1.6; }
+
+        .footer-links h3, .footer-contact h3 {
+            font-size: 14px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+            margin-bottom: 24px;
+        }
+        .footer-links ul { list-style: none; }
+        .footer-links a {
+            color: #bfbfbf; text-decoration: none; font-size: 15px; transition: 0.3s;
+        }
+        .footer-links a:hover { color: #fff; }
+
+        .footer-bottom {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding: 24px;
+            background: rgba(0,0,0,0.7);
+        }
+
+        .footer-bottom p { color: #bfbfbf; font-size: 13px; letter-spacing: 0.8px; }
+    </style>
+</head>
+<body>
+    <footer>
+        <!-- 🎥 Background Video -->
+        <div class="video-background">
+            <video autoplay muted loop playsinline>
+                <source src="assets/videos/dragon.mp4" type="video/mp4">
+                <!-- fallback message -->
+                Your browser does not support the video tag.
+            </video>
+        </div>
+
+        <!-- 🔗 Footer Content -->
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="logo-wrapper">
+                    <img src="assets/images/Studio X_Logo_Blue.png" alt="StudioX Logo">
+                </div>
+                <p class="tagline">We craft cinematic AI video experiences that move minds.</p>
+            </div>
+
+            <div class="footer-links">
+                <h3>Explore</h3>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-contact">
+                <h3>Connect</h3>
+                <div class="contact-info">
+                    <div><strong>Location:</strong> Hyderabad, India</div>
+                    <div><strong>Email:</strong> contact@studiox.ai</div>
+                    <div><strong>Phone:</strong> +91 70956 82464</div>
+                </div>
+                <div class="social-icons">
+                    <!-- Add your social icons here -->
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2025 StudioX. Where creativity meets code.</p>
+        </div>
+    </footer>
+</body>
+</html>
