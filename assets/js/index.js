@@ -5,6 +5,7 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     initVideoControls();
+    initShowcasePlayButtons();
 });
 
 // ========================================
@@ -58,6 +59,81 @@ function initVideoControls() {
                 if (unmuteIcon) unmuteIcon.style.display = 'none';
                 if (muteIcon) muteIcon.style.display = 'inline';
             }
+        });
+    });
+}
+
+// ========================================
+// SHOWCASE PLAY OVERLAY
+// ========================================
+
+/**
+ * Initialize play-overlay buttons in the showcase grid.
+ * Non-autoplay videos will only start when their overlay is clicked.
+ * Ensures only one non-autoplay video plays at a time.
+ */
+function initShowcasePlayButtons() {
+    const playButtons = document.querySelectorAll('.play-overlay');
+    const showcaseVideos = document.querySelectorAll('.showcase-grid video');
+
+    function pauseAllExcept(exceptId) {
+        showcaseVideos.forEach(v => {
+            // never pause the autoplay tile (id: autoVid)
+            if (v.id === 'autoVid') return;
+            if (v.id !== exceptId) {
+                try { 
+                    v.pause(); 
+                    // Show play button for paused videos
+                    const playBtn = v.closest('.video-card')?.querySelector('.play-overlay');
+                    if (playBtn) playBtn.style.display = 'flex';
+                } catch (e) {}
+            }
+        });
+    }
+
+    // Set up play button click handlers
+    playButtons.forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            e.stopPropagation();
+            const targetId = this.getAttribute('data-target');
+            const video = document.getElementById(targetId);
+            if (!video) return;
+
+            // If video is paused, play it and hide overlay; otherwise pause and show overlay
+            if (video.paused) {
+                pauseAllExcept(targetId);
+                video.play().catch(err => console.log('play prevented', err));
+                this.style.display = 'none';
+            } else {
+                video.pause();
+                this.style.display = 'flex';
+            }
+        });
+    });
+
+    // Handle video events to show/hide play buttons
+    showcaseVideos.forEach(video => {
+        // Skip autoplay video
+        if (video.id === 'autoVid') return;
+
+        const playBtn = video.closest('.video-card')?.querySelector('.play-overlay');
+        if (!playBtn) return;
+
+        // Show play button when video ends
+        video.addEventListener('ended', function() {
+            playBtn.style.display = 'flex';
+        });
+
+        // Show play button when video is paused (except when playing)
+        video.addEventListener('pause', function() {
+            if (this.currentTime > 0 && !this.ended) {
+                playBtn.style.display = 'flex';
+            }
+        });
+
+        // Hide play button when video starts playing
+        video.addEventListener('play', function() {
+            playBtn.style.display = 'none';
         });
     });
 }
