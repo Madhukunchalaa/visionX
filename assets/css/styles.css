@@ -843,7 +843,7 @@ p {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
-  height: 260px;
+  height: 360px;
 }
 
 .video-card:hover {
