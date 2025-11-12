@@ -74,27 +74,19 @@ function initVideoControls() {
  */
 function initShowcasePlayButtons() {
     const playButtons = document.querySelectorAll('.play-overlay');
-    const showcaseVideos = document.querySelectorAll('.showcase-grid video');
 
     function pauseAllExcept(exceptId) {
-        showcaseVideos.forEach(v => {
+        document.querySelectorAll('.showcase-grid video').forEach(v => {
             // never pause the autoplay tile (id: autoVid)
             if (v.id === 'autoVid') return;
             if (v.id !== exceptId) {
-                try { 
-                    v.pause(); 
-                    // Show play button for paused videos
-                    const playBtn = v.closest('.video-card')?.querySelector('.play-overlay');
-                    if (playBtn) playBtn.style.display = 'flex';
-                } catch (e) {}
+                try { v.pause(); } catch (e) {}
             }
         });
     }
 
-    // Set up play button click handlers
     playButtons.forEach(btn => {
         btn.addEventListener('click', function(e) {
-            e.stopPropagation();
             const targetId = this.getAttribute('data-target');
             const video = document.getElementById(targetId);
             if (!video) return;
@@ -108,32 +100,6 @@ function initShowcasePlayButtons() {
                 video.pause();
                 this.style.display = 'flex';
             }
-        });
-    });
-
-    // Handle video events to show/hide play buttons
-    showcaseVideos.forEach(video => {
-        // Skip autoplay video
-        if (video.id === 'autoVid') return;
-
-        const playBtn = video.closest('.video-card')?.querySelector('.play-overlay');
-        if (!playBtn) return;
-
-        // Show play button when video ends
-        video.addEventListener('ended', function() {
-            playBtn.style.display = 'flex';
-        });
-
-        // Show play button when video is paused (except when playing)
-        video.addEventListener('pause', function() {
-            if (this.currentTime > 0 && !this.ended) {
-                playBtn.style.display = 'flex';
-            }
-        });
-
-        // Hide play button when video starts playing
-        video.addEventListener('play', function() {
-            playBtn.style.display = 'none';
         });
     });
 }

@@ -1,143 +1,301 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StudioX Footer</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<footer class="site-footer">
+  <div class="footer-media">
+    <video autoplay muted loop playsinline>
+      <source src="assets/videos/dragon.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="footer-media-overlay"></div>
+  </div>
 
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Poppins', sans-serif; background: #000; }
-
-        footer {
-            position: relative;
-            background: #000;
-            color: #fff;
-            overflow: hidden;
-            padding: 80px 0 0;
-        }
-
-        /* 🔥 Background Video Layer */
-        .video-background {
-            position: absolute;
-            inset: 0;
-            z-index: 0;
-            overflow: hidden;
-        }
-
-        .video-background video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            transform: translate(-50%, -50%);
-            object-fit: cover;
-            opacity: 0.15; /* Adjust brightness */
-            filter: grayscale(100%) contrast(1.2) brightness(0.7);
-        }
-
-        /* Optional overlay for better readability */
-        .video-background::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.9) 100%);
-            z-index: 1;
-        }
-
-        /* Main footer content */
-        .footer-container {
-            position: relative;
-            z-index: 2; /* Ensure it stays above video */
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 40px;
-            display: grid;
-            grid-template-columns: 1.2fr 1fr 1fr;
-            gap: 60px;
-            margin-bottom: 60px;
-        }
-
-        /* (Keep all your existing footer styles below this line) */
-        .footer-brand .logo-wrapper img {
-            height: 50px;
-            display: block;
-            filter: drop-shadow(0 0 10px rgba(255,255,255,0.3));
-        }
-        .tagline { color: #bfbfbf; font-size: 15px; max-width: 300px; line-height: 1.6; }
-
-        .footer-links h3, .footer-contact h3 {
-            font-size: 14px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
-            margin-bottom: 24px;
-        }
-        .footer-links ul { list-style: none; }
-        .footer-links a {
-            color: #bfbfbf; text-decoration: none; font-size: 15px; transition: 0.3s;
-        }
-        .footer-links a:hover { color: #fff; }
-
-        .footer-bottom {
-            position: relative;
-            z-index: 2;
-            text-align: center;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            padding: 24px;
-            background: rgba(0,0,0,0.7);
-        }
-
-        .footer-bottom p { color: #bfbfbf; font-size: 13px; letter-spacing: 0.8px; }
-    </style>
-</head>
-<body>
-    <footer>
-        <!-- 🎥 Background Video -->
-        <div class="video-background">
-            <video autoplay muted loop playsinline>
-                <source src="assets/videos/dragon.mp4" type="video/mp4">
-                <!-- fallback message -->
-                Your browser does not support the video tag.
-            </video>
+  <div class="footer-content">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="logo-wrapper">
+          <img src="assets/images/Studio X_Logo_Blue.png" alt="StudioX Logo">
         </div>
-
-        <!-- 🔗 Footer Content -->
-        <div class="footer-container">
-            <div class="footer-brand">
-                <div class="logo-wrapper">
-                    <img src="assets/images/Studio X_Logo_Blue.png" alt="StudioX Logo">
-                </div>
-                <p class="tagline">We craft cinematic AI video experiences that move minds.</p>
-            </div>
-
-            <div class="footer-links">
-                <h3>Explore</h3>
-                <ul>
-                    <li><a href="index.html">Home</a></li>
-                    <li><a href="about.html">About</a></li>
-                    <li><a href="service.html">Services</a></li>
-                    <li><a href="contact.html">Contact</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-contact">
-                <h3>Connect</h3>
-                <div class="contact-info">
-                    <div><strong>Location:</strong> Hyderabad, India</div>
-                    <div><strong>Email:</strong> contact@studiox.ai</div>
-                    <div><strong>Phone:</strong> +91123456789</div>
-                </div>
-                <div class="social-icons">
-                    <!-- Add your social icons here -->
-                </div>
-            </div>
+        <p class="tagline">Cinematic, AI-powered video experiences engineered for attention, emotion, and scale.</p>
+        <div class="footer-pill">
+          <span class="dot"></span>
+          <span>Launch-ready creative in under 10 days</span>
         </div>
+      </div>
 
-        <div class="footer-bottom">
-            <p>© 2025 StudioX. Where creativity meets code.</p>
+      <div class="footer-links">
+        <h3>Studio</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="service.html">Services</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-contact">
+        <h3>Connect</h3>
+        <div class="contact-info">
+          <div><i class="bi bi-geo-alt"></i> Hyderabad, India</div>
+          <div><i class="bi bi-envelope"></i> contact@studiox.ai</div>
+          <div><i class="bi bi-phone"></i> +91 12345 67890</div>
         </div>
-    </footer>
-</body>
-</html>
+        <div class="social-icons">
+          <a href="#"><i class="bi bi-instagram"></i></a>
+          <a href="#"><i class="bi bi-linkedin"></i></a>
+          <a href="#"><i class="bi bi-youtube"></i></a>
+          <a href="#"><i class="bi bi-behance"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-divider"></div>
+
+    <div class="footer-bottom">
+      <p>© 2025 StudioX. Crafted with imagination and AI precision.</p>
+      <div class="footer-bottom-links">
+        <a href="#">Privacy Policy</a>
+        <span class="separator">•</span>
+        <a href="#">Terms of Use</a>
+        <span class="separator">•</span>
+        <a href="#">Cookie Settings</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    position: relative;
+    background: #030606;
+    color: #f8fbff;
+    overflow: hidden;
+    padding: 80px 0 40px;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .footer-media {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    overflow: hidden;
+  }
+
+  .footer-media video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    opacity: 0.18;
+    filter: saturate(1.4) brightness(0.5) contrast(1.2);
+  }
+
+  .footer-media-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, rgba(3, 6, 10, 0.95) 10%, rgba(7, 17, 26, 0.85) 55%, rgba(3, 6, 10, 0.96) 90%);
+    box-shadow: inset 0 -120px 120px rgba(3, 6, 10, 0.85);
+  }
+
+  .footer-content {
+    position: relative;
+    z-index: 2;
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: 0 28px;
+  }
+
+  .footer-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+    margin-bottom: 60px;
+  }
+
+  .footer-brand .logo-wrapper img {
+    height: 58px;
+    display: block;
+    filter: drop-shadow(0 12px 35px rgba(0, 194, 255, 0.35));
+  }
+
+  .tagline {
+    margin-top: 18px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: rgba(231, 240, 255, 0.68);
+    max-width: 320px;
+  }
+
+  .footer-pill {
+    margin-top: 24px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 18px;
+    border-radius: 999px;
+    background: rgba(0, 194, 255, 0.12);
+    border: 1px solid rgba(0, 194, 255, 0.3);
+    box-shadow: 0 0 18px rgba(0, 194, 255, 0.25);
+    color: rgba(222, 244, 255, 0.8);
+    font-size: 13px;
+    letter-spacing: 0.02em;
+  }
+
+  .footer-pill .dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #00d2ff;
+    box-shadow: 0 0 12px rgba(0, 194, 255, 0.8);
+  }
+
+  .footer-links h3,
+  .footer-contact h3 {
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.62);
+    margin-bottom: 28px;
+  }
+
+  .footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    gap: 14px;
+  }
+
+  .footer-links a {
+    color: rgba(231, 240, 255, 0.7);
+    text-decoration: none;
+    font-size: 15px;
+    letter-spacing: 0.03em;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+
+  .footer-links a:hover {
+    color: #ffffff;
+    transform: translateX(4px);
+  }
+
+  .contact-info {
+    display: grid;
+    gap: 12px;
+    color: rgba(231, 240, 255, 0.75);
+    font-size: 15px;
+  }
+
+  .contact-info i {
+    color: rgba(0, 194, 255, 0.85);
+    margin-right: 8px;
+  }
+
+  .social-icons {
+    margin-top: 26px;
+    display: flex;
+    gap: 16px;
+  }
+
+  .social-icons a {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #e9faff;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(6, 22, 34, 0.55);
+    backdrop-filter: blur(6px);
+    transition: all 0.35s ease;
+  }
+
+  .social-icons a:hover {
+    transform: translateY(-4px);
+    border-color: rgba(0, 194, 255, 0.75);
+    box-shadow: 0 8px 20px rgba(0, 194, 255, 0.35);
+  }
+
+  .footer-divider {
+    width: 100%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 194, 255, 0.35), transparent);
+    margin-bottom: 28px;
+  }
+
+  .footer-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+  }
+
+  .footer-bottom p {
+    color: rgba(231, 240, 255, 0.6);
+    font-size: 13px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .footer-bottom-links {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: rgba(231, 240, 255, 0.6);
+    font-size: 13px;
+  }
+
+  .footer-bottom-links a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .footer-bottom-links a:hover {
+    color: #ffffff;
+  }
+
+  .separator {
+    opacity: 0.4;
+  }
+
+  @media (max-width: 992px) {
+    .footer-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 40px;
+    }
+
+    .footer-brand {
+      grid-column: 1 / -1;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .site-footer {
+      padding: 70px 0 32px;
+    }
+
+    .footer-content {
+      padding: 0 22px;
+    }
+
+    .footer-grid {
+      grid-template-columns: 1fr;
+      gap: 32px;
+      margin-bottom: 50px;
+    }
+
+    .tagline {
+      max-width: none;
+    }
+
+    .footer-bottom-links {
+      flex-direction: column;
+      gap: 6px;
+    }
+  }
+</style>
