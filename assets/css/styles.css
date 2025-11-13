@@ -462,6 +462,7 @@ p {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  margin-bottom: 20px;
 }
 .section-subtitle .highlightX {
   color: #00d2ff;
