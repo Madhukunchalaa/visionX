@@ -463,6 +463,9 @@ p {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+.section-subtitle .highlightX {
+  color: #00d2ff;
+}
 
 .showcase-subtitle {
   text-align: center;
