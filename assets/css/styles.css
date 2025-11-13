@@ -173,6 +173,7 @@ p {
 .ai-capabilities-section .section-title {
   font-size: 28px;
   margin-bottom: 20px;
+  color: #00d2ff;
 }
 
 .section-subtitle {
@@ -298,6 +299,7 @@ p {
   font-weight: bold;
   margin-bottom: 25px;
   line-height: 1.2;
+  color: #00d2ff;
 }
 
 .service-feature-heading {
@@ -349,7 +351,7 @@ p {
   width: 10px;
   height: 10px;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.25) 65%, transparent 100%);
+  background: radial-gradient(circle, rgba(0, 210, 255, 0.95) 0%, rgba(0, 210, 255, 0.25) 65%, transparent 100%);
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.4);
 }
 
@@ -453,10 +455,10 @@ p {
 
 .showcase-title {
   text-align: center;
-  font-size: 3.5rem;
+  font-size: 2rem;
   font-weight: 700;
   margin-bottom: 20px;
-  background: white;
+  background: #00d2ff;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -808,11 +810,12 @@ p {
   margin: 0 auto;
 }
 
-.showcase-title {
+.showcase-title h2 {
   text-align: center;
   font-size: 2.5rem;
   font-weight: 700;
   margin-bottom: 60px;
+  
 
 }
 
