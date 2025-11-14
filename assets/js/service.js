@@ -16,28 +16,28 @@ document.addEventListener('DOMContentLoaded', function() {
  */
 const svcMorphServices = [
     {
-        title: 'Brand Videos',
-        bestFor: 'Marketing campaigns',
+        title: 'Strategic Brand Films',
+        bestFor: 'Product Launches | Brand Awareness | High-Performance Ads',
+        timeline: '5-7 days',
+        description: 'Cinematic storytelling that converts. We craft emotionally resonant films that define your market position and drive measurable business outcomes.'
+    },
+    {
+        title: 'YouTube Growth Engine',
+        bestFor: 'Channel Growth | Audience Engagement | Authority Building',
         timeline: '3-5 days',
-        description: 'Create stunning promotional videos that capture your brand essence and drive engagement across all marketing channels.'
+        description: 'Algorithm-optimized content that builds audiences. We engineer videos for the YouTube algorithm without sacrificing soul—every element designed for maximum retention and subscriber growth.'
     },
     {
-        title: 'YouTube Content',
-        bestFor: 'Channel growth',
-        timeline: '3-4 days',
-        description: 'Professional video production optimized for YouTube algorithm success, helping you grow your subscriber base and engagement.'
+        title: 'Global AI Avatar Solutions',
+        bestFor: 'Multi-Market Campaigns | Training & Onboarding | Product Demos',
+        timeline: '2-4 days',
+        description: 'Scale your message across 60+ languages. Deploy a consistent, on-brand digital presenter globally in days, not months—perfect for scaling content across markets without reshoots or travel.'
     },
     {
-        title: 'AI Avatars',
-        bestFor: 'Scale & localization',
-        timeline: '2-3 days',
-        description: 'Leverage AI-powered avatars to create personalized, multilingual content at scale without traditional production overhead.'
-    },
-    {
-        title: 'Learning Videos',
-        bestFor: 'Education & training',
-        timeline: '4-6 days',
-        description: 'Develop comprehensive educational content that enhances learning outcomes and keeps your audience engaged throughout.'
+        title: 'Transformative Learning Content',
+        bestFor: 'E-Learning | Employee Training | Educational Courses',
+        timeline: '5-7 days',
+        description: 'Learning videos that actually stick. We transform complex information into engaging, retention-focused visual stories built for clarity, retention, and behavior change.'
     }
 ];
 
