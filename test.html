@@ -3,24 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>VisionX AI - Home</title>
+    <title>What You Actually Get</title>
     <style>
-        * {
+        .benefits-section {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-        }
-
-        body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             background: #000;
-            overflow-x: hidden;
-            min-height: 100vh;
+            color: #fff;
+            padding: 80px 20px;
+            position: relative;
+            overflow: hidden;
         }
 
-        /* Animated background with neural network effect */
-        .bg-wrapper {
-            position: fixed;
+        .benefits-section *,
+        .benefits-section *::before,
+        .benefits-section *::after {
+            box-sizing: border-box;
+        }
+
+        .benefits-section .animated-backdrop {
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
@@ -29,106 +33,357 @@
             overflow: hidden;
         }
 
-        .circuit-lines {
+        .benefits-section .animated-backdrop::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 50%, rgba(0, 194, 255, 0.15) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(0, 194, 255, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 20%, rgba(0, 150, 255, 0.08) 0%, transparent 40%);
+            animation: benefits-gradientShift 15s ease infinite;
+        }
+
+        @keyframes benefits-gradientShift {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+            33% {
+                transform: translate(50px, -30px) scale(1.1);
+            }
+            66% {
+                transform: translate(-30px, 50px) scale(0.9);
+            }
+        }
+
+        .benefits-section .floating-particles {
             position: absolute;
             width: 100%;
             height: 100%;
-            opacity: 0.15;
+            top: 0;
+            left: 0;
         }
 
-        .circuit-line {
+        .benefits-section .light-particle {
             position: absolute;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            height: 1px;
-            animation: pulse 3s ease-in-out infinite;
+            width: 2px;
+            height: 2px;
+            background: rgba(0, 194, 255, 0.6);
+            border-radius: 50%;
+            animation: benefits-float linear infinite;
+            box-shadow: 0 0 10px rgba(0, 194, 255, 0.5);
         }
 
-        .circuit-line:nth-child(1) {
-            top: 20%;
-            width: 40%;
-            left: 10%;
-            animation-delay: 0s;
+        @keyframes benefits-float {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(100px);
+                opacity: 0;
+            }
         }
 
-        .circuit-line:nth-child(2) {
-            top: 45%;
-            width: 60%;
-            right: 5%;
-            animation-delay: 1s;
-        }
-
-        .circuit-line:nth-child(3) {
-            top: 70%;
-            width: 35%;
-            left: 30%;
-            animation-delay: 2s;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.1; transform: scaleX(0.8); }
-            50% { opacity: 0.3; transform: scaleX(1); }
-        }
-
-        /* Main content */
-        .main-content {
+        .benefits-section .main-wrapper {
             position: relative;
             z-index: 1;
             max-width: 1200px;
-            margin: 10rem auto 2rem;
-            padding: 0 3rem;
+            margin: 0 auto;
+        }
+
+        .benefits-section .page-header {
             text-align: center;
+            margin-bottom: 80px;
+            position: relative;
         }
 
-        .main-content h1 {
+        .benefits-section .page-header h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            position: relative;
+            display: inline-block;
+            margin: 0;
+        }
+
+        .benefits-section .page-header h2::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -40px;
+            width: 80px;
+            height: 4px;
+            background: #fff;
+        }
+
+        .benefits-section .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2px;
+            background: #fff;
+            padding: 2px;
+        }
+
+        .benefits-section .benefit-card {
+            background: #000;
+            border: 1px solid rgba(0, 194, 255, 0.3);
+            box-shadow: 0 0 18px rgba(0, 194, 255, 0.25);
+            padding: 50px 40px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            cursor: pointer;
+        }
+
+        .benefits-section .benefit-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .benefits-section .benefit-card:hover::before {
+            opacity: 1;
+        }
+
+        .benefits-section .benefit-card:hover {
+            background: #0a0a0a;
+            box-shadow: 0 0 25px rgba(0, 194, 255, 0.4);
+        }
+
+        .benefits-section .sequence-number {
             font-size: 4rem;
-            font-weight: 700;
-            color: #fff;
-            margin-bottom: 1.5rem;
-            text-shadow: 0 0 30px rgba(255,255,255,0.3);
-            letter-spacing: -2px;
+            font-weight: 900;
+            line-height: 1;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #fff 0%, #666 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0.15;
+            transition: opacity 0.4s ease;
         }
 
-        .main-content p {
-            font-size: 1.3rem;
-            color: rgba(255, 255, 255, 0.6);
-            line-height: 1.8;
-            max-width: 700px;
-            margin: 0 auto 3rem;
+        .benefits-section .benefit-card:hover .sequence-number {
+            opacity: 0.3;
+        }
+
+        .benefits-section .check-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 194, 255, 0.12);
+            border: 1px solid rgba(0, 194, 255, 0.3);
+            box-shadow: 0 0 18px rgba(0, 194, 255, 0.25);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            position: relative;
+            transition: all 0.4s ease;
+        }
+
+        .benefits-section .benefit-card:hover .check-icon {
+            transform: rotate(360deg);
+            border-color: rgba(0, 194, 255, 0.5);
+            background: rgba(0, 194, 255, 0.2);
+            box-shadow: 0 0 25px rgba(0, 194, 255, 0.4);
+        }
+
+        .benefits-section .check-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke: rgba(0, 194, 255, 1);
+            transition: stroke 0.4s ease;
+        }
+
+        .benefits-section .benefit-card:hover .check-icon svg {
+            stroke: rgba(0, 194, 255, 1);
+        }
+
+        .benefits-section .benefit-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: -0.02em;
+            line-height: 1.3;
+        }
+
+        .benefits-section .benefit-description {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: rgba(222, 244, 255, 0.8);
+            font-weight: 400;
+        }
+
+        .benefits-section .hover-underline {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: #fff;
+            transition: width 0.4s ease;
+        }
+
+        .benefits-section .benefit-card:hover .hover-underline {
+            width: 100%;
         }
 
         @media (max-width: 768px) {
-            .main-content h1 {
-                font-size: 2.5rem;
+            .benefits-section {
+                padding: 60px 20px;
             }
 
-            .main-content {
-                margin-top: 8rem;
+            .benefits-section .page-header {
+                margin-bottom: 60px;
+            }
+
+            .benefits-section .page-header h2::before {
+                left: 50%;
+                transform: translateX(-50%);
+                top: -30px;
+            }
+
+            .benefits-section .benefit-card {
+                padding: 40px 30px;
+            }
+
+            .benefits-section .sequence-number {
+                font-size: 3rem;
+            }
+
+            .benefits-section .benefits-grid {
+                gap: 1px;
+                padding: 1px;
             }
         }
+
+        @keyframes benefits-fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .benefits-section .benefit-card {
+            animation: benefits-fadeIn 0.6s ease backwards;
+        }
+
+        .benefits-section .benefit-card:nth-child(1) { animation-delay: 0.1s; }
+        .benefits-section .benefit-card:nth-child(2) { animation-delay: 0.2s; }
+        .benefits-section .benefit-card:nth-child(3) { animation-delay: 0.3s; }
+        .benefits-section .benefit-card:nth-child(4) { animation-delay: 0.4s; }
     </style>
 </head>
 <body>
-    <div class="bg-wrapper">
-        <div class="circuit-lines">
-            <div class="circuit-line"></div>
-            <div class="circuit-line"></div>
-            <div class="circuit-line"></div>
+    <section class="benefits-section">
+        <div class="animated-backdrop">
+            <div class="floating-particles" id="benefits-particles"></div>
         </div>
-    </div>
+        
+        <div class="main-wrapper">
+            <div class="page-header">
+                <h2>What You Actually Get</h2>
+            </div>
 
-    <!-- Navbar Placeholder -->
-    <div id="navbar-placeholder"></div>
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <div class="sequence-number">01</div>
+                    <div class="check-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                    </div>
+                    <h4 class="benefit-title">Direct Expert Access</h4>
+                    <p class="benefit-description">Work with the creators, not account managers</p>
+                    <div class="hover-underline"></div>
+                </div>
 
-    <div class="main-content">
-        <h1>AI-Powered Creativity</h1>
-        <p>Transform your vision into reality with cutting-edge AI technology. Generate stunning videos and images that push the boundaries of imagination.</p>
-    </div>
+                <div class="benefit-card">
+                    <div class="sequence-number">02</div>
+                    <div class="check-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                    </div>
+                    <h4 class="benefit-title">Complete Transparency</h4>
+                    <p class="benefit-description">Honest timelines, upfront pricing, straightforward communication</p>
+                    <div class="hover-underline"></div>
+                </div>
 
-    <!-- Load Navbar Component -->
+                <div class="benefit-card">
+                    <div class="sequence-number">03</div>
+                    <div class="check-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                    </div>
+                    <h4 class="benefit-title">Your Creative Extension</h4>
+                    <p class="benefit-description">We act as part of your team, dedicated to your success</p>
+                    <div class="hover-underline"></div>
+                </div>
+
+                <div class="benefit-card">
+                    <div class="sequence-number">04</div>
+                    <div class="check-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                    </div>
+                    <h4 class="benefit-title">Measured Results</h4>
+                    <p class="benefit-description">We track impact, not just deliverables. Your success is our scorecard.</p>
+                    <div class="hover-underline"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <script>
-        fetch('navbar.html')
-            .then(res => res.text())
-            .then(data => document.getElementById('navbar-placeholder').innerHTML = data);
+        // Create floating particles with scoped selector
+        (function() {
+            const particlesContainer = document.getElementById('benefits-particles');
+            if (!particlesContainer) return;
+            
+            const particleCount = 50;
+            
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('light-particle');
+                
+                // Random position
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.animationDuration = (Math.random() * 15 + 10) + 's';
+                particle.style.animationDelay = Math.random() * 5 + 's';
+                particle.style.animationName = 'benefits-float';
+                
+                // Random size variation
+                const size = Math.random() * 3 + 1;
+                particle.style.width = size + 'px';
+                particle.style.height = size + 'px';
+                
+                particlesContainer.appendChild(particle);
+            }
+        })();
     </script>
 </body>
 </html>
