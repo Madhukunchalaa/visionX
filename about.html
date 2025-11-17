@@ -47,49 +47,81 @@
       </div>
     </div>
   </section>
-    <section class="about-story-section bg-black text-white py-5">
-        <div class="container">
-            <!-- Row 1: Video Left + Problem Right -->
-            <div class="row align-items-center mb-5">
-                <div class="col-md-6 mb-4 mb-md-0">
-                    <div class="about-video-placeholder bg-dark d-flex justify-content-center align-items-center">
-                        <video autoplay muted loop playsinline class="w-100 h-100 object-fit-cover rounded">
-                            <source src="assets/videos/aivideo2.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
-                    </div>
-                </div>
-                <div class="col-md-6">
-                     
-                    <h2 class="about-section-title mb-3">The Problem</h2>
-                     <h2 class="section-heading">The Old Playbook Can't Keep Up</h2>
-                    <p class="about-section-text">
-                        Consumer attention is the ultimate currency, and business moves faster than traditional production models allow. Great video used to mean choosing two: quality, speed, or affordability.
+
+    <!-- About Problem Section -->
+    <section class="about-problem-section">
+        <div class="about-problem-grid-bg"></div>
+        <div class="about-orb about-orb-1"></div>
+        <div class="about-orb about-orb-2"></div>
+        
+        <div class="container position-relative">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h2 class="about-problem-heading about-main-heading about-fade-in-up" data-text="The Old Playbook Can't Keep Up">
+                        The Old Playbook<br>Can't Keep Up
+                    </h2>
+                    <p class="about-problem-text about-fade-in-up">
+                        <strong>Consumer attention is the ultimate currency</strong>, and business moves faster than traditional production models allow. Great video used to mean choosing two: quality, speed, or affordability.
                     </p>
-                    <p class="about-section-text">
+                    <p class="about-problem-text about-fade-in-up">
                         Growing businesses are forced into impossible compromises—accept mediocre quality, blow the budget, or wait months for delivery.
                     </p>
+                    <!-- Optional supporting insight removed per final content spec -->
                 </div>
-            </div>
-
-            <!-- Row 2: Solution Left + Video Right -->
-            <div class="row align-items-center flex-md-row-reverse">
-                <div class="col-md-6 mb-4 mb-md-0">
-                    <div class="about-video-placeholder bg-dark d-flex justify-content-center align-items-center">
-                        <video autoplay muted loop playsinline class="w-100 h-100 object-fit-cover">
-                            <source src="assets/videos/solution.mp4" type="video/mp4">
-                            Your browser does not support the video tag.
-                        </video>
+                <div class="col-lg-6 about-fade-in-up">
+                    <div class="about-problem-video-bento">
+                        <div class="about-problem-video-inner">
+                            <video 
+                                width="100%" 
+                                height="100%" 
+                                loop
+                                autoplay
+                                muted
+                                playsinline
+                                style="object-fit: cover; border-radius: 35px;">
+                                <source src="assets/videos/Glitch_Video_Generation_Complete.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
                     </div>
                 </div>
-                <div class="col-md-6">
-                     
-                    <h2 class="about-section-title mb-3">The Solution</h2>
-                    <h2 class="section-heading">We Built a Studio Where You Don't Compromise</h2>
-                    <p class="about-section-text">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Solution Section -->
+    <section class="about-solution-alt-section">
+        <div class="about-problem-grid-bg"></div>
+        <div class="about-orb about-orb-1"></div>
+        <div class="about-orb about-orb-2"></div>
+        
+        <div class="container position-relative">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0 about-fade-in-up">
+                    <div class="about-problem-video-bento">
+                        <div class="about-problem-video-inner">
+                            <video 
+                                width="100%" 
+                                height="100%" 
+                                loop
+                                autoplay
+                                muted
+                                playsinline
+                                style="object-fit: cover; border-radius: 35px;">
+                                <source src="assets/videos/matchstick.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 about-fade-in-up">
+                    <h2 class="about-problem-heading about-main-heading about-main-heading-dark" data-text="We Built a Studio Where You Don't Compromise">
+                        We Built a Studio Where You Don't Compromise
+                    </h2>
+                    <p class="about-solution-text">
                         Our methodology leverages AI for operational efficiency—rendering, formatting, asset management—while our creative team focuses entirely on what matters: your story, your strategy, your impact.
                     </p>
-                    <p class="about-section-text">
+                    <p class="about-solution-text">
                         Technology removes the bottlenecks. Human creativity solves your business challenges.
                     </p>
                 </div>
@@ -107,8 +139,8 @@
         </div>
         
         <div class="container">
-             <h2 class="about-section-title mb-3 text-center">Our Pillars</h2>
-             <h2 class="section-heading text-center">How We Deliver Excellence</h2>
+             <h2 class="about-main-heading text-center">How We Deliver Excellence</h2>
+             
             
             <div class="row g-4">
                 <div class="col-md-4">
@@ -120,7 +152,7 @@
                         </div>
                         <h3>Strategic Creativity</h3>
                         <p>Every frame serves your business objectives. Our creative directors are strategists first—ensuring your video doesn't just look exceptional, it performs.</p>
-                        <p class="about-pillar-highlight">We don't make videos. We make videos that move metrics.</p>
+                        
                     </div>
                 </div>
                 <div class="col-md-4">
@@ -147,6 +179,7 @@
                 </div>
             </div>
             
+            <p class="about-pillar-highlight text-center">We don't make videos. We make videos that move metrics.</p>
             <div class="about-solution-divider about-animate-on-scroll"></div>
         </div>
     </section>
@@ -158,14 +191,14 @@
     <section class="about-benefits-section">
         <div class="about-video-background">
             <video autoplay muted loop playsinline>
-                <source src="assets/videos/ant.mp4" type="video/mp4">
+                <source src="assets/videos/car.mp4" type="video/mp4">
             </video>
             <div class="about-video-overlay"></div>
         </div>
         
         <div class="container">
             <div class="about-benefits-header about-animate-on-scroll">
-                <h2>The Studio X Advantage</h2>
+                <h2 class="about-main-heading">The Studio X Advantage</h2>
             </div>
             
             <div class="about-comparison-container about-animate-on-scroll">
@@ -267,8 +300,7 @@
 
      <section class="about-industry-section">
         <div class="container">
-            <h2 class="about-section-title mb-3 text-center">Industries We Serve</h2>
-            <h2 class="section-heading text-center">Crafted for Businesses Where Clarity Drives Growth</h2>
+            <h2 class="about-main-heading text-center">Crafted for Businesses Where Clarity Drives Growth</h2>
             <div class="row g-3">
                 <div class="col-6 col-md-4">
                     <div class="about-industry-card about-animate-on-scroll">
@@ -348,8 +380,7 @@
         
         <div class="main-wrapper">
             <div class="page-header">
-              
-                <h2>What You Actually Get</h2>
+                <h2 class="about-main-heading">What You Actually Get</h2>
             </div>
 
             <div class="benefits-grid">
@@ -414,18 +445,15 @@
         </video>
     </div>
     
-    <div class="container">
+        <div class="container">
         <div class="about-team-image-wrapper about-animate-on-scroll">
             <div class="about-team-image-overlay">
-                 <h2 class="about-section-title mb-3">Who We Are</h2>
-                <h2 class="section-heading">The Studio We Always Wanted to Hire</h2>
-                
+                <h2 class="about-main-heading">The Studio We Always Wanted to Hire</h2>
+                <p>We're a global collective of directors, editors, and storytellers who saw AI as opportunity, not threat. We've engineered a studio as dynamic and ambitious as the clients we serve—where technology removes barriers and human creativity solves business challenges.</p>
+            <p style="margin-top: 1rem; font-weight: 600;">This is intelligent creative work, not industrial production.</p>
             </div>
         </div>
-        <div class="about-team-text about-animate-on-scroll">
-            <p>We're a global collective of directors, editors, and storytellers who saw AI as opportunity, not threat. We've engineered a studio as dynamic and ambitious as the clients we serve—where technology removes barriers and human creativity solves business challenges.</p>
-            <p style="margin-top: 1rem; font-weight: 600;">This is intelligent creative work, not industrial production.</p>
-        </div>
+        
     </div>
 </section>
 
@@ -447,16 +475,14 @@
                 </div>
                 
                 <div class="about-promise-header about-animate-on-scroll">
-                    <h2 style="font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 900; line-height: 1.1; margin-bottom: 1.5rem; color: #fff; letter-spacing: -0.02em;">
-                        Ready to Elevate<br>Your Brand?
-                    </h2>
+                    <h2 class="about-main-heading">Ready to Elevate Your Brand?</h2>
                 </div>
                 
                 <p class="about-animate-on-scroll" style="font-size: 1.2rem; color: rgba(255, 255, 255, 0.7); max-width: 600px; margin: 0 auto 3rem; line-height: 1.8; font-weight: 300;">
-                    Transform your vision into reality. Clear process, honest timelines, exceptional results.
+                    See our work. Get honest timelines. No pressure.
                 </p>
                 
-                <div class="about-animate-on-scroll" style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem;">
+                <div class="about-animate-on-scroll" style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem;">
                     <a href="contact.html" class="about-btn-cta-primary" style="display: inline-flex; align-items: center; gap: 0.75rem; padding: 1.25rem 3rem; font-size: 1.1rem; font-weight: 600; background: white; color: black; text-decoration: none; border-radius: 0; transition: all 0.4s ease; border: 2px solid white; position: relative; overflow: hidden;">
                         <span style="position: relative; z-index: 2;">Explore Process & Pricing</span>
                         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="position: relative; z-index: 2;">
@@ -464,26 +490,6 @@
                             <polyline points="12 5 19 12 12 19"></polyline>
                         </svg>
                     </a>
-                    
-                    <a href="#portfolio" class="about-btn-cta-secondary" style="display: inline-flex; align-items: center; gap: 0.75rem; padding: 1.25rem 3rem; font-size: 1.1rem; font-weight: 600; background: transparent; color: white; text-decoration: none; border-radius: 0; transition: all 0.4s ease; border: 2px solid white; position: relative; overflow: hidden;">
-                        <span style="position: relative; z-index: 2;">View Our Work</span>
-                    </a>
-                </div>
-                
-                <!-- Trust Indicators -->
-                <div class="about-animate-on-scroll" style="display: flex; gap: 3rem; justify-content: center; flex-wrap: wrap; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.1);">
-                    <div style="text-align: center;">
-                        <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: rgba(255, 255, 255, 0.5); margin-bottom: 0.5rem;">Process</div>
-                        <div style="font-size: 1rem; font-weight: 600; color: white;">Transparent</div>
-                    </div>
-                    <div style="text-align: center;">
-                        <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: rgba(255, 255, 255, 0.5); margin-bottom: 0.5rem;">Pricing</div>
-                        <div style="font-size: 1rem; font-weight: 600; color: white;">No Hidden Fees</div>
-                    </div>
-                    <div style="text-align: center;">
-                        <div style="font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: rgba(255, 255, 255, 0.5); margin-bottom: 0.5rem;">Timeline</div>
-                        <div style="font-size: 1rem; font-weight: 600; color: white;">Crystal Clear</div>
-                    </div>
                 </div>
             </div>
         </div>
