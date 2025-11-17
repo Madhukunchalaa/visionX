@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>What You Actually Get</title>
+    <title>Video Studio Sections</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -12,366 +13,564 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: #000;
-            color: #fff;
-            padding: 80px 20px;
-            position: relative;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             overflow-x: hidden;
+            background: #000;
         }
 
-        .video-background {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
+        /* Section 2 - The Problem */
+        .problem-section {
+            background: #000;
+            padding: 120px 0;
+            position: relative;
             overflow: hidden;
         }
 
-        .video-background video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translate(-50%, -50%);
-            object-fit: cover;
-        }
-
-        /* Stylish overlay effects */
-        .video-overlay {
+        /* Animated Grid Background */
+        .grid-bg {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background: 
-                linear-gradient(45deg, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0.3) 50%, rgba(0, 0, 0, 0.7) 100%),
-                radial-gradient(circle at 30% 50%, rgba(0, 194, 255, 0.15) 0%, transparent 60%),
-                radial-gradient(circle at 70% 50%, rgba(0, 194, 255, 0.1) 0%, transparent 60%);
-            backdrop-filter: blur(2px);
-            mix-blend-mode: normal;
-        }
-
-        /* Scanline effect for futuristic look */
-        .video-background::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: repeating-linear-gradient(
-                0deg,
-                rgba(0, 194, 255, 0.03) 0px,
-                transparent 1px,
-                transparent 2px,
-                rgba(0, 194, 255, 0.03) 3px
-            );
+            background-image: 
+                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+            background-size: 50px 50px;
+            animation: gridMove 20s linear infinite;
             pointer-events: none;
-            animation: scanlines 8s linear infinite;
         }
 
-        @keyframes scanlines {
-            0% {
-                transform: translateY(0);
-            }
-            100% {
-                transform: translateY(10px);
-            }
+        @keyframes gridMove {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(50px, 50px); }
         }
 
-        .container {
-            position: relative;
-            z-index: 1;
-            max-width: 1200px;
-            margin: 0 auto;
+        /* Glowing Orbs */
+        .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(60px);
+            opacity: 0.3;
+            animation: orbFloat 15s infinite ease-in-out;
         }
 
-        .header {
-            text-align: center;
-            margin-bottom: 80px;
-            position: relative;
+        .orb-1 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+            top: -100px;
+            right: -100px;
+            animation-delay: 0s;
         }
 
-        .header h2 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 800;
-            letter-spacing: -0.03em;
+        .orb-2 {
+            width: 300px;
+            height: 300px;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+            bottom: -50px;
+            left: -50px;
+            animation-delay: 5s;
+        }
+
+        @keyframes orbFloat {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(30px, -30px) scale(1.1); }
+        }
+
+        .section-heading {
+            font-size: 4rem;
+            font-weight: 900;
+            color: #fff;
+            margin-bottom: 40px;
             line-height: 1.1;
             position: relative;
             display: inline-block;
+            letter-spacing: -2px;
         }
 
-        .header h2::before {
-            content: '';
-            position: absolute;
-            top: -20px;
-            left: -40px;
-            width: 80px;
-            height: 4px;
-            background: #fff;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 2px;
-            background: #fff;
-            padding: 2px;
-        }
-
-        .card {
-            background: #000;
-            border: 1px solid rgba(0, 194, 255, 0.3);
-            box-shadow: 0 0 18px rgba(0, 194, 255, 0.25);
-            padding: 50px 40px;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.4s ease;
-            cursor: pointer;
-        }
-
-        .card::before {
-            content: '';
+        .section-heading::before {
+            content: attr(data-text);
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.05) 100%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .card:hover::before {
-            opacity: 1;
-        }
-
-        .card:hover {
-            background: #0a0a0a;
-            box-shadow: 0 0 25px rgba(0, 194, 255, 0.4);
-        }
-
-        .card-number {
-            font-size: 4rem;
-            font-weight: 900;
-            line-height: 1;
-            margin-bottom: 30px;
-            background: linear-gradient(135deg, #fff 0%, #666 100%);
+            z-index: -1;
+            background: linear-gradient(45deg, #fff, #666);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            opacity: 0.15;
-            transition: opacity 0.4s ease;
+            filter: blur(20px);
+            opacity: 0.5;
         }
 
-        .card:hover .card-number {
-            opacity: 0.3;
+        .problem-text {
+            font-size: 1.4rem;
+            line-height: 1.9;
+            color: #b0b0b0;
+            margin-bottom: 30px;
         }
 
-        .card-icon {
-            width: 60px;
-            height: 60px;
-            background: rgba(0, 194, 255, 0.12);
-            border: 1px solid rgba(0, 194, 255, 0.3);
-            box-shadow: 0 0 18px rgba(0, 194, 255, 0.25);
+        .problem-text strong {
+            color: #fff;
+            font-weight: 700;
+            background: linear-gradient(90deg, #fff 0%, #999 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Bento Box Video Container - Problem */
+        .video-bento {
+            position: relative;
+            border-radius: 40px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            padding: 8px;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .video-bento:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 40px 100px rgba(255,255,255,0.2);
+        }
+
+        .video-bento::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 40px;
+            padding: 2px;
+            background: linear-gradient(135deg, #fff, #666, #333);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+
+        .video-bento:hover::before {
+            opacity: 1;
+            animation: rotateBorder 3s linear infinite;
+        }
+
+        @keyframes rotateBorder {
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
+        }
+
+        .video-inner {
+            width: 100%;
+            height: 450px;
+            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
+            border-radius: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Morphing Play Button */
+        .play-morph {
+            width: 100px;
+            height: 100px;
+            background: #fff;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 30px;
+            cursor: pointer;
             position: relative;
-            transition: all 0.4s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 20px 50px rgba(255,255,255,0.3);
         }
 
-        .card:hover .card-icon {
-            transform: rotate(360deg);
-            border-color: rgba(0, 194, 255, 0.5);
-            background: rgba(0, 194, 255, 0.2);
-            box-shadow: 0 0 25px rgba(0, 194, 255, 0.4);
+        .play-morph:hover {
+            border-radius: 30%;
+            transform: scale(1.15) rotate(90deg);
+            box-shadow: 0 30px 70px rgba(255,255,255,0.5);
         }
 
-        .card-icon svg {
-            width: 28px;
-            height: 28px;
-            stroke: rgba(0, 194, 255, 1);
-            transition: stroke 0.4s ease;
-        }
-
-        .card:hover .card-icon svg {
-            stroke: rgba(0, 194, 255, 1);
-        }
-
-        .card-title {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 15px;
-            letter-spacing: -0.02em;
-            line-height: 1.3;
-        }
-
-        .card-description {
-            font-size: 1rem;
-            line-height: 1.6;
-            color: rgba(222, 244, 255, 0.8);
-            font-weight: 400;
-        }
-
-        .decoration-line {
-            position: absolute;
-            bottom: 0;
-            left: 0;
+        .play-morph::after {
+            content: '';
             width: 0;
-            height: 3px;
+            height: 0;
+            border-left: 30px solid #000;
+            border-top: 18px solid transparent;
+            border-bottom: 18px solid transparent;
+            margin-left: 8px;
+            transition: all 0.4s;
+        }
+
+        .play-morph:hover::after {
+            transform: rotate(-90deg);
+        }
+
+        /* Glass Card */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 25px;
+            padding: 35px;
+            margin-top: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(255,255,255,0.1), transparent 30%);
+            animation: rotate 4s linear infinite;
+        }
+
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .glass-card-inner {
+            position: relative;
+            z-index: 1;
+        }
+
+        .glass-text {
+            color: #fff;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin: 0;
+        }
+
+        /* Glass Card for White Section */
+        .glass-card-white {
+            background: rgba(0, 0, 0, 0.05);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 25px;
+            padding: 35px;
+            margin-top: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glass-card-white::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(0,0,0,0.1), transparent 30%);
+            animation: rotate 4s linear infinite;
+        }
+
+        .glass-text-dark {
+            color: #000;
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin: 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Solution Section */
+        .solution-section {
             background: #fff;
-            transition: width 0.4s ease;
+            padding: 120px 0;
+            position: relative;
+            overflow: hidden;
         }
 
-        .card:hover .decoration-line {
+        /* Dot Pattern */
+        .dot-pattern {
+            position: absolute;
             width: 100%;
+            height: 100%;
+            background-image: radial-gradient(circle, rgba(0,0,0,0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
+            pointer-events: none;
         }
 
-        @media (max-width: 768px) {
-            body {
-                padding: 60px 20px;
-            }
-
-            .header {
-                margin-bottom: 60px;
-            }
-
-            .header h2::before {
-                left: 50%;
-                transform: translateX(-50%);
-                top: -30px;
-            }
-
-            .card {
-                padding: 40px 30px;
-            }
-
-            .card-number {
-                font-size: 3rem;
-            }
-
-            .grid {
-                gap: 1px;
-                padding: 1px;
-            }
+        /* Dark Orbs for White Section */
+        .dark-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.1;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
+        .dark-orb-1 {
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, transparent 70%);
+            top: -150px;
+            left: -150px;
+            animation: orbFloat 20s infinite ease-in-out;
+        }
+
+        .dark-orb-2 {
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(0,0,0,0.15) 0%, transparent 70%);
+            bottom: -100px;
+            right: -100px;
+            animation: orbFloat 18s infinite ease-in-out reverse;
+        }
+
+        .solution-section .section-heading {
+            color: #000;
+        }
+
+        .solution-section .section-heading::before {
+            background: linear-gradient(45deg, #000, #666);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .solution-text {
+            font-size: 1.4rem;
+            line-height: 1.9;
+            color: #404040;
+            margin-bottom: 30px;
+        }
+
+        .solution-text strong {
+            color: #000;
+            font-weight: 700;
+        }
+
+        /* Tilted Parallelogram Video - Solution */
+        .video-parallelo {
+            position: relative;
+            perspective: 1000px;
+        }
+
+        .video-parallelo-inner {
+            position: relative;
+            transform: rotateY(-5deg) rotateX(2deg);
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 35px;
+            overflow: hidden;
+            box-shadow: 
+                -20px 20px 60px rgba(0,0,0,0.15),
+                20px -20px 60px rgba(0,0,0,0.05);
+        }
+
+        .video-parallelo:hover .video-parallelo-inner {
+            transform: rotateY(0deg) rotateX(0deg) scale(1.02);
+            box-shadow: 
+                0 40px 80px rgba(0,0,0,0.2);
+        }
+
+        .video-parallelo .video-inner {
+            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
+            border: 3px solid #000;
+        }
+
+        .video-parallelo .play-morph {
+            background: #000;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+        }
+
+        .video-parallelo .play-morph::after {
+            border-left-color: #fff;
+        }
+
+        .video-parallelo .play-morph:hover {
+            box-shadow: 0 30px 70px rgba(0,0,0,0.6);
+        }
+
+        /* Animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        @keyframes fadeInUp {
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
-        .card {
-            animation: fadeIn 0.6s ease backwards;
+        .fade-in-up:nth-child(1) { animation-delay: 0.1s; }
+        .fade-in-up:nth-child(2) { animation-delay: 0.2s; }
+        .fade-in-up:nth-child(3) { animation-delay: 0.3s; }
+        .fade-in-up:nth-child(4) { animation-delay: 0.4s; }
+
+        /* Media Queries */
+        @media (max-width: 992px) {
+            .section-heading {
+                font-size: 3rem;
+            }
+
+            .problem-text, .solution-text {
+                font-size: 1.2rem;
+            }
+
+            .video-inner {
+                height: 350px;
+            }
+
+            .problem-section, .solution-section {
+                padding: 80px 0;
+            }
         }
 
-        .card:nth-child(1) { animation-delay: 0.1s; }
-        .card:nth-child(2) { animation-delay: 0.2s; }
-        .card:nth-child(3) { animation-delay: 0.3s; }
-        .card:nth-child(4) { animation-delay: 0.4s; }
+        @media (max-width: 768px) {
+            .section-heading {
+                font-size: 2.2rem;
+            }
+
+            .problem-text, .solution-text {
+                font-size: 1.1rem;
+            }
+
+            .video-inner {
+                height: 280px;
+            }
+
+            .play-morph {
+                width: 80px;
+                height: 80px;
+            }
+
+            .play-morph::after {
+                border-left-width: 24px;
+                border-top-width: 14px;
+                border-bottom-width: 14px;
+            }
+
+            .problem-section, .solution-section {
+                padding: 60px 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section-heading {
+                font-size: 1.8rem;
+                letter-spacing: -1px;
+            }
+
+            .video-inner {
+                height: 220px;
+            }
+
+            .play-morph {
+                width: 70px;
+                height: 70px;
+            }
+
+            .play-morph::after {
+                border-left-width: 20px;
+                border-top-width: 12px;
+                border-bottom-width: 12px;
+            }
+
+            .glass-card, .glass-card-white {
+                padding: 25px;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="video-background">
-        <video autoplay muted loop playsinline>
-            <source src="assets/videos/studiox.mp4" type="video/mp4">
-            <source src="YOUR_VIDEO_URL.webm" type="video/webm">
-        </video>
-        <div class="particles" id="particles"></div>
-    </div>
-    
-    <script>
-        // Create floating particles
-        const particlesContainer = document.getElementById('particles');
-        const particleCount = 50;
+    <!-- The Problem -->
+    <section class="problem-section">
+        <div class="grid-bg"></div>
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
         
-        for (let i = 0; i < particleCount; i++) {
-            const particle = document.createElement('div');
-            particle.classList.add('particle');
-            
-            // Random position
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.animationDuration = (Math.random() * 15 + 10) + 's';
-            particle.style.animationDelay = Math.random() * 5 + 's';
-            
-            // Random size variation
-            const size = Math.random() * 3 + 1;
-            particle.style.width = size + 'px';
-            particle.style.height = size + 'px';
-            
-            particlesContainer.appendChild(particle);
-        }
-    </script>
-    
-    <div class="container">
-        <div class="header">
-            <h2>What You Actually Get</h2>
-        </div>
-
-        <div class="grid">
-            <div class="card">
-                <div class="card-number">01</div>
-                <div class="card-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
+        <div class="container position-relative">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <h2 class="section-heading fade-in-up" data-text="The Old Playbook Can't Keep Up">
+                        The Old Playbook<br>Can't Keep Up
+                    </h2>
+                    <p class="problem-text fade-in-up">
+                        <strong>Consumer attention is the ultimate currency</strong>, and business moves faster than traditional production models allow. Great video used to mean choosing two: quality, speed, or affordability.
+                    </p>
+                    <p class="problem-text fade-in-up">
+                        Growing businesses are forced into impossible compromises—accept mediocre quality, blow the budget, or wait months for delivery.
+                    </p>
+                    <div class="glass-card fade-in-up">
+                        <div class="glass-card-inner">
+                            <p class="glass-text">💡 The traditional model forces you to sacrifice. We believe you deserve all three.</p>
+                        </div>
+                    </div>
                 </div>
-                <h4 class="card-title">Direct Expert Access</h4>
-                <p class="card-description">Work with the creators, not account managers</p>
-                <div class="decoration-line"></div>
-            </div>
-
-            <div class="card">
-                <div class="card-number">02</div>
-                <div class="card-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
+                <div class="col-lg-6 fade-in-up">
+                    <div class="video-bento">
+                        <!-- For Problem Section Video -->
+<div class="video-inner">
+    <video 
+        width="100%" 
+        height="100%" 
+        loop
+        autoplay
+        style="object-fit: cover; border-radius: 35px;">
+        <source src="assets/videos/ant.mp4" type="video/mp4">
+        <source src="path/to/your-video.webm" type="video/webm">
+        Your browser does not support the video tag.
+    </video>
+</div>
+                    </div>
                 </div>
-                <h4 class="card-title">Complete Transparency</h4>
-                <p class="card-description">Honest timelines, upfront pricing, straightforward communication</p>
-                <div class="decoration-line"></div>
-            </div>
-
-            <div class="card">
-                <div class="card-number">03</div>
-                <div class="card-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                </div>
-                <h4 class="card-title">Your Creative Extension</h4>
-                <p class="card-description">We act as part of your team, dedicated to your success</p>
-                <div class="decoration-line"></div>
-            </div>
-
-            <div class="card">
-                <div class="card-number">04</div>
-                <div class="card-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
-                    </svg>
-                </div>
-                <h4 class="card-title">Measured Results</h4>
-                <p class="card-description">We track impact, not just deliverables. Your success is our scorecard.</p>
-                <div class="decoration-line"></div>
             </div>
         </div>
-    </div>
+    </section>
+
+    <!-- The Solution -->
+    <section class="solution-section">
+        <div class="dot-pattern"></div>
+        <div class="dark-orb dark-orb-1"></div>
+        <div class="dark-orb dark-orb-2"></div>
+        
+        <div class="container position-relative">
+            <div class="row align-items-center">
+                <div class="col-lg-6 order-lg-2 mb-5 mb-lg-0">
+                    <h2 class="section-heading fade-in-up" data-text="We Built a Studio Where You Don't Compromise">
+                        We Built a Studio<br>Where You Don't<br>Compromise
+                    </h2>
+                    <p class="solution-text fade-in-up">
+                        Our methodology leverages AI for operational efficiency—rendering, formatting, asset management—while our creative team focuses entirely on what matters: your story, your strategy, your impact.
+                    </p>
+                    <div class="glass-card-white fade-in-up">
+                        <div class="glass-card-inner">
+                            <p class="glass-text-dark">💡 Technology removes the bottlenecks. Human creativity solves your business challenges.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 order-lg-1 fade-in-up">
+                    <div class="video-parallelo">
+                        <div class="video-parallelo-inner">
+                            <!-- For Problem Section Video -->
+<div class="video-inner">
+    <video 
+        width="100%" 
+        height="100%" 
+        loop
+        autoplay
+        poster="path/to/thumbnail.jpg"
+        style="object-fit: cover; border-radius: 35px;">
+        <source src="assets/videos/hospitality.mp4" type="video/mp4">
+        <source src="path/to/your-video.webm" type="video/webm">
+        Your browser does not support the video tag.
+    </video>
+</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
