@@ -3,574 +3,630 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Video Studio Sections</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <title>beyondA1C™ - Precision Diabetes Intelligence</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+        :root {
+            /* New Dark Mode Palette */
+            --dark-bg: #0A192F; /* Deep Navy/Charcoal */
+            --dark-surface: #172A46; /* Slightly lighter card background */
+            --accent-teal: #00FFD1; /* Electric Teal */
+            --accent-blue: #4078E6; /* Cyber Blue */
+            --text-light: #CCD6F6; /* Crisp White/Light Blue */
+            --text-muted: #8892B0; /* Light Gray/Muted */
+            --gradient-main: linear-gradient(90deg, var(--accent-blue) 0%, var(--accent-teal) 100%);
         }
 
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            background-color: var(--dark-bg);
+            color: var(--text-light);
             overflow-x: hidden;
-            background: #000;
         }
 
-        /* Section 2 - The Problem */
-        .problem-section {
-            background: #000;
-            padding: 120px 0;
-            position: relative;
-            overflow: hidden;
+        /* Utility Classes */
+        .text-accent { color: var(--accent-teal) !important; }
+        .bg-surface { background-color: var(--dark-surface); }
+
+        /* Navigation */
+        .navbar {
+            background-color: rgba(10, 25, 47, 0.9); /* Semi-transparent dark bg */
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            border-bottom: 1px solid rgba(64, 120, 230, 0.2);
         }
 
-        /* Animated Grid Background */
-        .grid-bg {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: gridMove 20s linear infinite;
-            pointer-events: none;
+        .navbar-brand {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--text-light);
+            letter-spacing: 1px;
         }
 
-        @keyframes gridMove {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
+        .navbar-brand .logo-suffix {
+            color: var(--accent-teal);
+            font-weight: 900;
         }
 
-        /* Glowing Orbs */
-        .orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(60px);
-            opacity: 0.3;
-            animation: orbFloat 15s infinite ease-in-out;
+        .nav-link {
+            color: var(--text-muted);
+            font-weight: 500;
+            transition: color 0.3s ease, transform 0.3s ease;
         }
 
-        .orb-1 {
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
-            top: -100px;
-            right: -100px;
-            animation-delay: 0s;
+        .nav-link:hover {
+            color: var(--accent-teal);
+            transform: translateY(-2px);
         }
 
-        .orb-2 {
-            width: 300px;
-            height: 300px;
-            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
-            bottom: -50px;
-            left: -50px;
-            animation-delay: 5s;
+        /* Hero Section */
+        .hero-section {
+            padding: 150px 0 100px;
+            text-align: center;
         }
 
-        @keyframes orbFloat {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            50% { transform: translate(30px, -30px) scale(1.1); }
-        }
-
-        .section-heading {
+        .hero-title {
             font-size: 4rem;
             font-weight: 900;
-            color: #fff;
-            margin-bottom: 40px;
-            line-height: 1.1;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--text-light);
             position: relative;
-            display: inline-block;
-            letter-spacing: -2px;
+            animation: fadeInTop 1s ease;
+        }
+        
+        .hero-title::after {
+            content: 'Advanced Diabetes Intelligence';
+            display: block;
+            font-size: 1.2rem;
+            font-weight: 400;
+            color: var(--accent-teal);
+            margin-top: 0.5rem;
+            letter-spacing: 5px;
+            animation: fadeInTop 1s ease 0.2s backwards;
         }
 
-        .section-heading::before {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            z-index: -1;
-            background: linear-gradient(45deg, #fff, #666);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            filter: blur(20px);
-            opacity: 0.5;
-        }
-
-        .problem-text {
+        .hero-subtitle {
             font-size: 1.4rem;
-            line-height: 1.9;
-            color: #b0b0b0;
-            margin-bottom: 30px;
+            max-width: 800px;
+            margin: 1.5rem auto 3rem;
+            opacity: 0.8;
+            animation: fadeInTop 1s ease 0.4s backwards;
         }
 
-        .problem-text strong {
-            color: #fff;
+        .btn-primary-accent {
+            background: var(--gradient-main);
+            color: var(--dark-bg);
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.1rem;
             font-weight: 700;
-            background: linear-gradient(90deg, #fff 0%, #999 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            border-radius: 5px;
+            box-shadow: 0 0 20px rgba(0, 255, 209, 0.5);
+            transition: all 0.3s ease;
         }
 
-        /* Bento Box Video Container - Problem */
-        .video-bento {
-            position: relative;
-            border-radius: 40px;
-            overflow: hidden;
-            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
-            padding: 8px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        .btn-primary-accent:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 30px rgba(0, 255, 209, 0.8);
+            filter: brightness(1.1);
         }
 
-        .video-bento:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 40px 100px rgba(255,255,255,0.2);
-        }
-
-        .video-bento::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 40px;
-            padding: 2px;
-            background: linear-gradient(135deg, #fff, #666, #333);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask-composite: exclude;
-            opacity: 0;
-            transition: opacity 0.4s;
-        }
-
-        .video-bento:hover::before {
-            opacity: 1;
-            animation: rotateBorder 3s linear infinite;
-        }
-
-        @keyframes rotateBorder {
-            0% { filter: hue-rotate(0deg); }
-            100% { filter: hue-rotate(360deg); }
-        }
-
-        .video-inner {
-            width: 100%;
-            height: 450px;
-            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 100%);
-            border-radius: 35px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Morphing Play Button */
-        .play-morph {
-            width: 100px;
-            height: 100px;
-            background: #fff;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            position: relative;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 20px 50px rgba(255,255,255,0.3);
-        }
-
-        .play-morph:hover {
-            border-radius: 30%;
-            transform: scale(1.15) rotate(90deg);
-            box-shadow: 0 30px 70px rgba(255,255,255,0.5);
-        }
-
-        .play-morph::after {
-            content: '';
-            width: 0;
-            height: 0;
-            border-left: 30px solid #000;
-            border-top: 18px solid transparent;
-            border-bottom: 18px solid transparent;
-            margin-left: 8px;
-            transition: all 0.4s;
-        }
-
-        .play-morph:hover::after {
-            transform: rotate(-90deg);
-        }
-
-        /* Glass Card */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 25px;
-            padding: 35px;
-            margin-top: 40px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .glass-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(from 0deg, transparent, rgba(255,255,255,0.1), transparent 30%);
-            animation: rotate 4s linear infinite;
-        }
-
-        @keyframes rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .glass-card-inner {
-            position: relative;
-            z-index: 1;
-        }
-
-        .glass-text {
-            color: #fff;
-            font-size: 1.2rem;
-            line-height: 1.8;
-            margin: 0;
-        }
-
-        /* Glass Card for White Section */
-        .glass-card-white {
-            background: rgba(0, 0, 0, 0.05);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: 25px;
-            padding: 35px;
-            margin-top: 40px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .glass-card-white::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(from 0deg, transparent, rgba(0,0,0,0.1), transparent 30%);
-            animation: rotate 4s linear infinite;
-        }
-
-        .glass-text-dark {
-            color: #000;
-            font-size: 1.2rem;
-            line-height: 1.8;
-            margin: 0;
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Solution Section */
-        .solution-section {
-            background: #fff;
-            padding: 120px 0;
-            position: relative;
-            overflow: hidden;
-        }
-
-        /* Dot Pattern */
-        .dot-pattern {
-            position: absolute;
-            width: 100%;
+        /* Feature Grid */
+        .feature-card {
+            background: var(--dark-surface);
+            border: 1px solid rgba(64, 120, 230, 0.2);
+            border-radius: 10px;
+            padding: 2rem;
+            transition: all 0.3s ease;
             height: 100%;
-            background-image: radial-gradient(circle, rgba(0,0,0,0.05) 1px, transparent 1px);
-            background-size: 30px 30px;
-            pointer-events: none;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
         }
 
-        /* Dark Orbs for White Section */
-        .dark-orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.1;
+        .feature-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-teal);
+            box-shadow: 0 10px 30px rgba(0, 255, 209, 0.1);
         }
 
-        .dark-orb-1 {
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(0,0,0,0.2) 0%, transparent 70%);
-            top: -150px;
-            left: -150px;
-            animation: orbFloat 20s infinite ease-in-out;
+        .feature-icon-box {
+            font-size: 2.5rem;
+            color: var(--accent-teal);
+            margin-bottom: 1rem;
         }
 
-        .dark-orb-2 {
-            width: 400px;
-            height: 400px;
-            background: radial-gradient(circle, rgba(0,0,0,0.15) 0%, transparent 70%);
-            bottom: -100px;
-            right: -100px;
-            animation: orbFloat 18s infinite ease-in-out reverse;
+        /* Stats Grid - Matrix Effect */
+        .stats-section {
+            padding: 80px 0;
+            background: #000; /* Pure black for contrast */
+            position: relative;
+            border-top: 1px solid var(--accent-blue);
+            border-bottom: 1px solid var(--accent-blue);
         }
 
-        .solution-section .section-heading {
-            color: #000;
+        .stat-card {
+            text-align: center;
+            padding: 1.5rem;
+            border-right: 1px solid rgba(255, 255, 255, 0.05); /* Separator lines */
+        }
+        .stat-card:last-child {
+            border-right: none;
         }
 
-        .solution-section .section-heading::before {
-            background: linear-gradient(45deg, #000, #666);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+        .stat-number {
+            font-size: 3.8rem;
+            font-weight: 800;
+            color: var(--accent-teal);
+            letter-spacing: 2px;
+            display: block;
+        }
+        .stat-number.x-factor {
+            color: var(--accent-blue);
         }
 
-        .solution-text {
-            font-size: 1.4rem;
-            line-height: 1.9;
-            color: #404040;
-            margin-bottom: 30px;
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.7;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .solution-text strong {
-            color: #000;
+        /* Process Timeline (Simplified) */
+        .process-step {
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 1.5rem;
+            background: var(--dark-surface);
+            transition: all 0.3s ease;
+            position: relative;
+            border-left: 4px solid var(--accent-blue);
+        }
+        .process-step:hover {
+            border-left-color: var(--accent-teal);
+            box-shadow: 0 5px 15px rgba(0, 255, 209, 0.1);
+        }
+
+        .step-number {
+            font-size: 1.8rem;
             font-weight: 700;
+            color: var(--accent-teal);
+            margin-right: 1rem;
         }
 
-        /* Tilted Parallelogram Video - Solution */
-        .video-parallelo {
-            position: relative;
-            perspective: 1000px;
+        /* Risk Matrix */
+        .risk-matrix-section {
+            background-color: var(--dark-surface);
+            padding: 80px 0;
+        }
+        .risk-card {
+            margin-bottom: 2rem;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+        .risk-card.high { background-color: #58161D; border: 1px solid #EF4444; }
+        .risk-card.moderate { background-color: #5B4F15; border: 1px solid #F59E0B; }
+        .risk-card.low { background-color: #113430; border: 1px solid #10B981; }
+
+        .risk-badge {
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+            padding: 0.3rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        .risk-badge.high { background: #EF4444; color: white; }
+        .risk-badge.moderate { background: #F59E0B; color: var(--dark-bg); }
+        .risk-badge.low { background: #10B981; color: var(--dark-bg); }
+
+        .risk-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .risk-card ul li:before {
+            content: "\f058"; /* Check icon */
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--accent-teal);
+            margin-right: 10px;
+        }
+        .risk-card.high ul li:before { color: #EF4444; }
+        .risk-card.moderate ul li:before { color: #F59E0B; }
+        .risk-card.low ul li:before { color: #10B981; }
+
+        /* Technical Specs */
+        .tech-table .table {
+            --bs-table-bg: var(--dark-surface);
+            --bs-table-color: var(--text-light);
         }
 
-        .video-parallelo-inner {
-            position: relative;
-            transform: rotateY(-5deg) rotateX(2deg);
-            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-            border-radius: 35px;
-            overflow: hidden;
-            box-shadow: 
-                -20px 20px 60px rgba(0,0,0,0.15),
-                20px -20px 60px rgba(0,0,0,0.05);
+        .tech-table th {
+            background-color: var(--accent-blue) !important;
+            color: var(--dark-bg) !important;
         }
 
-        .video-parallelo:hover .video-parallelo-inner {
-            transform: rotateY(0deg) rotateX(0deg) scale(1.02);
-            box-shadow: 
-                0 40px 80px rgba(0,0,0,0.2);
+        .tech-table td {
+            border-color: rgba(255, 255, 255, 0.1) !important;
         }
 
-        .video-parallelo .video-inner {
-            background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);
-            border: 3px solid #000;
+        /* CTA */
+        .cta-section {
+            background: linear-gradient(135deg, var(--dark-bg), var(--dark-surface));
+            border-top: 1px solid rgba(0, 255, 209, 0.3);
+        }
+        
+        .btn-secondary-outline {
+            color: var(--accent-teal);
+            border: 2px solid var(--accent-teal);
+            background: transparent;
+            padding: 15px 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+        }
+        .btn-secondary-outline:hover {
+            background: var(--accent-teal);
+            color: var(--dark-bg);
+            box-shadow: 0 0 20px rgba(0, 255, 209, 0.6);
         }
 
-        .video-parallelo .play-morph {
+        /* Footer */
+        footer {
             background: #000;
-            box-shadow: 0 20px 50px rgba(0,0,0,0.4);
-        }
-
-        .video-parallelo .play-morph::after {
-            border-left-color: #fff;
-        }
-
-        .video-parallelo .play-morph:hover {
-            box-shadow: 0 30px 70px rgba(0,0,0,0.6);
+            border-top: 1px solid rgba(64, 120, 230, 0.2);
         }
 
         /* Animations */
-        .fade-in-up {
-            opacity: 0;
-            transform: translateY(40px);
-            animation: fadeInUp 1s ease forwards;
-        }
-
-        @keyframes fadeInUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .fade-in-up:nth-child(1) { animation-delay: 0.1s; }
-        .fade-in-up:nth-child(2) { animation-delay: 0.2s; }
-        .fade-in-up:nth-child(3) { animation-delay: 0.3s; }
-        .fade-in-up:nth-child(4) { animation-delay: 0.4s; }
-
-        /* Media Queries */
-        @media (max-width: 992px) {
-            .section-heading {
-                font-size: 3rem;
-            }
-
-            .problem-text, .solution-text {
-                font-size: 1.2rem;
-            }
-
-            .video-inner {
-                height: 350px;
-            }
-
-            .problem-section, .solution-section {
-                padding: 80px 0;
-            }
+        @keyframes fadeInTop {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @media (max-width: 768px) {
-            .section-heading {
-                font-size: 2.2rem;
-            }
-
-            .problem-text, .solution-text {
-                font-size: 1.1rem;
-            }
-
-            .video-inner {
-                height: 280px;
-            }
-
-            .play-morph {
-                width: 80px;
-                height: 80px;
-            }
-
-            .play-morph::after {
-                border-left-width: 24px;
-                border-top-width: 14px;
-                border-bottom-width: 14px;
-            }
-
-            .problem-section, .solution-section {
-                padding: 60px 0;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .section-heading {
-                font-size: 1.8rem;
-                letter-spacing: -1px;
-            }
-
-            .video-inner {
-                height: 220px;
-            }
-
-            .play-morph {
-                width: 70px;
-                height: 70px;
-            }
-
-            .play-morph::after {
-                border-left-width: 20px;
-                border-top-width: 12px;
-                border-bottom-width: 12px;
-            }
-
-            .glass-card, .glass-card-white {
-                padding: 25px;
-            }
+            .hero-title { font-size: 3rem; }
+            .hero-title::after { font-size: 0.9rem; letter-spacing: 2px; }
+            .stat-number { font-size: 2.5rem; }
+            .stat-card { border-right: none; border-bottom: 1px solid rgba(255, 255, 255, 0.05); }
         }
     </style>
 </head>
 <body>
-    <!-- The Problem -->
-    <section class="problem-section">
-        <div class="grid-bg"></div>
-        <div class="orb orb-1"></div>
-        <div class="orb orb-2"></div>
-        
-        <div class="container position-relative">
-            <div class="row align-items-center">
-                <div class="col-lg-6 mb-5 mb-lg-0">
-                    <h2 class="section-heading fade-in-up" data-text="The Old Playbook Can't Keep Up">
-                        The Old Playbook<br>Can't Keep Up
-                    </h2>
-                    <p class="problem-text fade-in-up">
-                        <strong>Consumer attention is the ultimate currency</strong>, and business moves faster than traditional production models allow. Great video used to mean choosing two: quality, speed, or affordability.
-                    </p>
-                    <p class="problem-text fade-in-up">
-                        Growing businesses are forced into impossible compromises—accept mediocre quality, blow the budget, or wait months for delivery.
-                    </p>
-                    <div class="glass-card fade-in-up">
-                        <div class="glass-card-inner">
-                            <p class="glass-text">💡 The traditional model forces you to sacrifice. We believe you deserve all three.</p>
-                        </div>
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#home">beyond<span class="logo-suffix">A1C</span>™</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#overview">Overview</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#ordering">Ordering</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#protocols">Protocols</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#technical">Technical</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section id="home" class="hero-section">
+        <div class="container hero-content">
+            <h1 class="hero-title">Precision Diabetes Risk</h1>
+            <p class="hero-subtitle">Moving beyond traditional metrics. Our AI-driven platform leverages 20+ biomarkers to predict 5-year complication risk with unparalleled accuracy.</p>
+            <a href="#ordering" class="btn btn-primary-accent">Order Test Protocol <i class="fas fa-arrow-right ms-2"></i></a>
+        </div>
+    </section>
+
+    <section class="stats-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-6 col-md-3">
+                    <div class="stat-card">
+                        <span class="stat-number">89<span class="fs-4">%</span></span>
+                        <span class="stat-label">Sensitivity</span>
                     </div>
                 </div>
-                <div class="col-lg-6 fade-in-up">
-                    <div class="video-bento">
-                        <!-- For Problem Section Video -->
-<div class="video-inner">
-    <video 
-        width="100%" 
-        height="100%" 
-        loop
-        autoplay
-        style="object-fit: cover; border-radius: 35px;">
-        <source src="assets/videos/ant.mp4" type="video/mp4">
-        <source src="path/to/your-video.webm" type="video/webm">
-        Your browser does not support the video tag.
-    </video>
-</div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-card">
+                        <span class="stat-number">94<span class="fs-4">%</span></span>
+                        <span class="stat-label">Specificity</span>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-card">
+                        <span class="stat-number x-factor">3.2<span class="fs-4">x</span></span>
+                        <span class="stat-label">Prediction Value</span>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-card">
+                        <span class="stat-number">48-72<span class="fs-4">h</span></span>
+                        <span class="stat-label">Turnaround</span>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- The Solution -->
-    <section class="solution-section">
-        <div class="dot-pattern"></div>
-        <div class="dark-orb dark-orb-1"></div>
-        <div class="dark-orb dark-orb-2"></div>
-        
-        <div class="container position-relative">
-            <div class="row align-items-center">
-                <div class="col-lg-6 order-lg-2 mb-5 mb-lg-0">
-                    <h2 class="section-heading fade-in-up" data-text="We Built a Studio Where You Don't Compromise">
-                        We Built a Studio<br>Where You Don't<br>Compromise
-                    </h2>
-                    <p class="solution-text fade-in-up">
-                        Our methodology leverages AI for operational efficiency—rendering, formatting, asset management—while our creative team focuses entirely on what matters: your story, your strategy, your impact.
-                    </p>
-                    <div class="glass-card-white fade-in-up">
-                        <div class="glass-card-inner">
-                            <p class="glass-text-dark">💡 Technology removes the bottlenecks. Human creativity solves your business challenges.</p>
-                        </div>
+    <section id="overview" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-6 fw-bold">The <span class="text-accent">Beyond</span>-A1C Advantage</h2>
+                <p class="lead text-muted">A synergistic approach combining deep clinical data with cutting-edge machine learning.</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon-box"><i class="fas fa-dna"></i></div>
+                        <h4 class="fw-bold mb-3">Metabolic Profiling</h4>
+                        <p class="text-muted">Analysis of inflammatory cytokines and metabolic health indicators.</p>
                     </div>
                 </div>
-                <div class="col-lg-6 order-lg-1 fade-in-up">
-                    <div class="video-parallelo">
-                        <div class="video-parallelo-inner">
-                            <!-- For Problem Section Video -->
-<div class="video-inner">
-    <video 
-        width="100%" 
-        height="100%" 
-        loop
-        autoplay
-        poster="path/to/thumbnail.jpg"
-        style="object-fit: cover; border-radius: 35px;">
-        <source src="assets/videos/hospitality.mp4" type="video/mp4">
-        <source src="path/to/your-video.webm" type="video/webm">
-        Your browser does not support the video tag.
-    </video>
-</div>
-                        </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon-box"><i class="fas fa-microchip"></i></div>
+                        <h4 class="fw-bold mb-3">Validated AI Model</h4>
+                        <p class="text-muted">Algorithms trained on >15k patient outcomes for robust prediction.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon-box"><i class="fas fa-chart-bar"></i></div>
+                        <h4 class="fw-bold mb-3">Complication Trajectory</h4>
+                        <p class="text-muted">Precise 5-year probability scores for micro/macrovascular risks.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3">
+                    <div class="feature-card fade-in">
+                        <div class="feature-icon-box"><i class="fas fa-shield-alt"></i></div>
+                        <h4 class="fw-bold mb-3">Proactive Intervention</h4>
+                        <p class="text-muted">Enables timely, risk-adjusted therapeutic adjustments.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <hr class="container" style="border-color: rgba(255, 255, 255, 0.05);">
+
+    <section id="protocols" class="py-5 risk-matrix-section">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-6 fw-bold">Clinical <span class="text-accent">Risk Matrix</span></h2>
+                <p class="lead text-muted">Tailored management protocols based on predictive risk percentile.</p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-4">
+                    <div class="risk-card high fade-in">
+                        <span class="risk-badge high">HIGH RISK (>75th Percentile)</span>
+                        <h4 class="fw-bold mb-3">Intensive Management</h4>
+                        <ul class="mb-0">
+                            <li class="mb-2"><strong>Target HbA1c <7.0%.</strong> Aggressive glucose control.</li>
+                            <li class="mb-2"><strong>Initiate Cardioprotection:</strong> ACE/ARB, SGLT2i/GLP-1RA, statins.</li>
+                            <li class="mb-2"><strong>Specialist Referral:</strong> Quarterly monitoring (Ophthalmology/Nephrology).</li>
+                            <li><strong>Technology:</strong> Recommend Continuous Glucose Monitoring (CGM).</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="risk-card moderate fade-in">
+                        <span class="risk-badge moderate">MODERATE RISK (25th-75th Percentile)</span>
+                        <h4 class="fw-bold mb-3">Standard/Optimized Care</h4>
+                        <ul class="mb-0">
+                            <li class="mb-2"><strong>Target HbA1c <7.5%.</strong> Optimize current medications.</li>
+                            <li class="mb-2"><strong>Annual Screening:</strong> Standard complications checks.</li>
+                            <li class="mb-2"><strong>Lifestyle:</strong> Structured dietary and exercise programs.</li>
+                            <li><strong>Monitoring:</strong> Biannual beyondA1C reassessment.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="risk-card low fade-in">
+                        <span class="risk-badge low">LOW RISK (<25th Percentile)</span>
+                        <h4 class="fw-bold mb-3">Maintenance & Prevention</h4>
+                        <ul class="mb-0">
+                            <li class="mb-2"><strong>Maintain Control:</strong> Continue current management strategy.</li>
+                            <li class="mb-2"><strong>Annual Checkup:</strong> Standard annual physical and lab work.</li>
+                            <li class="mb-2"><strong>Focus:</strong> Reinforced education on prevention.</li>
+                            <li><strong>Reassessment:</strong> Annual beyondA1C monitoring.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="ordering" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-6 fw-bold">The <span class="text-accent">Ordering</span> Workflow</h2>
+                <p class="lead text-muted">A streamlined, efficient process for clinical laboratories and practices.</p>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="process-step fade-in">
+                        <span class="step-number">01.</span>
+                        <h4 class="fw-bold d-inline-block">Platform Setup & Integration</h4>
+                        <p class="text-muted mb-1">Secure portal registration and CLIA verification.</p>
+                        <p class="text-muted">LIMS/EHR integration support for automated ordering.</p>
+                    </div>
+                    <div class="process-step fade-in">
+                        <span class="step-number">02.</span>
+                        <h4 class="fw-bold d-inline-block">Collection & Logistics</h4>
+                        <p class="text-muted mb-1"><strong>Sample:</strong> 5.0 mL Serum (min 3.0 mL), fasting preferred.</p>
+                        <p class="text-muted">Prepaid, temperature-controlled FedEx shipping provided.</p>
+                    </div>
+                    <div class="process-step fade-in">
+                        <span class="step-number">03.</span>
+                        <h4 class="fw-bold d-inline-block">Analysis & Reporting</h4>
+                        <p class="text-muted mb-1">Automated high-throughput mass spectrometry and AI processing.</p>
+                        <p class="text-muted">Results available in 48-72 hours via secure portal/EHR.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="technical" class="py-5 bg-surface">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="display-6 fw-bold">Technical <span class="text-accent">Data</span></h2>
+                <p class="lead text-muted">Detailed specifications for laboratory and research validation.</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-lg-6">
+                    <div class="tech-table">
+                        <table class="table mb-0 table-striped">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">Analytical Performance</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><strong>Precision (CV)</strong></td><td><8% between-run</td></tr>
+                                <tr><td><strong>Accuracy</strong></td><td>98.5% concordance</td></tr>
+                                <tr><td><strong>Linearity ($R^2$)</strong></td><td>>0.99 across clinical range</td></tr>
+                                <tr><td><strong>Detection Limit</strong></td><td>0.1-10 pg/mL range</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="col-lg-6">
+                    <div class="tech-table">
+                        <table class="table mb-0 table-striped">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">Clinical Validation Metrics</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><strong>Sensitivity</strong></td><td>89% for high-risk prediction</td></tr>
+                                <tr><td><strong>Specificity</strong></td><td>94% for low-risk identification</td></tr>
+                                <tr><td><strong>Positive Predictive Value (PPV)</strong></td><td>87%</td></tr>
+                                <tr><td><strong>Area Under Curve (AUC)</strong></td><td>0.92 for composite endpoint</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="tech-table">
+                        <table class="table mb-0 table-striped">
+                            <thead>
+                                <tr>
+                                    <th colspan="2">Sample & Handling</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr><td><strong>Sample Type</strong></td><td>Human serum</td></tr>
+                                <tr><td><strong>Volume</strong></td><td>5.0 mL (minimum 3.0 mL)</td></tr>
+                                <tr><td><strong>Tubes</strong></td><td>SST, red-top, or gold-top</td></tr>
+                                <tr><td><strong>Storage Stability</strong></td><td>2-8°C up to 5 days</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-section py-5">
+        <div class="container text-center">
+            <h2 class="cta-title">Unlock Deeper Clinical Insights Today.</h2>
+            <p class="mb-4 lead text-muted">Move beyond A1C. Empower your practice with predictive precision.</p>
+            <a href="#" class="btn btn-secondary-outline me-3">Request Clinical Demo</a>
+            <a href="#contact" class="btn btn-secondary-outline">Contact Specialist Team</a>
+        </div>
+    </section>
+
+    <footer id="contact" class="py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">beyond<span class="text-accent">A1C</span>™</h5>
+                    <p class="text-muted">Precision diagnostics for the future of diabetes management.</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">Resources</h5>
+                    <div class="d-flex flex-column">
+                        <a href="#protocols" class="footer-link mb-2">Clinical Protocols</a>
+                        <a href="#technical" class="footer-link mb-2">Technical Specs</a>
+                        <a href="#" class="footer-link">Scientific Publications</a>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <h5 class="mb-3">Connect</h5>
+                    <p class="text-muted mb-2"><i class="fas fa-phone me-2 text-accent"></i> 1-800-BEYOND-A1C</p>
+                    <p class="text-muted mb-2"><i class="fas fa-envelope me-2 text-accent"></i> info@beyonda1c.com</p>
+                    <p class="text-muted"><i class="fas fa-map-marker-alt me-2 text-accent"></i> CLIA/CAP Accredited Labs</p>
+                </div>
+            </div>
+            <hr style="border-color: rgba(255, 255, 255, 0.1);">
+            <div class="text-center text-muted mt-3">
+                <p class="mb-0">&copy; 2025 beyondA1C™. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Smooth scrolling is preserved
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80;
+                    const targetPosition = target.offsetTop - offset;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Simplified scrolling effects
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.backgroundColor = 'var(--dark-bg)'; // Full dark background
+            } else {
+                navbar.style.backgroundColor = 'rgba(10, 25, 47, 0.9)'; // Semi-transparent at top
+            }
+        });
+
+        // Basic Fade-in on scroll for feature/risk cards (similar to original)
+        const observerOptions = { threshold: 0.1, rootMargin: '0px 0px -50px 0px' };
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate__animated', 'animate__fadeInUp');
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.feature-card, .process-step, .risk-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
 </body>
 </html>
