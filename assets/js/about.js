@@ -6,7 +6,8 @@
 document.addEventListener('DOMContentLoaded', function() {
     initAboutAnimations();
     initTriReveal();
-    initTeamNoteTypewriter();
+    initTypewriter('.about-team-note', '.about-team-note-text', 60);
+    initTypewriter('.about-typewriter', '.about-typewriter-text', 50);
 });
 
 // ========================================
@@ -131,31 +132,30 @@ function initTriReveal() {
     observer.observe(section);
 }
 
-function initTeamNoteTypewriter() {
-    const note = document.querySelector('.about-team-note');
-    if (!note) return;
+function initTypewriter(selector, spanClass, speed = 60) {
+    const element = document.querySelector(selector);
+    if (!element) return;
 
-    const text = note.dataset.typeText || note.textContent.trim();
+    const text = element.dataset.typeText || element.textContent.trim();
     if (!text) return;
 
     const displaySpan = document.createElement('span');
-    displaySpan.className = 'about-team-note-text';
-    note.textContent = '';
-    note.appendChild(displaySpan);
+    displaySpan.className = spanClass.replace('.', '') || 'about-typewriter-text';
+    element.textContent = '';
+    element.appendChild(displaySpan);
 
     let charIndex = 0;
     let typingTimeoutId = null;
-    const typingSpeed = 60;
+    let isTyping = false;
 
     const typeNextChar = () => {
         if (charIndex <= text.length) {
             displaySpan.textContent = text.slice(0, charIndex);
             charIndex += 1;
-            typingTimeoutId = setTimeout(typeNextChar, typingSpeed);
+            typingTimeoutId = setTimeout(typeNextChar, speed);
         }
     };
 
-    let isTyping = false;
     const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -175,7 +175,7 @@ function initTeamNoteTypewriter() {
         });
     }, { threshold: 0.4 });
 
-    observer.observe(note);
+    observer.observe(element);
 }
 
  const particlesContainer = document.getElementById('particles');

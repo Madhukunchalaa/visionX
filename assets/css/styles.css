@@ -3927,11 +3927,17 @@ p {
             letter-spacing: 0.5px;
         }
 
-        .about-team-note-text {
+        .about-team-note-text,
+        .about-typewriter-text {
             display: inline-block;
-                font-size: 27px;
-    display: inline-block;
-    font-weight: bolder;
+            font-size: 27px;
+            font-weight: 800;
+        }
+
+        .about-typewriter {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--theme-color);
         }
 
         .about-cta-description {
