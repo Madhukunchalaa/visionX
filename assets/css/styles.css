@@ -2457,7 +2457,7 @@ p {
         .vb-text-input:focus,
         .vb-textarea-input:focus {
             outline: none;
-            border-color: #3b82f6;
+            border-color: --theme-color;
             background: #ffffff;
             box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
         }
@@ -4628,7 +4628,7 @@ p {
         }
 
         .about-pillar-card:hover .about-pillar-icon svg {
-            stroke: #3b82f6;
+            stroke: --theme-color;
             transform: rotate(5deg);
         }
 
@@ -5025,7 +5025,7 @@ p {
 
         .about-promise-card:hover {
             transform: translateY(-5px);
-            border-color: #3b82f6;
+            border-color: --theme-color;
             box-shadow: 0 10px 30px rgba(59, 130, 246, 0.15);
         }
 
@@ -5040,8 +5040,8 @@ p {
         .about-promise-card .about-promise-check {
             width: 48px;
             height: 48px;
-            border: 2px solid #3b82f6;
-            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            border: 2px solid --theme-color;
+            background: linear-gradient(135deg, --theme-color, #8b5cf6);
             border-radius: 12px;
             display: flex;
             align-items: center;
@@ -5082,7 +5082,7 @@ p {
         }
 
         .about-promise-card:hover .about-promise-content h4 {
-            color: #3b82f6;
+            color: --theme-color;
         }
 
         /* ===== SECTION 7: TEAM ===== */
@@ -6547,6 +6547,9 @@ p {
 .traingles{
       margin:0;
         height:100vh;
+        position: relative;
+        background: #000;
+        overflow: hidden;
 }
 
 
@@ -6560,13 +6563,15 @@ p {
 }
 
 
- .box{
+    .box{
         position:relative;
         width:700px;
         height:600px;
         background:black;
         overflow:hidden;
         right: 10%;
+        margin: 0 auto;
+        z-index: 3;
     }
 
     /* COMMON STYLE FOR TRIANGLES */
@@ -6740,6 +6745,11 @@ p {
         align-items: center;
     }
 
+    .video-text {
+        position: relative;
+        z-index: 2;
+    }
+    
     .video-text video {
         position: absolute;
         top: 50%;
@@ -6758,7 +6768,7 @@ p {
         mask-size: 100% 100%;
     }
 
-    h1 {
+    .design h1{
         position: relative;
         font-size: 12rem;
         font-weight: 900;
@@ -6772,13 +6782,19 @@ p {
     }
 
     /* SVG positioned to cover viewport */
-    svg {
+    .traingles svg {
         position: absolute;
         width: 100%;
         height: 100%;
         top: 0;
         left: 0;
         pointer-events: none;
+        z-index: 1;
+    }
+    
+    .traingles svg text {
+        font-size: clamp(50px, 15vw, 200px);
+        font-weight: 900;
     }
 
     @media (max-width: 768px) {
@@ -6805,6 +6821,342 @@ p {
         box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
         box-sizing: border-box;
     }
+
+/* ========================================
+   RESPONSIVE STYLES FOR TRIANGLE SECTION
+   ======================================== */
+
+/* Large Tablets and Small Desktops (992px - 1200px) */
+@media (max-width: 1200px) {
+    .traingles {
+        height: auto;
+        min-height: 80vh;
+        padding: 60px 0;
+    }
+    
+    .design {
+        padding: 0 20px;
+    }
+    
+    .box {
+        width: 600px;
+        height: 500px;
+        right: 5%;
+    }
+    
+    .video-text {
+        height: 70vh;
+    }
+    
+    .video-text video {
+        left: 25%;
+    }
+    
+    .traingles svg text {
+        font-size: clamp(80px, 12vw, 160px) !important;
+    }
+}
+
+/* Tablets (768px - 991px) */
+@media (max-width: 991px) {
+    .traingles {
+        height: auto;
+        min-height: auto;
+        padding: 80px 0 60px;
+    }
+    
+    .traingles h2 {
+        margin-bottom: 40px;
+        padding: 0 20px;
+    }
+    
+    .design {
+        flex-direction: column;
+        padding: 0 20px;
+    }
+    
+    .video-text {
+        height: 50vh;
+        min-height: 400px;
+        margin-bottom: 40px;
+    }
+    
+    .video-text video {
+        left: 20%;
+    }
+    
+    .traingles svg {
+        height: 50vh;
+        min-height: 400px;
+    }
+    
+    .traingles svg text {
+        font-size: clamp(60px, 10vw, 120px) !important;
+    }
+    
+    .box {
+        width: 100%;
+        max-width: 500px;
+        height: 450px;
+        right: 0;
+        margin: 0 auto;
+    }
+    
+    .tri-heading {
+        font-size: 0.9rem;
+    }
+    
+    .tri-text {
+        font-size: 0.75rem;
+        line-height: 1.4;
+    }
+    
+    .tri1 .tri-content,
+    .tri4 .tri-content {
+        width: 180px;
+        padding: 16px 14px;
+    }
+    
+    .tri2 .tri-content,
+    .tri3 .tri-content {
+        padding: 16px 14px;
+        max-width: 200px;
+    }
+}
+
+/* Mobile Landscape and Small Tablets (576px - 767px) */
+@media (max-width: 767px) {
+    .traingles {
+        padding: 60px 0 40px;
+    }
+    
+    .traingles h2 {
+        font-size: clamp(1.8rem, 5vw, 2.5rem);
+        margin-bottom: 30px;
+        padding: 0 15px;
+    }
+    
+    .design {
+        padding: 0 15px;
+    }
+    
+    .video-text {
+        height: 40vh;
+        min-height: 300px;
+        margin-bottom: 30px;
+    }
+    
+    .video-text video {
+        left: 15%;
+    }
+    
+    .traingles svg {
+        height: 40vh;
+        min-height: 300px;
+    }
+    
+    .traingles svg text {
+        font-size: clamp(50px, 8vw, 80px) !important;
+    }
+    
+    .box {
+        max-width: 100%;
+        height: 400px;
+        margin: 0 auto;
+    }
+    
+    .tri-heading {
+        font-size: 0.85rem;
+        margin-bottom: 6px;
+        line-height: 1.3;
+    }
+    
+    .tri-text {
+        font-size: 0.7rem;
+        line-height: 1.3;
+    }
+    
+    .tri-content {
+        padding: 14px 12px;
+    }
+    
+    .tri1 .tri-content {
+        left: -8%;
+        width: 150px;
+    }
+    
+    .tri2 .tri-content {
+        top: 12%;
+        max-width: 160px;
+    }
+    
+    .tri3 .tri-content {
+        bottom: 12%;
+        max-width: 160px;
+    }
+    
+    .tri4 .tri-content {
+        right: -10%;
+        width: 150px;
+    }
+    
+    .line {
+        height: 18px;
+        width: 140%;
+    }
+}
+
+/* Mobile Portrait (320px - 575px) */
+@media (max-width: 575px) {
+    .traingles {
+        padding: 50px 0 30px;
+    }
+    
+    .traingles h2 {
+        font-size: clamp(1.5rem, 6vw, 2rem);
+        margin-bottom: 25px;
+        padding: 0 15px;
+    }
+    
+    .design {
+        padding: 0 10px;
+    }
+    
+    .video-text {
+        height: 35vh;
+        min-height: 250px;
+        margin-bottom: 25px;
+    }
+    
+    .video-text video {
+        left: 10%;
+    }
+    
+    .traingles svg {
+        height: 35vh;
+        min-height: 250px;
+    }
+    
+    .traingles svg text {
+        font-size: clamp(40px, 6vw, 60px) !important;
+        letter-spacing: 2px !important;
+    }
+    
+    .box {
+        height: 350px;
+        width: 100%;
+    }
+    
+    .tri-heading {
+        font-size: 0.75rem;
+        margin-bottom: 4px;
+        line-height: 1.2;
+    }
+    
+    .tri-text {
+        font-size: 0.65rem;
+        line-height: 1.2;
+    }
+    
+    .tri-content {
+        padding: 12px 10px;
+        border-radius: 12px;
+    }
+    
+    .tri1 .tri-content {
+        left: -12%;
+        width: 130px;
+    }
+    
+    .tri2 .tri-content {
+        top: 10%;
+        max-width: 140px;
+    }
+    
+    .tri3 .tri-content {
+        bottom: 10%;
+        max-width: 140px;
+    }
+    
+    .tri4 .tri-content {
+        right: -12%;
+        width: 130px;
+    }
+    
+    .line {
+        height: 15px;
+        width: 130%;
+    }
+}
+
+/* Very Small Mobile (max-width: 375px) */
+@media (max-width: 375px) {
+    .traingles {
+        padding: 40px 0 20px;
+    }
+    
+    .video-text {
+        height: 30vh;
+        min-height: 200px;
+    }
+    
+    .traingles svg {
+        height: 30vh;
+        min-height: 200px;
+    }
+    
+    .traingles svg text {
+        font-size: clamp(35px, 5vw, 50px) !important;
+    }
+    
+    .box {
+        height: 300px;
+    }
+    
+    .tri-heading {
+        font-size: 0.7rem;
+    }
+    
+    .tri-text {
+        font-size: 0.6rem;
+    }
+    
+    .tri-content {
+        padding: 10px 8px;
+    }
+    
+    .tri1 .tri-content,
+    .tri4 .tri-content {
+        width: 110px;
+    }
+    
+    .tri2 .tri-content,
+    .tri3 .tri-content {
+        max-width: 120px;
+    }
+}
+
+/* Landscape Orientation Adjustments */
+@media (orientation: landscape) and (max-height: 600px) {
+    .traingles {
+        min-height: auto;
+        padding: 40px 0;
+    }
+    
+    .video-text {
+        height: 50vh;
+        min-height: 300px;
+    }
+    
+    .traingles svg {
+        height: 50vh;
+        min-height: 300px;
+    }
+    
+    .box {
+        height: 400px;
+    }
+}
 
 
 
