@@ -720,23 +720,35 @@
 }
 .tri1 .tri-content {
     animation: cardFadeInLeft 0.6s ease forwards;
-    animation-delay: 0s;
+   
 }
 
 .tri2 .tri-content {
     animation: cardFadeInTop 0.6s ease forwards;
-    animation-delay: 3s;
+  
 }
 
 .tri3 .tri-content {
     animation: cardFadeInBottom 0.6s ease forwards;
-    animation-delay: 6s;
+   
 }
 
 .tri4 .tri-content {
     animation: cardFadeInRight 0.6s ease forwards;
-    animation-delay: 9s;
+   
 }
+.tri-content {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(4px);
+    transition: all 0.8s ease-out;
+}
+.tri-content.show {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+}
+
 
 
 </style>
@@ -831,6 +843,22 @@
      
     </div>
     </section>
+    <script>
+document.addEventListener("DOMContentLoaded", function() {
+    const cards = document.querySelectorAll(".tri-content");
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+            }
+        });
+    }, { threshold: 0.4 }); // adjust sensitivity
+
+    cards.forEach(card => observer.observe(card));
+});
+</script>
+
    
 
 </body>
