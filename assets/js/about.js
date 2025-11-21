@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initTriReveal();
     initTypewriter('.about-team-note', '.about-team-note-text', 60);
     initTypewriter('.about-typewriter', '.about-typewriter-text', 50);
+    initParticles();
 });
 
 // ========================================
@@ -54,146 +55,160 @@ function initAboutAnimations() {
     aboutAnimatedElements.forEach(el => observer.observe(el));
 }
 
+// ========================================
+// TRIANGLE CARDS SCROLL REVEAL
+// ========================================
+
 /**
- * Cycle through "What You Actually Get" triangle cards.
+ * Scroll-based triangle card reveal with scroll lock
+ * Prevents scrolling past section until all 4 cards are revealed
  */
 function initTriReveal() {
     const section = document.querySelector('.traingles');
     const cards = Array.from(document.querySelectorAll('.traingles .tri'));
     if (!section || !cards.length) return;
 
-    let index = 0;
-    let revealTimeoutId = null;
-    let showAllTimeoutId = null;
-    let isRunning = false;
+    let currentIndex = 0;
+    let isInView = false;
+    let isLocked = false;
+    let canScroll = true;
+    const totalCards = cards.length;
 
-    const showCard = (idx) => {
-        cards[idx].classList.add('tri-active');
-    };
-
-    const clearTimers = () => {
-        if (revealTimeoutId) {
-            clearTimeout(revealTimeoutId);
-            revealTimeoutId = null;
-        }
-        if (showAllTimeoutId) {
-            clearTimeout(showAllTimeoutId);
-            showAllTimeoutId = null;
-        }
-    };
-
-    const resetState = () => {
-        clearTimers();
-        index = 0;
+    // Reset all cards
+    const resetCards = () => {
         section.classList.remove('tri-show-all');
         cards.forEach(card => card.classList.remove('tri-active'));
-        isRunning = false;
+        currentIndex = 0;
+        isLocked = false;
     };
 
-    const getDelayForIndex = (idx) => (idx === 0 ? 0 : 1000);
+    // Show card at specific index
+    const showCard = (index) => {
+        if (index >= 0 && index < cards.length) {
+            cards[index].classList.add('tri-active');
+        }
+        
+        // If all cards are shown, unlock scrolling
+        if (index >= cards.length - 1) {
+            section.classList.add('tri-show-all');
+            isLocked = false;
+        }
+    };
 
-    const scheduleNextReveal = () => {
-        revealTimeoutId = setTimeout(() => {
-            if (index < cards.length) {
-                showCard(index);
-                index += 1;
+    // Hide card at specific index
+    const hideCard = (index) => {
+        if (index >= 0 && index < cards.length) {
+            cards[index].classList.remove('tri-active');
+        }
+        section.classList.remove('tri-show-all');
+    };
+
+    // Handle wheel event with scroll lock
+    const handleWheel = (e) => {
+        if (!isInView || !canScroll) return;
+
+        // If section is locked and user tries to scroll down beyond last card
+        if (isLocked && e.deltaY > 0 && currentIndex >= totalCards) {
+            e.preventDefault();
+            return;
+        }
+
+        canScroll = false;
+
+        if (e.deltaY > 0) {
+            // Scrolling down
+            if (currentIndex < totalCards) {
+                e.preventDefault();
+                showCard(currentIndex);
+                currentIndex++;
             }
-
-            if (index < cards.length) {
-                scheduleNextReveal();
-            } else {
-                showAllTimeoutId = setTimeout(() => {
-                    section.classList.add('tri-show-all');
-                    isRunning = false;
-                }, 1000);
+        } else if (e.deltaY < 0) {
+            // Scrolling up
+            if (currentIndex > 0) {
+                e.preventDefault();
+                currentIndex--;
+                hideCard(currentIndex);
             }
-        }, getDelayForIndex(index));
+        }
+
+        // Re-enable scrolling after delay
+        setTimeout(() => {
+            canScroll = true;
+        }, 500);
     };
 
-    const startSequence = () => {
-        if (isRunning) return;
-        resetState();
-        isRunning = true;
-        scheduleNextReveal();
-    };
-
+    // Intersection Observer to detect when section is in view
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.target !== section) return;
 
             if (entry.isIntersecting) {
-                startSequence();
+                isInView = true;
+                isLocked = true;
+                
+                // Show first card immediately when section comes into view
+                if (currentIndex === 0) {
+                    showCard(0);
+                    currentIndex = 1;
+                }
             } else {
-                resetState();
+                isInView = false;
+                
+                // Reset if scrolled away before completing
+                if (currentIndex < totalCards) {
+                    resetCards();
+                }
             }
         });
-    }, { threshold: 0.3 });
+    }, { 
+        threshold: 0.4,
+        rootMargin: '0px'
+    });
 
     observer.observe(section);
+
+    // Listen to wheel events with preventDefault capability
+    window.addEventListener('wheel', handleWheel, { passive: false });
+
+    // Initial setup
+    resetCards();
 }
 
-function initTypewriter(selector, spanClass, speed = 60) {
-    const element = document.querySelector(selector);
-    if (!element) return;
+// ========================================
+// TYPEWRITER EFFECT
+// ========================================
 
-    const text = element.dataset.typeText || element.textContent.trim();
-    if (!text) return;
+/**
+ * Typewriter effect for text elements
 
-    const displaySpan = document.createElement('span');
-    displaySpan.className = spanClass.replace('.', '') || 'about-typewriter-text';
-    element.textContent = '';
-    element.appendChild(displaySpan);
 
-    let charIndex = 0;
-    let typingTimeoutId = null;
-    let isTyping = false;
+// ========================================
+// PARTICLE ANIMATION
+// ========================================
 
-    const typeNextChar = () => {
-        if (charIndex <= text.length) {
-            displaySpan.textContent = text.slice(0, charIndex);
-            charIndex += 1;
-            typingTimeoutId = setTimeout(typeNextChar, speed);
-        }
-    };
+/**
+ * Initialize particle animation
+ */
+function initParticles() {
+    const particlesContainer = document.getElementById('particles');
+    if (!particlesContainer) return;
 
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                if (!isTyping) {
-                    isTyping = true;
-                    typeNextChar();
-                }
-            } else {
-                if (typingTimeoutId) {
-                    clearTimeout(typingTimeoutId);
-                    typingTimeoutId = null;
-                }
-                charIndex = 0;
-                displaySpan.textContent = '';
-                isTyping = false;
-            }
-        });
-    }, { threshold: 0.4 });
-
-    observer.observe(element);
-}
-
- const particlesContainer = document.getElementById('particles');
-        const particleCount = 50;
+    const particleCount = 50;
+    
+    for (let i = 0; i < particleCount; i++) {
+        const particle = document.createElement('div');
+        particle.classList.add('light-particle');
         
-        for (let i = 0; i < particleCount; i++) {
-            const particle = document.createElement('div');
-            particle.classList.add('light-particle');
-            
-            // Random position
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.animationDuration = (Math.random() * 15 + 10) + 's';
-            particle.style.animationDelay = Math.random() * 5 + 's';
-            
-            // Random size variation
-            const size = Math.random() * 3 + 1;
-            particle.style.width = size + 'px';
-            particle.style.height = size + 'px';
-            
-            particlesContainer.appendChild(particle);
-        }
+        // Random position
+        particle.style.left = Math.random() * 100 + '%';
+        particle.style.animationDuration = (Math.random() * 15 + 10) + 's';
+        particle.style.animationDelay = Math.random() * 5 + 's';
+        
+        // Random size variation
+        const size = Math.random() * 3 + 1;
+        particle.style.width = size + 'px';
+        particle.style.height = size + 'px';
+        
+        particlesContainer.appendChild(particle);
+    }
+}
