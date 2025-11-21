@@ -1131,6 +1131,40 @@ p {
             min-height: 650px;
         }
 
+        /* Video background used in the contact form section - match form height */
+        .studio351-video-background {
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+            background: #000;
+            min-height: 780px; /* match the form min-height */
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .studio351-video-background video {
+            width: 100%;
+            height: 100%;
+            /* show the full video frame rather than cropping */
+            object-fit: contain;
+            object-position: center center;
+            display: block;
+            background: #000; /* avoid bright gaps when letterboxed */
+        }
+
+        /* Ensure form and video remain equal height and scroll if viewport is smaller */
+        .studio351-form-wrapper,
+        .studio351-video-background {
+            min-height: 780px;
+            height: 100%;
+        }
+
+        .studio351-form-wrapper {
+            overflow: auto;
+        }
+
         .studio351-image-wrapper img {
             width: 100%;
             height: 100%;
@@ -1143,7 +1177,7 @@ p {
             padding: 40px;
             border-radius: 8px;
             height: 100%;
-            min-height: 650px;
+            min-height: 780px; /* increased so the form appears taller on desktop */
             display: flex;
             flex-direction: column;
         }
@@ -1204,7 +1238,7 @@ p {
         }
 
         .studio351-textarea {
-            min-height: 120px;
+            min-height: 180px; /* larger textarea for better usability */
             resize: vertical;
         }
 
@@ -1264,10 +1298,30 @@ p {
             color: #ffffff;
         }
 
+        /* Make StudioX CTA fit nicely inside the contact form */
+        .studio351-form-wrapper .studiox-contact-btn {
+            padding: 14px 36px;
+            border-width: 3px;
+            font-size: 15px;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            text-transform: uppercase;
+        }
+
+        .studio351-form-wrapper .studiox-contact-btn span {
+            position: relative;
+            z-index: 1;
+        }
+
         @media (max-width: 991px) {
             .studio351-image-wrapper {
                 margin-bottom: 40px;
                 height: 400px;
+            }
+            .studio351-video-background,
+            .studio351-form-wrapper {
+                min-height: 500px;
             }
         }
 
@@ -1336,7 +1390,7 @@ p {
             margin-bottom: 30px;
         }
 
-        .studio351-icon-wrapper svg {
+        .studio351-icon-wrapper img {
             width: 100%;
             height: 100%;
         }
@@ -2764,10 +2818,10 @@ p {
         }
 
         .avatar-tech-panel h2 {
-            font-size: 3rem;
-            font-weight: 900;
-            margin-bottom: 10px;
-            color: white;
+          font-size: 3rem;
+    font-weight: 900;
+    margin-bottom: 20px;
+    line-height: 1.1;
         }
 
         .avatar-tech-panel .tech-subtitle {
@@ -2827,7 +2881,7 @@ p {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: #000;
+           
             padding: 20px 30px;
             border-radius: 10px;
         }
@@ -2885,6 +2939,7 @@ p {
             line-height: 1.8;
             color: #ccc;
             margin-bottom: 40px;
+            ;
         }
 
         .learning-features-stack {
@@ -3794,6 +3849,224 @@ p {
             z-index: 1;
         }
 
+        /* Avatar CTA — matches .studiox-contact-btn visuals */
+        .avatar-cta-btn {
+            background: transparent;
+            border: 3px solid #fff;
+            color: #fff;
+            padding: 8px 40px;
+            font-size: 16px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            transition: all 0.4s;
+            text-transform: uppercase;
+        }
+
+        .avatar-cta-btn::before,
+        .avatar-cta-btn::after {
+            content: '';
+            position: absolute;
+            background: #fff;
+            z-index: -1;
+            transition: all 0.5s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+
+        .avatar-cta-btn::before { top: 0; left: -100%; width: 100%; height: 100%; }
+        .avatar-cta-btn::after  { bottom: 0; right: -100%; width: 100%; height: 100%; }
+        .avatar-cta-btn:hover::before { left: 0; }
+        .avatar-cta-btn:hover::after  { right: 0; }
+        .avatar-cta-btn:hover { color: #000; }
+        .avatar-cta-btn span { position: relative; z-index: 1; }
+        .avatar-cta-btn:focus-visible { outline: 3px solid rgba(0,210,255,0.25); outline-offset: 3px; }
+        /* ========================================
+           Individual StudioX CTA Button Styles
+           Each class mirrors .studiox-contact-btn visuals
+           ======================================== */
+
+        /* YouTube CTA button */
+        .yt-cta-btn {
+            background: transparent;
+            border: 3px solid #fff;
+            color: #fff;
+            padding: 18px 45px;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            transition: all 0.25s;
+            text-transform: uppercase;
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .yt-cta-btn::before,
+        .yt-cta-btn::after {
+            content: '';
+            position: absolute;
+            background: #fff;
+            z-index: -1;
+            transition: all 0.45s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+
+        .yt-cta-btn::before { top: 0; left: -100%; width: 100%; height: 100%; }
+        .yt-cta-btn::after  { bottom: 0; right: -100%; width: 100%; height: 100%; }
+        .yt-cta-btn:hover::before { left: 0; }
+        .yt-cta-btn:hover::after  { right: 0; }
+        .yt-cta-btn:hover { color: #000; }
+        .yt-cta-btn:focus-visible { outline: 3px solid rgba(0,210,255,0.25); outline-offset: 3px; }
+
+        /* Timeline brand CTA (anchor styled as button) */
+        .timeline-bar-brand {
+            background: transparent;
+            border: 3px solid #fff;
+            color: #fff;
+            padding: 18px 45px;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            transition: all 0.25s;
+            text-transform: uppercase;
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .timeline-bar-brand::before,
+        .timeline-bar-brand::after {
+            content: '';
+            position: absolute;
+            background: #fff;
+            z-index: -1;
+            transition: all 0.45s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+
+        .timeline-bar-brand::before { top: 0; left: -100%; width: 100%; height: 100%; }
+        .timeline-bar-brand::after  { bottom: 0; right: -100%; width: 100%; height: 100%; }
+        .timeline-bar-brand:hover::before { left: 0; }
+        .timeline-bar-brand:hover::after  { right: 0; }
+        .timeline-bar-brand:hover { color: #000; }
+        .timeline-bar-brand:focus-visible { outline: 3px solid rgba(0,210,255,0.25); outline-offset: 3px; }
+
+        /* Learning column plain button */
+        .learning-visual-column > button {
+            background: transparent;
+            border: 3px solid #fff;
+            color: #fff;
+            padding: 18px 45px;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            transition: all 0.25s;
+            text-transform: uppercase;
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .learning-visual-column > button::before,
+        .learning-visual-column > button::after {
+            content: '';
+            position: absolute;
+            background: #fff;
+            z-index: -1;
+            transition: all 0.45s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+
+        .learning-visual-column > button::before { top: 0; left: -100%; width: 100%; height: 100%; }
+        .learning-visual-column > button::after  { bottom: 0; right: -100%; width: 100%; height: 100%; }
+        .learning-visual-column > button:hover::before { left: 0; }
+        .learning-visual-column > button:hover::after  { right: 0; }
+        .learning-visual-column > button:hover { color: #000; }
+        .learning-visual-column > button:focus-visible { outline: 3px solid rgba(0,210,255,0.25); outline-offset: 3px; }
+
+        /* YouTube info-card specific CTA (if nested) */
+        .youtube-info-card .yt-cta-btn {
+            background: black;
+            border: 3px solid #fff;
+            color: #fff;
+            padding: 18px 45px;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            transition: all 0.25s;
+            text-transform: uppercase;
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .youtube-info-card .yt-cta-btn::before,
+        .youtube-info-card .yt-cta-btn::after {
+            content: '';
+            position: absolute;
+            background: #fff;
+            z-index: -1;
+            transition: all 0.45s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+
+        .youtube-info-card .yt-cta-btn::before { top: 0; left: -100%; width: 100%; height: 100%; }
+        .youtube-info-card .yt-cta-btn::after  { bottom: 0; right: -100%; width: 100%; height: 100%; }
+        .youtube-info-card .yt-cta-btn:hover::before { left: 0; }
+        .youtube-info-card .yt-cta-btn:hover::after  { right: 0; }
+        .youtube-info-card .yt-cta-btn:hover { color: #000; }
+        .youtube-info-card .yt-cta-btn:focus-visible { outline: 3px solid rgba(0,210,255,0.25); outline-offset: 3px; }
+
+        /* Comparison CTA anchor in svc-morph section */
+        .svc-morph-cta-section a {
+            background: transparent;
+            border: 3px solid #fff;
+            color: #fff;
+            padding: 18px 45px;
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            cursor: pointer;
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+            transition: all 0.25s;
+            text-transform: uppercase;
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+        }
+
+        .svc-morph-cta-section a::before,
+        .svc-morph-cta-section a::after {
+            content: '';
+            position: absolute;
+            background: #fff;
+            z-index: -1;
+            transition: all 0.45s cubic-bezier(0.65, 0, 0.35, 1);
+        }
+
+        .svc-morph-cta-section a::before { top: 0; left: -100%; width: 100%; height: 100%; }
+        .svc-morph-cta-section a::after  { bottom: 0; right: -100%; width: 100%; height: 100%; }
+        .svc-morph-cta-section a:hover::before { left: 0; }
+        .svc-morph-cta-section a:hover::after  { right: 0; }
+        .svc-morph-cta-section a:hover { color: #000; }
+        .svc-morph-cta-section a:focus-visible { outline: 3px solid rgba(0,210,255,0.25); outline-offset: 3px; }
+
         /* Divider Line */
         .studiox-center-line {
             position: absolute;
@@ -3859,6 +4132,373 @@ p {
             }
         }
 
+
+/* StudioX Workflow Section */
+.studiox__workflow__wrapper {
+    background: #000;
+    color: #fff;
+    border-radius: 0;
+    padding: 80px 100px;
+    max-width: 100%;
+    width: 100%;
+    min-height: 100vh;
+    box-shadow: none;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+/* ================================
+   STUDIO X – VISUAL DOTS & HEADER
+================================ */
+
+.studiox__visual__dots {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.studiox__visual__dots svg {
+    width: 50px;
+    height: 50px;
+}
+
+.studiox__primary__header {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.studiox__primary__header h1 {
+    font-size: 38px;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 12px;
+}
+
+.studiox__primary__header h1 .studiox__heading--accent {
+    color: var(--theme-color);
+}
+
+.studiox__primary__header h1 .studiox__heading--rest {
+    color: #fff;
+    opacity: 0.95;
+}
+
+.studiox__supporting__text {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 80px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* ================================
+   TIMELINE LAYOUT
+================================ */
+
+.studiox__timeline__grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    position: relative;
+    padding: 0 20px;
+    gap: 40px;
+}
+
+.studiox__phase__card {
+    flex: 1;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+}
+
+.studiox__phase__index {
+    font-size: 20px;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 25px;
+}
+
+/* ================================
+   BADGE / ICON CIRCLES
+================================ */
+
+.studiox__badge__holder {
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 35px;
+    position: relative;
+}
+
+.studiox__badge__outline {
+    width: 100%;
+    height: 100%;
+    border: 2px dashed rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.studiox__badge__core {
+    width: 80px;
+    height: 80px;
+    background: #4fd1c5;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Badge Colors by Step */
+.studiox__phase__card:nth-child(2) .studiox__badge__core {
+    background: #4299e1;
+}
+
+.studiox__phase__card:nth-child(3) .studiox__badge__core {
+    background: #48bb78;
+}
+
+.studiox__graphic__element {
+    color: white;
+    font-size: 32px;
+}
+
+/* ================================
+   PHASE TEXTS
+================================ */
+
+.studiox__phase__label {
+    font-size: 18px;
+    font-weight: 600;
+    color: white;
+    margin-bottom: 15px;
+}
+
+.studiox__phase__details {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.7;
+    max-width: 280px;
+    margin: 0 auto;
+}
+
+/* ================================
+   CONNECTOR CURVES
+================================ */
+
+.studiox__connector__path {
+    position: absolute;
+    top: 180px;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.6;
+}
+
+.studiox__connector__left {
+    left: 10%;
+    width: 38%;
+}
+
+.studiox__connector__right {
+    left: 52%;
+    width: 38%;
+}
+
+.studiox__connector__path path {
+    stroke: rgba(255, 255, 255, 0.12);
+}
+
+/* ================================
+   STRAIGHT ARROWS
+================================ */
+
+.studiox__card-arrow {
+    position: absolute;
+    top: 210px;
+    width: 120px;
+    height: 24px;
+    z-index: 1;
+    display: block;
+}
+
+.studiox__card-arrow path {
+    stroke: rgba(255, 255, 255, 0.9);
+}
+
+.studiox__card-arrow.arrow-1 {
+    left: 33%;
+}
+
+.studiox__card-arrow.arrow-2 {
+    left: 66%;
+}
+
+/* Hide arrows on tablet/mobile */
+@media (max-width: 1024px) {
+    .studiox__card-arrow {
+        display: none;
+    }
+}
+
+/* ================================
+   CUSTOM ICON DESIGNS
+================================ */
+
+/* Consultation Icon */
+.studiox__icon__consultation {
+    width: 40px;
+    height: 40px;
+    background: #4fd1c5;
+    border-radius: 50%;
+    position: relative;
+    margin: 0 auto;
+}
+
+.studiox__icon__consultation::before {
+    content: '';
+    width: 16px;
+    height: 16px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.studiox__icon__consultation::after {
+    content: '';
+    width: 24px;
+    height: 12px;
+    background: white;
+    border-radius: 12px 12px 0 0;
+    position: absolute;
+    bottom: 6px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Proposal Icon */
+.studiox__icon__proposal {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.studiox__icon__proposal::before {
+    content: '';
+    width: 28px;
+    height: 36px;
+    background: white;
+    border-radius: 2px;
+    position: absolute;
+    top: 2px;
+    left: 6px;
+}
+
+.studiox__icon__proposal::after {
+    content: '';
+    width: 18px;
+    height: 2px;
+    background: #4299e1;
+    position: absolute;
+    top: 16px;
+    left: 11px;
+    box-shadow: 0 5px 0 #4299e1, 0 10px 0 #4299e1;
+}
+
+/* Launch Icon */
+.studiox__icon__launch {
+    width: 40px;
+    height: 40px;
+    position: relative;
+    margin: 0 auto;
+}
+
+.studiox__icon__launch::before {
+    content: '';
+    width: 16px;
+    height: 28px;
+    background: white;
+    border-radius: 8px 8px 0 0;
+    position: absolute;
+    top: 4px;
+    left: 12px;
+}
+
+.studiox__icon__launch::after {
+    content: '';
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 8px solid white;
+    position: absolute;
+    bottom: 4px;
+    left: 12px;
+}
+
+/* ================================
+   RESPONSIVE - MOBILE
+================================ */
+
+@media (max-width: 768px) {
+    .studiox__workflow__wrapper {
+        padding: 40px 20px;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .studiox__timeline__grid {
+        flex-direction: column;
+        gap: 60px;
+    }
+
+    .studiox__connector__path {
+        display: none;
+    }
+
+    .studiox__primary__header h1 {
+        font-size: 28px;
+    }
+
+    .studiox__supporting__text {
+        font-size: 14px;
+        margin-bottom: 60px;
+    }
+}
+
+
+/* Form backdrop blur and placeholder color */
+.studio351-form-wrapper {
+    background: rgba(0,0,0,0.35);
+    backdrop-filter: blur(8px);
+    padding: 24px;
+    border-radius: 12px;
+}
+
+.studio351-form-control::placeholder,
+.studio351-textarea::placeholder {
+    color: #666 !important;
+    opacity: 1;
+}
+
+.studio351-form-control,
+.studio351-select,
+.studio351-textarea {
+    background: rgba(255,255,255,0.03);
+    color: #fff;
+    border: 1px solid rgba(255,255,255,0.06);
+}
 
 /* about page */
 :root {
@@ -7237,3 +7877,201 @@ svg{
     justify-content: center;
     gap: 20px;
 }
+
+
+/* contact -form */
+   .prj-inquiry-zone {
+            padding: 80px 20px;
+            background: #000;
+        }
+
+        .prj-max-bound {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .prj-title-block {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .prj-main-title {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 15px;
+        }
+
+        .prj-sub-caption {
+            font-size: 1.25rem;
+            color: #999;
+        }
+
+        .prj-dual-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            min-height: 700px;
+        }
+
+        .prj-media-panel {
+            position: relative;
+            overflow: hidden;
+            background: #111;
+        }
+
+        .prj-media-panel video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(1.1);
+        }
+
+        .prj-visual-shade {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 100%);
+            pointer-events: none;
+        }
+
+        .prj-input-panel {
+            background: #0a0a0a;
+            padding: 60px 50px;
+            border-left: 1px solid #222;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .prj-field-wrapper {
+            margin-bottom: 25px;
+        }
+
+        .prj-field-tag {
+            color: #fff;
+            margin-bottom: 8px;
+            display: block;
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .prj-text-field,
+        .prj-choice-field,
+        .prj-message-field {
+            width: 100%;
+            padding: 14px 18px;
+            background: #111;
+            border: 1px solid #333;
+            border-radius: 6px;
+            color: #fff;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .prj-text-field:focus,
+        .prj-choice-field:focus,
+        .prj-message-field:focus {
+            outline: none;
+            border-color: #fff;
+            background: #1a1a1a;
+        }
+
+        .prj-text-field::placeholder,
+        .prj-message-field::placeholder {
+            color: #666;
+        }
+
+        .prj-choice-field {
+            cursor: pointer;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23999' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            padding-right: 40px;
+        }
+
+        .prj-choice-field option {
+            background: #111;
+            color: #fff;
+        }
+
+        .prj-message-field {
+            min-height: 120px;
+            resize: vertical;
+            font-family: inherit;
+        }
+
+        .prj-split-fields {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .prj-action-trigger {
+            width: 100%;
+            padding: 16px 32px;
+            background: #fff;
+            color: #000;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+        }
+
+        .prj-action-trigger:hover {
+            background: #e0e0e0;
+            transform: translateY(-2px);
+        }
+
+        .prj-action-trigger:active {
+            transform: translateY(0);
+        }
+
+        .prj-legal-note {
+            text-align: center;
+            color:var(--theme-color);
+            font-size: 0.9rem;
+            margin-top: 20px;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 992px) {
+            .prj-dual-layout {
+                grid-template-columns: 1fr;
+                min-height: auto;
+            }
+
+            .prj-media-panel {
+                min-height: 400px;
+            }
+
+            .prj-input-panel {
+                border-left: none;
+                border-top: 1px solid #222;
+                padding: 40px 30px;
+            }
+
+            .prj-main-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .prj-split-fields {
+                grid-template-columns: 1fr;
+            }
+
+            .prj-main-title {
+                font-size: 2rem;
+            }
+
+            .prj-inquiry-zone {
+                padding: 60px 15px;
+            }
+        }
