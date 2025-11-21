@@ -2,19 +2,15 @@
    CSS VARIABLES & GLOBAL STYLES
    ======================================== */
 :root {
-  /* Bootstrap Overrides */
+ 
   --bs-primary: #ffffff;
   --bs-dropdown-link-active-bg: #ffffff;
   --bs-dropdown-link-active-color: #000000;
   --bs-link-color: #ffffff;
   --bs-link-hover-color: #cccccc;
- 
   --theme-color: #00d2ff;
   --theme-color-dark: #00a8cc;   /* optional darker shade */
   --theme-color-light: #66e6ff;  /* optional lighter shade */
-
-
-  
   /* Theme Colors */
 
 }
@@ -4213,7 +4209,7 @@ p {
 
         /* ===== ABOUT PROBLEM & SOLUTION CINEMATIC SECTIONS ===== */
 
-        .about-problem-section {
+    .about-problem-section {
     background: #000;
     color: #fff;
     padding: 80px 0;
@@ -4498,72 +4494,66 @@ p {
     }
 }
        
+.about-solution-wrapper .about-fade-in-up:nth-child(1) {
+    animation-delay: 0.2s;
+}
 
-        .about-problem-glass-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(from 0deg, transparent, rgba(255,255,255,0.1), transparent 30%);
-            animation: about-rotate 4s linear infinite;
-        }
+.about-solution-wrapper .about-fade-in-up:nth-child(2) {
+    animation-delay: 0.4s;
+}
 
-        @keyframes about-rotate {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
 
-        .about-problem-glass-card-inner {
-            position: relative;
-            z-index: 1;
-        }
+/* Responsive Design */
+@media (max-width: 968px) {
+    .about-solution-wrapper {
+        flex-direction: column;
+        gap: 40px;
+    }
+    
+    .about-solution-content,
+    .about-problem-video {
+        max-width: 100%;
+        order: unset;
+    }
+    
+    .about-problem-heading {
+        font-size: 2.5rem;
+    }
+}
 
-        .about-glass-text {
-            color: #fff;
-            font-size: 1.2rem;
-            line-height: 1.8;
-            margin: 0;
-        }
+@media (max-width: 640px) {
+    .about-solution-alt-section {
+        padding: 60px 0;
+    }
+    
+    .about-solution-container-fluid {
+        padding: 0 20px;
+    }
+    
+    .about-problem-heading {
+        font-size: 2rem;
+    }
+    
+    .about-solution-text {
+        font-size: 1rem;
+    }
+    
+    .about-orb-1,
+    .about-orb-2 {
+        display: none;
+    }
+}
+       
+        
 
-        .about-solution-glass-card {
-            background: rgba(0, 0, 0, 0.05);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: 25px;
-            padding: 35px;
-            margin-top: 40px;
-            position: relative;
-            overflow: hidden;
-        }
 
-        .about-solution-glass-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: conic-gradient(from 0deg, transparent, rgba(0,0,0,0.1), transparent 30%);
-            animation: about-rotate 4s linear infinite;
-        }
 
-        .about-glass-text-dark {
-            color: #000;
-            font-size: 1.2rem;
-            line-height: 1.8;
-            margin: 0;
-            position: relative;
-            z-index: 1;
-        }
-
-        .about-solution-alt-section {
-            background: #000000;
-            padding: 0;
-            position: relative;
-            overflow: hidden;
-        }
 
         .about-solution-text {
             font-size: 1.125rem;
@@ -4679,7 +4669,7 @@ p {
 
         /* Pillar Cards Styling */
         .about-pillar-card {
-            background: rgba(255, 255, 255, 0.05);
+            background: rgba(0, 0, 0, 0.05);
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
             border-radius: 20px;
@@ -4717,7 +4707,7 @@ p {
         }
 
         .about-pillar-icon img{
-            width: 80px;
+          
             height: 80px;
             margin: 0 auto 2rem;
             display: flex;
@@ -4726,6 +4716,7 @@ p {
             /* background: rgba(255, 255, 255, 0.1); */
             /* border-radius: 50%; */
             transition: all 0.4s ease;
+            padding: 6px;
         }
 
        
@@ -4756,10 +4747,9 @@ p {
             color: var(--about-color-white) !important;
             font-size: 2.05rem !important;
             margin-top: 1.5rem !important;
-            padding-top: 1.5rem;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             color: var(--theme-color)  !important;
-            background-color: rgba(255, 255, 255, 0.1); 
+            background-color: rgba(0, 0, 0, 0.6); 
             align-items: center;
             display: flex;
             align-items: center;
