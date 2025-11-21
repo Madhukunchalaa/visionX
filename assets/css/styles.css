@@ -1250,13 +1250,13 @@ p {
 
         .studio351-privacy-text {
             font-size: 0.75rem;
-            color: #888888;
+            color: #889888;
             margin-top: 20px;
             line-height: 1.5;
         }
 
         .studio351-privacy-text a {
-            color: #888888;
+            color: #889888;
             text-decoration: underline;
         }
 
@@ -2560,7 +2560,7 @@ p {
         }
 
         .brand-story-panel h2 {
-            font-size: 3.5rem;
+            font-size: 3rem;
             font-weight: 900;
             margin-bottom: 20px;
             line-height: 1.1;
@@ -2568,8 +2568,8 @@ p {
 
         .brand-story-panel .tagline-brand {
             font-size: 1.5rem;
-            color: #888;
-            margin-bottom: 30px;
+            color: #889;
+            margin-bottom: 8px;
         }
 
         .brand-story-panel .desc-brand {
@@ -2602,7 +2602,7 @@ p {
         .timeline-bar-brand {
             background: #fff;
             color: #000;
-            padding: 15px 30px;
+            padding: 8px 12px;
             display: inline-block;
             font-weight: 700;
             font-size: 1.2rem;
@@ -2719,9 +2719,7 @@ p {
             color: #fff;
             padding: 15px 40px;
             border: none;
-            border-radius: 50px;
             font-weight: 600;
-            text-transform: uppercase;
             cursor: pointer;
         }
 
@@ -2769,17 +2767,14 @@ p {
             font-size: 3rem;
             font-weight: 900;
             margin-bottom: 10px;
-            background: linear-gradient(90deg, #fff 0%, #888 100%);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
+            color: white;
         }
 
         .avatar-tech-panel .tech-subtitle {
             font-size: 1.2rem;
             color: #666;
-            margin-bottom: 35px;
-            text-transform: uppercase;
+            margin-bottom: 8px;
+           
             letter-spacing: 2px;
         }
 
@@ -2825,7 +2820,7 @@ p {
             padding: 10px 20px;
             border-radius: 25px;
             font-size: 0.9rem;
-            color: #888;
+            color: #889;
         }
 
         .avatar-cta-bar {
@@ -2846,11 +2841,10 @@ p {
         .avatar-action-btn {
             background: #fff;
             color: #000;
-            padding: 12px 35px;
+            padding: 5px 35px;
             border: none;
-            border-radius: 50px;
-            font-weight: 600;
-            text-transform: uppercase;
+
+            
             cursor: pointer;
         }
 
@@ -2873,7 +2867,7 @@ p {
         }
 
         .learning-content-column h2 {
-            font-size: 4rem;
+            font-size: 3rem;
             font-weight: 900;
             line-height: 0.9;
             margin-bottom: 30px;
@@ -2881,9 +2875,9 @@ p {
         }
 
         .learning-content-column .magazine-subtitle {
-            font-size: 1.8rem;
-            color: #888;
-            margin-bottom: 30px;
+            font-size: 1.2rem;
+            color: #889;
+            margin-bottom: 8px;
         }
 
         .learning-content-column .desc-learning {
@@ -2920,8 +2914,9 @@ p {
         .learning-cta-box {
             background: #fff;
             color: #000;
-            padding: 30px;
-            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .learning-cta-box .timeline-learning {
@@ -2930,14 +2925,15 @@ p {
             margin-bottom: 20px;
         }
 
-        .learning-cta-box button {
+         button {
             background: #000;
             color: #fff;
-            padding: 15px 40px;
+            padding: 7px 14px;
             border: none;
             font-weight: 600;
             text-transform: uppercase;
             cursor: pointer;
+            border: 2px solid;
         }
 
         .learning-visual-column {
@@ -3008,7 +3004,7 @@ p {
 
         .custom-header-zone p {
             font-size: 1.2rem;
-            color: #888;
+            color: #889;
         }
 
         .custom-services-grid {
@@ -3046,7 +3042,7 @@ p {
         }
 
         .custom-service-card p {
-            color: #888;
+            color: #889;
             font-size: 0.95rem;
             line-height: 1.6;
         }
@@ -3175,7 +3171,7 @@ p {
 
         .svc-morph-header-section {
             text-align: center;
-            margin-bottom: 80px;
+           
         }
 
         .svc-morph-header-section h2 {
@@ -3188,7 +3184,7 @@ p {
 
         .svc-morph-header-section p {
             font-size: 1.4rem;
-            color: #666;
+            color: #889;
             font-weight: 300;
         }
 
@@ -3396,7 +3392,7 @@ p {
 
         .svc-morph-description-text {
             font-size: 1.2rem;
-            color: #888;
+            color: #889;
             line-height: 1.8;
             animation: svcMorphFadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) 0.4s both;
         }
@@ -3484,10 +3480,11 @@ p {
 
         .svc-morph-cta-section p {
             font-size: 1.2rem;
-            color: #777;
+            color:var(--theme-color);
             margin-bottom: 35px;
             position: relative;
             z-index: 3;
+            font-weight: 900s;
         }
 
         .svc-morph-cta-section a {
@@ -3686,6 +3683,9 @@ p {
         .studiox-offer-row:hover .studiox-offer-icon {
             color: #000;
         }
+        .studiox-offer-row:hover .data-hide {
+            display: block;
+        }
 
         .studiox-offer-inner {
             display: flex;
@@ -3733,9 +3733,9 @@ p {
         }
 
         .studiox-action-label {
-            font-size: 12px;
+            font-size: 16px;
             letter-spacing: 3px;
-            color: #666;
+            color: var(--theme-color);
             margin-bottom: 20px;
             font-weight: bold;
         }
@@ -6926,7 +6926,7 @@ p {
     mask-size: 100% 100%;
 }
 
-h1 {
+.studiox-hero-heading h1 {
     position: relative;
     font-size: 12rem;
     font-weight: 900;
@@ -6938,16 +6938,13 @@ h1 {
     z-index: 1;
     margin: 0;
 }
-
-/* SVG positioned to cover viewport */
-svg {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    top: 0;
-    left: 0;
-    pointer-events: none;
+.data-hide {
+    display: none;
 }
+
+
+
+
 
 /* ========================================
    TABLET RESPONSIVE (768px - 992px)
@@ -7236,4 +7233,10 @@ svg {
     h1 {
         font-size: 14rem;
     }
+}
+.cta-zone{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
 }
