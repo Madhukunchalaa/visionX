@@ -2967,8 +2967,8 @@ p {
         }
 
         .learning-cta-box {
-            background: #fff;
-            color: #000;
+            
+            
             display: flex;
             align-items: center;
             justify-content: center;
@@ -3257,7 +3257,7 @@ p {
         }
 
         .svc-morph-selector-card {
-            padding: 25px 30px;
+            padding: 2px 30px;
             background: #0a0a0a;
             border: 2px solid #1a1a1a;
             border-radius: 16px;
@@ -3630,6 +3630,7 @@ p {
             padding: 80px 60px;
             position: relative;
             overflow: hidden;
+            height: 90%;
         }
 
         .studiox-watermark {
@@ -3851,19 +3852,19 @@ p {
 
         /* Avatar CTA — matches .studiox-contact-btn visuals */
         .avatar-cta-btn {
-            background: transparent;
-            border: 3px solid #fff;
-            color: #fff;
-            padding: 8px 40px;
-            font-size: 16px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            cursor: pointer;
-            position: relative;
-            z-index: 1;
-            overflow: hidden;
-            transition: all 0.4s;
-            text-transform: uppercase;
+                background: transparent;
+    border: 3px solid #fff;
+    color: #fff;
+    padding: 8px 40px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    cursor: pointer;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    transition: all 0.4s;
+    text-transform: uppercase;
         }
 
         .avatar-cta-btn::before,
@@ -3964,8 +3965,8 @@ p {
             background: transparent;
             border: 3px solid #fff;
             color: #fff;
-            padding: 18px 45px;
-            font-size: 15px;
+            padding: 7px 45px;
+            font-size: 13px;
             font-weight: 700;
             letter-spacing: 2px;
             cursor: pointer;
@@ -5665,7 +5666,7 @@ p {
      VIDEO SHOWCASE (Custom styles for the 2-column showcase)
      ======================================== */
 .showcase-grid {
-    display: flex;
+    /* display: flex; */
     gap: 1.5rem;
     align-items: flex-start;
 }
@@ -6442,6 +6443,7 @@ p {
     .svc-morph-selector-label {
         font-size: 0.75rem;
     }
+    
     
     .svc-morph-display-panel {
         padding: 40px 20px;
