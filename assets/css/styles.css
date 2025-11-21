@@ -2,19 +2,15 @@
    CSS VARIABLES & GLOBAL STYLES
    ======================================== */
 :root {
-  /* Bootstrap Overrides */
+ 
   --bs-primary: #ffffff;
   --bs-dropdown-link-active-bg: #ffffff;
   --bs-dropdown-link-active-color: #000000;
   --bs-link-color: #ffffff;
   --bs-link-hover-color: #cccccc;
- 
   --theme-color: #00d2ff;
   --theme-color-dark: #00a8cc;   /* optional darker shade */
   --theme-color-light: #66e6ff;  /* optional lighter shade */
-
-
-  
   /* Theme Colors */
 
 }
