@@ -6704,6 +6704,14 @@ p {
     height:100vh;
     position: relative;
 }
+svg{
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+}
 
 .design{
     margin:0;
@@ -6926,18 +6934,6 @@ p {
     mask-size: 100% 100%;
 }
 
-h1{
-    position: relative;
-    font-size: 12rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 10px;
-    color: transparent;
-    -webkit-text-stroke: 3px rgba(255, 255, 255, 0.5);
-    text-stroke: 3px rgba(255, 255, 255, 0.5);
-    z-index: 1;
-    margin: 0;
-}
 .data-hide {
     display: none;
 }
