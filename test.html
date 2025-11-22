@@ -3,8 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Section</title>
+    <title>iLink - Food Truck Insurance | Protecting Your Passion on Wheels</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
     <style>
+        :root {
+            --primary-blue: #1e40af;
+            --primary-blue-dark: #1e3a8a;
+            --light-blue: #dbeafe;
+            --dark-gray: #111827;
+            --medium-gray: #6b7280;
+            --light-gray: #f3f4f6;
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -12,290 +32,1008 @@
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-            background: #000;
-            color: #fff;
+            font-family: 'Inter', sans-serif;
+            color: var(--dark-gray);
+            overflow-x: hidden;
         }
 
-        .prj-inquiry-zone {
-            padding: 80px 20px;
-            background: #000;
-        }
-
-        .prj-max-bound {
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-
-        .prj-title-block {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .prj-main-title {
-            font-size: 3rem;
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
             font-weight: 700;
-            color: #fff;
-            margin-bottom: 15px;
         }
 
-        .prj-sub-caption {
-            font-size: 1.25rem;
-            color: #999;
+        html {
+            scroll-behavior: smooth;
         }
 
-        .prj-dual-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 0;
-            min-height: 700px;
+        /* Navigation */
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            padding: 1rem 0;
         }
 
-        .prj-media-panel {
-            position: relative;
-            overflow: hidden;
-            background: #111;
+        .navbar-brand {
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--dark-gray) !important;
         }
 
-        .prj-media-panel video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(100%) contrast(1.1);
-        }
-
-        .prj-visual-shade {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.6) 100%);
-            pointer-events: none;
-        }
-
-        .prj-input-panel {
-            background: #0a0a0a;
-            padding: 60px 50px;
-            border-left: 1px solid #222;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-        }
-
-        .prj-field-wrapper {
-            margin-bottom: 25px;
-        }
-
-        .prj-field-tag {
-            color: #fff;
-            margin-bottom: 8px;
-            display: block;
+        .nav-link {
+            color: var(--medium-gray) !important;
             font-weight: 500;
-            font-size: 0.95rem;
+            margin: 0 0.5rem;
+            transition: color 0.3s ease;
         }
 
-        .prj-text-field,
-        .prj-choice-field,
-        .prj-message-field {
-            width: 100%;
-            padding: 14px 18px;
-            background: #111;
-            border: 1px solid #333;
-            border-radius: 6px;
-            color: #fff;
-            font-size: 1rem;
-            transition: all 0.3s ease;
+        .nav-link:hover {
+            color: var(--primary-blue) !important;
         }
 
-        .prj-text-field:focus,
-        .prj-choice-field:focus,
-        .prj-message-field:focus {
-            outline: none;
-            border-color: #fff;
-            background: #1a1a1a;
-        }
-
-        .prj-text-field::placeholder,
-        .prj-message-field::placeholder {
-            color: #666;
-        }
-
-        .prj-choice-field {
-            cursor: pointer;
-            appearance: none;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23999' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
-            background-repeat: no-repeat;
-            background-position: right 15px center;
-            padding-right: 40px;
-        }
-
-        .prj-choice-field option {
-            background: #111;
-            color: #fff;
-        }
-
-        .prj-message-field {
-            min-height: 120px;
-            resize: vertical;
-            font-family: inherit;
-        }
-
-        .prj-split-fields {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
-
-        .prj-action-trigger {
-            width: 100%;
-            padding: 16px 32px;
-            background: #fff;
-            color: #000;
+        .btn-primary {
+            background-color: var(--primary-blue);
             border: none;
-            border-radius: 6px;
-            font-size: 1rem;
+            padding: 0.75rem 1.5rem;
             font-weight: 600;
-            cursor: pointer;
             transition: all 0.3s ease;
-            margin-top: 10px;
         }
 
-        .prj-action-trigger:hover {
-            background: #e0e0e0;
+        .btn-primary:hover {
+            background-color: var(--primary-blue-dark);
             transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(30, 64, 175, 0.3);
         }
 
-        .prj-action-trigger:active {
-            transform: translateY(0);
+        .btn-outline-primary {
+            border: 2px solid var(--primary-blue);
+            color: var(--primary-blue);
+            font-weight: 600;
+            padding: 0.75rem 1.5rem;
+            transition: all 0.3s ease;
         }
 
-        .prj-legal-note {
+        .btn-outline-primary:hover {
+            background-color: var(--primary-blue);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #eff6ff 0%, #ffffff 50%, #eff6ff 100%);
+            padding: 150px 0 80px 0;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background-color: #dbeafe;
+            color: var(--primary-blue);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--medium-gray);
+            margin-bottom: 2rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .hero-stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-blue);
+        }
+
+        .hero-stat-label {
+            font-size: 0.875rem;
+            color: var(--medium-gray);
+        }
+
+        .hero-image {
+            border-radius: 1rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+            width: 100%;
+            height: auto;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            font-size: 3rem;
             text-align: center;
-            color: #999;
-            font-size: 0.9rem;
-            margin-top: 20px;
-            line-height: 1.5;
+            margin-bottom: 1rem;
         }
 
-        @media (max-width: 992px) {
-            .prj-dual-layout {
-                grid-template-columns: 1fr;
-                min-height: auto;
-            }
+        .section-divider {
+            width: 100px;
+            height: 4px;
+            background-color: var(--primary-blue);
+            margin: 0 auto 3rem auto;
+        }
 
-            .prj-media-panel {
-                min-height: 400px;
-            }
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.125rem;
+            color: var(--medium-gray);
+            max-width: 800px;
+            margin: 0 auto 3rem auto;
+        }
 
-            .prj-input-panel {
-                border-left: none;
-                border-top: 1px solid #222;
-                padding: 40px 30px;
-            }
+        /* Cards */
+        .feature-card {
+            border: 2px solid #e5e7eb;
+            border-radius: 1rem;
+            padding: 2rem;
+            height: 100%;
+            transition: all 0.3s ease;
+        }
 
-            .prj-main-title {
+        .feature-card:hover {
+            border-color: #93c5fd;
+            box-shadow: 0 10px 30px rgba(30, 64, 175, 0.1);
+            transform: translateY(-5px);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .feature-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Coverage Section */
+        .coverage-bg {
+            background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+        }
+
+        /* Blue Dark Section */
+        .blue-dark-section {
+            background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+            color: white;
+        }
+
+        .blue-dark-section .section-subtitle {
+            color: #bfdbfe;
+        }
+
+        .covered-card {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .covered-card:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .covered-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Check Items */
+        .check-item {
+            display: flex;
+            align-items: flex-start;
+            background-color: #eff6ff;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .check-icon {
+            color: var(--primary-blue);
+            font-size: 1.5rem;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        /* Why Cards */
+        .why-card {
+            border: 2px solid #dbeafe;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            height: 100%;
+            transition: all 0.3s ease;
+        }
+
+        .why-card:hover {
+            border-color: #60a5fa;
+            box-shadow: 0 5px 20px rgba(30, 64, 175, 0.15);
+        }
+
+        /* Optional Extras */
+        .extra-item {
+            background-color: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            transition: all 0.3s ease;
+        }
+
+        .extra-item:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.12);
+            transform: translateY(-3px);
+        }
+
+        .extra-icon-wrapper {
+            width: 50px;
+            height: 50px;
+            background-color: #dbeafe;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+        }
+
+        /* Forms */
+        .form-card {
+            border: none;
+            border-radius: 1rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            padding: 2.5rem;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: var(--dark-gray);
+            margin-bottom: 0.5rem;
+        }
+
+        .form-control, .form-select {
+            padding: 0.75rem;
+            border: 2px solid #e5e7eb;
+            border-radius: 0.5rem;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus, .form-select:focus {
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(30, 64, 175, 0.1);
+        }
+
+        /* Contact Info */
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+        }
+
+        .contact-icon-wrapper {
+            width: 60px;
+            height: 60px;
+            background-color: #dbeafe;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--primary-blue);
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #111827;
+            color: white;
+            padding: 60px 0 30px 0;
+        }
+
+        .footer h5 {
+            font-size: 1.125rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer a {
+            color: #9ca3af;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: white;
+        }
+
+        .footer-link {
+            display: block;
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #374151;
+            padding-top: 2rem;
+            margin-top: 3rem;
+            text-align: center;
+            color: #9ca3af;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
                 font-size: 2.5rem;
             }
-        }
 
-        @media (max-width: 768px) {
-            .prj-split-fields {
-                grid-template-columns: 1fr;
-            }
-
-            .prj-main-title {
+            .section-title {
                 font-size: 2rem;
             }
 
-            .prj-inquiry-zone {
-                padding: 60px 15px;
+            .hero-stats {
+                gap: 2rem;
             }
+        }
+
+        /* Toast Notification */
+        .toast-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 9999;
+        }
+
+        .toast {
+            min-width: 300px;
         }
     </style>
 </head>
 <body>
-    <section class="prj-inquiry-zone">
-        <div class="prj-max-bound">
-            <div class="prj-title-block">
-                <h2 class="prj-main-title">Start Your Project</h2>
-                <p class="prj-sub-caption">Tell Us About Your Vision</p>
+
+    <!-- Toast Container -->
+    <div class="toast-container" id="toastContainer"></div>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="#home">
+                <i class="bi bi-shield-check me-2" style="color: #1e40af;"></i>iLink
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#about">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#coverage">Coverage</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+                    <li class="nav-item"><a class="btn btn-primary ms-3" href="#quote">Get a Quote</a></li>
+                </ul>
             </div>
+        </div>
+    </nav>
 
-            <div class="prj-dual-layout">
-                <!-- Video Side -->
-                <div class="prj-media-panel">
-                    <video autoplay muted loop playsinline>
-                        <source src="assets/videos/Lets start ur project.mp4" type="video/mp4">
-                        <source src="assets/videos/banner-video.webm" type="video/webm">
-                        Your browser does not support the video tag.
-                    </video>
-                    <div class="prj-visual-shade"></div>
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-5 mb-lg-0">
+                    <div class="hero-badge">Trusted Since 2004</div>
+                    <h1 class="hero-title">Protecting Your Passion on Wheels</h1>
+                    <p class="hero-subtitle">Over 20 years of experience insuring food trucks, trailers, and mobile food businesses across Australia.</p>
+                    <div class="d-flex gap-3 flex-wrap">
+                        <a href="#quote" class="btn btn-primary btn-lg">Get Your Quote <i class="bi bi-chevron-right ms-2"></i></a>
+                        <a href="#coverage" class="btn btn-outline-primary btn-lg">Learn More</a>
+                    </div>
+                    <div class="hero-stats">
+                        <div>
+                            <div class="hero-stat-number">20+</div>
+                            <div class="hero-stat-label">Years Experience</div>
+                        </div>
+                        <div>
+                            <div class="hero-stat-number">100%</div>
+                            <div class="hero-stat-label">Australia-wide</div>
+                        </div>
+                    </div>
                 </div>
-
-                <!-- Form Side -->
-                <div class="prj-input-panel">
-                    <div class="prj-split-fields">
-                        <div class="prj-field-wrapper">
-                            <label class="prj-field-tag">Full Name*</label>
-                            <input type="text" class="prj-text-field" placeholder="Your Name" required>
-                        </div>
-
-                        <div class="prj-field-wrapper">
-                            <label class="prj-field-tag">Work Email*</label>
-                            <input type="email" class="prj-text-field" placeholder="your.email@company.com" required>
-                        </div>
-                    </div>
-
-                    <div class="prj-split-fields">
-                        <div class="prj-field-wrapper">
-                            <label class="prj-field-tag">Company</label>
-                            <input type="text" class="prj-text-field" placeholder="Your Company">
-                        </div>
-
-                        <div class="prj-field-wrapper">
-                            <label class="prj-field-tag">What can we help you achieve?*</label>
-                            <select class="prj-choice-field" required>
-                                <option value="" selected>Select One</option>
-                                <option value="product-launch">Launch a product that stops scrolls</option>
-                                <option value="youtube-audience">Build a YouTube audience that engages</option>
-                                <option value="global-scale">Scale our message across global markets</option>
-                                <option value="learning-content">Transform complex ideas into clear learning</option>
-                                <option value="custom">A custom challenge or something unique</option>
-                            </select>
-                        </div>
-                    </div>
-
-                    <div class="prj-field-wrapper">
-                        <label class="prj-field-tag">Project Details & Goals*</label>
-                        <textarea class="prj-message-field" placeholder="Tell us what you're building, your timeline, and what success looks like" required></textarea>
-                    </div>
-
-                    <div class="prj-split-fields">
-                        <div class="prj-field-wrapper">
-                            <label class="prj-field-tag">Ideal Timeline</label>
-                            <select class="prj-choice-field">
-                                <option value="" selected>Select One</option>
-                                <option value="asap">ASAP (Rush project)</option>
-                                <option value="1-2weeks">1-2 weeks</option>
-                                <option value="1month">1 month</option>
-                                <option value="exploring">Just exploring options</option>
-                            </select>
-                        </div>
-
-                        <div class="prj-field-wrapper" style="display: flex; align-items: flex-end;">
-                            <button type="submit" class="prj-action-trigger">
-                                Submit My Brief & Get a Plan →
-                            </button>
-                        </div>
-                    </div>
-
-                    <p class="prj-legal-note">
-                        Response within 24 hours from a creative director. Transparent pricing. No templates.
-                    </p>
+                <div class="col-lg-6">
+                    <img src="https://images.unsplash.com/photo-1637763723578-79a4ca9225f7?q=85&w=800" alt="Professional Insurance" class="hero-image">
                 </div>
             </div>
         </div>
     </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">Who We Are</h2>
+            <div class="section-divider"></div>
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4 mb-lg-0">
+                    <img src="https://images.pexels.com/photos/5816291/pexels-photo-5816291.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Professional Team" class="img-fluid rounded shadow-lg">
+                </div>
+                <div class="col-lg-6">
+                    <p class="fs-5 mb-4">We've spent over 20 years insuring cafés, restaurants, bars and everything delicious in between, so expanding into Food Truck & Food Trailer Insurance was a natural next step.</p>
+                    <p class="fs-5 mb-4">If it cooks, steams, fries, grills, serves or sizzles on wheels... we've probably insured it.</p>
+                    <p class="fs-5 mb-4">We know the mobile food world is fast, fun and full of flavour—so your insurance should be too.</p>
+                    <a href="#quote" class="btn btn-primary btn-lg">Get Started Today</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Coverage Overview -->
+    <section id="coverage" class="section coverage-bg">
+        <div class="container">
+            <h2 class="section-title">What We Cover</h2>
+            <p class="section-subtitle">Whether you're serving tacos at a night market, brewing coffee at sunrise or running a whole fleet of tasty vans, we've got you covered.</p>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">🚚</div>
+                        <h3 class="feature-title">Food Trucks</h3>
+                        <p class="text-muted">All sizes and styles</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">🚐</div>
+                        <h3 class="feature-title">Food Trailers</h3>
+                        <p class="text-muted">Including retrofitted caravans</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">🎨</div>
+                        <h3 class="feature-title">Themed Rigs</h3>
+                        <p class="text-muted">Kombis, promo vans, quirky builds</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">☕</div>
+                        <h3 class="feature-title">Coffee Vans</h3>
+                        <p class="text-muted">Mobile coffee operations</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">🍕</div>
+                        <h3 class="feature-title">Specialty Vans</h3>
+                        <p class="text-muted">Pie, seafood, and more</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">🚛</div>
+                        <h3 class="feature-title">Fleet Coverage</h3>
+                        <p class="text-muted">Multiple vehicles</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- One-Stop Shop Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Your One-Stop Insurance Shop</h2>
+            <p class="section-subtitle">You cook, serve and create the magic – we make sure you're protected while doing it.</p>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="check-item">
+                        <i class="bi bi-check-circle-fill check-icon"></i>
+                        <span class="fw-semibold">Food Trucks and Trailers</span>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="check-item">
+                        <i class="bi bi-check-circle-fill check-icon"></i>
+                        <span class="fw-semibold">Food/Coffee Vans</span>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="check-item">
+                        <i class="bi bi-check-circle-fill check-icon"></i>
+                        <span class="fw-semibold">Fit out, Contents and Stock</span>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="check-item">
+                        <i class="bi bi-check-circle-fill check-icon"></i>
+                        <span class="fw-semibold">Cash Money</span>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="check-item">
+                        <i class="bi bi-check-circle-fill check-icon"></i>
+                        <span class="fw-semibold">Machinery Breakdown</span>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="check-item">
+                        <i class="bi bi-check-circle-fill check-icon"></i>
+                        <span class="fw-semibold">Public & Products Liability</span>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center text-muted mt-4">Simple, flexible, all-in-one cover packages, with monthly payment plan options.</p>
+        </div>
+    </section>
+
+    <!-- What You're Covered For -->
+    <section class="section blue-dark-section">
+        <div class="container">
+            <h2 class="section-title">What You're Covered For</h2>
+            <p class="section-subtitle">The big stuff, the small stuff, and the unexpected stuff.</p>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="covered-card">
+                        <div class="covered-icon">🔥</div>
+                        <h4>Fire, Theft or Explosion</h4>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="covered-card">
+                        <div class="covered-icon">⚠️</div>
+                        <h4>Malicious Damage</h4>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="covered-card">
+                        <div class="covered-icon">🛡️</div>
+                        <h4>Public & Products Liability</h4>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="covered-card">
+                        <div class="covered-icon">💥</div>
+                        <h4>Collision or Overturning</h4>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="covered-card">
+                        <div class="covered-icon">🚗</div>
+                        <h4>Damage While in Transit</h4>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="covered-card">
+                        <div class="covered-icon">🔧</div>
+                        <h4>Recovery & Towing</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title">Why Food Truck Owners Love Us</h2>
+            <div class="section-divider"></div>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="why-card">
+                        <i class="bi bi-check-circle-fill check-icon"></i>
+                        <p class="fw-semibold mb-0">New Vehicle Replacement - first two years</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="why-card">
+                        <i class="bi bi-check-circle-fill check-icon"></i>
+                        <p class="fw-semibold mb-0">Market or Agreed Value options</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="why-card">
+                        <i class="bi bi-check-circle-fill check-icon"></i>
+                        <p class="fw-semibold mb-0">Cover for recovery & towing</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="why-card">
+                        <i class="bi bi-check-circle-fill check-icon"></i>
+                        <p class="fw-semibold mb-0">We'll even cover your signage and artwork</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="why-card">
+                        <i class="bi bi-check-circle-fill check-icon"></i>
+                        <p class="fw-semibold mb-0">Australia-wide cover – go where the crowds are</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="why-card">
+                        <i class="bi bi-check-circle-fill check-icon"></i>
+                        <p class="fw-semibold mb-0">Flexible options based on when and how you operate</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Optional Extras -->
+    <section class="section coverage-bg">
+        <div class="container">
+            <h2 class="section-title">Optional Extras</h2>
+            <p class="section-subtitle">The Bonus Sauce</p>
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="extra-item d-flex align-items-center">
+                        <div class="extra-icon-wrapper">
+                            <i class="bi bi-check-lg" style="color: #1e40af; font-size: 1.5rem;"></i>
+                        </div>
+                        <span class="fw-semibold">Deep Fryer Coverage</span>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="extra-item d-flex align-items-center">
+                        <div class="extra-icon-wrapper">
+                            <i class="bi bi-check-lg" style="color: #1e40af; font-size: 1.5rem;"></i>
+                        </div>
+                        <span class="fw-semibold">Vehicle + Fit-out</span>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="extra-item d-flex align-items-center">
+                        <div class="extra-icon-wrapper">
+                            <i class="bi bi-check-lg" style="color: #1e40af; font-size: 1.5rem;"></i>
+                        </div>
+                        <span class="fw-semibold">Transit Protection</span>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="extra-item d-flex align-items-center">
+                        <div class="extra-icon-wrapper">
+                            <i class="bi bi-check-lg" style="color: #1e40af; font-size: 1.5rem;"></i>
+                        </div>
+                        <span class="fw-semibold">Custom Builds</span>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="extra-item d-flex align-items-center">
+                        <div class="extra-icon-wrapper">
+                            <i class="bi bi-check-lg" style="color: #1e40af; font-size: 1.5rem;"></i>
+                        </div>
+                        <span class="fw-semibold">Loss of Income</span>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="extra-item d-flex align-items-center">
+                        <div class="extra-icon-wrapper">
+                            <i class="bi bi-check-lg" style="color: #1e40af; font-size: 1.5rem;"></i>
+                        </div>
+                        <span class="fw-semibold">All Licensed Drivers</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Form Section -->
+    <section id="quote" class="section blue-dark-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+                    <h2 class="section-title">Ready to Roll?</h2>
+                    <p class="section-subtitle">Get your personalized quote today</p>
+                    
+                    <div class="form-card">
+                        <form id="quoteForm">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label">Name *</label>
+                                    <input type="text" class="form-control" name="name" placeholder="Your full name" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Email *</label>
+                                    <input type="email" class="form-control" name="email" placeholder="your@email.com" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Phone *</label>
+                                    <input type="tel" class="form-control" name="phone" placeholder="Your phone number" required>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label">Business Name *</label>
+                                    <input type="text" class="form-control" name="business_name" placeholder="Your business name" required>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Vehicle Type *</label>
+                                    <select class="form-select" name="vehicle_type" required>
+                                        <option value="Food Truck">Food Truck</option>
+                                        <option value="Food Trailer">Food Trailer</option>
+                                        <option value="Coffee Van">Coffee Van</option>
+                                        <option value="Specialty Van">Specialty Van</option>
+                                        <option value="Fleet">Fleet (Multiple Vehicles)</option>
+                                        <option value="Other">Other</option>
+                                    </select>
+                                </div>
+                                <div class="col-12">
+                                    <label class="form-label">Additional Information</label>
+                                    <textarea class="form-control" name="message" rows="4" placeholder="Tell us more about your business and coverage needs..."></textarea>
+                                </div>
+                                <div class="col-12">
+                                    <button type="submit" class="btn btn-primary btn-lg w-100">Get My Quote</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Get in Touch</h2>
+            <p class="section-subtitle">We're here to help with any questions you may have</p>
+            
+            <div class="row g-5">
+                <div class="col-lg-6">
+                    <div class="contact-info-item">
+                        <div class="contact-icon-wrapper">
+                            <i class="bi bi-telephone-fill contact-icon"></i>
+                        </div>
+                        <div>
+                            <h4 class="mb-2">Phone</h4>
+                            <p class="mb-1">1800 ILINK (1800 455 465)</p>
+                            <small class="text-muted">Mon-Fri, 9am-5pm AEST</small>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <div class="contact-icon-wrapper">
+                            <i class="bi bi-envelope-fill contact-icon"></i>
+                        </div>
+                        <div>
+                            <h4 class="mb-2">Email</h4>
+                            <p class="mb-1">quotes@ilink.com.au</p>
+                            <small class="text-muted">We'll respond within 24 hours</small>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <div class="contact-icon-wrapper">
+                            <i class="bi bi-geo-alt-fill contact-icon"></i>
+                        </div>
+                        <div>
+                            <h4 class="mb-2">Coverage</h4>
+                            <p class="mb-1">Australia-wide service</p>
+                            <small class="text-muted">Operating in all states and territories</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-lg-6">
+                    <div class="form-card">
+                        <form id="contactForm">
+                            <div class="mb-3">
+                                <label class="form-label">Name *</label>
+                                <input type="text" class="form-control" name="name" placeholder="Your name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Email *</label>
+                                <input type="email" class="form-control" name="email" placeholder="your@email.com" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Subject *</label>
+                                <input type="text" class="form-control" name="subject" placeholder="What's this about?" required>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Message *</label>
+                                <textarea class="form-control" name="message" rows="5" placeholder="Your message..." required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary w-100">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="d-flex align-items-center mb-3">
+                        <i class="bi bi-shield-check" style="font-size: 2rem; color: #60a5fa;"></i>
+                        <span class="fs-3 fw-bold ms-2">iLink</span>
+                    </div>
+                    <p class="text-muted small">Protecting your passion on wheels for over 20 years.</p>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Quick Links</h5>
+                    <a href="#home" class="footer-link">Home</a>
+                    <a href="#about" class="footer-link">About Us</a>
+                    <a href="#coverage" class="footer-link">Coverage</a>
+                    <a href="#contact" class="footer-link">Contact</a>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Services</h5>
+                    <p class="footer-link mb-2">Food Truck Insurance</p>
+                    <p class="footer-link mb-2">Trailer Insurance</p>
+                    <p class="footer-link mb-2">Fleet Coverage</p>
+                    <p class="footer-link mb-2">Liability Protection</p>
+                </div>
+                
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5>Contact</h5>
+                    <p class="footer-link mb-2">1800 ILINK</p>
+                    <p class="footer-link mb-2">quotes@ilink.com.au</p>
+                    <p class="footer-link mb-2">Australia-wide</p>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="mb-0">&copy; 2025 iLink Food Truck Insurance. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JavaScript -->
+    <script>
+        // Get backend URL from environment or use default
+        const BACKEND_URL = window.location.origin;
+        const API = `${BACKEND_URL}/api`;
+
+        // Toast notification function
+        function showToast(message, type = 'success') {
+            const toastContainer = document.getElementById('toastContainer');
+            const toastId = 'toast-' + Date.now();
+            
+            const bgColor = type === 'success' ? 'bg-success' : 'bg-danger';
+            
+            const toastHTML = `
+                <div id="${toastId}" class="toast ${bgColor} text-white" role="alert">
+                    <div class="d-flex">
+                        <div class="toast-body">
+                            ${message}
+                        </div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+                    </div>
+                </div>
+            `;
+            
+            toastContainer.insertAdjacentHTML('beforeend', toastHTML);
+            
+            const toastElement = document.getElementById(toastId);
+            const toast = new bootstrap.Toast(toastElement, { delay: 5000 });
+            toast.show();
+            
+            toastElement.addEventListener('hidden.bs.toast', () => {
+                toastElement.remove();
+            });
+        }
+
+        // Quote Form Handler
+        document.getElementById('quoteForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Submitting...';
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            try {
+                const response = await fetch(`${API}/quote`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                if (response.ok) {
+                    showToast('Quote request received! Our team will contact you within 24 hours.', 'success');
+                    this.reset();
+                } else {
+                    throw new Error('Failed to submit');
+                }
+            } catch (error) {
+                showToast('Failed to submit quote request. Please try again.', 'error');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+            }
+        });
+
+        // Contact Form Handler
+        document.getElementById('contactForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            
+            const submitBtn = this.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+            
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
+            
+            try {
+                const response = await fetch(`${API}/contact`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+                
+                if (response.ok) {
+                    showToast("Message sent successfully! We'll get back to you soon.", 'success');
+                    this.reset();
+                } else {
+                    throw new Error('Failed to submit');
+                }
+            } catch (error) {
+                showToast('Failed to send message. Please try again.', 'error');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+            }
+        });
+
+        // Smooth scroll for navbar links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    const offset = 80;
+                    const targetPosition = target.offsetTop - offset;
+                    window.scrollTo({
+                        top: targetPosition,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const navbarCollapse = document.querySelector('.navbar-collapse');
+                    if (navbarCollapse.classList.contains('show')) {
+                        bootstrap.Collapse.getInstance(navbarCollapse).hide();
+                    }
+                }
+            });
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 2px 10px rgba(0,0,0,0.1)';
+            } else {
+                navbar.style.boxShadow = '0 1px 3px rgba(0,0,0,0.1)';
+            }
+        });
+    </script>
+
 </body>
 </html>
