@@ -5,6 +5,7 @@
 
 document.addEventListener('DOMContentLoaded', function() {
     initServiceMorph();
+    initServiceCTARedirects();
 });
 
 // ========================================
@@ -124,5 +125,37 @@ function initServiceMorph() {
         svcMorphCurrentIndex = (svcMorphCurrentIndex + 1) % svcMorphServices.length;
         svcMorphToService(svcMorphCurrentIndex);
     }, 5000);
+}
+
+/**
+ * Redirect common CTA elements on the service page to the contact page
+ */
+function initServiceCTARedirects() {
+    const contactHref = 'contact.html';
+
+    // Explicit CTA selectors present in this page
+    const ctaSelectors = [
+        '.yt-cta-btn',
+        '.avatar-cta-btn',
+        '.studiox-contact-btn',
+        '.learning-visual-column button',
+        '.learning-cta-box button',
+        '.brand-story-panel .timeline-bar-brand'
+    ];
+
+    ctaSelectors.forEach(sel => {
+        document.querySelectorAll(sel).forEach(el => {
+            el.addEventListener('click', (e) => {
+                // Prevent default for anchors/buttons and navigate to contact page
+                if (e && typeof e.preventDefault === 'function') e.preventDefault();
+                window.location.href = contactHref;
+            });
+        });
+    });
+
+    // Also ensure any anchor CTAs inside svc-morph-cta-section are pointing to contact
+    document.querySelectorAll('.svc-morph-cta-section a').forEach(a => {
+        if (a.getAttribute('href') !== contactHref) a.setAttribute('href', contactHref);
+    });
 }
 

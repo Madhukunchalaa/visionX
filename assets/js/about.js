@@ -68,6 +68,18 @@ function initTriReveal() {
     const cards = Array.from(document.querySelectorAll('.traingles .tri'));
     if (!section || !cards.length) return;
 
+    // If on mobile (<= 768px) show all cards and disable scroll-reveal behavior
+    try {
+        if (window.matchMedia && window.matchMedia('(max-width: 768px)').matches) {
+            section.classList.add('tri-show-all');
+            cards.forEach(card => card.classList.add('tri-active'));
+            return; // skip attaching wheel handlers and observers on mobile
+        }
+    } catch (e) {
+        // If matchMedia isn't supported for some reason, fall back to default behavior
+        console.warn('matchMedia check failed in initTriReveal:', e);
+    }
+
     let currentIndex = 0;
     let isInView = false;
     let isLocked = false;
