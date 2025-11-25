@@ -255,7 +255,7 @@ p {
 .feature-content h2 {
   font-size: 1.5rem;
   font-weight: bold;
-  margin-bottom: 25px;
+  /* margin-bottom: 25px; */
   line-height: 1.2;
   color: #00d2ff;
 }
@@ -1923,15 +1923,7 @@ p {
             color: #fff;
         }
 
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 0;
-            width: 60px;
-            height: 2px;
-            background: #fff;
-        }
+       
 
         .section-text {
             font-size: 20px;
@@ -3383,7 +3375,7 @@ p {
   /* test */
       .svc-morph-matrix-wrapper {
             min-height: 100vh;
-            padding: 80px 20px;
+            /* padding: 80px 20px; */
             background: #000;
             position: relative;
             display: flex;
@@ -7778,7 +7770,7 @@ svg{
 .video-text video {
     position: absolute;
     top: 50%;
-    left: 30%;
+    left: 34%;
     transform: translate(-50%, -50%);
     min-width: 100%;
     min-height: 100%;
