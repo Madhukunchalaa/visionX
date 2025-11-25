@@ -972,6 +972,11 @@ p {
             gap: 20px;
         }
     }
+    .about-pillar-card{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
     /* Small screens (mobile) - one column layouts, adjusted paddings & font sizes */
     @media (max-width: 576px) {
@@ -1024,8 +1029,23 @@ p {
         .video-grid,
         .gallery,
         .row.g-3 {
-            gap: 12px;
+            gap: 0px;
         }
+        .cta-ptext{
+            margin-top: 2rem !important;
+        }
+        .about-comparison-divider span{
+            rotate: 267deg;
+        }
+
+        .about-pillar-highlight{
+            line-height: 40px;
+            padding: 15px;
+        }
+        .about-video-overlay{
+            background: rgba(0, 0, 0, 0.75) !important;
+        }
+
 
         /* Ensure overlays are readable on smaller heights */
         .about-industry-card-overlay,
@@ -5554,7 +5574,7 @@ p {
             /* background: rgba(255, 255, 255, 0.1); */
             /* border-radius: 50%; */
             transition: all 0.4s ease;
-            padding: 6px;
+            /* padding: 6px; */
         }
 
        
