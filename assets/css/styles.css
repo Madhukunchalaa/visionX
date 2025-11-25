@@ -146,7 +146,7 @@ p {
 .ai-capabilities-section {
   background: black;
   color: white;
-  padding: 80px 0;
+  /* padding: 80px 0; */
 }
 
 .ai-capabilities-section .container {
@@ -1509,7 +1509,7 @@ p {
         }
   .studio351-direct-contact-section {
             background-color: #000000;
-            padding: 60px 0;
+            /* padding: 60px 0; */
             font-family: 'Inter', sans-serif;
         }
 
@@ -1618,7 +1618,7 @@ p {
         }
       .studio351-faq-section {
             background-color: #000000;
-            padding: 80px 0;
+            /* padding: 80px 0; */
             font-family: 'Inter', sans-serif;
         }
 
@@ -4493,7 +4493,7 @@ p {
 
 .studiox__phase__details {
     font-size: 14px;
-    color: #666;
+    color: #888;
     line-height: 1.7;
     max-width: 280px;
     margin: 0 auto;
