@@ -652,7 +652,7 @@ p {
 
   /* AI Capabilities */
   .ai-capabilities-section {
-    padding: 50px 0;
+    padding: 1px 0;
   }
   
   .ai-capabilities-section .container {
@@ -1019,7 +1019,7 @@ p {
         }
 
         /* Reduce large section padding on mobile for better fit */
-        .ai-capabilities-section,
+       
         .about-industry-section,
         .brand-cinema-split,
         .youtube-deck-layout {
@@ -6341,9 +6341,7 @@ p {
     }
     
     /* AI Capabilities Section - Mobile */
-    .ai-capabilities-section {
-        padding: 40px 0;
-    }
+   
     
     /* Feature Rows */
     .feature-row,
@@ -6852,9 +6850,9 @@ p {
     }
     
     /* Video Showcase */
-    .video-showcase-section {
+    /* .video-showcase-section {
         padding: 40px 15px;
-    }
+    } */
     
     .showcase-title {
         font-size: 1.5rem;
@@ -6898,7 +6896,7 @@ p {
     }
     
     .studiox-hero-heading {
-        font-size: clamp(2rem, 10vw, 3rem);
+        font-size: clamp(2rem, 10vw, 3rem)!important;
     }
     
     .studiox-hero-desc {
@@ -6918,7 +6916,7 @@ p {
     
     /* AI Capabilities Section */
     .ai-capabilities-section {
-        padding: 50px 0;
+        /* padding: 50px 0; */
     }
     
     /* Buttons */

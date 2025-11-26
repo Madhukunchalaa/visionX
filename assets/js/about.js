@@ -3,7 +3,7 @@
  * Specific functionality for about.html
  */
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     initAboutAnimations();
     initTriReveal();
     initTypewriter('.about-team-note', '.about-team-note-text', 60);
@@ -24,17 +24,17 @@ function initAboutAnimations() {
         rootMargin: '0px 0px -50px 0px'
     };
 
-    const observer = new IntersectionObserver(function(entries) {
+    const observer = new IntersectionObserver(function (entries) {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('about-animated');
-                
+
                 // Determine animation based on element
                 if (entry.target.classList.contains('about-hero-content')) {
                     entry.target.style.animation = 'about-fadeInUp 0.8s ease-out forwards';
-                } else if (entry.target.parentElement && 
-                           (entry.target.parentElement.classList.contains('about-solution-icons') ||
-                            entry.target.parentElement.classList.contains('about-solution-text'))) {
+                } else if (entry.target.parentElement &&
+                    (entry.target.parentElement.classList.contains('about-solution-icons') ||
+                        entry.target.parentElement.classList.contains('about-solution-text'))) {
                     entry.target.style.animation = 'about-scaleIn 0.6s ease-out forwards';
                 } else if (entry.target.classList.contains('about-comparison-side')) {
                     const index = Array.from(entry.target.parentElement.children).indexOf(entry.target);
@@ -99,7 +99,7 @@ function initTriReveal() {
         if (index >= 0 && index < cards.length) {
             cards[index].classList.add('tri-active');
         }
-        
+
         // If all cards are shown, unlock scrolling
         if (index >= cards.length - 1) {
             section.classList.add('tri-show-all');
@@ -157,7 +157,7 @@ function initTriReveal() {
             if (entry.isIntersecting) {
                 isInView = true;
                 isLocked = true;
-                
+
                 // Show first card immediately when section comes into view
                 if (currentIndex === 0) {
                     showCard(0);
@@ -165,14 +165,14 @@ function initTriReveal() {
                 }
             } else {
                 isInView = false;
-                
+
                 // Reset if scrolled away before completing
                 if (currentIndex < totalCards) {
                     resetCards();
                 }
             }
         });
-    }, { 
+    }, {
         threshold: 0.4,
         rootMargin: '0px'
     });
@@ -206,21 +206,21 @@ function initParticles() {
     if (!particlesContainer) return;
 
     const particleCount = 50;
-    
+
     for (let i = 0; i < particleCount; i++) {
         const particle = document.createElement('div');
         particle.classList.add('light-particle');
-        
+
         // Random position
         particle.style.left = Math.random() * 100 + '%';
         particle.style.animationDuration = (Math.random() * 15 + 10) + 's';
         particle.style.animationDelay = Math.random() * 5 + 's';
-        
+
         // Random size variation
         const size = Math.random() * 3 + 1;
         particle.style.width = size + 'px';
         particle.style.height = size + 'px';
-        
+
         particlesContainer.appendChild(particle);
     }
 }
