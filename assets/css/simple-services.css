@@ -153,3 +153,26 @@
         grid-template-columns: 1fr;
     }
 }
+
+@media (min-width: 993px) {
+    .service-simple-row {
+        align-items: stretch;
+    }
+
+    .service-simple-media {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .service-simple-video-wrapper {
+        height: 100%;
+        padding-bottom: 0;
+        display: flex;
+    }
+    
+    .service-simple-video-wrapper video {
+        position: relative;
+        height: 100%;
+        width: 100%;
+    }
+}
