@@ -836,6 +836,7 @@ p {
   justify-content: center;
   opacity: 0;
   transition: opacity 0.3s ease;
+  pointer-events: none;
 }
 
 .video-card:hover .video-card-overlay {

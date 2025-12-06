@@ -3,9 +3,10 @@
  * Specific functionality for index.html
  */
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     initVideoControls();
     initShowcasePlayButtons();
+    initShowcaseHoverControls();
 });
 
 // ========================================
@@ -18,14 +19,14 @@ document.addEventListener('DOMContentLoaded', function() {
 function initVideoControls() {
     // Play/Pause functionality
     document.querySelectorAll('.play-pause-btn').forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             const videoId = this.getAttribute('data-video');
             const video = document.getElementById(videoId);
             if (!video) return;
 
             const playIcon = this.querySelector('.play-icon');
             const pauseIcon = this.querySelector('.pause-icon');
-            
+
             if (video.paused) {
                 video.play().catch(error => {
                     console.log('Video play prevented:', error);
@@ -42,14 +43,14 @@ function initVideoControls() {
 
     // Mute/Unmute functionality
     document.querySelectorAll('.mute-unmute-btn').forEach(button => {
-        button.addEventListener('click', function() {
+        button.addEventListener('click', function () {
             const videoId = this.getAttribute('data-video');
             const video = document.getElementById(videoId);
             if (!video) return;
 
             const unmuteIcon = this.querySelector('.unmute-icon');
             const muteIcon = this.querySelector('.mute-icon');
-            
+
             if (video.muted) {
                 video.muted = false;
                 if (unmuteIcon) unmuteIcon.style.display = 'inline';
@@ -80,13 +81,13 @@ function initShowcasePlayButtons() {
             // never pause the autoplay tile (id: autoVid)
             if (v.id === 'autoVid') return;
             if (v.id !== exceptId) {
-                try { v.pause(); } catch (e) {}
+                try { v.pause(); } catch (e) { }
             }
         });
     }
 
     playButtons.forEach(btn => {
-        btn.addEventListener('click', function(e) {
+        btn.addEventListener('click', function (e) {
             const targetId = this.getAttribute('data-target');
             const video = document.getElementById(targetId);
             if (!video) return;
@@ -100,6 +101,35 @@ function initShowcasePlayButtons() {
                 video.pause();
                 this.style.display = 'flex';
             }
+        });
+    });
+}
+
+// ========================================
+// SHOWCASE HOVER CONTROLS
+// ========================================
+
+/**
+ * Initialize hover controls for the showcase videos.
+ * - MouseEnter: Show native controls
+ * - MouseLeave: Hide native controls
+ */
+function initShowcaseHoverControls() {
+    const videoCards = document.querySelectorAll('.video-showcase-section .video-card');
+
+    videoCards.forEach(card => {
+        const video = card.querySelector('video');
+        if (!video) return;
+
+        // Ensure controls are hidden initially
+        video.controls = false;
+
+        card.addEventListener('mouseenter', () => {
+            video.controls = true;
+        });
+
+        card.addEventListener('mouseleave', () => {
+            video.controls = false;
         });
     });
 }
