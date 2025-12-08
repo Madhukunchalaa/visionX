@@ -24,6 +24,8 @@
 img, video, iframe, svg {
   max-width: 100%;
   height: auto;
+  /* Ensure images have dimension for CLS */
+  aspect-ratio: attr(width) / attr(height);
 }
 
 /* ========================================
@@ -110,6 +112,7 @@ p {
   height: 100vh;
   overflow: hidden;
   margin-bottom: 0;
+  aspect-ratio: 16/9; /* CLS Fix */
 }
 
 .video-banner video {
