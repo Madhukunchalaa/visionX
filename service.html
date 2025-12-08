@@ -54,8 +54,8 @@
             <div class="service-simple-row">
                 <div class="service-simple-media">
                     <div class="service-simple-video-wrapper">
-                        <video autoplay muted loop playsinline>
-                            <source src="assets/videos/foodtruck.mp4" type="video/mp4">
+                        <video class="lazy-video" loop muted playsinline preload="none">
+                            <source data-src="assets/videos/foodtruck.mp4" type="video/mp4">
                         </video>
                     </div>
                 </div>
@@ -93,8 +93,8 @@
             <div class="youtube-media-stage">
                 <div class="youtube-screen-frame">
                     <!-- Add your video/image here -->
-                    <video autoplay muted loop playsinline>
-                        <source src="assets/videos/yt_snnipet.mp4" type="video/mp4">
+                    <video class="lazy-video" loop muted playsinline preload="none">
+                        <source data-src="assets/videos/yt_snnipet.mp4" type="video/mp4">
                     </video>
                 </div>
             </div>
@@ -135,9 +135,9 @@
                 <div class="service-simple-media">
                     <div class="service-simple-video-wrapper"
                         style="padding-bottom: 0; height: auto; border: none; box-shadow: none; background: transparent; max-width: 400px; margin: 0 auto;">
-                        <video autoplay muted loop playsinline
+                        <video class="lazy-video" loop muted playsinline preload="none"
                             style="position: relative; width: 100%; height: auto; border-radius: 12px; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4); border: 1px solid rgba(255, 255, 255, 0.1);">
-                            <source src="assets/videos/rosy.mp4" type="video/mp4">
+                            <source data-src="assets/videos/rosy.mp4" type="video/mp4">
                         </video>
                     </div>
                 </div>
@@ -176,8 +176,8 @@
             <div class="service-simple-row">
                 <div class="service-simple-media">
                     <div class="service-simple-video-wrapper">
-                        <video autoplay muted loop playsinline>
-                            <source src="assets/videos/food reel.mp4" type="video/mp4">
+                        <video class="lazy-video" loop muted playsinline preload="none">
+                            <source data-src="assets/videos/food reel.mp4" type="video/mp4">
                         </video>
                     </div>
                 </div>
@@ -247,14 +247,14 @@
                 </div>
 
                 <div class="svc-morph-display-panel" id="svcMorphDisplay">
-                    <video class="svc-morph-video-bg svc-morph-active" muted loop playsinline id="svcMorphVideo0"
-                        src="assets/videos/Restaurant.mp4"></video>
-                    <video class="svc-morph-video-bg" muted loop playsinline id="svcMorphVideo1"
-                        src="assets/videos/bikeai.mp4"></video>
-                    <video class="svc-morph-video-bg" muted loop playsinline id="svcMorphVideo2"
-                        src="assets/videos/aiavathar.mp4"></video>
-                    <video class="svc-morph-video-bg" muted loop playsinline id="svcMorphVideo3"
-                        src="assets/videos/learning.mp4"></video>
+                    <video class="svc-morph-video-bg svc-morph-active lazy-video" muted loop playsinline
+                        id="svcMorphVideo0" data-src="assets/videos/Restaurant.mp4" preload="none"></video>
+                    <video class="svc-morph-video-bg lazy-video" muted loop playsinline id="svcMorphVideo1"
+                        data-src="assets/videos/bikeai.mp4" preload="none"></video>
+                    <video class="svc-morph-video-bg lazy-video" muted loop playsinline id="svcMorphVideo2"
+                        data-src="assets/videos/aiavathar.mp4" preload="none"></video>
+                    <video class="svc-morph-video-bg lazy-video" muted loop playsinline id="svcMorphVideo3"
+                        data-src="assets/videos/learning.mp4" preload="none"></video>
                     <div class="svc-morph-video-overlay"></div>
 
                     <div class="svc-morph-content-inner" id="svcMorphContent">
@@ -286,8 +286,9 @@
 
             <div class="svc-morph-cta-section">
                 <!-- Background video (will fill the CTA card) -->
-                <video class="svc-morph-cta-video-bg" autoplay muted loop playsinline>
-                    <source src="assets/videos/we are video3.mp4" type="video/mp4">
+                <!-- Background video (will fill the CTA card) -->
+                <video class="svc-morph-cta-video-bg lazy-video" loop muted playsinline preload="none">
+                    <source data-src="assets/videos/we are video3.mp4" type="video/mp4">
                     Your browser does not support the video tag.
                 </video>
                 <!-- Dark overlay to improve text contrast -->

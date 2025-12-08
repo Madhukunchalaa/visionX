@@ -3,10 +3,47 @@
  * Specific functionality for service.html
  */
 
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     initServiceMorph();
     initServiceCTARedirects();
+    initLazyVideos();
 });
+
+// ========================================
+// LAZY VIDEO LOADING
+// ========================================
+function initLazyVideos() {
+    var lazyVideos = [].slice.call(document.querySelectorAll("video.lazy-video"));
+
+    if ("IntersectionObserver" in window) {
+        var lazyVideoObserver = new IntersectionObserver(function (entries, observer) {
+            entries.forEach(function (video) {
+                if (video.isIntersecting) {
+                    for (var source in video.target.children) {
+                        var videoSource = video.target.children[source];
+                        if (typeof videoSource.tagName === "string" && videoSource.tagName === "SOURCE") {
+                            videoSource.src = videoSource.dataset.src;
+                        }
+                    }
+
+                    // Directly set src if video tag has data-src (fallback/alternative)
+                    if (video.target.dataset.src) {
+                        video.target.src = video.target.dataset.src;
+                    }
+
+                    video.target.load();
+                    video.target.classList.remove("lazy-video");
+                    video.target.play().catch(e => console.log('Autoplay prevented:', e));
+                    lazyVideoObserver.unobserve(video.target);
+                }
+            });
+        });
+
+        lazyVideos.forEach(function (lazyVideo) {
+            lazyVideoObserver.observe(lazyVideo);
+        });
+    }
+}
 
 // ========================================
 // SERVICE MORPH ANIMATION
@@ -61,11 +98,20 @@ function initServiceMorph() {
     function svcMorphToService(index) {
         const service = svcMorphServices[index];
         if (!service) return;
-        
+
         svcMorphDisplay.classList.add('svc-morph-animating');
-        
+
         svcMorphVideos.forEach((video, i) => {
             if (i === index) {
+                // Ensure lazy loaded src is set if it hasn't been yet
+                if (video.classList.contains('lazy-video')) {
+                    if (video.dataset.src && !video.src) {
+                        video.src = video.dataset.src;
+                        video.load();
+                    }
+                    video.classList.remove('lazy-video');
+                }
+
                 video.classList.add('svc-morph-active');
                 video.play().catch(e => console.log('Video play error:', e));
             } else {
@@ -73,7 +119,7 @@ function initServiceMorph() {
                 video.pause();
             }
         });
-        
+
         setTimeout(() => {
             svcMorphContent.innerHTML = `
                 <h3 class="svc-morph-title-main">${service.title}</h3>
@@ -90,15 +136,15 @@ function initServiceMorph() {
                 <p class="svc-morph-description-text">${service.description}</p>
             `;
         }, 200);
-        
+
         setTimeout(() => {
             svcMorphDisplay.classList.remove('svc-morph-animating');
         }, 800);
-        
+
         svcMorphSelectors.forEach((sel, i) => {
             sel.classList.toggle('svc-morph-active', i === index);
         });
-        
+
         svcMorphIndicators.forEach((ind, i) => {
             ind.classList.toggle('svc-morph-active', i === index);
         });
