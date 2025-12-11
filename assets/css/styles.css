@@ -125,7 +125,35 @@ p {
   height: auto;
   transform: translate(-50%, -50%);
   object-fit: cover;
+  z-index: 0;
 }
+
+.video-banner iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+/* Removed scale(1.35) to fix text visibility */
+  transform: translate(-50%, -50%);
+  pointer-events: none; /* Prevent interaction for background feel */
+  z-index: 0;
+}
+
+/* Aspect ratio handling for full cover simulation */
+@media (min-aspect-ratio: 16/9) {
+  .video-banner iframe {
+    height: 56.25vw;
+  }
+}
+
+@media (max-aspect-ratio: 16/9) {
+  .video-banner iframe {
+    width: 177.78vh;
+    max-width: none;
+  }
+}
+
 
 .video-overlay {
   position: absolute;
@@ -211,25 +239,45 @@ p {
 .feature-video-wrapper {
   flex: 1;
   position: relative;
-  border-radius: 20px;
+  border-radius: 30px;
   overflow: hidden;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
   max-width: 600px;
   height: 500px;
   background: #000;
   display: block;
+  /* Robust fix for border-radius clipping on iframes */
+  mask-image: -webkit-radial-gradient(white, black); /* Some browsers need this specific gradient for antialiasing */
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  transform: translateZ(0);
+  z-index: 1; /* Ensure stacking context */
 }
 
-.feature-video-wrapper .background-video {
+.feature-video-wrapper .background-video,
+.feature-video-wrapper iframe {
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(1.35);
   height: 100%;
-  object-fit: cover;
+  aspect-ratio: 16/9;
   z-index: 0;
   display: block;
   visibility: visible;
+  pointer-events: none;
+  border: 0;
+  max-width: none; /* Override global max-width to allow overflow for cover effect */
+}
+
+.feature-video-wrapper .background-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Reset standard video placement for non-iframes */
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: none;
 }
 
 .feature-video-wrapper .video-card-overlay {
@@ -822,10 +870,16 @@ p {
 
 .video-card {
   position: relative;
-  border-radius: 16px;
+  border-radius: 30px;
   overflow: hidden;
   background: rgba(0, 0, 0, 0.5);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  /* Fix for border-radius clipping */
+  mask-image: -webkit-radial-gradient(white, black);
+  -webkit-mask-image: -webkit-radial-gradient(white, black);
+  transform: translateZ(0);
+  z-index: 1;
+
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
   height: 360px;
