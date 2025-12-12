@@ -16,6 +16,493 @@
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="assets/css/styles.css">
+    <style>
+        /* what you get */
+        /* ========================================
+   STUDIO X AI SECTION (REWRITE)
+   ======================================== */
+        .studio-x-section {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background: black;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 1. BACKGROUND VIDEO LAYER */
+        .studio-bg-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            /* Lowest level */
+        }
+
+        .studio-bg-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 2. TEXT MASK LAYER (Black bg + White text + Multiply blend) */
+        .studio-mask-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            z-index: 5;
+            /* Above video */
+            mix-blend-mode: multiply;
+            /* The Magic: White text becomes transparent to video below */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+            /* Let clicks pass specific areas if needed */
+        }
+
+        .studio-text-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            gap: 0;
+            /* Gap handled by spacer */
+        }
+
+        .studio-section-title {
+            position: absolute;
+            top: 4%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 56px;
+            font-weight: 700;
+            color: white;
+            z-index: 20;
+            /* Above everything */
+            /* text-transform: uppercase; <-- Removed */
+            /* letter-spacing: 2px; <-- Removed */
+            opacity: 1;
+            text-align: center;
+            width: 100%;
+        }
+
+        .studio-highlight {
+            color: #00d2ff;
+            /* Cyan highlight */
+        }
+
+        .studio-title-text {
+            font-size: 100px;
+            font-weight: 900;
+            color: white;
+            /* Becomes transparent in multiply mode */
+            margin: 0;
+            line-height: 1;
+            letter-spacing: -2px;
+        }
+
+        /* Shift only the "AI" text closer to the center */
+        .studio-title-text:last-child {
+            position: relative;
+            left: -100px;
+        }
+
+        /* Shift "STUDIO" text left to avoid overlapping content */
+        .studio-title-text:first-child {
+            position: relative;
+            left: -60px;
+        }
+
+        .studio-x-spacer {
+            width: 800px;
+            /* Increased to 800px as requested */
+            height: 100px;
+            flex-shrink: 0;
+        }
+
+        /* 3. X INTERACTION LAYER */
+        .studio-x-layer {
+            position: absolute;
+            inset: 0;
+            z-index: 10;
+            /* Topmost */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+            /* Allow clicks through empty areas */
+        }
+
+        /* REUSING .box and .tri styles, just adjusting container */
+        .studio-x-box {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background: black;
+            /* The X center needs to cover the video/text lines behind it? */
+            /* Actually with multiply mode, the text layer covers everything with black except text. 
+       The Box sits ON TOP. It has its own videos. 
+       We ensure it stands out. */
+            /* overflow: hidden;  <-- REMOVED TO ALLOW TEXT OUTSIDE */
+            pointer-events: auto;
+            /* Re-enable clicks on the X */
+        }
+
+        /* Responsive adjustments for Studio X section */
+        @media (max-width: 1600px) {
+            .studio-x-spacer {
+                width: 600px;
+            }
+
+            .studio-title-text {
+                font-size: 128px;
+            }
+
+            .studio-x-tri1 .studio-x-tri-content {
+                left: -175px;
+                width: 155px;
+            }
+
+            .studio-x-tri4 .studio-x-tri-content {
+                right: -175px;
+                width: 155px;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .studio-title-text {
+                font-size: 80px;
+            }
+
+            .studio-x-spacer {
+                width: 450px;
+            }
+
+            .studio-x-box {
+                width: 160px;
+                height: 160px;
+            }
+        }
+
+        .studio-x-tri {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            color: white;
+            transition: opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            /* Important: pass through clicks in empty areas */
+            transform: scale(0.9);
+            filter: blur(4px);
+        }
+
+        .studio-x-tri.studio-x-tri-active {
+            opacity: 1;
+            visibility: visible;
+            /* pointer-events:auto; <-- Handled by children */
+            transform: scale(1);
+            filter: blur(0);
+        }
+
+        .studio-x-section.studio-x-show-all .studio-x-tri {
+            opacity: 1;
+            visibility: visible;
+            /* pointer-events:auto; */
+        }
+
+        /* CLIPPER HANDLES THE SHAPE AND CLICKS */
+        .studio-x-clipper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: auto;
+            /* Catch clicks on the triangle shape */
+        }
+
+        .studio-x-tri:hover .studio-x-clipper video {
+            filter: grayscale(0%);
+        }
+
+        .studio-x-tri-content {
+            position: absolute;
+            z-index: 5;
+            text-align: center;
+            pointer-events: auto;
+            /* Allow interaction with text */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+
+            padding: 24px 20px;
+
+            box-sizing: border-box;
+        }
+
+        /* Position content outside the smaller X box */
+        /* LEFT */
+        .studio-x-tri1 .studio-x-tri-content {
+            left: -74px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 200px;
+            text-align: center;
+            align-items: center;
+        }
+
+        /* TOP */
+        .studio-x-tri2 .studio-x-tri-content {
+            top: -147px;
+            left: 85%;
+            transform: translateX(-50%);
+            width: 220px;
+            text-align: center;
+            align-items: center;
+        }
+
+        /* BOTTOM */
+        .studio-x-tri3 .studio-x-tri-content {
+            bottom: -137px;
+            left: 87%;
+            transform: translateX(-50%);
+            width: 220px;
+            text-align: center;
+            align-items: center;
+        }
+
+        /* RIGHT */
+        .studio-x-tri4 .studio-x-tri-content {
+            right: -263px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 200px;
+            text-align: center;
+            align-items: center;
+        }
+
+        .studio-x-tri-icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .studio-x-tri-heading {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            line-height: 1.2;
+            color: var(--theme-color);
+        }
+
+        .studio-x-tri-text {
+            font-size: 15px;
+            font-weight: 400;
+            opacity: 0.9;
+            line-height: 23px;
+            text-align: center;
+        }
+
+        /* 4 PERFECT NON-OVERLAPPING TRIANGLES - APPLIED TO CLIPPER */
+
+        /* TOP LEFT */
+        .studio-x-tri1 .studio-x-clipper {
+            clip-path: polygon(0 0, 50% 50%, 0 100%);
+        }
+
+        /* TOP RIGHT */
+        .studio-x-tri2 .studio-x-clipper {
+            clip-path: polygon(100% 0, 50% 50%, 0 0);
+        }
+
+        /* BOTTOM LEFT */
+        .studio-x-tri3 .studio-x-clipper {
+            clip-path: polygon(0 100%, 50% 50%, 100% 100%);
+        }
+
+        /* BOTTOM RIGHT */
+        .studio-x-tri4 .studio-x-clipper {
+            clip-path: polygon(100% 100%, 50% 50%, 100% 0);
+        }
+
+        /* WHITE X LINES WITH VIDEO */
+        .studio-x-line {
+            position: absolute;
+            top: 50%;
+            left: 91%;
+            width: 302%;
+            height: 35px;
+            background: white;
+            transform-origin: center;
+            z-index: 10;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .studio-x-line video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 200%;
+            min-height: 200%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .studio-x-line1 {
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        .studio-x-line1 video {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+
+        .studio-x-line2 {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+
+        .studio-x-line2 video {
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        .video-text {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .video-text video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: cover;
+
+            /* mask video inside text - correct syntax */
+            -webkit-mask: url(#mask);
+            mask: url(#mask);
+            -webkit-mask-size: 100% 100%;
+            mask-size: 100% 100%;
+        }
+
+
+
+        /* ========================================
+   MOBILE RESPONSIVE (Below 768px)
+   ======================================== */
+        @media (max-width: 768px) {
+
+            /* Hide the complex Studio/X/Video layers */
+            .studio-bg-layer,
+            .studio-mask-layer,
+            .studio-x-line,
+            .studio-x-box::before,
+            /* any pseudo elements if any */
+            .studio-x-clipper {
+                /* Hide the video clips, just show text content */
+                display: none !important;
+            }
+
+            .studio-x-section {
+                display: none !important;
+                height: auto;
+                min-height: auto;
+                padding: 80px 20px 40px;
+                /* Space for title */
+                overflow-y: visible;
+                display: block;
+                /* Reset flex */
+            }
+
+            /* Position the title normally */
+            .studio-section-title {
+                position: relative;
+                top: auto;
+                left: auto;
+                transform: none;
+                margin-bottom: 40px;
+                font-size: 32px;
+                /* Smaller for mobile */
+            }
+
+            /* Reset the box container */
+            .studio-x-box {
+                width: 100% !important;
+                height: auto !important;
+                background: transparent;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            /* Reset the triangle containers to be static blocks */
+            .studio-x-tri {
+                position: relative;
+                width: 100%;
+                height: auto;
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: none !important;
+                filter: none !important;
+                pointer-events: auto !important;
+            }
+
+            /* Style the content as the card itself */
+            .studio-x-tri-content {
+                position: relative;
+                width: 100% !important;
+                /* Full width */
+                left: auto !important;
+                right: auto !important;
+                top: auto !important;
+                bottom: auto !important;
+                transform: none !important;
+
+                background: #000;
+                border: 1px solid #333;
+                border-radius: 20px;
+                padding: 30px;
+                text-align: left;
+                align-items: flex-start;
+                justify-content: flex-start;
+                box-shadow: none;
+            }
+
+            .studio-x-tri-heading {
+                font-size: 20px;
+                margin-bottom: 10px;
+            }
+
+            .studio-x-tri-text {
+                text-align: left;
+                font-size: 16px;
+                line-height: 1.5;
+            }
+        }
+    </style>
 </head>
 
 <body class="about-page">
@@ -351,91 +838,87 @@
     </section>
 
     <!-- SECTION 7:  -->
-    <section class="traingles">
-        <h2 class="about-main-heading text-center">What You <span class="theme-text">Actually Get</span></h2>
+    <section class="studio-x-section">
+        <h2 class="studio-section-title">What You <span class="studio-highlight">Actually Get</span></h2>
+        <!-- 1. Background Video Layer (Visible through text) -->
+        <div class="studio-bg-layer">
+            <video autoplay muted loop playsinline class="studio-bg-video">
+                <source src="assets/videos/footer.mp4" type="video/mp4">
+            </video>
+        </div>
 
-        <div class="design">
-
-            <!-- SVG mask for text -->
-            <svg xmlns="http://www.w3.org/2000/svg">
-                <defs>
-                    <mask id="mask" maskUnits="userSpaceOnUse" x="0" y="0" width="100%" height="100%">
-                        <rect width="100%" height="100%" fill="black" />
-                        <text x="50%" y="50%" fill="white" font-size="200" font-weight="900" text-anchor="middle"
-                            dominant-baseline="middle">
-                            STUDIO
-                        </text>
-                    </mask>
-                </defs>
-            </svg>
-
-            <div class="video-text">
-                <video autoplay muted loop playsinline>
-                    <source src="assets/videos/footer.mp4" type="video/mp4">
-                </video>
+        <!-- 2. Text Mask Layer (Black bg, White text, Multiply blend) -->
+        <div class="studio-mask-layer">
+            <div class="studio-text-container">
+                <h1 class="studio-title-text">STUDIO</h1>
+                <div class="studio-x-spacer"></div> <!-- Holds space for the X -->
+                <h1 class="studio-title-text">AI</h1>
             </div>
+        </div>
 
+        <!-- 3. X Interaction Layer ( sits on top ) -->
+        <div class="studio-x-layer">
+            <div class="studio-x-box">
 
-            <div class="box">
-
-                <div class="tri tri1">
+                <div class="studio-x-tri studio-x-tri1">
                     <video autoplay muted loop playsinline>
                         <!-- <source src="assets/videos/aiavatar.mp4" type="video/mp4"> -->
                     </video>
-                    <div class="tri-content">
-                        <div class="tri-icon"></div>
-                        <div class="tri-heading">Direct Expert Access</div>
-                        <div class="tri-text">Work with the creators, not account managers.</div>
+                    <div class="studio-x-tri-content">
+                        <div class="studio-x-tri-icon"></div>
+                        <div class="studio-x-tri-heading">Direct Expert Access</div>
+                        <div class="studio-x-tri-text">Work with the creators, not account managers.</div>
                     </div>
                 </div>
 
-                <div class="tri tri2">
+                <div class="studio-x-tri studio-x-tri2">
                     <video autoplay muted loop playsinline>
                         <!-- <source src="assets/videos/Glitch_Video_Generation_Complete.mp4" type="video/mp4"> -->
                     </video>
-                    <div class="tri-content">
-                        <div class="tri-icon"></div>
-                        <div class="tri-heading">Complete Transparency</div>
-                        <div class="tri-text">Honest timelines, upfront pricing, straightforward communication.</div>
-                    </div>
-                </div>
-
-                <div class="tri tri3">
-                    <video autoplay muted loop playsinline>
-                        <!-- <source src="assets/videos/aivideo1.mp4" type="video/mp4"> -->
-                    </video>
-                    <div class="tri-content">
-                        <div class="tri-icon"></div>
-                        <div class="tri-heading mt-4">Measured <br> Results </div>
-                        <div class="tri-text">We track impact, not just deliverables. Your success is our scorecard.
+                    <div class="studio-x-tri-content">
+                        <div class="studio-x-tri-icon"></div>
+                        <div class="studio-x-tri-heading">Complete Transparency</div>
+                        <div class="studio-x-tri-text">Honest timelines, upfront pricing, straightforward communication.
                         </div>
                     </div>
                 </div>
 
-                <div class="tri tri4">
+                <div class="studio-x-tri studio-x-tri3">
                     <video autoplay muted loop playsinline>
-                        <!-- <source src="assets/videos/ant.mp4" type="video/mp4"> -->
+                        <!-- <source src="assets/videos/aivideo1.mp4" type="video/mp4"> -->
                     </video>
-                    <div class="tri-content">
-                        <div class="tri-icon"></div>
-                        <div class="tri-heading">Your Creative Extension </div>
-                        <div class="tri-text">We act as part of your team, dedicated to your success</div>
+                    <div class="studio-x-tri-content">
+                        <div class="studio-x-tri-icon"></div>
+                        <div class="studio-x-tri-heading mt-4">Measured <br> Results </div>
+                        <div class="studio-x-tri-text">We track impact, not just deliverables. Your success is our
+                            scorecard.
+                        </div>
                     </div>
                 </div>
 
-                <div class="line line1">
+                <div class="studio-x-tri studio-x-tri4">
+                    <video autoplay muted loop playsinline>
+                        <!-- <source src="assets/videos/ant.mp4" type="video/mp4"> -->
+                    </video>
+                    <div class="studio-x-tri-content">
+                        <div class="studio-x-tri-icon"></div>
+                        <div class="studio-x-tri-heading">Your Creative Extension </div>
+                        <div class="studio-x-tri-text">We act as part of your team, dedicated to your success</div>
+                    </div>
+                </div>
+
+                <div class="studio-x-line studio-x-line1">
                     <video autoplay muted loop playsinline>
                         <source src="assets/videos/footer.mp4" type="video/mp4">
                     </video>
                 </div>
-                <div class="line line2">
+                <div class="studio-x-line studio-x-line2">
                     <video autoplay muted loop playsinline>
                         <source src="assets/videos/footer.mp4" type="video/mp4">
                     </video>
                 </div>
 
             </div>
-
         </div>
     </section>
 

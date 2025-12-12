@@ -64,15 +64,15 @@ function initAboutAnimations() {
  * Prevents scrolling past section until all 4 cards are revealed
  */
 function initTriReveal() {
-    const section = document.querySelector('.traingles');
-    const cards = Array.from(document.querySelectorAll('.traingles .tri'));
+    const section = document.querySelector('.studio-x-section');
+    const cards = Array.from(document.querySelectorAll('.studio-x-section .studio-x-tri'));
     if (!section || !cards.length) return;
 
     // If on mobile (<= 768px) show all cards and disable scroll-reveal behavior
     try {
         if (window.matchMedia && window.matchMedia('(max-width: 768px)').matches) {
-            section.classList.add('tri-show-all');
-            cards.forEach(card => card.classList.add('tri-active'));
+            section.classList.add('studio-x-show-all');
+            cards.forEach(card => card.classList.add('studio-x-tri-active'));
             return; // skip attaching wheel handlers and observers on mobile
         }
     } catch (e) {
@@ -88,8 +88,8 @@ function initTriReveal() {
 
     // Reset all cards
     const resetCards = () => {
-        section.classList.remove('tri-show-all');
-        cards.forEach(card => card.classList.remove('tri-active'));
+        section.classList.remove('studio-x-show-all');
+        cards.forEach(card => card.classList.remove('studio-x-tri-active'));
         currentIndex = 0;
         isLocked = false;
     };
@@ -97,12 +97,12 @@ function initTriReveal() {
     // Show card at specific index
     const showCard = (index) => {
         if (index >= 0 && index < cards.length) {
-            cards[index].classList.add('tri-active');
+            cards[index].classList.add('studio-x-tri-active');
         }
 
         // If all cards are shown, unlock scrolling
         if (index >= cards.length - 1) {
-            section.classList.add('tri-show-all');
+            section.classList.add('studio-x-show-all');
             isLocked = false;
         }
     };
@@ -110,9 +110,9 @@ function initTriReveal() {
     // Hide card at specific index
     const hideCard = (index) => {
         if (index >= 0 && index < cards.length) {
-            cards[index].classList.remove('tri-active');
+            cards[index].classList.remove('studio-x-tri-active');
         }
-        section.classList.remove('tri-show-all');
+        section.classList.remove('studio-x-show-all');
     };
 
     // Handle wheel event with scroll lock
