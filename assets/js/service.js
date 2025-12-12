@@ -113,10 +113,14 @@ function initServiceMorph() {
                 }
 
                 video.classList.add('svc-morph-active');
-                video.play().catch(e => console.log('Video play error:', e));
+                if (video.tagName === 'VIDEO') {
+                    video.play().catch(e => console.log('Video play error:', e));
+                }
             } else {
                 video.classList.remove('svc-morph-active');
-                video.pause();
+                if (video.tagName === 'VIDEO') {
+                    video.pause();
+                }
             }
         });
 
@@ -160,7 +164,7 @@ function initServiceMorph() {
     // Initialize first video
     window.addEventListener('load', () => {
         const firstVideo = document.getElementById('svcMorphVideo0');
-        if (firstVideo) {
+        if (firstVideo && firstVideo.tagName === 'VIDEO') {
             firstVideo.play().catch(e => console.log('Initial video autoplay prevented:', e));
         }
     });

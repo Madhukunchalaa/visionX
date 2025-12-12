@@ -29,11 +29,15 @@
     <!-- Video Banner -->
     <main>
         <section class="video-banner">
-            <iframe width="560" height="315"
-                src="https://www.youtube.com/embed/1dkusHHRIpk?si=Q5coUO5M1DGQ22_S&autoplay=1&mute=1&controls=0&loop=1&playlist=1dkusHHRIpk"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden;">
+                <iframe width="100%" height="100%" 
+                    src="https://www.youtube.com/embed/COJfofg3Bw8?si=9_QB3cz6SFFpQrUH&autoplay=1&mute=1&controls=0&loop=1&playlist=COJfofg3Bw8&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen 
+                    style="position: absolute; width: 150%; height: 150%; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(1.35); object-fit: cover; pointer-events: none; border: none;">
+                </iframe>
+            </div>
             <div class="video-overlay">
                 <div class="video-content">
                     <!-- <h1>Our Services</h1> -->
@@ -57,9 +61,12 @@
                 <div class="service-simple-row">
                     <div class="service-simple-media">
                         <div class="service-simple-video-wrapper">
-                            <video class="lazy-video" loop muted playsinline preload="none">
-                                <source data-src="assets/videos/foodtruck.mp4" type="video/mp4">
-                            </video>
+                            <iframe width="100%" height="100%"
+                                src="https://www.youtube.com/embed/78MezywepCw?si=lvomPuNzH7AMwTc3&autoplay=1&mute=1&loop=1&playlist=78MezywepCw&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
+                                style="object-fit: cover;"></iframe>
                         </div>
                     </div>
                     <div class="service-simple-content">
@@ -98,9 +105,17 @@
                 <div class="youtube-media-stage">
                     <div class="youtube-screen-frame">
                         <!-- Add your video/image here -->
-                        <video class="lazy-video" loop muted playsinline preload="none">
-                            <source data-src="assets/videos/yt_snnipet.mp4" type="video/mp4">
-                        </video>
+                        <!-- Add your video/image here -->
+                        <div
+                            style="width: 100%; height: 100%; position: relative; overflow: hidden; border-radius: 20px;">
+                            <iframe width="100%" height="100%"
+                                src="https://www.youtube.com/embed/E4TeF_LFK2Y?si=u614NKdp1J67oh86&autoplay=1&mute=1&loop=1&playlist=E4TeF_LFK2Y&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
+                                style="position: absolute; width: 150%; height: 150%; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(1.35); object-fit: cover; pointer-events: none; border: none;">
+                            </iframe>
+                        </div>
                     </div>
                 </div>
 
@@ -260,14 +275,42 @@
                     </div>
 
                     <div class="svc-morph-display-panel" id="svcMorphDisplay">
-                        <video class="svc-morph-video-bg svc-morph-active lazy-video" muted loop playsinline
-                            id="svcMorphVideo0" data-src="assets/videos/Restaurant.mp4" preload="none"></video>
-                        <video class="svc-morph-video-bg lazy-video" muted loop playsinline id="svcMorphVideo1"
-                            data-src="assets/videos/bikeai.mp4" preload="none"></video>
-                        <video class="svc-morph-video-bg lazy-video" muted loop playsinline id="svcMorphVideo2"
-                            data-src="assets/videos/aiavathar.mp4" preload="none"></video>
-                        <video class="svc-morph-video-bg lazy-video" muted loop playsinline id="svcMorphVideo3"
-                            data-src="assets/videos/learning.mp4" preload="none"></video>
+                        <div class="svc-morph-video-bg svc-morph-active" id="svcMorphVideo0"
+                            style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; overflow: hidden; pointer-events: none;">
+                            <iframe width="100%" height="100%"
+                                src="https://www.youtube.com/embed/NY5fWn_zoCg?si=3WeKq1G7c8RSenJD&autoplay=1&mute=1&loop=1&playlist=NY5fWn_zoCg&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
+                                style="position: absolute; width: 150%; height: 150%; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(1.35); object-fit: cover; border: none;"></iframe>
+                        </div>
+                        <div class="svc-morph-video-bg" id="svcMorphVideo1"
+                            style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; overflow: hidden; pointer-events: none;">
+                            <iframe width="100%" height="100%"
+                                src="https://www.youtube.com/embed/OSxX0_BDW84?si=HwKA3MsEPhxFPLQM&autoplay=1&mute=1&loop=1&playlist=OSxX0_BDW84&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
+                                style="position: absolute; width: 150%; height: 150%; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(1.35); object-fit: cover; border: none;"></iframe>
+                        </div>
+                        <div class="svc-morph-video-bg" id="svcMorphVideo2"
+                            style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; overflow: hidden; pointer-events: none;">
+                            <iframe width="100%" height="100%"
+                                src="https://www.youtube.com/embed/LXMffjLYiLU?si=OpMNwC83eZcSC9s9&autoplay=1&mute=1&loop=1&playlist=LXMffjLYiLU&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
+                                style="position: absolute; width: 150%; height: 150%; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(1.35); object-fit: cover; border: none;"></iframe>
+                        </div>
+                        <div class="svc-morph-video-bg" id="svcMorphVideo3"
+                            style="width: 100%; height: 100%; position: absolute; top: 0; left: 0; overflow: hidden; pointer-events: none;">
+                            <iframe width="100%" height="100%"
+                                src="https://www.youtube.com/embed/6livIFXVKK8?si=lSlBF5AdvsnIUJTX&autoplay=1&mute=1&loop=1&playlist=6livIFXVKK8&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
+                                style="position: absolute; width: 150%; height: 150%; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(1.35); object-fit: cover; border: none;"></iframe>
+                        </div>
                         <div class="svc-morph-video-overlay"></div>
 
                         <div class="svc-morph-content-inner" id="svcMorphContent">
@@ -302,10 +345,15 @@
                 <div class="svc-morph-cta-section">
                     <!-- Background video (will fill the CTA card) -->
                     <!-- Background video (will fill the CTA card) -->
-                    <video class="svc-morph-cta-video-bg lazy-video" loop muted playsinline preload="none">
-                        <source data-src="assets/videos/we are video3.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
+                    <!-- Background video (will fill the CTA card) -->
+                    <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden;">
+                        <iframe width="100%" height="100%"
+                            src="https://www.youtube.com/embed/kA9VKFkzQxk?si=AcgXR-RucTeSI066&autoplay=1&mute=1&loop=1&playlist=kA9VKFkzQxk&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3"
+                            title="YouTube video player" frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
+                            style="position: absolute; width: 150%; height: 150%; top: 50%; left: 50%; transform: translate(-50%, -50%) scale(1.35); object-fit: cover; pointer-events: none; border: none;"></iframe>
+                    </div>
                     <!-- Dark overlay to improve text contrast -->
                     <div class="svc-morph-cta-overlay"></div>
 

@@ -156,11 +156,19 @@
     .service-simple-features {
         grid-template-columns: 1fr;
     }
+
+    .service-simple-video-wrapper iframe {
+       width: 100%;
+       height: 100%;
+       top: 50%;
+       left: 50%;
+       transform: translate(-50%, -50%) scale(1.35);
+    }
 }
 
 @media (min-width: 993px) {
     .service-simple-row {
-        align-items: stretch;
+        align-items: stretch; /* Match height of content */
     }
 
     .service-simple-media {
@@ -169,14 +177,34 @@
     }
 
     .service-simple-video-wrapper {
-        height: 100%;
+        width: 100%;
+        height: 100%; /* Fill the flex item */
         padding-bottom: 0;
-        display: flex;
+        display: block;
+        position: relative;
+        overflow: hidden; 
+        border-radius: 20px;
     }
     
     .service-simple-video-wrapper video {
-        position: relative;
+        position: absolute;
+        top: 0;
+        left: 0;
         height: 100%;
         width: 100%;
+        object-fit: cover;
+    }
+
+    .service-simple-video-wrapper iframe {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 50%;
+        left: 50%;
+        /* Scale increased to 1.75 to ensure coverage in tall containers (prevents black bars when stretched) */
+        transform: translate(-50%, -50%) scale(1.75); 
+        object-fit: cover;
+        pointer-events: none;
+        border: none;
     }
 }
