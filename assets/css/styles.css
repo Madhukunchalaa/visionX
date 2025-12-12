@@ -5188,12 +5188,30 @@ p {
     max-width: 600px;
 }
 
-.about-problem-video video {
+/* Container adjustment for masking */
+.about-problem-video {
+    position: relative;
     width: 100%;
-    height: auto;
     border-radius: 12px;
+    overflow: hidden;
     box-shadow: 0 20px 60px rgba(255, 255, 255, 0.1);
-    /* border: 2px solid var(--theme-color); */
+    transform: translateZ(0); /* Fix for border-radius clipping */
+    aspect-ratio: 16 / 9;
+}
+
+.about-problem-video video,
+.about-problem-video iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150%;
+    height: 150%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    pointer-events: none;
+    border: none;
+    box-shadow: none; /* Shadow handled by container */
+    border-radius: 0; /* Radius handled by container */
 }
 
 /* Animation classes */
