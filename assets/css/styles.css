@@ -1002,6 +1002,7 @@ p {
     .brand-video-wall video,
     .youtube-media-stage video,
     .about-industry-card video,
+    .about-industry-card iframe,
     .feature-video-wrapper .background-video,
     .video-card video {
         width: 100%;
@@ -1009,6 +1010,68 @@ p {
         aspect-ratio: 16/9;
         object-fit: cover;
         display: block;
+    }
+
+    .about-industry-card {
+      position: relative;
+      overflow: hidden;
+      border: none; /* Ensure no border */
+      background: #000; /* Ensure background matches */
+    }
+
+    .about-industry-card iframe {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(1.35); /* Zoom to hide UI */
+      width: 150%; 
+      height: 150%;
+      pointer-events: none;
+      z-index: 0;
+      filter: grayscale(100%);
+      transition: filter 0.4s ease;
+    }
+
+    .about-industry-card:hover iframe {
+        filter: grayscale(0%);
+    }
+    
+    .about-industry-card-overlay {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: auto;
+        background: #ffffff;
+        padding: 1.5rem;
+        z-index: 2;
+        pointer-events: none; /* Let clicks pass through if needed, or auto if interactive */
+        transform: translateY(20px);
+        opacity: 0;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+    }
+
+    .about-industry-card:hover .about-industry-card-overlay {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+    }
+
+    .about-industry-card-overlay h3 {
+        color: #00c2ff; /* Cyan theme color */
+        font-size: 1.25rem;
+        font-weight: 700;
+        margin-bottom: 0.5rem;
+    }
+
+    .about-industry-card-overlay p {
+        color: #333333;
+        font-size: 0.95rem;
+        margin: 0;
+        line-height: 1.4;
     }
 
     /* Medium screens (tablets) - stack some large split sections */
@@ -5046,11 +5109,20 @@ p {
             z-index: 0;
         }
 
-        .about-video-background video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+.about-video-background video,
+.about-video-background iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.35); /* Zoom to hide UI */
+    width: 100vw;
+    height: 56.25vw; /* 16:9 Aspect Ratio */
+    min-height: 100%;
+    min-width: 177.77vh; /* 16:9 Aspect Ratio */
+    z-index: 1;
+    pointer-events: none;
+    object-fit: cover;
+}
 
         .about-video-overlay {
             position: absolute;
@@ -6205,12 +6277,17 @@ p {
     z-index: 0;
 }
 
-.about-team-video-background video {
+.about-team-video-background video,
+.about-team-video-background iframe {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.35); /* Zoom to hide UI */
+    pointer-events: none;
 }
-
 .about-team-section .container {
     position: relative;
     z-index: 2;
@@ -6363,7 +6440,8 @@ p {
         overflow: hidden;
     }
     
-    .brand-video-wall video {
+    .brand-video-wall video,
+    .brand-video-wall iframe {
         width: 100%;
         height: 100%;
         object-fit: cover;
