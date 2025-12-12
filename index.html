@@ -43,7 +43,7 @@
     <div class="container">
       <h2 class="section-title">Cinematic, AI-enhanced video that sells</h2>
       <p class="section-subtitle"><b>Studio<span class="highlightX"> X AI</span></b> transforms brand stories into
-        scroll-stopping films, YouTube content, learning explainers, and realistic AI avatars — crafted for performance
+        scroll-stopping films, YouTube content, learning explainers, and realistic AI avatars crafted for performance
         and scale.</p>
 
       <!-- Feature 1: Left Video, Right Content -->
@@ -60,7 +60,7 @@
         </div>
         <div class="feature-content service-feature-content">
           <h2 class="service-feature-heading">Brand Video Production</h2>
-          <p class="service-feature-desc">Cinematic brand films that captivate and convert — perfect for launches,
+          <p class="service-feature-desc">Cinematic brand films that captivate and convert perfect for launches,
             awareness, and high-performance ads.</p>
           <div class="row g-3 service-feature-lists">
             <div class="col-6">
@@ -138,7 +138,7 @@
         </div>
         <div class="feature-content service-feature-content">
           <h2 class="service-feature-heading">AI Avatar Creation</h2>
-          <p class="service-feature-desc">Realistic multilingual avatars that present, explain, and sell — at scale.</p>
+          <p class="service-feature-desc">Realistic multilingual avatars that present, explain, and sell at scale.</p>
           <div class="row g-3 service-feature-lists">
             <div class="col-6">
               <ul class="feature-list service-feature-list">
@@ -214,65 +214,207 @@
     <div class="video-grid showcase-grid">
       <!-- First Column - First Tile (Autoplay) -->
 
-      <div class="video-card">
-        <video id="video3" autoplay muted loop playsinline>
-          <source src="assets/videos/Value Homes.mp4" type="video/mp4">
-        </video>
-        <div class="video-card-overlay"></div>
+      <div class="video-card youtube-card" id="yt-card-value-homes">
+        <div id="player-value-homes"></div>
+        <div class="video-card-overlay">
+          <!-- Custom Controls (Hidden by default, shown on hover) -->
+          <div class="custom-video-controls native-style">
+            <div class="controls-row">
+              <button class="control-btn-icon play-pause-btn-yt" id="play-pause-yt">
+                <i class="bi bi-play-fill" id="play-icon-yt"></i>
+                <i class="bi bi-pause-fill" id="pause-icon-yt" style="display: none;"></i>
+              </button>
 
+              <div class="time-display">
+                <span id="current-time">0:00</span> / <span id="duration">0:00</span>
+              </div>
+
+              <div class="spacer"></div>
+
+              <button class="control-btn-icon mute-btn-yt" id="mute-yt">
+                <i class="bi bi-volume-up-fill" id="vol-up-yt"></i>
+                <i class="bi bi-volume-mute-fill" id="vol-mute-yt" style="display: none;"></i>
+              </button>
+
+              <button class="control-btn-icon fullscreen-btn-yt" id="fullscreen-yt">
+                <i class="bi bi-fullscreen"></i>
+              </button>
+            </div>
+            <div class="progress-container" id="progress-container-yt">
+              <div class="progress-bar" id="progress-bar-yt"></div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="video-card">
-        <video id="video3" autoplay muted loop playsinline>
-          <source src="assets/videos/Thaman s Video.mp4" type="video/mp4">
-        </video>
-        <div class="video-card-overlay"></div>
-
+      <div class="video-card youtube-card" id="yt-card-thaman">
+        <iframe width="100%" height="100%"
+          src="https://www.youtube.com/embed/H-52-y53Txc?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=H-52-y53Txc&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen id="iframe-thaman"></iframe>
+        <div class="video-card-overlay">
+          <div class="custom-video-controls native-style">
+            <div class="controls-row">
+              <button class="control-btn-icon play-pause-btn-yt" id="play-pause-thaman">
+                <i class="bi bi-play-fill" id="play-icon-thaman"></i>
+                <i class="bi bi-pause-fill" id="pause-icon-thaman" style="display: none;"></i>
+              </button>
+              <div class="time-display">
+                <span id="current-time-thaman">0:00</span> / <span id="duration-thaman">0:00</span>
+              </div>
+              <div class="spacer"></div>
+              <button class="control-btn-icon mute-btn-yt" id="mute-thaman">
+                <i class="bi bi-volume-up-fill" id="vol-up-thaman"></i>
+                <i class="bi bi-volume-mute-fill" id="vol-mute-thaman" style="display: none;"></i>
+              </button>
+              <button class="control-btn-icon fullscreen-btn-yt" id="fullscreen-thaman">
+                <i class="bi bi-fullscreen"></i>
+              </button>
+            </div>
+            <div class="progress-container" id="progress-container-thaman">
+              <div class="progress-bar" id="progress-bar-thaman"></div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="video-card">
-        <video id="video3" autoplay muted loop playsinline>
-          <source src="assets/videos/ROA.mp4" type="video/mp4">
-        </video>
-        <div class="video-card-overlay"></div>
-
+      <div class="video-card youtube-card" id="yt-card-roa">
+        <iframe width="100%" height="100%"
+          src="https://www.youtube.com/embed/olRQfKtTZ0g?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=olRQfKtTZ0g&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen id="iframe-roa"></iframe>
+        <div class="video-card-overlay">
+          <div class="custom-video-controls native-style">
+            <div class="controls-row">
+              <button class="control-btn-icon play-pause-btn-yt" id="play-pause-roa">
+                <i class="bi bi-play-fill" id="play-icon-roa"></i>
+                <i class="bi bi-pause-fill" id="pause-icon-roa" style="display: none;"></i>
+              </button>
+              <div class="time-display">
+                <span id="current-time-roa">0:00</span> / <span id="duration-roa">0:00</span>
+              </div>
+              <div class="spacer"></div>
+              <button class="control-btn-icon mute-btn-yt" id="mute-roa">
+                <i class="bi bi-volume-up-fill" id="vol-up-roa"></i>
+                <i class="bi bi-volume-mute-fill" id="vol-mute-roa" style="display: none;"></i>
+              </button>
+              <button class="control-btn-icon fullscreen-btn-yt" id="fullscreen-roa">
+                <i class="bi bi-fullscreen"></i>
+              </button>
+            </div>
+            <div class="progress-container" id="progress-container-roa">
+              <div class="progress-bar" id="progress-bar-roa"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="video-card youtube-card" id="yt-card-family">
+        <iframe width="100%" height="100%"
+          src="https://www.youtube.com/embed/_6JXT_ipYjY?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=_6JXT_ipYjY&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen id="player-family"></iframe>
+        <div class="video-card-overlay">
+          <div class="custom-video-controls native-style">
+            <div class="controls-row">
+              <button class="control-btn-icon play-pause-btn-yt" id="play-pause-family">
+                <i class="bi bi-play-fill" id="play-icon-family"></i>
+                <i class="bi bi-pause-fill" id="pause-icon-family" style="display: none;"></i>
+              </button>
+              <div class="time-display">
+                <span id="current-time-family">0:00</span> / <span id="duration-family">0:00</span>
+              </div>
+              <div class="spacer"></div>
+              <button class="control-btn-icon mute-btn-yt" id="mute-family">
+                <i class="bi bi-volume-up-fill" id="vol-up-family"></i>
+                <i class="bi bi-volume-mute-fill" id="vol-mute-family" style="display: none;"></i>
+              </button>
+              <button class="control-btn-icon fullscreen-btn-yt" id="fullscreen-family">
+                <i class="bi bi-fullscreen"></i>
+              </button>
+            </div>
+            <div class="progress-container" id="progress-container-family">
+              <div class="progress-bar" id="progress-bar-family"></div>
+            </div>
+          </div>
+        </div>
       </div>
 
-
-
-      <div class="video-card">
-        <video id="autoVid" autoplay muted loop playsinline>
-          <source src="assets/videos/family-ai.mp4" type="video/mp4">
-          Your browser does not support the video tag.
-        </video>
-        <div class="video-card-overlay"></div>
-      </div>
 
 
 
 
       <!-- First Column - Second Tile -->
-      <div class="video-card">
-        <video id="video1" autoplay muted loop playsinline>
-          <source src="assets/videos/marco.mp4" type="video/mp4">
-        </video>
-        <div class="video-card-overlay"></div>
-
+      <div class="video-card youtube-card" id="yt-card-marco">
+        <iframe width="100%" height="100%"
+          src="https://www.youtube.com/embed/ZjYrD7jlZPw?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=ZjYrD7jlZPw&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen id="player-marco"></iframe>
+        <div class="video-card-overlay">
+          <div class="custom-video-controls native-style">
+            <div class="controls-row">
+              <button class="control-btn-icon play-pause-btn-yt" id="play-pause-marco">
+                <i class="bi bi-play-fill" id="play-icon-marco"></i>
+                <i class="bi bi-pause-fill" id="pause-icon-marco" style="display: none;"></i>
+              </button>
+              <div class="time-display">
+                <span id="current-time-marco">0:00</span> / <span id="duration-marco">0:00</span>
+              </div>
+              <div class="spacer"></div>
+              <button class="control-btn-icon mute-btn-yt" id="mute-marco">
+                <i class="bi bi-volume-up-fill" id="vol-up-marco"></i>
+                <i class="bi bi-volume-mute-fill" id="vol-mute-marco" style="display: none;"></i>
+              </button>
+              <button class="control-btn-icon fullscreen-btn-yt" id="fullscreen-marco">
+                <i class="bi bi-fullscreen"></i>
+              </button>
+            </div>
+            <div class="progress-container" id="progress-container-marco">
+              <div class="progress-bar" id="progress-bar-marco"></div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Second Column - First Tile -->
 
 
       <!-- Second Column - Second Tile -->
-      <div class="video-card">
-        <video id="video3" autoplay muted loop playsinline>
-          <source src="assets/videos/crocodile.mp4" type="video/mp4">
-        </video>
-        <div class="video-card-overlay"></div>
-
+      <div class="video-card youtube-card" id="yt-card-crocodile">
+        <iframe width="100%" height="100%"
+          src="https://www.youtube.com/embed/EInPqM5l5ac?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=EInPqM5l5ac&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen id="iframe-crocodile"></iframe>
+        <div class="video-card-overlay">
+          <div class="custom-video-controls native-style">
+            <div class="controls-row">
+              <button class="control-btn-icon play-pause-btn-yt" id="play-pause-crocodile">
+                <i class="bi bi-play-fill" id="play-icon-crocodile"></i>
+                <i class="bi bi-pause-fill" id="pause-icon-crocodile" style="display: none;"></i>
+              </button>
+              <div class="time-display">
+                <span id="current-time-crocodile">0:00</span> / <span id="duration-crocodile">0:00</span>
+              </div>
+              <div class="spacer"></div>
+              <button class="control-btn-icon mute-btn-yt" id="mute-crocodile">
+                <i class="bi bi-volume-up-fill" id="vol-up-crocodile"></i>
+                <i class="bi bi-volume-mute-fill" id="vol-mute-crocodile" style="display: none;"></i>
+              </button>
+              <button class="control-btn-icon fullscreen-btn-yt" id="fullscreen-crocodile">
+                <i class="bi bi-fullscreen"></i>
+              </button>
+            </div>
+            <div class="progress-container" id="progress-container-crocodile">
+              <div class="progress-bar" id="progress-bar-crocodile"></div>
+            </div>
+          </div>
+        </div>
       </div>
-
-
-
     </div>
+
+
   </section>
   <section>
     <h2 class="showcase-title">AI Art Portfolio</h2>

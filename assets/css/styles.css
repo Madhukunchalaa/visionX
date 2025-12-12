@@ -8206,13 +8206,32 @@ svg{
             overflow: hidden;
             background: #111;
         }
-
         .prj-media-panel video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: grayscale(100%) contrast(1.1);
-        }
+             width: 100%;
+             height: 100%;
+             object-fit: cover;
+             filter: grayscale(100%) contrast(1.1);
+         }
+ 
+         .prj-media-panel iframe {
+             position: absolute;
+             top: 50%;
+             left: 50%;
+             width: 100vw;
+             height: 56.25vw; /* 16:9 ratio */
+             min-height: 100%;
+             min-width: 177.77vh; /* 16:9 ratio based on height */
+             transform: translate(-50%, -50%) scale(1.35); /* Zoom in to hide black bars/controls */
+             pointer-events: none; /* Prevent clicks on background video */
+             border: none;
+         }
+ 
+         @media (max-aspect-ratio: 16/9) {
+             .prj-media-panel iframe {
+                 width: 177.78vh;
+                 height: 100vh; 
+             }
+         }
 
         .prj-visual-shade {
             position: absolute;
@@ -8431,4 +8450,288 @@ svg{
         backdrop-filter: none !important;
         -webkit-backdrop-filter: none !important;
     }
+}
+
+
+/* ========================================
+   CUSTOM YOUTUBE CONTROLS - NATIVE STYLE
+   ======================================== */
+.video-card.youtube-card {
+    position: relative;
+    overflow: hidden; 
+    width: 100%;
+    height: 100%;
+    border-radius: 24px;
+    isolation: isolate;
+}
+
+.video-card.youtube-card iframe {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150%; 
+    height: 150%;
+    transform: translate(-50%, -50%);
+    object-fit: cover;
+    pointer-events: none; 
+    border: none;
+}
+
+/* Overlay & Control Container */
+.video-card.youtube-card .video-card-overlay {
+    pointer-events: none; /* Let clicks pass through overlay unless on controls */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Align controls to bottom */
+    padding: 0;
+    transition: opacity 0.3s ease;
+}
+
+/* The actual control bar container */
+.custom-video-controls.native-style {
+    width: 100%;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.6) 60%, transparent 100%);
+    padding: 10px 20px 20px; /* Padding for bottom spacing */
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: auto; /* Enable interaction only on the bar */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.video-card:hover .custom-video-controls.native-style {
+    opacity: 1;
+}
+
+/* Controls Row (Buttons & Time) */
+.controls-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: white;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Spacer to push right-side controls */
+.spacer {
+    flex: 1;
+}
+
+/* Icon Buttons */
+.control-btn-icon {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1.4rem;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0.9;
+    transition: all 0.2s ease;
+}
+
+.control-btn-icon:hover {
+    opacity: 1;
+    transform: scale(1.1);
+    color: #fff; /* Keep white on hover, or use theme color if preferred */
+}
+
+/* Time Display */
+.time-display {
+    font-family: inherit;
+    font-feature-settings: "tnum";
+    font-variant-numeric: tabular-nums;
+    opacity: 0.9;
+    font-size: 0.9rem;
+}
+
+/* Progress Bar Container */
+.progress-container {
+    width: 100%;
+    height: 5px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+    cursor: pointer;
+    position: relative;
+    transition: height 0.1s ease;
+}
+
+.progress-container:hover {
+    height: 7px; /* Enlarge on hover */
+}
+
+.progress-bar {
+    width: 0%;
+    height: 100%;
+    background: #00d2ff; /* Theme Color */
+    border-radius: 2px;
+    position: relative;
+}
+
+/* =========================================
+   Video Showcase Section Styles
+   ========================================= */
+
+.video-showcase-section {
+    padding: 60px 0;
+    background-color: #000;
+}
+
+.showcase-title {
+    text-align: center;
+    color: #fff;
+    margin-bottom: 40px;
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+.showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 30px;
+    padding: 0 20px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .showcase-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.video-card {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    background: #000;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+.video-card iframe,
+.video-card video,
+.iframe-placeholder {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 0;
+}
+
+/* Overlay Styles */
+.video-card-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    pointer-events: none; /* Let clicks pass through to video/iframe if needed, but overlays usually block */
+}
+
+.video-card:hover .video-card-overlay {
+    opacity: 1;
+}
+
+/* Custom Controls Container */
+.custom-video-controls {
+    width: 100%;
+    padding: 20px;
+    background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+    pointer-events: auto;
+}
+
+.controls-row {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.control-btn-icon {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    cursor: pointer;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    transition: transform 0.2s, color 0.2s;
+}
+
+.control-btn-icon:hover {
+    color: var(--theme-color, #00d4ff); /* Fallback color */
+    transform: scale(1.1);
+}
+
+.time-display {
+    color: #fff;
+    font-size: 0.9rem;
+    font-family: monospace;
+}
+
+.spacer {
+    flex: 1;
+}
+
+.progress-container {
+    width: 100%;
+    height: 4px;
+    background: rgba(255,255,255,0.3);
+    cursor: pointer;
+    border-radius: 2px;
+    position: relative;
+    transition: height 0.2s;
+}
+
+.progress-container:hover {
+    height: 6px;
+}
+
+.progress-bar {
+    height: 100%;
+    background: var(--theme-color, #00d4ff);
+    width: 0%;
+    border-radius: 2px;
+    position: relative;
+}
+
+/* Ensure youtube-card behaves correctly if it uses API injection */
+.youtube-card > div:first-child {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* Scrubber Dot (optional, creates the circle at end of bar) */
+.progress-bar::after {
+    content: '';
+    position: absolute;
+    right: -5px;
+    top: 50%;
+    transform: translateY(-50%) scale(0);
+    width: 12px;
+    height: 12px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 0.1s ease;
+}
+
+.progress-container:hover .progress-bar::after {
+    transform: translateY(-50%) scale(1);
 }
