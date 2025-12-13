@@ -95,7 +95,8 @@ a { text-decoration: none; color: inherit; transition: 0.3s ease; }
 
 /* 1. HERO (Clean & Bold) */
 .modern-hero {
-    height: 100vh;
+    min-height: 100vh; /* Changed from height to min-height */
+    height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -228,6 +229,29 @@ a { text-decoration: none; color: inherit; transition: 0.3s ease; }
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: repeat(2, 350px);
     gap: 24px;
+}
+
+@media (max-width: 992px) {
+    .bento-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .bento-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto;
+    }
+    .bento-card {
+        min-height: 300px;
+    }
+    .modern-hero {
+        padding-top: 100px; /* More space for nav on mobile */
+    }
+    .hero-title {
+        font-size: 3rem; 
+    }
 }
 
 .bento-card {

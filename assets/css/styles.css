@@ -109,10 +109,10 @@ p {
 .video-banner {
   position: relative;
   width: 100%;
-  height: 100vh;
+  min-height: 100vh; /* Changed from height to min-height */
   overflow: hidden;
   margin-bottom: 0;
-  aspect-ratio: 16/9; /* CLS Fix */
+  /* aspect-ratio: 16/9; Remove strict aspect ratio constraint that might force height */
 }
 
 .video-banner video {
@@ -134,9 +134,8 @@ p {
   left: 50%;
   width: 100vw;
   height: 100vh;
-/* Removed scale(1.35) to fix text visibility */
-  transform: translate(-50%, -50%);
-  pointer-events: none; /* Prevent interaction for background feel */
+  transform: translate(-50%, -50%) scale(1.35); /* Kept scale here for full bleed background */
+  pointer-events: none;
   z-index: 0;
 }
 
@@ -706,7 +705,18 @@ p {
 @media (max-width: 768px) {
   /* Video Banner */
   .video-banner {
-    height: 60vh;
+    height: auto !important;
+    min-height: auto !important;
+    aspect-ratio: 16/9;
+  }
+
+  .video-banner iframe {
+    width: 100% !important;
+    height: 100% !important;
+    transform: none !important;
+    top: 0 !important;
+    left: 0 !important;
+    max-width: none !important;
   }
 
   .video-content h1 {
@@ -964,17 +974,18 @@ p {
     /* Mobile: ensure showcase videos are one-per-row and scale properly */
     .video-grid {
         grid-template-columns: 1fr;
-        gap: 18px;
+        gap: 30px; /* Increased gap */
     }
 
     .video-card {
         height: auto;
+        aspect-ratio: 16/9; /* Enforce aspect ratio */
     }
 
-    .video-card video {
+    .video-card video,
+    .video-card iframe { /* Added iframe support */
         width: 100%;
-        height: auto;
-        aspect-ratio: 16/9;
+        height: 100%;
         object-fit: cover;
     }
 }
@@ -1129,10 +1140,23 @@ p {
 
         .brand-video-wall,
         .youtube-media-stage,
-        .feature-video-wrapper {
+        .feature-video-wrapper,
+        .service-simple-video-wrapper {
             width: 100%;
-            min-height: 160px;
+            min-height: 250px;
             height: auto;
+        }
+
+        /* Fix YouTube iframe scaling & interaction on mobile */
+        .youtube-screen-frame iframe,
+        .service-simple-video-wrapper iframe {
+            width: 100% !important;
+            height: 100% !important;
+            top: 0 !important;
+            left: 0 !important;
+            transform: none !important;
+            max-width: none !important;
+            pointer-events: auto !important;
         }
 
         .brand-story-panel,
