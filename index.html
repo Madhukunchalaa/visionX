@@ -50,8 +50,9 @@
       <div class="feature-row">
         <div class="feature-video-wrapper">
           <!-- Background Video -->
-          <iframe width="560" height="315"
-            src="https://www.youtube.com/embed/Qx0e5vMMPp0?si=zs_nP6BRKbxxYg3j&autoplay=1&mute=1&controls=0&loop=1&playlist=Qx0e5vMMPp0"
+          <iframe class="lazy-iframe" width="560" height="315"
+            data-src="https://www.youtube.com/embed/Qx0e5vMMPp0?si=zs_nP6BRKbxxYg3j&autoplay=1&mute=1&controls=0&loop=1&playlist=Qx0e5vMMPp0"
+            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
             title="YouTube video player" frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -89,8 +90,9 @@
       <div class="feature-row reverse">
         <div class="feature-video-wrapper">
           <!-- Background Video -->
-          <iframe width="560" height="315"
-            src="https://www.youtube.com/embed/PKBt6ZmIJy0?si=jTFiFAe8iQYjVhpv&autoplay=1&mute=1&controls=0&loop=1&playlist=PKBt6ZmIJy0"
+          <iframe class="lazy-iframe" width="560" height="315"
+            data-src="https://www.youtube.com/embed/PKBt6ZmIJy0?si=jTFiFAe8iQYjVhpv&autoplay=1&mute=1&controls=0&loop=1&playlist=PKBt6ZmIJy0"
+            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
             title="YouTube video player" frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -128,8 +130,9 @@
       <div class="feature-row">
         <div class="feature-video-wrapper">
           <!-- Background Video -->
-          <iframe width="560" height="315"
-            src="https://www.youtube.com/embed/Wk3fGoVxGpM?si=GA0ICwuX2AYdAHCi&autoplay=1&mute=1&controls=0&loop=1&playlist=Wk3fGoVxGpM"
+          <iframe class="lazy-iframe" width="560" height="315"
+            data-src="https://www.youtube.com/embed/Wk3fGoVxGpM?si=GA0ICwuX2AYdAHCi&autoplay=1&mute=1&controls=0&loop=1&playlist=Wk3fGoVxGpM"
+            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
             title="YouTube video player" frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -165,8 +168,9 @@
       <div class="feature-row reverse">
         <div class="feature-video-wrapper">
           <!-- Background Video -->
-          <iframe width="560" height="315"
-            src="https://www.youtube.com/embed/eXKVJWGQj2A?si=htE1fsobJICjmOe0&autoplay=1&mute=1&controls=0&loop=1&playlist=eXKVJWGQj2A"
+          <iframe class="lazy-iframe" width="560" height="315"
+            data-src="https://www.youtube.com/embed/eXKVJWGQj2A?si=htE1fsobJICjmOe0&autoplay=1&mute=1&controls=0&loop=1&playlist=eXKVJWGQj2A"
+            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
             title="YouTube video player" frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -247,11 +251,7 @@
         </div>
       </div>
       <div class="video-card youtube-card" id="yt-card-thaman">
-        <iframe width="100%" height="100%"
-          src="https://www.youtube.com/embed/H-52-y53Txc?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=H-52-y53Txc&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3"
-          title="YouTube video player" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen id="iframe-thaman"></iframe>
+        <div id="player-thaman" style="width: 100%; height: 100%; background: #000;"></div>
         <div class="video-card-overlay">
           <div class="custom-video-controls native-style">
             <div class="controls-row">
@@ -278,11 +278,7 @@
         </div>
       </div>
       <div class="video-card youtube-card" id="yt-card-roa">
-        <iframe width="100%" height="100%"
-          src="https://www.youtube.com/embed/olRQfKtTZ0g?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=olRQfKtTZ0g&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3"
-          title="YouTube video player" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen id="iframe-roa"></iframe>
+        <div id="player-roa" style="width: 100%; height: 100%; background: #000;"></div>
         <div class="video-card-overlay">
           <div class="custom-video-controls native-style">
             <div class="controls-row">
@@ -309,11 +305,7 @@
         </div>
       </div>
       <div class="video-card youtube-card" id="yt-card-family">
-        <iframe width="100%" height="100%"
-          src="https://www.youtube.com/embed/_6JXT_ipYjY?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=_6JXT_ipYjY&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3"
-          title="YouTube video player" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen id="player-family"></iframe>
+        <div id="player-family" style="width: 100%; height: 100%; background: #000;"></div>
         <div class="video-card-overlay">
           <div class="custom-video-controls native-style">
             <div class="controls-row">
@@ -346,11 +338,7 @@
 
       <!-- First Column - Second Tile -->
       <div class="video-card youtube-card" id="yt-card-marco">
-        <iframe width="100%" height="100%"
-          src="https://www.youtube.com/embed/ZjYrD7jlZPw?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=ZjYrD7jlZPw&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3"
-          title="YouTube video player" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen id="player-marco"></iframe>
+        <div id="player-marco" style="width: 100%; height: 100%; background: #000;"></div>
         <div class="video-card-overlay">
           <div class="custom-video-controls native-style">
             <div class="controls-row">
@@ -382,11 +370,7 @@
 
       <!-- Second Column - Second Tile -->
       <div class="video-card youtube-card" id="yt-card-crocodile">
-        <iframe width="100%" height="100%"
-          src="https://www.youtube.com/embed/EInPqM5l5ac?enablejsapi=1&autoplay=1&mute=1&loop=1&playlist=EInPqM5l5ac&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3"
-          title="YouTube video player" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen id="iframe-crocodile"></iframe>
+        <div id="player-crocodile" style="width: 100%; height: 100%; background: #000;"></div>
         <div class="video-card-overlay">
           <div class="custom-video-controls native-style">
             <div class="controls-row">
@@ -419,13 +403,14 @@
   <section>
     <h2 class="showcase-title">AI Art Portfolio</h2>
     <div class="gallery">
-      <img src="assets/images/girldance.jpg" alt="a forest after an apocalypse">
-      <img src="assets/images/avathar.png" alt="dancing girl ai generated">
-      <img src="assets/images/car_race.jpg" alt="a waterfall and many rocks">
-      <img src="assets/images/space ai.png" alt="a waterfall, a lot of trees and a great view from the sky">
-      <img src="assets/images/whale_image_1024x1024.png" alt="fish ai generated image">
+      <img src="assets/images/girldance.jpg" alt="a forest after an apocalypse" loading="lazy">
+      <img src="assets/images/avathar.png" alt="dancing girl ai generated" loading="lazy">
+      <img src="assets/images/car_race.jpg" alt="a waterfall and many rocks" loading="lazy">
+      <img src="assets/images/space ai.png" alt="a waterfall, a lot of trees and a great view from the sky"
+        loading="lazy">
+      <img src="assets/images/whale_image_1024x1024.png" alt="fish ai generated image" loading="lazy">
 
-      <img src="assets/images/heartai.jpg" alt="ai generated heart image">
+      <img src="assets/images/heartai.jpg" alt="ai generated heart image" loading="lazy">
 
 
     </div>
@@ -438,10 +423,10 @@
   <div id="footer-placeholder"></div>
 
   <!-- Scripts -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/common.js"></script>
-  <script src="assets/js/main.js"></script>
-  <script src="assets/js/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" defer></script>
+  <script src="assets/js/common.js" defer></script>
+  <script src="assets/js/main.js" defer></script>
+  <script src="assets/js/index.js" defer></script>
 </body>
 
 </html>

@@ -136,11 +136,113 @@ function initShowcaseHoverControls() {
 
 
 // ========================================
-// YOUTUBE PLAYER INTEGRATION
+// YOUTUBE PLAYER INTEGRATION (LAZY LOAD)
 // ========================================
 
 // Store player instances and configs
 var ytPlayers = {};
+var playerQueue = [];
+
+// Configuration for all players
+const videoConfigs = [
+    {
+        id: 'player-value-homes',
+        videoId: 'msfWpTJCqmA',
+        cardId: 'yt-card-value-homes',
+        playIconId: 'play-icon-yt',
+        pauseIconId: 'pause-icon-yt',
+        playPauseBtnId: 'play-pause-yt',
+        muteBtnId: 'mute-yt',
+        volUpIconId: 'vol-up-yt',
+        volMuteIconId: 'vol-mute-yt',
+        progressBarId: 'progress-bar-yt',
+        progressContainerId: 'progress-container-yt',
+        currTimeId: 'current-time',
+        durId: 'duration',
+        fsBtnId: 'fullscreen-yt'
+    },
+    {
+        id: 'player-roa',
+        videoId: 'olRQfKtTZ0g',
+        cardId: 'yt-card-roa',
+        playIconId: 'play-icon-roa',
+        pauseIconId: 'pause-icon-roa',
+        playPauseBtnId: 'play-pause-roa',
+        muteBtnId: 'mute-roa',
+        volUpIconId: 'vol-up-roa',
+        volMuteIconId: 'vol-mute-roa',
+        progressBarId: 'progress-bar-roa',
+        progressContainerId: 'progress-container-roa',
+        currTimeId: 'current-time-roa',
+        durId: 'duration-roa',
+        fsBtnId: 'fullscreen-roa'
+    },
+    {
+        id: 'player-family',
+        videoId: '_6JXT_ipYjY',
+        cardId: 'yt-card-family',
+        playIconId: 'play-icon-family',
+        pauseIconId: 'pause-icon-family',
+        playPauseBtnId: 'play-pause-family',
+        muteBtnId: 'mute-family',
+        volUpIconId: 'vol-up-family',
+        volMuteIconId: 'vol-mute-family',
+        progressBarId: 'progress-bar-family',
+        progressContainerId: 'progress-container-family',
+        currTimeId: 'current-time-family',
+        durId: 'duration-family',
+        fsBtnId: 'fullscreen-family'
+    },
+    {
+        id: 'player-thaman',
+        videoId: 'H-52-y53Txc',
+        cardId: 'yt-card-thaman',
+        playIconId: 'play-icon-thaman',
+        pauseIconId: 'pause-icon-thaman',
+        playPauseBtnId: 'play-pause-thaman',
+        muteBtnId: 'mute-thaman',
+        volUpIconId: 'vol-up-thaman',
+        volMuteIconId: 'vol-mute-thaman',
+        progressBarId: 'progress-bar-thaman',
+        progressContainerId: 'progress-container-thaman',
+        currTimeId: 'current-time-thaman',
+        durId: 'duration-thaman',
+        fsBtnId: 'fullscreen-thaman'
+    },
+    {
+        id: 'player-crocodile',
+        videoId: 'EInPqM5l5ac',
+        cardId: 'yt-card-crocodile',
+        playIconId: 'play-icon-crocodile',
+        pauseIconId: 'pause-icon-crocodile',
+        playPauseBtnId: 'play-pause-crocodile',
+        muteBtnId: 'mute-crocodile',
+        volUpIconId: 'vol-up-crocodile',
+        volMuteIconId: 'vol-mute-crocodile',
+        progressBarId: 'progress-bar-crocodile',
+        progressContainerId: 'progress-container-crocodile',
+        currTimeId: 'current-time-crocodile',
+        durId: 'duration-crocodile',
+        fsBtnId: 'fullscreen-crocodile'
+    },
+    {
+        id: 'player-marco',
+        videoId: 'ZjYrD7jlZPw',
+        cardId: 'yt-card-marco',
+        playIconId: 'play-icon-marco',
+        pauseIconId: 'pause-icon-marco',
+        playPauseBtnId: 'play-pause-marco',
+        muteBtnId: 'mute-marco',
+        volUpIconId: 'vol-up-marco',
+        volMuteIconId: 'vol-mute-marco',
+        progressBarId: 'progress-bar-marco',
+        progressContainerId: 'progress-container-marco',
+        currTimeId: 'current-time-marco',
+        durId: 'duration-marco',
+        fsBtnId: 'fullscreen-marco'
+    }
+];
+
 
 /**
  * Load YouTube IFrame API Asynchronously
@@ -157,105 +259,31 @@ function initYouTubeAPI() {
 }
 
 /**
- * API Ready Callback
+ * API Ready Callback - Start Observing
  */
 function onYouTubeIframeAPIReady() {
-    // Player 1: Value Homes
-    createYTPlayer('player-value-homes', 'msfWpTJCqmA', {
-        cardId: 'yt-card-value-homes',
-        playIconId: 'play-icon-yt',
-        pauseIconId: 'pause-icon-yt',
-        playPauseBtnId: 'play-pause-yt',
-        muteBtnId: 'mute-yt',
-        volUpIconId: 'vol-up-yt',
-        volMuteIconId: 'vol-mute-yt',
-        progressBarId: 'progress-bar-yt',
-        progressContainerId: 'progress-container-yt',
-        currTimeId: 'current-time',
-        durId: 'duration',
-        fsBtnId: 'fullscreen-yt'
-    });
+    // Only initialize players when they are in viewport
+    const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const elementId = entry.target.id;
+                const config = videoConfigs.find(c => c.id === elementId);
 
-    // Player 2: ROA
-    createYTPlayer('player-roa', 'olRQfKtTZ0g', {
-        cardId: 'yt-card-roa',
-        playIconId: 'play-icon-roa',
-        pauseIconId: 'pause-icon-roa',
-        playPauseBtnId: 'play-pause-roa',
-        muteBtnId: 'mute-roa',
-        volUpIconId: 'vol-up-roa',
-        volMuteIconId: 'vol-mute-roa',
-        progressBarId: 'progress-bar-roa',
-        progressContainerId: 'progress-container-roa',
-        currTimeId: 'current-time-roa',
-        durId: 'duration-roa',
-        fsBtnId: 'fullscreen-roa'
-    });
+                if (config && !ytPlayers[elementId]) { // create only if not exists
+                    createYTPlayer(elementId, config.videoId, config);
+                    observer.unobserve(entry.target);
+                }
+            }
+        });
+    }, { rootMargin: '200px' });
 
-    // Player 3: Family AI
-    createYTPlayer('player-family', '_6JXT_ipYjY', {
-        cardId: 'yt-card-family',
-        playIconId: 'play-icon-family',
-        pauseIconId: 'pause-icon-family',
-        playPauseBtnId: 'play-pause-family',
-        muteBtnId: 'mute-family',
-        volUpIconId: 'vol-up-family',
-        volMuteIconId: 'vol-mute-family',
-        progressBarId: 'progress-bar-family',
-        progressContainerId: 'progress-container-family',
-        currTimeId: 'current-time-family',
-        durId: 'duration-family',
-        fsBtnId: 'fullscreen-family'
-    });
-
-    // Player 4: Thaman
-    createYTPlayer('player-thaman', 'H-52-y53Txc', {
-        cardId: 'yt-card-thaman',
-        playIconId: 'play-icon-thaman',
-        pauseIconId: 'pause-icon-thaman',
-        playPauseBtnId: 'play-pause-thaman',
-        muteBtnId: 'mute-thaman',
-        volUpIconId: 'vol-up-thaman',
-        volMuteIconId: 'vol-mute-thaman',
-        progressBarId: 'progress-bar-thaman',
-        progressContainerId: 'progress-container-thaman',
-        currTimeId: 'current-time-thaman',
-        durId: 'duration-thaman',
-        fsBtnId: 'fullscreen-thaman'
-    });
-
-    // Player 5: Crocodile
-    createYTPlayer('player-crocodile', 'EInPqM5l5ac', {
-        cardId: 'yt-card-crocodile',
-        playIconId: 'play-icon-crocodile',
-        pauseIconId: 'pause-icon-crocodile',
-        playPauseBtnId: 'play-pause-crocodile',
-        muteBtnId: 'mute-crocodile',
-        volUpIconId: 'vol-up-crocodile',
-        volMuteIconId: 'vol-mute-crocodile',
-        progressBarId: 'progress-bar-crocodile',
-        progressContainerId: 'progress-container-crocodile',
-        currTimeId: 'current-time-crocodile',
-        durId: 'duration-crocodile',
-        fsBtnId: 'fullscreen-crocodile'
-    });
-
-    // Player 6: Marco
-    createYTPlayer('player-marco', 'ZjYrD7jlZPw', {
-        cardId: 'yt-card-marco',
-        playIconId: 'play-icon-marco',
-        pauseIconId: 'pause-icon-marco',
-        playPauseBtnId: 'play-pause-marco',
-        muteBtnId: 'mute-marco',
-        volUpIconId: 'vol-up-marco',
-        volMuteIconId: 'vol-mute-marco',
-        progressBarId: 'progress-bar-marco',
-        progressContainerId: 'progress-container-marco',
-        currTimeId: 'current-time-marco',
-        durId: 'duration-marco',
-        fsBtnId: 'fullscreen-marco'
+    // Observe all player placeholders
+    videoConfigs.forEach(config => {
+        const el = document.getElementById(config.id);
+        if (el) observer.observe(el);
     });
 }
+
 
 function createYTPlayer(elementId, videoId, uiConfig) {
     ytPlayers[elementId] = {
@@ -320,21 +348,23 @@ function formatTime(seconds) {
 }
 
 function updateProgressBar(player, config) {
-    if (player && player.getCurrentTime) {
-        var currentTime = player.getCurrentTime();
-        var duration = player.getDuration();
+    try {
+        if (player && player.getCurrentTime) {
+            var currentTime = player.getCurrentTime();
+            var duration = player.getDuration();
 
-        if (duration > 0) {
-            var percentage = (currentTime / duration) * 100;
-            var progressBar = document.getElementById(config.progressBarId);
-            if (progressBar) progressBar.style.width = percentage + '%';
+            if (duration > 0) {
+                var percentage = (currentTime / duration) * 100;
+                var progressBar = document.getElementById(config.progressBarId);
+                if (progressBar) progressBar.style.width = percentage + '%';
 
-            var currTimeEl = document.getElementById(config.currTimeId);
-            var durEl = document.getElementById(config.durId);
-            if (currTimeEl) currTimeEl.innerText = formatTime(currentTime);
-            if (durEl) durEl.innerText = formatTime(duration);
+                var currTimeEl = document.getElementById(config.currTimeId);
+                var durEl = document.getElementById(config.durId);
+                if (currTimeEl) currTimeEl.innerText = formatTime(currentTime);
+                if (durEl) durEl.innerText = formatTime(duration);
+            }
         }
-    }
+    } catch (e) { }
 }
 
 function setupCustomControls(player, config) {
