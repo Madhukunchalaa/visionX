@@ -163,22 +163,7 @@ const videoConfigs = [
         durId: 'duration',
         fsBtnId: 'fullscreen-yt'
     },
-    {
-        id: 'player-roa',
-        videoId: 'olRQfKtTZ0g',
-        cardId: 'yt-card-roa',
-        playIconId: 'play-icon-roa',
-        pauseIconId: 'pause-icon-roa',
-        playPauseBtnId: 'play-pause-roa',
-        muteBtnId: 'mute-roa',
-        volUpIconId: 'vol-up-roa',
-        volMuteIconId: 'vol-mute-roa',
-        progressBarId: 'progress-bar-roa',
-        progressContainerId: 'progress-container-roa',
-        currTimeId: 'current-time-roa',
-        durId: 'duration-roa',
-        fsBtnId: 'fullscreen-roa'
-    },
+
     {
         id: 'player-family',
         videoId: '_6JXT_ipYjY',
@@ -195,22 +180,7 @@ const videoConfigs = [
         durId: 'duration-family',
         fsBtnId: 'fullscreen-family'
     },
-    {
-        id: 'player-thaman',
-        videoId: 'H-52-y53Txc',
-        cardId: 'yt-card-thaman',
-        playIconId: 'play-icon-thaman',
-        pauseIconId: 'pause-icon-thaman',
-        playPauseBtnId: 'play-pause-thaman',
-        muteBtnId: 'mute-thaman',
-        volUpIconId: 'vol-up-thaman',
-        volMuteIconId: 'vol-mute-thaman',
-        progressBarId: 'progress-bar-thaman',
-        progressContainerId: 'progress-container-thaman',
-        currTimeId: 'current-time-thaman',
-        durId: 'duration-thaman',
-        fsBtnId: 'fullscreen-thaman'
-    },
+
     {
         id: 'player-crocodile',
         videoId: 'EInPqM5l5ac',
