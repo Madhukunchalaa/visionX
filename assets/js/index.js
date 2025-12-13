@@ -136,12 +136,14 @@ function initShowcaseHoverControls() {
 
 
 // ========================================
-// YOUTUBE PLAYER INTEGRATION (LAZY LOAD)
+// YOUTUBE PLAYER INTEGRATION (LAZY LOAD + LAZY API)
 // ========================================
 
 // Store player instances and configs
 var ytPlayers = {};
 var playerQueue = [];
+var isApiLoaded = false;
+var isApiRequested = false;
 
 // Configuration for all players
 const videoConfigs = [
@@ -245,9 +247,12 @@ const videoConfigs = [
 
 
 /**
- * Load YouTube IFrame API Asynchronously
+ * Load YouTube IFrame API Asynchronously (Only when requested)
  */
 function initYouTubeAPI() {
+    if (isApiRequested) return;
+    isApiRequested = true;
+
     if (typeof YT === 'undefined' || typeof YT.Player === 'undefined') {
         var tag = document.createElement('script');
         tag.src = "https://www.youtube.com/iframe_api";
@@ -259,18 +264,25 @@ function initYouTubeAPI() {
 }
 
 /**
- * API Ready Callback - Start Observing
+ * Initialize Intersection Observer to trigger Lazy Load
  */
-function onYouTubeIframeAPIReady() {
-    // Only initialize players when they are in viewport
+function initObserver() {
     const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 const elementId = entry.target.id;
                 const config = videoConfigs.find(c => c.id === elementId);
 
-                if (config && !ytPlayers[elementId]) { // create only if not exists
-                    createYTPlayer(elementId, config.videoId, config);
+                if (config && !ytPlayers[elementId]) {
+                    // Item in view:
+                    // 1. Ensure API is loading/loaded
+                    if (!isApiLoaded) {
+                        playerQueue.push({ id: elementId, videoId: config.videoId, config: config });
+                        initYouTubeAPI();
+                    } else {
+                        // API ready, create immediately
+                        createYTPlayer(elementId, config.videoId, config);
+                    }
                     observer.unobserve(entry.target);
                 }
             }
@@ -284,8 +296,22 @@ function onYouTubeIframeAPIReady() {
     });
 }
 
+/**
+ * API Ready Callback
+ */
+function onYouTubeIframeAPIReady() {
+    isApiLoaded = true;
+    // Process queue
+    playerQueue.forEach(item => {
+        createYTPlayer(item.id, item.videoId, item.config);
+    });
+    playerQueue = [];
+}
+
 
 function createYTPlayer(elementId, videoId, uiConfig) {
+    if (ytPlayers[elementId]) return; // Prevent duplicate creation
+
     ytPlayers[elementId] = {
         config: uiConfig,
         player: new YT.Player(elementId, {
@@ -324,6 +350,9 @@ function onPlayerReady(event, elementId) {
 }
 
 function onPlayerStateChange(event, elementId) {
+    // Only proceed if player exists
+    if (!ytPlayers[elementId]) return;
+
     var config = ytPlayers[elementId].config;
     const playIcon = document.getElementById(config.playIconId);
     const pauseIcon = document.getElementById(config.pauseIconId);
@@ -371,20 +400,20 @@ function setupCustomControls(player, config) {
     // Play/Pause
     var playPauseBtn = document.getElementById(config.playPauseBtnId);
     if (playPauseBtn) {
-        playPauseBtn.addEventListener('click', function () {
+        playPauseBtn.onclick = function () {
             var state = player.getPlayerState();
             if (state == YT.PlayerState.PLAYING) {
                 player.pauseVideo();
             } else {
                 player.playVideo();
             }
-        });
+        };
     }
 
     // Mute/Unmute
     var muteBtn = document.getElementById(config.muteBtnId);
     if (muteBtn) {
-        muteBtn.addEventListener('click', function () {
+        muteBtn.onclick = function () {
             if (player.isMuted()) {
                 player.unMute();
                 document.getElementById(config.volMuteIconId).style.display = 'none';
@@ -394,13 +423,13 @@ function setupCustomControls(player, config) {
                 document.getElementById(config.volMuteIconId).style.display = 'inline-block';
                 document.getElementById(config.volUpIconId).style.display = 'none';
             }
-        });
+        };
     }
 
     // Fullscreen
     var fsBtn = document.getElementById(config.fsBtnId);
     if (fsBtn) {
-        fsBtn.addEventListener('click', function () {
+        fsBtn.onclick = function () {
             var elem = document.getElementById(config.cardId);
             if (elem.requestFullscreen) {
                 elem.requestFullscreen();
@@ -409,13 +438,13 @@ function setupCustomControls(player, config) {
             } else if (elem.msRequestFullscreen) {
                 elem.msRequestFullscreen();
             }
-        });
+        };
     }
 
     // Seek
     var progContainer = document.getElementById(config.progressContainerId);
     if (progContainer) {
-        progContainer.addEventListener('click', function (e) {
+        progContainer.onclick = function (e) {
             var rect = this.getBoundingClientRect();
             var x = e.clientX - rect.left;
             var width = rect.width;
@@ -425,9 +454,9 @@ function setupCustomControls(player, config) {
             var newTime = duration * percentage;
 
             player.seekTo(newTime, true);
-        });
+        };
     }
 }
 
-// Initialize API
-initYouTubeAPI();
+// Start observing immediately
+initObserver();
