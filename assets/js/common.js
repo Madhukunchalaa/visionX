@@ -107,6 +107,7 @@ document.addEventListener('DOMContentLoaded', function () {
     initSmoothScroll();
     initLiteYouTube();
     initLazyIframes();
+    initLazyVideos();
 });
 
 /**
@@ -174,6 +175,48 @@ function initLazyIframes() {
                 iframe.src = iframe.dataset.src;
             }
         });
+    }
+}
+
+
+/**
+ * Initialize Lazy Videos (Local MP4s)
+ * Looks for .lazy-video class and swaps data-src to src on <source> children
+ */
+function initLazyVideos() {
+    const lazyVideos = document.querySelectorAll('.lazy-video');
+    if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const video = entry.target;
+                    const sources = video.querySelectorAll('source');
+                    let changed = false;
+                    sources.forEach(source => {
+                        if (source.dataset.src) {
+                            source.src = source.dataset.src;
+                            changed = true;
+                        }
+                    });
+
+                    if (changed) {
+                        video.load();
+                        // Explicitly handle autoplay if attribute exists
+                        if (video.hasAttribute('autoplay')) {
+                            var playPromise = video.play();
+                            if (playPromise !== undefined) {
+                                playPromise.catch(error => {
+                                    // Auto-play was prevented
+                                    console.log('Autoplay prevented:', error);
+                                });
+                            }
+                        }
+                    }
+                    observer.unobserve(video);
+                }
+            });
+        }, { rootMargin: '200px' });
+        lazyVideos.forEach(v => observer.observe(v));
     }
 }
 

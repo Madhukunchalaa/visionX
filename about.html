@@ -611,10 +611,6 @@
 
     <!-- SECTION 2: STORY -->
     <section class="video-banner">
-        <!-- Static Poster (LCP) -->
-        <img src="https://img.youtube.com/vi/WdV3yTMun2Q/maxresdefault.jpg" class="hero-poster" alt="About Us Banner"
-            fetchpriority="high" width="1920" height="1080">
-
         <!-- Placeholder for Video -->
         <div id="about-hero-placeholder"></div>
 
@@ -642,7 +638,7 @@
                     placeholder.parentNode.insertBefore(iframe, placeholder);
                     placeholder.remove();
                 }
-                setTimeout(loadAboutHero, 1500);
+                setTimeout(loadAboutHero, 100);
             })();
         </script>
         <div class="video-overlay">
@@ -672,7 +668,7 @@
                     </p>
                 </div>
                 <div class="about-problem-video about-fade-in-up">
-                    <iframe width="100%" height="auto" style="aspect-ratio: 16/9;"
+                    <iframe width="100%" height="auto" style="aspect-ratio: 16/9;" loading="lazy"
                         src="https://www.youtube.com/embed/jkFtNwB1ikA?autoplay=1&mute=1&loop=1&playlist=jkFtNwB1ikA&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3"
                         title="YouTube video player" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -692,7 +688,7 @@
         <div class="about-solution-container-fluid">
             <div class="about-solution-wrapper">
                 <div class="about-problem-video about-fade-in-up">
-                    <iframe width="100%" height="auto" style="aspect-ratio: 16/9;"
+                    <iframe width="100%" height="auto" style="aspect-ratio: 16/9;" loading="lazy"
                         src="https://www.youtube.com/embed/Oc69sqG5FIU?autoplay=1&mute=1&loop=1&playlist=Oc69sqG5FIU&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3"
                         title="YouTube video player" frameborder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -719,7 +715,7 @@
     <!-- SECTION 4: OUR PILLARS -->
     <section class="about-solution-section">
         <div class="about-video-background">
-            <iframe
+            <iframe loading="lazy"
                 src="https://www.youtube.com/embed/Q5kA31LTkpA?autoplay=1&mute=1&loop=1&playlist=Q5kA31LTkpA&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&enablejsapi=1"
                 title="YouTube video player" frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -778,7 +774,7 @@
     <!-- SECTION 5: BENEFITS -->
     <section class="about-benefits-section">
         <div class="about-video-background">
-            <iframe
+            <iframe loading="lazy"
                 src="https://www.youtube.com/embed/d-TMVc1GJ1s?autoplay=1&mute=1&loop=1&playlist=d-TMVc1GJ1s&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&enablejsapi=1"
                 title="YouTube video player" frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -875,7 +871,7 @@
             <div class="row g-3">
                 <div class="col-12 col-sm-12 col-md-4">
                     <div class="about-industry-card about-animate-on-scroll">
-                        <iframe
+                        <iframe loading="lazy"
                             src="https://www.youtube.com/embed/8xLmI3QY50w?autoplay=1&mute=1&loop=1&playlist=8xLmI3QY50w&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&enablejsapi=1"
                             title="YouTube video player" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -888,7 +884,7 @@
                 </div>
                 <div class="col-12 col-sm-12 col-md-4">
                     <div class="about-industry-card about-animate-on-scroll">
-                        <iframe
+                        <iframe loading="lazy"
                             src="https://www.youtube.com/embed/L3P5Z9KUCJE?autoplay=1&mute=1&loop=1&playlist=L3P5Z9KUCJE&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&enablejsapi=1"
                             title="YouTube video player" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -960,9 +956,15 @@
         <h2 class="studio-section-title">What You <span class="studio-highlight">Actually Get</span></h2>
         <!-- 1. Background Video Layer (Visible through text) -->
         <div class="studio-bg-layer">
-            <video autoplay muted loop playsinline class="studio-bg-video">
-                <source src="assets/videos/footer.mp4" type="video/mp4">
-            </video>
+            <!-- Replaced local video with YouTube Iframe -->
+            <!-- TO CHANGE VIDEO: Replace 'LU9akZ4K2Pw' with your new Video ID -->
+            <iframe loading="lazy" class="studio-bg-video"
+                src="https://www.youtube.com/embed/LU9akZ4K2Pw?autoplay=1&mute=1&controls=0&loop=1&playlist=LU9akZ4K2Pw&playsinline=1&enablejsapi=1&rel=0&showinfo=0&modestbranding=1&iv_load_policy=3"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboad-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
+                style="position: absolute; top: 50%; left: 50%; width: 177.78vh; height: 56.25vw; min-width: 100%; min-height: 100%; transform: translate(-50%, -50%) scale(1.5); pointer-events: none; opacity: 0.6;">
+            </iframe>
         </div>
 
         <!-- 2. Text Mask Layer (Black bg, White text, Multiply blend) -->
@@ -1026,14 +1028,22 @@
                 </div>
 
                 <div class="studio-x-line studio-x-line1">
-                    <video autoplay muted loop playsinline>
-                        <source src="assets/videos/footer.mp4" type="video/mp4">
-                    </video>
+                    <iframe loading="lazy" class="studio-bg-video"
+                        src="https://www.youtube.com/embed/LU9akZ4K2Pw?autoplay=1&mute=1&controls=0&loop=1&playlist=LU9akZ4K2Pw&playsinline=1&enablejsapi=1&rel=0&showinfo=0&modestbranding=1&iv_load_policy=3"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboad-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
+                        style="position: absolute; top: 50%; left: 50%; width: 177.78vh; height: 56.25vw; min-width: 100%; min-height: 100%; transform: translate(-50%, -50%) scale(1.5); pointer-events: none; opacity: 0.6;">
+                    </iframe>
                 </div>
                 <div class="studio-x-line studio-x-line2">
-                    <video autoplay muted loop playsinline>
-                        <source src="assets/videos/footer.mp4" type="video/mp4">
-                    </video>
+                    <iframe loading="lazy" class="studio-bg-video"
+                        src="https://www.youtube.com/embed/LU9akZ4K2Pw?autoplay=1&mute=1&controls=0&loop=1&playlist=LU9akZ4K2Pw&playsinline=1&enablejsapi=1&rel=0&showinfo=0&modestbranding=1&iv_load_policy=3"
+                        title="YouTube video player" frameborder="0"
+                        allow="accelerometer; autoplay; clipboad-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
+                        style="position: absolute; top: 50%; left: 50%; width: 177.78vh; height: 56.25vw; min-width: 100%; min-height: 100%; transform: translate(-50%, -50%) scale(1.5); pointer-events: none; opacity: 0.6;">
+                    </iframe>
                 </div>
 
             </div>

@@ -9,6 +9,17 @@
   <link rel="icon" type="image/png" sizes="32x32" href="assets/images/newlogovisionX.png">
   <link rel="icon" type="image/png" sizes="16x16" href="assets/images/newlogovisionX.png">
   <link rel="apple-touch-icon" href="assets/images/newlogovisionX.png">
+
+  <!-- Aggressive Youtube Preloading for Other Pages -->
+  <link rel="preconnect" href="https://www.youtube.com">
+  <link rel="preconnect" href="https://www.google.com">
+  <link rel="preconnect" href="https://googleads.g.doubleclick.net">
+  <link rel="preconnect" href="https://static.doubleclick.net">
+  
+  <!-- Prefetch Banner Documents (Service, About) -->
+  <link rel="prefetch" href="https://www.youtube.com/embed/COJfofg3Bw8?si=9_QB3cz6SFFpQrUH&autoplay=1&mute=1&controls=0&loop=1&playlist=COJfofg3Bw8&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&playsinline=1&enablejsapi=1" as="document">
+  <link rel="prefetch" href="https://www.youtube.com/embed/WdV3yTMun2Q?si=TW9UFFTD3RZ7YoXt&autoplay=1&mute=1&controls=0&loop=1&playlist=WdV3yTMun2Q&playsinline=1&enablejsapi=1&rel=0" as="document">
+
   <style>
     :root {
       --bs-primary: #ffffff;
@@ -133,10 +144,6 @@
   <!-- Video Banner -->
   <!-- Video Banner (Optimized LCP) -->
   <section class="video-banner" id="hero-section">
-    <!-- Static Poster (LCP) - Loads Instantly -->
-    <img src="https://img.youtube.com/vi/1dkusHHRIpk/maxresdefault.jpg" class="hero-poster"
-      alt="Studio X AI Cinematic Banner" fetchpriority="high" width="1920" height="1080">
-
     <!-- Video Container - Populated via JS -->
     <div id="hero-video-placeholder"></div>
 
@@ -177,7 +184,7 @@
       }
 
       // Load shortly after initial paint
-      setTimeout(loadHero, 1500);
+      setTimeout(loadHero, 100);
     })();
   </script>
 
