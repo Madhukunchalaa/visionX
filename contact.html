@@ -17,10 +17,14 @@
         rel="stylesheet">
     <link rel="stylesheet" href="assets/css/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-    -
     <style>
-
+        body {
+            background-color: #000 !important;
+            visibility: visible !important;
+        }
     </style>
+
+
 </head>
 
 <body>
@@ -29,16 +33,15 @@
     <div id="navbar-placeholder"></div>
 
     <section class="video-banner">
-        <iframe width="560" height="315"
-            src="https://www.youtube.com/embed/oo_7uceWYDQ?autoplay=1&mute=1&controls=0&loop=1&playlist=oo_7uceWYDQ&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3"
-            title="YouTube video player" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <!-- Optimized R2 Video Banner -->
+        <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/images/Video_Moment.jpg"
+            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); min-width: 100%; min-height: 100%; width: auto; height: auto; object-fit: cover; z-index: 0;">
+            <source src="https://pub-d8add5c3ed1e4923aa87c457caea356d.r2.dev/about_video.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
         <div class="video-overlay">
             <div class="video-content">
-                <!-- <h1>Welcome to StudioX</h1>
-        <p>Innovation Meets Excellence</p>
-        <button class="btn btn-primary btn-lg">Get Started</button> -->
+                <!-- Content removed as per original file -->
             </div>
         </div>
     </section>
@@ -152,12 +155,11 @@
             <div class="prj-dual-layout">
                 <!-- Video Side -->
                 <div class="prj-media-panel">
-                    <iframe class="lazy-iframe" width="560" height="315"
-                        data-src="https://www.youtube.com/embed/5lU2CbKgwjc?autoplay=1&mute=1&loop=1&playlist=5lU2CbKgwjc&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3"
-                        src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <video class="lazy-video" autoplay muted loop playsinline width="100%" height="100%"
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; border: none; border-radius: 12px;">
+                        <source data-src="https://pub-d8add5c3ed1e4923aa87c457caea356d.r2.dev/punch.mp4"
+                            type="video/mp4">
+                    </video>
                     <div class="prj-visual-shade"></div>
                 </div>
 

@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -6,590 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Studio X AI | The Modern Creative Partner</title>
     <!-- Favicon -->
-    <link rel="icon" type="image/png" sizes="64x64" href="assets/images/newlogovisionX.png">
-    <!-- <link rel="icon" type="image/png" sizes="16x16" href="assets/images/newlogovisionX.png"> -->
-    <link rel="apple-touch-icon" href="assets/images/newlogovisionX.png">
+    <link rel="icon" type="image/png" sizes="32x32"
+        href="https://pub-d8add5c3ed1e4923aa87c457caea356d.r2.dev/Studio%20X%20AI_Logo.png">
+    <link rel="icon" type="image/png" sizes="16x16"
+        href="https://pub-d8add5c3ed1e4923aa87c457caea356d.r2.dev/Studio%20X%20AI_Logo.png">
+    <link rel="apple-touch-icon" href="https://pub-d8add5c3ed1e4923aa87c457caea356d.r2.dev/Studio%20X%20AI_Logo.png">
     <!-- Bootstrap 5 CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" media="print"
-        onload="this.media='all'">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet" media="print" onload="this.media='all'">
     <!-- Bootstrap Icons -->
     <!-- Bootstrap Icons -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"
         media="print" onload="this.media='all'">
-    <link rel="stylesheet" href="assets/css/styles.css" media="print" onload="this.media='all'">
-    <noscript>
-        <link rel="stylesheet" href="assets/css/styles.css">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
-    </noscript>
+    <link rel="stylesheet" href="assets/css/styles.css">
     <style>
-        :root {
-            --bs-primary: #ffffff;
-            --bs-dropdown-link-active-bg: #ffffff;
-            --bs-dropdown-link-active-color: #000000;
-            --bs-link-color: #ffffff;
-            --bs-link-hover-color: #cccccc;
-            --theme-color: #00d2ff;
-            --theme-color-dark: #00a8cc;
-            --theme-color-light: #66e6ff;
-        }
-
-        *,
-        *::before,
-        *::after {
-            box-sizing: border-box;
-        }
-
-        html,
         body {
-            overflow-x: hidden;
-            width: 100%;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            background-color: black;
-            font-family: 'Inter', sans-serif;
-            font-size: 16px;
-            line-height: 1.6;
-            color: #ffffff;
-        }
-
-        /* Navbar Critical */
-        #navbar {
-            background-color: transparent !important;
-            transition: background-color 0.3s ease, box-shadow 0.3s ease;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 1000;
-        }
-
-        #navbar.scrolled {
-            background-color: black !important;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Hero Critical */
-        .video-banner {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            overflow: hidden;
-            margin-bottom: 0;
-        }
-
-        .video-banner .hero-poster {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 100vw;
-            height: 100vh;
-            transform: translate(-50%, -50%);
-            object-fit: cover;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        .video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 1;
-        }
-
-        /* what you get */
-        /* ========================================
-   STUDIO X AI SECTION (REWRITE)
-   ======================================== */
-        .studio-x-section {
-            position: relative;
-            width: 100%;
-            height: 100vh;
-            background: black;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        /* 1. BACKGROUND VIDEO LAYER */
-        .studio-bg-layer {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            /* Lowest level */
-        }
-
-        .studio-bg-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        /* 2. TEXT MASK LAYER (Black bg + White text + Multiply blend) */
-        .studio-mask-layer {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: black;
-            z-index: 5;
-            /* Above video */
-            mix-blend-mode: multiply;
-            /* The Magic: White text becomes transparent to video below */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            pointer-events: none;
-            /* Let clicks pass specific areas if needed */
-        }
-
-        .studio-text-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            gap: 0;
-            /* Gap handled by spacer */
-        }
-
-        .studio-section-title {
-            position: absolute;
-            top: 4%;
-            left: 50%;
-            transform: translateX(-50%);
-            font-size: 56px;
-            font-weight: 700;
-            color: white;
-            z-index: 20;
-            /* Above everything */
-            /* text-transform: uppercase; <-- Removed */
-            /* letter-spacing: 2px; <-- Removed */
-            opacity: 1;
-            text-align: center;
-            width: 100%;
-        }
-
-        .studio-highlight {
-            color: #00d2ff;
-            /* Cyan highlight */
-        }
-
-        .studio-title-text {
-            font-size: 100px;
-            font-weight: 900;
-            color: white;
-            /* Becomes transparent in multiply mode */
-            margin: 0;
-            line-height: 1;
-            letter-spacing: -2px;
-        }
-
-        /* Shift only the "AI" text closer to the center */
-        .studio-title-text:last-child {
-            position: relative;
-            left: -100px;
-        }
-
-        /* Shift "STUDIO" text left to avoid overlapping content */
-        .studio-title-text:first-child {
-            position: relative;
-            left: -60px;
-        }
-
-        .studio-x-spacer {
-            width: 800px;
-            /* Increased to 800px as requested */
-            height: 100px;
-            flex-shrink: 0;
-        }
-
-        /* 3. X INTERACTION LAYER */
-        .studio-x-layer {
-            position: absolute;
-            inset: 0;
-            z-index: 10;
-            /* Topmost */
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            pointer-events: none;
-            /* Allow clicks through empty areas */
-        }
-
-        /* REUSING .box and .tri styles, just adjusting container */
-        .studio-x-box {
-            position: relative;
-            width: 200px;
-            height: 200px;
-            background: black;
-            /* The X center needs to cover the video/text lines behind it? */
-            /* Actually with multiply mode, the text layer covers everything with black except text. 
-       The Box sits ON TOP. It has its own videos. 
-       We ensure it stands out. */
-            /* overflow: hidden;  <-- REMOVED TO ALLOW TEXT OUTSIDE */
-            pointer-events: auto;
-            /* Re-enable clicks on the X */
-        }
-
-        /* Responsive adjustments for Studio X section */
-        @media (max-width: 1600px) {
-            .studio-x-spacer {
-                width: 600px;
-            }
-
-            .studio-title-text {
-                font-size: 128px;
-            }
-
-            .studio-x-tri1 .studio-x-tri-content {
-                left: -175px;
-                width: 155px;
-            }
-
-            .studio-x-tri4 .studio-x-tri-content {
-                right: -175px;
-                width: 155px;
-            }
-        }
-
-        @media (max-width: 1200px) {
-            .studio-title-text {
-                font-size: 80px;
-            }
-
-            .studio-x-spacer {
-                width: 450px;
-            }
-
-            .studio-x-box {
-                width: 160px;
-                height: 160px;
-            }
-        }
-
-        .studio-x-tri {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            color: white;
-            transition: opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease;
-            cursor: pointer;
-            opacity: 0;
-            visibility: hidden;
-            pointer-events: none;
-            /* Important: pass through clicks in empty areas */
-            transform: scale(0.9);
-            filter: blur(4px);
-        }
-
-        .studio-x-tri.studio-x-tri-active {
-            opacity: 1;
-            visibility: visible;
-            /* pointer-events:auto; <-- Handled by children */
-            transform: scale(1);
-            filter: blur(0);
-        }
-
-        .studio-x-section.studio-x-show-all .studio-x-tri {
-            opacity: 1;
-            visibility: visible;
-            /* pointer-events:auto; */
-        }
-
-        /* CLIPPER HANDLES THE SHAPE AND CLICKS */
-        .studio-x-clipper {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: auto;
-            /* Catch clicks on the triangle shape */
-        }
-
-        .studio-x-tri:hover .studio-x-clipper video {
-            filter: grayscale(0%);
-        }
-
-        .studio-x-tri-content {
-            position: absolute;
-            z-index: 5;
-            text-align: center;
-            pointer-events: auto;
-            /* Allow interaction with text */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-
-
-            padding: 24px 20px;
-
-            box-sizing: border-box;
-        }
-
-        /* Position content outside the smaller X box */
-        /* LEFT */
-        .studio-x-tri1 .studio-x-tri-content {
-            left: -74px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 200px;
-            text-align: center;
-            align-items: center;
-        }
-
-        /* TOP */
-        .studio-x-tri2 .studio-x-tri-content {
-            top: -147px;
-            left: 85%;
-            transform: translateX(-50%);
-            width: 220px;
-            text-align: center;
-            align-items: center;
-        }
-
-        /* BOTTOM */
-        .studio-x-tri3 .studio-x-tri-content {
-            bottom: -137px;
-            left: 87%;
-            transform: translateX(-50%);
-            width: 220px;
-            text-align: center;
-            align-items: center;
-        }
-
-        /* RIGHT */
-        .studio-x-tri4 .studio-x-tri-content {
-            right: -263px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 200px;
-            text-align: center;
-            align-items: center;
-        }
-
-        .studio-x-tri-icon {
-            font-size: 2rem;
-            margin-bottom: 8px;
-        }
-
-        .studio-x-tri-heading {
-            font-size: 16px;
-            font-weight: 700;
-            margin-bottom: 6px;
-            line-height: 1.2;
-            color: var(--theme-color);
-        }
-
-        .studio-x-tri-text {
-            font-size: 15px;
-            font-weight: 400;
-            opacity: 0.9;
-            line-height: 23px;
-            text-align: center;
-        }
-
-        /* 4 PERFECT NON-OVERLAPPING TRIANGLES - APPLIED TO CLIPPER */
-
-        /* TOP LEFT */
-        .studio-x-tri1 .studio-x-clipper {
-            clip-path: polygon(0 0, 50% 50%, 0 100%);
-        }
-
-        /* TOP RIGHT */
-        .studio-x-tri2 .studio-x-clipper {
-            clip-path: polygon(100% 0, 50% 50%, 0 0);
-        }
-
-        /* BOTTOM LEFT */
-        .studio-x-tri3 .studio-x-clipper {
-            clip-path: polygon(0 100%, 50% 50%, 100% 100%);
-        }
-
-        /* BOTTOM RIGHT */
-        .studio-x-tri4 .studio-x-clipper {
-            clip-path: polygon(100% 100%, 50% 50%, 100% 0);
-        }
-
-        /* WHITE X LINES WITH VIDEO */
-        .studio-x-line {
-            position: absolute;
-            top: 50%;
-            left: 91%;
-            width: 302%;
-            height: 35px;
-            background: white;
-            transform-origin: center;
-            z-index: 10;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        .studio-x-line video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            min-width: 200%;
-            min-height: 200%;
-            object-fit: cover;
-            z-index: 1;
-        }
-
-        .studio-x-line1 {
-            transform: translate(-50%, -50%) rotate(45deg);
-        }
-
-        .studio-x-line1 video {
-            transform: translate(-50%, -50%) rotate(-45deg);
-        }
-
-        .studio-x-line2 {
-            transform: translate(-50%, -50%) rotate(-45deg);
-        }
-
-        .studio-x-line2 video {
-            transform: translate(-50%, -50%) rotate(45deg);
-        }
-
-        .video-text {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            z-index: 1;
-        }
-
-        .video-text video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            object-fit: cover;
-
-            /* mask video inside text - correct syntax */
-            -webkit-mask: url(#mask);
-            mask: url(#mask);
-            -webkit-mask-size: 100% 100%;
-            mask-size: 100% 100%;
-        }
-
-
-
-        /* ========================================
-   MOBILE RESPONSIVE (Below 768px)
-   ======================================== */
-        @media (max-width: 768px) {
-
-            /* Hide the complex Studio/X/Video layers */
-            .studio-bg-layer,
-            .studio-mask-layer,
-            .studio-x-line,
-            .studio-x-box::before,
-            /* any pseudo elements if any */
-            .studio-x-clipper {
-                /* Hide the video clips, just show text content */
-                display: none !important;
-            }
-
-            .studio-x-section {
-                display: none !important;
-                height: auto;
-                min-height: auto;
-                padding: 80px 20px 40px;
-                /* Space for title */
-                overflow-y: visible;
-                display: block;
-                /* Reset flex */
-            }
-
-            /* Position the title normally */
-            .studio-section-title {
-                position: relative;
-                top: auto;
-                left: auto;
-                transform: none;
-                margin-bottom: 40px;
-                font-size: 32px;
-                /* Smaller for mobile */
-            }
-
-            /* Reset the box container */
-            .studio-x-box {
-                width: 100% !important;
-                height: auto !important;
-                background: transparent;
-                display: flex;
-                flex-direction: column;
-                gap: 20px;
-            }
-
-            /* Reset the triangle containers to be static blocks */
-            .studio-x-tri {
-                position: relative;
-                width: 100%;
-                height: auto;
-                opacity: 1 !important;
-                visibility: visible !important;
-                transform: none !important;
-                filter: none !important;
-                pointer-events: auto !important;
-            }
-
-            /* Style the content as the card itself */
-            .studio-x-tri-content {
-                position: relative;
-                width: 100% !important;
-                /* Full width */
-                left: auto !important;
-                right: auto !important;
-                top: auto !important;
-                bottom: auto !important;
-                transform: none !important;
-
-                background: #000;
-                border: 1px solid #333;
-                border-radius: 20px;
-                padding: 30px;
-                text-align: left;
-                align-items: flex-start;
-                justify-content: flex-start;
-                box-shadow: none;
-            }
-
-            .studio-x-tri-heading {
-                font-size: 20px;
-                margin-bottom: 10px;
-            }
-
-            .studio-x-tri-text {
-                text-align: left;
-                font-size: 16px;
-                line-height: 1.5;
-            }
+            background-color: #000 !important;
+            visibility: visible !important;
         }
     </style>
 </head>
@@ -611,36 +45,12 @@
 
     <!-- SECTION 2: STORY -->
     <section class="video-banner">
-        <!-- Placeholder for Video -->
-        <div id="about-hero-placeholder"></div>
-
-        <script>
-            (function () {
-                function loadAboutHero() {
-                    var placeholder = document.getElementById('about-hero-placeholder');
-                    if (!placeholder) return;
-
-                    var iframe = document.createElement('iframe');
-                    iframe.src = "https://www.youtube.com/embed/WdV3yTMun2Q?si=TW9UFFTD3RZ7YoXt&autoplay=1&mute=1&controls=0&loop=1&playlist=WdV3yTMun2Q&playsinline=1&enablejsapi=1&rel=0";
-                    iframe.title = "YouTube video player";
-                    iframe.frameBorder = "0";
-                    iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-                    iframe.allowFullscreen = true;
-
-                    // CSS handles layout via .video-banner iframe
-                    iframe.style.zIndex = "0";
-                    iframe.style.opacity = "0";
-                    iframe.style.transition = "opacity 1.5s ease";
-
-                    iframe.onload = function () { iframe.style.opacity = "1"; };
-                    setTimeout(function () { iframe.style.opacity = "1"; }, 3000);
-
-                    placeholder.parentNode.insertBefore(iframe, placeholder);
-                    placeholder.remove();
-                }
-                setTimeout(loadAboutHero, 100);
-            })();
-        </script>
+        <!-- Optimized R2 Video Banner -->
+        <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/images/Video_Moment.jpg"
+            style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); min-width: 100%; min-height: 100%; width: auto; height: auto; object-fit: cover; z-index: 0;">
+            <source src="https://pub-d8add5c3ed1e4923aa87c457caea356d.r2.dev/bird%20flying.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
         <div class="video-overlay">
             <div class="video-content">
 
@@ -668,11 +78,11 @@
                     </p>
                 </div>
                 <div class="about-problem-video about-fade-in-up">
-                    <iframe width="100%" height="auto" style="aspect-ratio: 16/9;" loading="lazy"
-                        src="https://www.youtube.com/embed/jkFtNwB1ikA?autoplay=1&mute=1&loop=1&playlist=jkFtNwB1ikA&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <video autoplay muted loop playsinline width="100%"
+                        style="aspect-ratio: 16/9; object-fit: cover; border-radius: 20px;">
+                        <source src="https://pub-d8add5c3ed1e4923aa87c457caea356d.r2.dev/matchstick.mp4"
+                            type="video/mp4">
+                    </video>
                 </div>
             </div>
         </div>
@@ -688,11 +98,12 @@
         <div class="about-solution-container-fluid">
             <div class="about-solution-wrapper">
                 <div class="about-problem-video about-fade-in-up">
-                    <iframe width="100%" height="auto" style="aspect-ratio: 16/9;" loading="lazy"
-                        src="https://www.youtube.com/embed/Oc69sqG5FIU?autoplay=1&mute=1&loop=1&playlist=Oc69sqG5FIU&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    <video autoplay muted loop playsinline width="100%"
+                        style="aspect-ratio: 16/9; object-fit: cover; border-radius: 20px;">
+                        <source
+                            src="https://pub-d8add5c3ed1e4923aa87c457caea356d.r2.dev/Glitch_Video_Generation_Complete.mp4"
+                            type="video/mp4">
+                    </video>
                 </div>
                 <div class="about-solution-content about-fade-in-up">
                     <h2 class="about-problem-heading about-main-heading about-main-heading-dark"
@@ -713,60 +124,7 @@
     </section>
 
     <!-- SECTION 4: OUR PILLARS -->
-    <section class="about-solution-section">
-        <div class="about-video-background">
-            <iframe loading="lazy"
-                src="https://www.youtube.com/embed/Q5kA31LTkpA?autoplay=1&mute=1&loop=1&playlist=Q5kA31LTkpA&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&enablejsapi=1"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-            <div class="about-video-overlay"></div>
-        </div>
 
-        <div class="container">
-            <h2 class="about-main-heading text-center">How We <span class="theme-text">Deliver Excellence</span></h2>
-
-
-            <div class="row g-4">
-                <div class="col-md-4">
-                    <div class="about-pillar-card about-animate-on-scroll">
-                        <div class="about-pillar-icon">
-                            <img src="assets/images/Layer 0.png" alt="">
-                        </div>
-                        <h3>Strategic Creativity</h3>
-                        <p>Every frame serves your business objectives. Our creative directors are strategists
-                            first ensuring your video doesn't just look exceptional it performs.</p>
-
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="about-pillar-card about-animate-on-scroll">
-                        <div class="about-pillar-icon">
-                            <img src="assets/images/LAYER1.png" alt="">
-                        </div>
-                        <h3>Operational Intelligence</h3>
-                        <p>AI handles the complex production logistics. You experience a surprisingly simple, seamlessly
-                            efficient process from concept to delivery.</p>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="about-pillar-card about-animate-on-scroll">
-                        <div class="about-pillar-icon">
-                            <img src="assets/images/Remove tool edits.png" alt="">
-                        </div>
-                        <h3>Uncompromising Quality</h3>
-                        <p>Fast and affordable never means “good enough.” We obsess over polish, ensuring every
-                            deliverable elevates your brand perception.</p>
-                    </div>
-                </div>
-            </div>
-
-            <p class="about-pillar-highlight text-center">
-                We don't make videos. We make videos that move metrics.
-            </p>
-            <div class="about-solution-divider about-animate-on-scroll"></div>
-        </div>
-    </section>
 
     <!-- SECTION 6: INDUSTRIES -->
 
@@ -774,11 +132,10 @@
     <!-- SECTION 5: BENEFITS -->
     <section class="about-benefits-section">
         <div class="about-video-background">
-            <iframe loading="lazy"
-                src="https://www.youtube.com/embed/d-TMVc1GJ1s?autoplay=1&mute=1&loop=1&playlist=d-TMVc1GJ1s&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&enablejsapi=1"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <video autoplay muted loop playsinline
+                style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); min-width: 100%; min-height: 100%; width: auto; height: auto; object-fit: cover;">
+                <source src="https://pub-d8add5c3ed1e4923aa87c457caea356d.r2.dev/car.mp4" type="video/mp4">
+            </video>
             <div class="about-video-overlay"></div>
         </div>
 
@@ -795,7 +152,7 @@
                         <div class="about-comparison-icon">
                             <img src="assets/images//1.png" alt="icon">
                         </div>
-                        <p class="about-comparison-value">8–12-week timelines</p>
+                        <p class="about-comparison-value">8â€“12-week timelines</p>
                     </div>
                     <div class="about-comparison-item">
                         <div class="about-comparison-icon">
@@ -871,11 +228,11 @@
             <div class="row g-3">
                 <div class="col-12 col-sm-12 col-md-4">
                     <div class="about-industry-card about-animate-on-scroll">
-                        <iframe loading="lazy"
-                            src="https://www.youtube.com/embed/8xLmI3QY50w?autoplay=1&mute=1&loop=1&playlist=8xLmI3QY50w&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&enablejsapi=1"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <video autoplay muted loop playsinline width="100%"
+                            style="aspect-ratio: 16/9; object-fit: cover;">
+                            <source src="https://pub-d8add5c3ed1e4923aa87c457caea356d.r2.dev/ecommerce.mp4"
+                                type="video/mp4">
+                        </video>
                         <div class="about-industry-card-overlay">
                             <h3>Ecommerce</h3>
                             <p class="about-industry-card-caption">Product stories that convert scrolls into sales</p>
@@ -884,11 +241,10 @@
                 </div>
                 <div class="col-12 col-sm-12 col-md-4">
                     <div class="about-industry-card about-animate-on-scroll">
-                        <iframe loading="lazy"
-                            src="https://www.youtube.com/embed/L3P5Z9KUCJE?autoplay=1&mute=1&loop=1&playlist=L3P5Z9KUCJE&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&enablejsapi=1"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <video autoplay muted loop playsinline width="100%"
+                            style="aspect-ratio: 16/9; object-fit: cover;">
+                            <source src="https://pub-d8add5c3ed1e4923aa87c457caea356d.r2.dev/sas1.mp4" type="video/mp4">
+                        </video>
                         <div class="about-industry-card-overlay">
                             <h3>SaaS</h3>
                             <p class="about-industry-card-caption">Simplify complexity, showcase power</p>
@@ -897,11 +253,11 @@
                 </div>
                 <div class="col-12 col-sm-12 col-md-4">
                     <div class="about-industry-card about-animate-on-scroll">
-                        <iframe
-                            src="https://www.youtube.com/embed/0u0IqIJ89xk?autoplay=1&mute=1&loop=1&playlist=0u0IqIJ89xk&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&enablejsapi=1"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <video autoplay muted loop playsinline width="100%"
+                            style="aspect-ratio: 16/9; object-fit: cover;">
+                            <source src="https://pub-d8add5c3ed1e4923aa87c457caea356d.r2.dev/healthcare.mp4"
+                                type="video/mp4">
+                        </video>
                         <div class="about-industry-card-overlay">
                             <h3>Healthcare</h3>
                             <p class="about-industry-card-caption">Communicate with clarity and empathy</p>
@@ -910,11 +266,11 @@
                 </div>
                 <div class="col-12 col-sm-12 col-md-4">
                     <div class="about-industry-card about-animate-on-scroll">
-                        <iframe
-                            src="https://www.youtube.com/embed/U7RgD1jSbAc?autoplay=1&mute=1&loop=1&playlist=U7RgD1jSbAc&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&enablejsapi=1"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <video autoplay muted loop playsinline width="100%"
+                            style="aspect-ratio: 16/9; object-fit: cover;">
+                            <source src="https://pub-d8add5c3ed1e4923aa87c457caea356d.r2.dev/education.mp4"
+                                type="video/mp4">
+                        </video>
                         <div class="about-industry-card-overlay">
                             <h3>Education</h3>
                             <p class="about-industry-card-caption">Learning content people actually finish</p>
@@ -923,11 +279,11 @@
                 </div>
                 <div class="col-12 col-sm-12 col-md-4">
                     <div class="about-industry-card about-animate-on-scroll">
-                        <iframe
-                            src="https://www.youtube.com/embed/NY5fWn_zoCg?autoplay=1&mute=1&loop=1&playlist=NY5fWn_zoCg&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&enablejsapi=1"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <video autoplay muted loop playsinline width="100%"
+                            style="aspect-ratio: 16/9; object-fit: cover;">
+                            <source src="https://pub-d8add5c3ed1e4923aa87c457caea356d.r2.dev/Restaurant.mp4"
+                                type="video/mp4">
+                        </video>
                         <div class="about-industry-card-overlay">
                             <h3>Hospitality</h3>
                             <p class="about-industry-card-caption">Sell experiences, not just services</p>
@@ -936,11 +292,11 @@
                 </div>
                 <div class="col-12 col-sm-12 col-md-4">
                     <div class="about-industry-card about-animate-on-scroll">
-                        <iframe
-                            src="https://www.youtube.com/embed/msfWpTJCqmA?autoplay=1&mute=1&loop=1&playlist=msfWpTJCqmA&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&enablejsapi=1"
-                            title="YouTube video player" frameborder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                        <video autoplay muted loop playsinline width="100%"
+                            style="aspect-ratio: 16/9; object-fit: cover;">
+                            <source src="https://pub-d8add5c3ed1e4923aa87c457caea356d.r2.dev/Value%20Homes.mp4"
+                                type="video/mp4">
+                        </video>
                         <div class="about-industry-card-overlay">
                             <h3>Real Estate</h3>
                             <p class="about-industry-card-caption">Evoke emotion, close deals faster</p>
@@ -958,13 +314,10 @@
         <div class="studio-bg-layer">
             <!-- Replaced local video with YouTube Iframe -->
             <!-- TO CHANGE VIDEO: Replace 'LU9akZ4K2Pw' with your new Video ID -->
-            <iframe loading="lazy" class="studio-bg-video"
-                src="https://www.youtube.com/embed/LU9akZ4K2Pw?autoplay=1&mute=1&controls=0&loop=1&playlist=LU9akZ4K2Pw&playsinline=1&enablejsapi=1&rel=0&showinfo=0&modestbranding=1&iv_load_policy=3"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboad-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
-                style="position: absolute; top: 50%; left: 50%; width: 177.78vh; height: 56.25vw; min-width: 100%; min-height: 100%; transform: translate(-50%, -50%) scale(1.5); pointer-events: none; opacity: 0.6;">
-            </iframe>
+            <video autoplay muted loop playsinline class="studio-bg-video"
+                style="position: absolute; top: 50%; left: 50%; width: 177.78vh; height: 56.25vw; min-width: 100%; min-height: 100%; transform: translate(-50%, -50%) scale(1.5); pointer-events: none; opacity: 0.6; object-fit: cover;">
+                <source src="https://pub-d8add5c3ed1e4923aa87c457caea356d.r2.dev/studiox%20video.mp4" type="video/mp4">
+            </video>
         </div>
 
         <!-- 2. Text Mask Layer (Black bg, White text, Multiply blend) -->
@@ -1028,22 +381,18 @@
                 </div>
 
                 <div class="studio-x-line studio-x-line1">
-                    <iframe loading="lazy" class="studio-bg-video"
-                        src="https://www.youtube.com/embed/LU9akZ4K2Pw?autoplay=1&mute=1&controls=0&loop=1&playlist=LU9akZ4K2Pw&playsinline=1&enablejsapi=1&rel=0&showinfo=0&modestbranding=1&iv_load_policy=3"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboad-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
-                        style="position: absolute; top: 50%; left: 50%; width: 177.78vh; height: 56.25vw; min-width: 100%; min-height: 100%; transform: translate(-50%, -50%) scale(1.5); pointer-events: none; opacity: 0.6;">
-                    </iframe>
+                    <video autoplay muted loop playsinline class="studio-bg-video"
+                        style="position: absolute; top: 50%; left: 50%; width: 177.78vh; height: 56.25vw; min-width: 100%; min-height: 100%; transform: translate(-50%, -50%) scale(1.5); pointer-events: none; opacity: 0.6; object-fit: cover;">
+                        <source src="https://pub-d8add5c3ed1e4923aa87c457caea356d.r2.dev/studiox%20video.mp4"
+                            type="video/mp4">
+                    </video>
                 </div>
                 <div class="studio-x-line studio-x-line2">
-                    <iframe loading="lazy" class="studio-bg-video"
-                        src="https://www.youtube.com/embed/LU9akZ4K2Pw?autoplay=1&mute=1&controls=0&loop=1&playlist=LU9akZ4K2Pw&playsinline=1&enablejsapi=1&rel=0&showinfo=0&modestbranding=1&iv_load_policy=3"
-                        title="YouTube video player" frameborder="0"
-                        allow="accelerometer; autoplay; clipboad-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
-                        style="position: absolute; top: 50%; left: 50%; width: 177.78vh; height: 56.25vw; min-width: 100%; min-height: 100%; transform: translate(-50%, -50%) scale(1.5); pointer-events: none; opacity: 0.6;">
-                    </iframe>
+                    <video autoplay muted loop playsinline class="studio-bg-video"
+                        style="position: absolute; top: 50%; left: 50%; width: 177.78vh; height: 56.25vw; min-width: 100%; min-height: 100%; transform: translate(-50%, -50%) scale(1.5); pointer-events: none; opacity: 0.6; object-fit: cover;">
+                        <source src="https://pub-d8add5c3ed1e4923aa87c457caea356d.r2.dev/studiox%20video.mp4"
+                            type="video/mp4">
+                    </video>
                 </div>
 
             </div>
@@ -1054,11 +403,10 @@
     <!-- SECTION 8: WHO WE ARE -->
     <section class="about-team-section">
         <div class="about-team-video-background">
-            <iframe
-                src="https://www.youtube.com/embed/KKdWdHRdGqs?autoplay=1&mute=1&loop=1&playlist=KKdWdHRdGqs&controls=0&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&enablejsapi=1"
-                title="YouTube video player" frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="pointer-events: none;"></iframe>
+            <video autoplay muted loop playsinline
+                style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); min-width: 100%; min-height: 100%; width: auto; height: auto; object-fit: cover; pointer-events: none;">
+                <source src="https://pub-d8add5c3ed1e4923aa87c457caea356d.r2.dev/ocean-skating.mp4" type="video/mp4">
+            </video>
         </div>
 
         <div class="container">

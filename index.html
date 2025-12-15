@@ -6,132 +6,35 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Studio X AI</title>
   <!-- Favicon -->
-  <link rel="icon" type="image/png" sizes="32x32" href="assets/images/newlogovisionX.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="assets/images/newlogovisionX.png">
-  <link rel="apple-touch-icon" href="assets/images/newlogovisionX.png">
+  <link rel="icon" type="image/png" sizes="32x32"
+    href="https://pub-d8add5c3ed1e4923aa87c457caea356d.r2.dev/Studio%20X%20AI_Logo.png">
+  <link rel="icon" type="image/png" sizes="16x16"
+    href="https://pub-d8add5c3ed1e4923aa87c457caea356d.r2.dev/Studio%20X%20AI_Logo.png">
+  <link rel="apple-touch-icon" href="https://pub-d8add5c3ed1e4923aa87c457caea356d.r2.dev/Studio%20X%20AI_Logo.png">
 
   <!-- Aggressive Youtube Preloading for Other Pages -->
   <link rel="preconnect" href="https://www.youtube.com">
   <link rel="preconnect" href="https://www.google.com">
   <link rel="preconnect" href="https://googleads.g.doubleclick.net">
   <link rel="preconnect" href="https://static.doubleclick.net">
-  
+
   <!-- Prefetch Banner Documents (Service, About) -->
-  <link rel="prefetch" href="https://www.youtube.com/embed/COJfofg3Bw8?si=9_QB3cz6SFFpQrUH&autoplay=1&mute=1&controls=0&loop=1&playlist=COJfofg3Bw8&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&playsinline=1&enablejsapi=1" as="document">
-  <link rel="prefetch" href="https://www.youtube.com/embed/WdV3yTMun2Q?si=TW9UFFTD3RZ7YoXt&autoplay=1&mute=1&controls=0&loop=1&playlist=WdV3yTMun2Q&playsinline=1&enablejsapi=1&rel=0" as="document">
+  <link rel="prefetch"
+    href="https://www.youtube.com/embed/COJfofg3Bw8?si=9_QB3cz6SFFpQrUH&autoplay=1&mute=1&controls=0&loop=1&playlist=COJfofg3Bw8&showinfo=0&rel=0&modestbranding=1&iv_load_policy=3&playsinline=1&enablejsapi=1"
+    as="document">
+  <link rel="prefetch"
+    href="https://www.youtube.com/embed/WdV3yTMun2Q?si=TW9UFFTD3RZ7YoXt&autoplay=1&mute=1&controls=0&loop=1&playlist=WdV3yTMun2Q&playsinline=1&enablejsapi=1&rel=0"
+    as="document">
 
+  rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
   <style>
-    :root {
-      --bs-primary: #ffffff;
-      --bs-dropdown-link-active-bg: #ffffff;
-      --bs-dropdown-link-active-color: #000000;
-      --bs-link-color: #ffffff;
-      --bs-link-hover-color: #cccccc;
-      --theme-color: #00d2ff;
-      --theme-color-dark: #00a8cc;
-      --theme-color-light: #66e6ff;
-    }
-
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-    }
-
-    html,
     body {
-      overflow-x: hidden;
-      width: 100%;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      background-color: black;
-      font-family: 'Inter', sans-serif;
-      font-size: 16px;
-      line-height: 1.6;
-      color: #ffffff;
-    }
-
-    /* Navbar Critical */
-    #navbar {
-      background-color: transparent !important;
-      transition: background-color 0.3s ease, box-shadow 0.3s ease;
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      z-index: 1000;
-    }
-
-    #navbar.scrolled {
-      background-color: black !important;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
-
-    /* Hero Critical */
-    .video-banner {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      overflow: hidden;
-      margin-bottom: 0;
-    }
-
-    .video-banner .hero-poster {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 100vw;
-      height: 100vh;
-      transform: translate(-50%, -50%);
-      object-fit: cover;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    .video-banner iframe {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      width: 100vw;
-      height: 100vh;
-      transform: translate(-50%, -50%);
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0;
-      transition: opacity 1s ease;
-    }
-
-    .video-banner iframe.loaded {
-      opacity: 1;
-    }
-
-    .video-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 1;
+      background-color: #000 !important;
+      visibility: visible !important;
     }
   </style>
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" media="print"
-    onload="this.media='all'">
-  <!-- Google Fonts Optimized -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-    rel="stylesheet" media="print" onload="this.media='all'">
-  <link rel="stylesheet" href="assets/css/styles.css" media="print" onload="this.media='all'">
-  <noscript>
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-  </noscript>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"
     media="print" onload="this.media='all'">
 </head>
@@ -142,51 +45,18 @@
   <div id="navbar-placeholder"></div>
 
   <!-- Video Banner -->
-  <!-- Video Banner (Optimized LCP) -->
   <section class="video-banner" id="hero-section">
-    <!-- Video Container - Populated via JS -->
-    <div id="hero-video-placeholder"></div>
+    <!-- Optimized R2 Video Banner -->
+    <video class="hero-video" autoplay muted loop playsinline preload="auto" poster="assets/images/Video_Moment.jpg"
+      style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); min-width: 100%; min-height: 100%; width: auto; height: auto; object-fit: cover; z-index: 0;">
+      <source src="https://pub-d8add5c3ed1e4923aa87c457caea356d.r2.dev/studioxaim.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
 
     <div class="video-overlay">
       <div class="video-content"></div>
     </div>
   </section>
-
-  <script>
-    (function () {
-      // Robust video loader for LCP
-      function loadHero() {
-        var placeholder = document.getElementById('hero-video-placeholder');
-        if (!placeholder) return;
-
-        var iframe = document.createElement('iframe');
-        // Added playsinline=1, enablejsapi=1, rel=0
-        iframe.src = "https://www.youtube.com/embed/1dkusHHRIpk?si=Q5coUO5M1DGQ22_S&autoplay=1&mute=1&controls=0&loop=1&playlist=1dkusHHRIpk&playsinline=1&enablejsapi=1&rel=0";
-        iframe.title = "YouTube video player";
-        iframe.frameBorder = "0";
-        iframe.allow = "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
-        iframe.allowFullscreen = true;
-
-        // Matches existing CSS styles
-        iframe.style.zIndex = "0";
-        iframe.style.opacity = "0"; // Start hidden
-        iframe.style.transition = "opacity 1.5s ease"; // Smooth fade
-
-        // Failsafe: Show it anyway after 3s in case onload event is missed/cached
-        setTimeout(function () { iframe.style.opacity = "1"; }, 3000);
-
-        iframe.onload = function () {
-          iframe.style.opacity = "1";
-        };
-
-        placeholder.parentNode.insertBefore(iframe, placeholder);
-        placeholder.remove();
-      }
-
-      // Load shortly after initial paint
-      setTimeout(loadHero, 100);
-    })();
-  </script>
 
 
   <!-- AI Capabilities Section -->
@@ -201,12 +71,9 @@
       <div class="feature-row">
         <div class="feature-video-wrapper">
           <!-- Background Video -->
-          <iframe class="lazy-iframe" width="560" height="315"
-            data-src="https://www.youtube.com/embed/Qx0e5vMMPp0?si=zs_nP6BRKbxxYg3j&autoplay=1&mute=1&controls=0&loop=1&playlist=Qx0e5vMMPp0"
-            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-            title="YouTube video player" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <video class="background-video" autoplay loop muted playsinline preload="metadata">
+            <source src="https://pub-d8add5c3ed1e4923aa87c457caea356d.r2.dev/brand.mp4" type="video/mp4">
+          </video>
           <div class="video-card-overlay"></div>
           <span class="ai-badge">*AI-generated video</span>
         </div>
@@ -241,12 +108,9 @@
       <div class="feature-row reverse">
         <div class="feature-video-wrapper">
           <!-- Background Video -->
-          <iframe class="lazy-iframe" width="560" height="315"
-            data-src="https://www.youtube.com/embed/PKBt6ZmIJy0?si=jTFiFAe8iQYjVhpv&autoplay=1&mute=1&controls=0&loop=1&playlist=PKBt6ZmIJy0"
-            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-            title="YouTube video player" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <video class="background-video" autoplay loop muted playsinline preload="metadata">
+            <source src="https://pub-d8add5c3ed1e4923aa87c457caea356d.r2.dev/yt.mp4" type="video/mp4">
+          </video>
           <div class="video-card-overlay"></div>
           <span class="ai-badge">*AI-generated video</span>
         </div>
@@ -281,12 +145,9 @@
       <div class="feature-row">
         <div class="feature-video-wrapper">
           <!-- Background Video -->
-          <iframe class="lazy-iframe" width="560" height="315"
-            data-src="https://www.youtube.com/embed/Wk3fGoVxGpM?si=GA0ICwuX2AYdAHCi&autoplay=1&mute=1&controls=0&loop=1&playlist=Wk3fGoVxGpM"
-            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-            title="YouTube video player" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <video class="background-video" autoplay loop muted playsinline preload="metadata">
+            <source src="https://pub-d8add5c3ed1e4923aa87c457caea356d.r2.dev/rose.mp4" type="video/mp4">
+          </video>
           <div class="video-card-overlay"></div>
           <span class="ai-badge">*AI-generated video</span>
         </div>
@@ -319,12 +180,9 @@
       <div class="feature-row reverse">
         <div class="feature-video-wrapper">
           <!-- Background Video -->
-          <iframe class="lazy-iframe" width="560" height="315"
-            data-src="https://www.youtube.com/embed/eXKVJWGQj2A?si=htE1fsobJICjmOe0&autoplay=1&mute=1&controls=0&loop=1&playlist=eXKVJWGQj2A"
-            src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-            title="YouTube video player" frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <video class="background-video" autoplay loop muted playsinline preload="metadata">
+            <source src="https://pub-d8add5c3ed1e4923aa87c457caea356d.r2.dev/learning.mp4" type="video/mp4">
+          </video>
           <div class="video-card-overlay"></div>
           <span class="ai-badge">*AI-generated video</span>
 
@@ -366,131 +224,126 @@
     <h2 class="showcase-title">Our Creative Showcase</h2>
 
     <!-- Video Grid (2 columns, 2 rows) -->
-    <div class="video-grid showcase-grid">
-      <!-- First Column - First Tile (Autoplay) -->
-
-      <div class="video-card youtube-card" id="yt-card-value-homes">
-        <div id="player-value-homes"></div>
+    <div class="video-grid large-grid">
+      <!-- 1. Family AI -->
+      <div class="video-card" id="card-family">
+        <video id="video-family" class="showcase-video" playsinline loop muted preload="metadata">
+          <source src="https://pub-d8add5c3ed1e4923aa87c457caea356d.r2.dev/family-ai.mp4" type="video/mp4">
+        </video>
         <div class="video-card-overlay">
-          <!-- Custom Controls (Hidden by default, shown on hover) -->
           <div class="custom-video-controls native-style">
             <div class="controls-row">
-              <button class="control-btn-icon play-pause-btn-yt" id="play-pause-yt">
-                <i class="bi bi-play-fill" id="play-icon-yt"></i>
-                <i class="bi bi-pause-fill" id="pause-icon-yt" style="display: none;"></i>
+              <button class="control-btn-icon play-pause-btn" data-video="video-family">
+                <i class="bi bi-play-fill"></i>
+                <i class="bi bi-pause-fill" style="display: none;"></i>
               </button>
-
               <div class="time-display">
-                <span id="current-time">0:00</span> / <span id="duration">0:00</span>
+                <span class="current-time">0:00</span> / <span class="duration">0:00</span>
               </div>
-
               <div class="spacer"></div>
-
-              <button class="control-btn-icon mute-btn-yt" id="mute-yt">
-                <i class="bi bi-volume-up-fill" id="vol-up-yt"></i>
-                <i class="bi bi-volume-mute-fill" id="vol-mute-yt" style="display: none;"></i>
+              <button class="control-btn-icon mute-btn" data-video="video-family">
+                <i class="bi bi-volume-mute-fill" style="display: none;"></i> <!-- Default muted -->
+                <i class="bi bi-volume-up-fill"></i> <!-- Show unmuted icon initially? No, video is muted -->
               </button>
-
-              <button class="control-btn-icon fullscreen-btn-yt" id="fullscreen-yt">
+              <button class="control-btn-icon fullscreen-btn" data-video="video-family">
                 <i class="bi bi-fullscreen"></i>
               </button>
             </div>
-            <div class="progress-container" id="progress-container-yt">
-              <div class="progress-bar" id="progress-bar-yt"></div>
+            <div class="progress-container" data-video="video-family">
+              <div class="progress-bar"></div>
             </div>
           </div>
         </div>
       </div>
 
-
-      <div class="video-card youtube-card" id="yt-card-family">
-        <div id="player-family" style="width: 100%; height: 100%; background: #000;"></div>
+      <!-- 2. Crocodile -->
+      <div class="video-card" id="card-crocodile">
+        <video id="video-crocodile" class="showcase-video" playsinline loop muted preload="metadata">
+          <source src="https://pub-d8add5c3ed1e4923aa87c457caea356d.r2.dev/crocodile.mp4" type="video/mp4">
+        </video>
         <div class="video-card-overlay">
           <div class="custom-video-controls native-style">
             <div class="controls-row">
-              <button class="control-btn-icon play-pause-btn-yt" id="play-pause-family">
-                <i class="bi bi-play-fill" id="play-icon-family"></i>
-                <i class="bi bi-pause-fill" id="pause-icon-family" style="display: none;"></i>
+              <button class="control-btn-icon play-pause-btn" data-video="video-crocodile">
+                <i class="bi bi-play-fill"></i>
+                <i class="bi bi-pause-fill" style="display: none;"></i>
               </button>
               <div class="time-display">
-                <span id="current-time-family">0:00</span> / <span id="duration-family">0:00</span>
+                <span class="current-time">0:00</span> / <span class="duration">0:00</span>
               </div>
               <div class="spacer"></div>
-              <button class="control-btn-icon mute-btn-yt" id="mute-family">
-                <i class="bi bi-volume-up-fill" id="vol-up-family"></i>
-                <i class="bi bi-volume-mute-fill" id="vol-mute-family" style="display: none;"></i>
+              <button class="control-btn-icon mute-btn" data-video="video-crocodile">
+                <i class="bi bi-volume-mute-fill" style="display: none;"></i>
+                <i class="bi bi-volume-up-fill"></i>
               </button>
-              <button class="control-btn-icon fullscreen-btn-yt" id="fullscreen-family">
+              <button class="control-btn-icon fullscreen-btn" data-video="video-crocodile">
                 <i class="bi bi-fullscreen"></i>
               </button>
             </div>
-            <div class="progress-container" id="progress-container-family">
-              <div class="progress-bar" id="progress-bar-family"></div>
+            <div class="progress-container" data-video="video-crocodile">
+              <div class="progress-bar"></div>
             </div>
           </div>
         </div>
       </div>
 
-
-
-
-
-      <!-- First Column - Second Tile -->
-      <div class="video-card youtube-card" id="yt-card-marco">
-        <div id="player-marco" style="width: 100%; height: 100%; background: #000;"></div>
+      <!-- 3. Marco -->
+      <div class="video-card" id="card-marco">
+        <video id="video-marco" class="showcase-video" playsinline loop muted preload="metadata">
+          <source src="https://pub-d8add5c3ed1e4923aa87c457caea356d.r2.dev/marco.mp4" type="video/mp4">
+        </video>
         <div class="video-card-overlay">
           <div class="custom-video-controls native-style">
             <div class="controls-row">
-              <button class="control-btn-icon play-pause-btn-yt" id="play-pause-marco">
-                <i class="bi bi-play-fill" id="play-icon-marco"></i>
-                <i class="bi bi-pause-fill" id="pause-icon-marco" style="display: none;"></i>
+              <button class="control-btn-icon play-pause-btn" data-video="video-marco">
+                <i class="bi bi-play-fill"></i>
+                <i class="bi bi-pause-fill" style="display: none;"></i>
               </button>
               <div class="time-display">
-                <span id="current-time-marco">0:00</span> / <span id="duration-marco">0:00</span>
+                <span class="current-time">0:00</span> / <span class="duration">0:00</span>
               </div>
               <div class="spacer"></div>
-              <button class="control-btn-icon mute-btn-yt" id="mute-marco">
-                <i class="bi bi-volume-up-fill" id="vol-up-marco"></i>
-                <i class="bi bi-volume-mute-fill" id="vol-mute-marco" style="display: none;"></i>
+              <button class="control-btn-icon mute-btn" data-video="video-marco">
+                <i class="bi bi-volume-mute-fill" style="display: none;"></i>
+                <i class="bi bi-volume-up-fill"></i>
               </button>
-              <button class="control-btn-icon fullscreen-btn-yt" id="fullscreen-marco">
+              <button class="control-btn-icon fullscreen-btn" data-video="video-marco">
                 <i class="bi bi-fullscreen"></i>
               </button>
             </div>
-            <div class="progress-container" id="progress-container-marco">
-              <div class="progress-bar" id="progress-bar-marco"></div>
+            <div class="progress-container" data-video="video-marco">
+              <div class="progress-bar"></div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- Second Column - First Tile -->
-
-
-      <!-- Second Column - Second Tile -->
-      <div class="video-card youtube-card" id="yt-card-crocodile">
-        <div id="player-crocodile" style="width: 100%; height: 100%; background: #000;"></div>
+      <!-- 4. Value Homes -->
+      <div class="video-card" id="card-value">
+        <video id="video-value" class="showcase-video" playsinline loop muted preload="metadata">
+          <source src="https://pub-d8add5c3ed1e4923aa87c457caea356d.r2.dev/Value%20Homes.mp4" type="video/mp4">
+        </video>
         <div class="video-card-overlay">
           <div class="custom-video-controls native-style">
             <div class="controls-row">
-              <button class="control-btn-icon play-pause-btn-yt" id="play-pause-crocodile">
-                <i class="bi bi-play-fill" id="play-icon-crocodile"></i>
-                <i class="bi bi-pause-fill" id="pause-icon-crocodile" style="display: none;"></i>
+              <button class="control-btn-icon play-pause-btn" data-video="video-value">
+                <i class="bi bi-play-fill"></i>
+                <i class="bi bi-pause-fill" style="display: none;"></i>
               </button>
               <div class="time-display">
-                <span id="current-time-crocodile">0:00</span> / <span id="duration-crocodile">0:00</span>
+                <span class="current-time">0:00</span> / <span class="duration">0:00</span>
               </div>
               <div class="spacer"></div>
-              <button class="control-btn-icon mute-btn-yt" id="mute-crocodile">
-                <i class="bi bi-volume-up-fill" id="vol-up-crocodile"></i>
-                <i class="bi bi-volume-mute-fill" id="vol-mute-crocodile" style="display: none;"></i>
+              <button class="control-btn-icon mute-btn" data-video="video-value">
+                <i class="bi bi-volume-mute-fill" style="display: none;"></i>
+                <i class="bi bi-volume-up-fill"></i>
               </button>
-              <button class="control-btn-icon fullscreen-btn-yt" id="fullscreen-crocodile">
+              <button class="control-btn-icon fullscreen-btn" data-video="video-value">
                 <i class="bi bi-fullscreen"></i>
               </button>
             </div>
-            <div class="progress-container" id="progress-container-crocodile">
-              <div class="progress-bar" id="progress-bar-crocodile"></div>
+            <div class="progress-container" data-video="video-value">
+              <div class="progress-bar"></div>
             </div>
           </div>
         </div>
@@ -502,14 +355,19 @@
   <section>
     <h2 class="showcase-title">AI Art Portfolio</h2>
     <div class="gallery">
-      <img src="assets/images/girldance.jpg" alt="a forest after an apocalypse" loading="lazy">
-      <img src="assets/images/avathar.png" alt="dancing girl ai generated" loading="lazy">
-      <img src="assets/images/car_race.jpg" alt="a waterfall and many rocks" loading="lazy">
-      <img src="assets/images/space ai.png" alt="a waterfall, a lot of trees and a great view from the sky"
+      <img src="https://pub-d8add5c3ed1e4923aa87c457caea356d.r2.dev/avatarfemale.png" alt="a forest after an apocalypse"
         loading="lazy">
-      <img src="assets/images/whale_image_1024x1024.png" alt="fish ai generated image" loading="lazy">
+      <img src="https://pub-d8add5c3ed1e4923aa87c457caea356d.r2.dev/avathar.png" alt="dancing girl ai generated"
+        loading="lazy">
+      <img src="https://pub-d8add5c3ed1e4923aa87c457caea356d.r2.dev/car.png" alt="a waterfall and many rocks"
+        loading="lazy">
+      <img src="https://pub-d8add5c3ed1e4923aa87c457caea356d.r2.dev/space%20ai.png"
+        alt="a waterfall, a lot of trees and a great view from the sky" loading="lazy">
+      <img src="https://pub-d8add5c3ed1e4923aa87c457caea356d.r2.dev/whale_image_1024x1024.png"
+        alt="fish ai generated image" loading="lazy">
 
-      <img src="assets/images/heartai.jpg" alt="ai generated heart image" loading="lazy">
+      <img src="https://pub-d8add5c3ed1e4923aa87c457caea356d.r2.dev/heartai.jpg" alt="ai generated heart image"
+        loading="lazy">
 
 
     </div>

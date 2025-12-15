@@ -30,25 +30,9 @@ img, video, iframe, svg {
 
 /* ========================================
    NAVBAR STYLES
+   (Moved to Consolidated Section at the end of file to match navbar.html structure)
    ======================================== */
-#navbar {
-  background-color: transparent !important;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-#navbar.scrolled {
-  background-color: black !important;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-#navbar .btn-primary {
-  background-color: var(--btn-color);
-  border: none;
-}
-
-#navbar .btn-primary:hover {
-  background-color: var(--theme-hover);
-}
+/* Old #navbar styles removed to prevent conflict with nav class styles */
 
 /* ========================================
    TYPOGRAPHY & BASE STYLES
@@ -2302,7 +2286,7 @@ p {
         }
 
         .checkmark-box::before {
-            content: "✓";
+            content: "→";
             color: var(--accent-orange);
             font-size: 1.5rem;
             font-weight: bold;
@@ -3070,12 +3054,14 @@ p {
         }
 
         .yt-benefit-tag {
-            background: #000;
-            color: #fff;
+            background: #fff;
+            color: #000;
             padding: 12px 25px;
             border-radius: 50px;
             font-size: 0.95rem;
             font-weight: 600;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid #e0e0e0;
         }
 
         .yt-action-zone {
@@ -4368,9 +4354,9 @@ p {
 
         /* YouTube info-card specific CTA (if nested) */
         .youtube-info-card .yt-cta-btn {
-            background: black;
-            border: 3px solid #fff;
-            color: #fff;
+            background: #fff;
+            border: 1px solid #e0e0e0;
+            color: #000;
             padding: 18px 45px;
             font-size: 15px;
             font-weight: 700;
@@ -4384,22 +4370,23 @@ p {
             display: inline-block;
             text-decoration: none;
             text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
 
         .youtube-info-card .yt-cta-btn::before,
         .youtube-info-card .yt-cta-btn::after {
             content: '';
             position: absolute;
-            background: #fff;
+            background: #000;
             z-index: -1;
-            transition: all 0.45s cubic-bezier(0.65, 0, 0.35, 1);
+            transition: all 0.35s;
         }
 
         .youtube-info-card .yt-cta-btn::before { top: 0; left: -100%; width: 100%; height: 100%; }
         .youtube-info-card .yt-cta-btn::after  { bottom: 0; right: -100%; width: 100%; height: 100%; }
         .youtube-info-card .yt-cta-btn:hover::before { left: 0; }
         .youtube-info-card .yt-cta-btn:hover::after  { right: 0; }
-        .youtube-info-card .yt-cta-btn:hover { color: #000; }
+        .youtube-info-card .yt-cta-btn:hover { color: #fff; }
         .youtube-info-card .yt-cta-btn:focus-visible { outline: 3px solid rgba(0,210,255,0.25); outline-offset: 3px; }
 
         /* Comparison CTA anchor in svc-morph section */
@@ -8786,6 +8773,11 @@ svg{
     pointer-events: auto;
 }
 
+/* Hide ONLY Play button (Container is clickable) */
+.custom-video-controls.native-style .play-pause-btn {
+    display: none !important;
+}
+
 .controls-row {
     display: flex;
     align-items: center;
@@ -8897,3 +8889,1116 @@ svg{
          margin-top: 0.5rem !important;
     }
 }
+/* CONSOLIDATED STYLES */
+/* --- Simple Services --- */
+/* ========================================
+   SIMPLE SERVICE SECTIONS
+   ======================================== */
+
+.service-simple-section {
+    padding: 100px 0;
+    background-color: #000;
+    color: #fff;
+    overflow: hidden;
+}
+
+.service-simple-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.service-simple-row {
+    display: flex;
+    align-items: center;
+    gap: 80px;
+}
+
+.service-simple-row.reverse {
+    flex-direction: row-reverse;
+}
+
+.service-simple-content {
+    flex: 1;
+}
+
+.service-simple-media {
+    flex: 1;
+    position: relative;
+}
+
+.service-simple-video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.service-simple-video-wrapper video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.service-simple-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    line-height: 1.2;
+}
+
+.service-simple-subtitle {
+    font-size: 1.25rem;
+    color: #00d2ff;
+    margin-bottom: 1.5rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.service-simple-desc {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 2rem;
+}
+
+.service-simple-features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    margin-bottom: 2.5rem;
+}
+
+.service-simple-feature-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.service-simple-feature-item::before {
+    content: "•";
+    color: #00d2ff;
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.service-simple-meta {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.service-simple-timeline {
+    font-weight: 600;
+    color: #fff;
+}
+
+.service-simple-timeline span {
+    color: #00d2ff;
+    margin-left: 5px;
+}
+
+.service-simple-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 30px;
+    background: transparent;
+    border: 1px solid #00d2ff;
+    color: #00d2ff;
+    font-weight: 600;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.service-simple-btn:hover {
+    background: #00d2ff;
+    color: #000;
+    transform: translateY(-2px);
+}
+
+@media (max-width: 992px) {
+    .service-simple-section {
+        padding: 60px 0;
+    }
+
+    .service-simple-row {
+        flex-direction: column !important;
+        gap: 40px;
+    }
+
+    .service-simple-media {
+        width: 100%;
+    }
+    
+    .service-simple-title {
+        font-size: clamp(1.8rem, 5vw, 2.5rem);
+    }
+    
+    .service-simple-features {
+        grid-template-columns: 1fr;
+    }
+
+    .service-simple-video-wrapper {
+        padding-bottom: 75%; /* 4:3 Aspect Ratio for larger mobile view */
+    }
+
+    .service-simple-video-wrapper iframe {
+       position: absolute !important;
+       display: block !important;
+       /* Width > 100% to simulate cover effect (16:9 video in 4:3 container) */
+       width: 140% !important; 
+       height: 100% !important;
+       top: 50% !important;
+       left: 50% !important;
+       transform: translate(-50%, -50%) !important;
+       z-index: 10 !important;
+       border: none !important;
+       pointer-events: none; /* Keep consistent with desktop behavior */
+    }
+}
+
+@media (min-width: 993px) {
+    .service-simple-row {
+        align-items: stretch; /* Match height of content */
+    }
+
+    .service-simple-media {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .service-simple-video-wrapper {
+        width: 100%;
+        height: 100%; /* Fill the flex item */
+        padding-bottom: 0;
+        display: block;
+        position: relative;
+        overflow: hidden; 
+        border-radius: 20px;
+    }
+    
+    .service-simple-video-wrapper video {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
+
+    .service-simple-video-wrapper iframe {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 50%;
+        left: 50%;
+        /* Scale increased to 1.75 to ensure coverage in tall containers (prevents black bars when stretched) */
+        transform: translate(-50%, -50%) scale(1.75); 
+        object-fit: cover;
+        pointer-events: none;
+        border: none;
+    }
+}
+/* --- Navbar Styles --- */
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    /* Navbar container */
+    nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+        width: 100%;
+        padding: 0;
+    }
+
+    .navbar-content {
+        max-width: 100%;
+        margin: 0;
+        background: transparent;
+        backdrop-filter: blur(8px);
+        border: none;
+        /* border-bottom: 1px solid rgba(255, 255, 255, 0.1); */
+        padding: 1rem 3rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        box-shadow: none;
+        position: relative;
+        overflow: hidden;
+        transition: all 0.4s ease;
+    }
+
+    .navbar-content.scrolled {
+        background: rgba(10, 10, 10, 0.95);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6),
+            inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    .navbar-content::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.03), transparent);
+        animation: shimmer 3s infinite;
+    }
+
+    @keyframes shimmer {
+        0% {
+            left: -100%;
+        }
+
+        100% {
+            left: 100%;
+        }
+    }
+
+    /* Logo */
+    .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        cursor: pointer;
+        position: relative;
+        z-index: 2;
+        text-decoration: none;
+    }
+
+    .logo-text {
+        height: 100px;
+        width: auto;
+        object-fit: contain;
+    }
+
+    /* Navigation menu */
+    .nav-menu {
+        display: flex;
+        gap: 2.5rem;
+        align-items: center;
+        position: relative;
+        z-index: 2;
+    }
+
+    .nav-item {
+        position: relative;
+        color: #00d2ff;
+        font-size: 0.95rem;
+        font-weight: 500;
+        cursor: pointer;
+        letter-spacing: 0.5px;
+        transition: all 0.3s ease;
+        padding: 0.5rem 0;
+        text-decoration: none;
+        display: inline-block;
+    }
+
+    .nav-item::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%) scaleX(0);
+        width: 80%;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, #fff, transparent);
+        box-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+        transition: transform 0.4s ease;
+    }
+
+    .nav-item:hover {
+        color: #fff;
+        text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+    }
+
+    .nav-item:hover::after {
+        transform: translateX(-50%) scaleX(1);
+    }
+
+    /* CTA Button */
+    .cta-button {
+        position: relative;
+        z-index: 2;
+        padding: 0.75rem 1.8rem;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        border-radius: 50px;
+        color: #fff;
+        font-size: 0.95rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.4s ease;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        overflow: hidden;
+        letter-spacing: 0.5px;
+        background: rgba(0, 194, 255, 0.12);
+        border: 1px solid rgba(0, 194, 255, 0.3);
+        box-shadow: 0 0 18px rgba(0, 194, 255, 0.25);
+        color: rgba(222, 244, 255, 0.8);
+
+    }
+
+    .cta-button::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%) scale(0);
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent);
+        transition: transform 0.6s ease;
+    }
+
+    .cta-button:hover {
+        background: rgba(255, 255, 255, 0.1);
+        border-color: #fff;
+        box-shadow: 0 0 30px rgba(255, 255, 255, 0.3),
+            inset 0 0 20px rgba(255, 255, 255, 0.1);
+        transform: translateY(-2px);
+    }
+
+    .cta-button:hover::before {
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    .arrow {
+        display: inline-block;
+        transition: transform 0.3s ease;
+    }
+
+    .cta-button:hover .arrow {
+        transform: translateX(5px);
+    }
+
+    /* Mobile Menu Toggle */
+    .menu-toggle {
+        display: none;
+        flex-direction: column;
+        gap: 6px;
+        cursor: pointer;
+        z-index: 2;
+        padding: 0.5rem;
+    }
+
+    .menu-toggle span {
+        width: 25px;
+        height: 2px;
+        background: #fff;
+        border-radius: 2px;
+        transition: all 0.3s ease;
+    }
+
+    .menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(8px, 8px);
+    }
+
+    .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+    }
+
+    /* Mobile Canvas Menu */
+    .mobile-menu-canvas {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 80%;
+        max-width: 350px;
+        height: 100vh;
+        background: #fff;
+        z-index: 999;
+        padding: 6rem 2rem 2rem;
+        box-shadow: -5px 0 30px rgba(0, 0, 0, 0.3);
+        transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        overflow-y: auto;
+    }
+
+    .mobile-menu-canvas.active {
+        right: 0;
+    }
+
+    .mobile-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 998;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+    }
+
+    .mobile-overlay.active {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .mobile-nav-item {
+        padding: 1.2rem 0;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        color: #000;
+        font-size: 1.1rem;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: block;
+    }
+
+    .mobile-nav-item:hover {
+        padding-left: 1rem;
+        color: #333;
+    }
+
+    .mobile-cta {
+        margin-top: 2rem;
+        padding: 1rem 2rem;
+        background: #000;
+        color: #fff;
+        border: none;
+
+        border-radius: 50px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        width: 100%;
+        transition: all 0.3s ease;
+
+    }
+
+    .mobile-cta:hover {
+        background: #333;
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+        nav {
+            padding: 0;
+        }
+
+        .navbar-content {
+            padding: 1rem 1.5rem;
+            background: transparent !important;
+            border-bottom: none !important;
+        }
+
+        .navbar-content.scrolled {
+            background: rgba(10, 10, 10, 0.95) !important;
+        }
+
+        /* Reduce logo size on mobile */
+        .logo-text {
+            height: 60px !important;
+        }
+
+        .nav-menu,
+        .cta-button {
+            display: none;
+        }
+
+        .menu-toggle {
+            display: flex;
+        }
+    }
+/* --- About Page Styles --- */
+        :root {
+            --bs-primary: #ffffff;
+            --bs-dropdown-link-active-bg: #ffffff;
+            --bs-dropdown-link-active-color: #000000;
+            --bs-link-color: #ffffff;
+            --bs-link-hover-color: #cccccc;
+            --theme-color: #00d2ff;
+            --theme-color-dark: #00a8cc;
+            --theme-color-light: #66e6ff;
+        }
+
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            overflow-x: hidden;
+            width: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: black;
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #ffffff;
+        }
+
+        /* Navbar Critical */
+        #navbar {
+            background-color: transparent !important;
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        #navbar.scrolled {
+            background-color: black !important;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Hero Critical */
+        .video-banner {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+            margin-bottom: 0;
+        }
+
+        .video-banner .hero-poster {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 100vw;
+            height: 100vh;
+            transform: translate(-50%, -50%);
+            object-fit: cover;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .video-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1;
+        }
+
+        /* what you get */
+        /* ========================================
+   STUDIO X AI SECTION (REWRITE)
+   ======================================== */
+        .studio-x-section {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            background: black;
+            overflow: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* 1. BACKGROUND VIDEO LAYER */
+        .studio-bg-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            /* Lowest level */
+        }
+
+        .studio-bg-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* 2. TEXT MASK LAYER (Black bg + White text + Multiply blend) */
+        .studio-mask-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: black;
+            z-index: 5;
+            /* Above video */
+            mix-blend-mode: multiply;
+            /* The Magic: White text becomes transparent to video below */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+            /* Let clicks pass specific areas if needed */
+        }
+
+        .studio-text-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            gap: 0;
+            /* Gap handled by spacer */
+        }
+
+        .studio-section-title {
+            position: absolute;
+            top: 4%;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 56px;
+            font-weight: 700;
+            color: white;
+            z-index: 20;
+            /* Above everything */
+            /* text-transform: uppercase; <-- Removed */
+            /* letter-spacing: 2px; <-- Removed */
+            opacity: 1;
+            text-align: center;
+            width: 100%;
+        }
+
+        .studio-highlight {
+            color: #00d2ff;
+            /* Cyan highlight */
+        }
+
+        .studio-title-text {
+            font-size: 100px;
+            font-weight: 900;
+            color: white;
+            /* Becomes transparent in multiply mode */
+            margin: 0;
+            line-height: 1;
+            letter-spacing: -2px;
+        }
+
+        /* Shift only the "AI" text closer to the center */
+        .studio-title-text:last-child {
+            position: relative;
+            left: -100px;
+        }
+
+        /* Shift "STUDIO" text left to avoid overlapping content */
+        .studio-title-text:first-child {
+            position: relative;
+            left: -60px;
+        }
+
+        .studio-x-spacer {
+            width: 800px;
+            /* Increased to 800px as requested */
+            height: 100px;
+            flex-shrink: 0;
+        }
+
+        /* 3. X INTERACTION LAYER */
+        .studio-x-layer {
+            position: absolute;
+            inset: 0;
+            z-index: 10;
+            /* Topmost */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+            /* Allow clicks through empty areas */
+        }
+
+        /* REUSING .box and .tri styles, just adjusting container */
+        .studio-x-box {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background: black;
+            /* The X center needs to cover the video/text lines behind it? */
+            /* Actually with multiply mode, the text layer covers everything with black except text. 
+       The Box sits ON TOP. It has its own videos. 
+       We ensure it stands out. */
+            /* overflow: hidden;  <-- REMOVED TO ALLOW TEXT OUTSIDE */
+            pointer-events: auto;
+            /* Re-enable clicks on the X */
+        }
+
+        /* Responsive adjustments for Studio X section */
+        @media (max-width: 1600px) {
+            .studio-x-spacer {
+                width: 600px;
+            }
+
+            .studio-title-text {
+                font-size: 128px;
+            }
+
+            .studio-x-tri1 .studio-x-tri-content {
+                left: -175px;
+                width: 155px;
+            }
+
+            .studio-x-tri4 .studio-x-tri-content {
+                right: -175px;
+                width: 155px;
+            }
+        }
+
+        @media (max-width: 1200px) {
+            .studio-title-text {
+                font-size: 80px;
+            }
+
+            .studio-x-spacer {
+                width: 450px;
+            }
+
+            .studio-x-box {
+                width: 160px;
+                height: 160px;
+            }
+        }
+
+        .studio-x-tri {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            color: white;
+            transition: opacity 0.6s ease, transform 0.6s ease, filter 0.6s ease;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            /* Important: pass through clicks in empty areas */
+            transform: scale(0.9);
+            filter: blur(4px);
+        }
+
+        .studio-x-tri.studio-x-tri-active {
+            opacity: 1;
+            visibility: visible;
+            /* pointer-events:auto; <-- Handled by children */
+            transform: scale(1);
+            filter: blur(0);
+        }
+
+        .studio-x-section.studio-x-show-all .studio-x-tri {
+            opacity: 1;
+            visibility: visible;
+            /* pointer-events:auto; */
+        }
+
+        /* CLIPPER HANDLES THE SHAPE AND CLICKS */
+        .studio-x-clipper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: auto;
+            /* Catch clicks on the triangle shape */
+        }
+
+        .studio-x-tri:hover .studio-x-clipper video {
+            filter: grayscale(0%);
+        }
+
+        .studio-x-tri-content {
+            position: absolute;
+            z-index: 5;
+            text-align: center;
+            pointer-events: auto;
+            /* Allow interaction with text */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+
+            padding: 24px 20px;
+
+            box-sizing: border-box;
+        }
+
+        /* Position content outside the smaller X box */
+        /* LEFT */
+        .studio-x-tri1 .studio-x-tri-content {
+            left: -74px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 200px;
+            text-align: center;
+            align-items: center;
+        }
+
+        /* TOP */
+        .studio-x-tri2 .studio-x-tri-content {
+            top: -147px;
+            left: 85%;
+            transform: translateX(-50%);
+            width: 220px;
+            text-align: center;
+            align-items: center;
+        }
+
+        /* BOTTOM */
+        .studio-x-tri3 .studio-x-tri-content {
+            bottom: -137px;
+            left: 87%;
+            transform: translateX(-50%);
+            width: 220px;
+            text-align: center;
+            align-items: center;
+        }
+
+        /* RIGHT */
+        .studio-x-tri4 .studio-x-tri-content {
+            right: -263px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 200px;
+            text-align: center;
+            align-items: center;
+        }
+
+        .studio-x-tri-icon {
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .studio-x-tri-heading {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            line-height: 1.2;
+            color: var(--theme-color);
+        }
+
+        .studio-x-tri-text {
+            font-size: 15px;
+            font-weight: 400;
+            opacity: 0.9;
+            line-height: 23px;
+            text-align: center;
+        }
+
+        /* 4 PERFECT NON-OVERLAPPING TRIANGLES - APPLIED TO CLIPPER */
+
+        /* TOP LEFT */
+        .studio-x-tri1 .studio-x-clipper {
+            clip-path: polygon(0 0, 50% 50%, 0 100%);
+        }
+
+        /* TOP RIGHT */
+        .studio-x-tri2 .studio-x-clipper {
+            clip-path: polygon(100% 0, 50% 50%, 0 0);
+        }
+
+        /* BOTTOM LEFT */
+        .studio-x-tri3 .studio-x-clipper {
+            clip-path: polygon(0 100%, 50% 50%, 100% 100%);
+        }
+
+        /* BOTTOM RIGHT */
+        .studio-x-tri4 .studio-x-clipper {
+            clip-path: polygon(100% 100%, 50% 50%, 100% 0);
+        }
+
+        /* WHITE X LINES WITH VIDEO */
+        .studio-x-line {
+            position: absolute;
+            top: 50%;
+            left: 91%;
+            width: 302%;
+            height: 35px;
+            background: white;
+            transform-origin: center;
+            z-index: 10;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .studio-x-line video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 200%;
+            min-height: 200%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .studio-x-line1 {
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        .studio-x-line1 video {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+
+        .studio-x-line2 {
+            transform: translate(-50%, -50%) rotate(-45deg);
+        }
+
+        .studio-x-line2 video {
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        .video-text {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1;
+        }
+
+        .video-text video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            object-fit: cover;
+
+            /* mask video inside text - correct syntax */
+            -webkit-mask: url(#mask);
+            mask: url(#mask);
+            -webkit-mask-size: 100% 100%;
+            mask-size: 100% 100%;
+        }
+
+
+
+        /* ========================================
+   MOBILE RESPONSIVE (Below 768px)
+   ======================================== */
+        @media (max-width: 768px) {
+
+            /* Hide the complex Studio/X/Video layers */
+            .studio-bg-layer,
+            .studio-mask-layer,
+            .studio-x-line,
+            .studio-x-box::before,
+            /* any pseudo elements if any */
+            .studio-x-clipper {
+                /* Hide the video clips, just show text content */
+                display: none !important;
+            }
+
+            .studio-x-section {
+                display: none !important;
+                height: auto;
+                min-height: auto;
+                padding: 80px 20px 40px;
+                /* Space for title */
+                overflow-y: visible;
+                display: block;
+                /* Reset flex */
+            }
+
+            /* Position the title normally */
+            .studio-section-title {
+                position: relative;
+                top: auto;
+                left: auto;
+                transform: none;
+                margin-bottom: 40px;
+                font-size: 32px;
+                /* Smaller for mobile */
+            }
+
+            /* Reset the box container */
+            .studio-x-box {
+                width: 100% !important;
+                height: auto !important;
+                background: transparent;
+                display: flex;
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            /* Reset the triangle containers to be static blocks */
+            .studio-x-tri {
+                position: relative;
+                width: 100%;
+                height: auto;
+                opacity: 1 !important;
+                visibility: visible !important;
+                transform: none !important;
+                filter: none !important;
+                pointer-events: auto !important;
+            }
+
+            /* Style the content as the card itself */
+            .studio-x-tri-content {
+                position: relative;
+                width: 100% !important;
+                /* Full width */
+                left: auto !important;
+                right: auto !important;
+                top: auto !important;
+                bottom: auto !important;
+                transform: none !important;
+
+                background: #000;
+                border: 1px solid #333;
+                border-radius: 20px;
+                padding: 30px;
+                text-align: left;
+                align-items: flex-start;
+                justify-content: flex-start;
+                box-shadow: none;
+            }
+
+            .studio-x-tri-heading {
+                font-size: 20px;
+                margin-bottom: 10px;
+            }
+
+            .studio-x-tri-text {
+                text-align: left;
+                font-size: 16px;
+                line-height: 1.5;
+            }
+        }
+        
